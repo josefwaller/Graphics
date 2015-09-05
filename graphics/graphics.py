@@ -10,16 +10,23 @@ class Main ():
 
 		#initializes setting
 		settingsFile = open("assets/settings/settings.json", "r")
+		settings = json.loads(settingsFile.read())
 
-		print(json.loads(settingsFile.read()))
+		#Sets the window dimensions
+		windowSize = height, width = settings['screenWidth'], settings['screenHeight']
+		window = display.set_mode(windowSize)
 
 
 
-	def startGame(self):
+	def playGame(self):
 
 		print("game started")
+
+		while True:
+
+			display.flip()
 
 if __name__ == "__main__":
 
 	main = Main()
-	main.startGame()
+	main.playGame()
