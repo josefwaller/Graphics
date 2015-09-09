@@ -61,7 +61,6 @@ class BaseEntity ():
 class JumpingEntity (BaseEntity):
 
 	jump_strength = None
-	is_jumping = None
 	momY = None
 	is_grounded = None
 
@@ -69,17 +68,45 @@ class JumpingEntity (BaseEntity):
 
 		self.momY = self.jump_strength
 
-		self.is_jumping = True
+		self.is_grounded = False
 		self.last_time = time.time()
 
 	def jump_update (self):
 
 		self.delta_time = time.time() - self.last_time
 
-		if self.is_jumping == True:
+		starting_y = self.y
 
-			self.momY -= 9.8 * 5 * self.delta_time
+		if self.is_grounded == False:
+
+			self.momY -= 9.8 * Globals.block_size * self.delta_time
 
 			self.y -= self.momY * self.delta_time
+
+			for platform in Globals.platforms:
+
+				collide_x = False
+				collide_y = False
+
+				block_con = Globals.pixel_size / Globals.block_size
+		
+				if self.x * block_con <= platform.x + platform.w:
+					if self.x * block_con + self.w >= platform.x:
+
+						collide_x = True
+				print("%s compared to %s" % (self.y * block_con + self.h, platform.y ))
+				print("%sasdf compared to %s" % (starting_y *block_con, platform.y ))
+
+				if self.y * block_con + self.h >= platform.y :
+					if starting_y * block_con + self.h < platform.y:
+
+						collide_y = True
+
+				if collide_x and collide_y:
+
+					self.is_grounded = True
+					self.y = platform.y - self.h
+				else:
+					self.is_grounded = False
 
 		self.last_time = time.time()

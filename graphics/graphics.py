@@ -25,6 +25,8 @@ class Main ():
 		Globals.block_size = int(Globals.window.get_size()[1] / 16)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
 
+		print(Globals.block_size)
+
 		self.play_game()
 
 
@@ -33,7 +35,7 @@ class Main ():
 
 		white = 50, 50, 50
 
-		player = Player(0, 1)
+		player = Player(0, 14)
 
 		Globals.platforms = [
 			Platform(1, 9, 5, 1, pygame.image.load("assets/images/blocks/temp_block.png"), None)

@@ -7,8 +7,7 @@ class Player (JumpingEntity):
 	x_translate = 0
 	speed = 5
 
-	jump_strength = 50
-	is_jumping = False
+	jump_strength = 10
 	momY = 0
 	is_grounded = True
 
@@ -18,9 +17,11 @@ class Player (JumpingEntity):
 	def __init__(self, x, y):
 
 		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
+		self.y = y * (Globals.block_size / Globals.pixel_size)
 		self.w = 1
 		self.h = 2
+
+		self.jump_strength *= Globals.block_size
 
 		self.sprites = [
 			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
