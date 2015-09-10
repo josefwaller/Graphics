@@ -29,11 +29,6 @@ class BaseEntity ():
 
 	def render (self):
 
-		width = Globals.block_size * self.w
-		height = Globals.block_size * self.h
-		x = Globals.pixel_size * self.x
-		y = Globals.pixel_size * self.y
-
 		if self.is_animated:
 			self.unix = time.time() * 1000
 			
@@ -45,13 +40,13 @@ class BaseEntity ():
 			if self.this_index >= len(self.sprite_indexes):
 				self.this_index = 0
 
-			sprite = pygame.transform.scale(self.sprites[self.sprite_indexes[self.this_index]], (width, height))
+			sprite = pygame.transform.scale(self.sprites[self.sprite_indexes[self.this_index]], (self.w, self.h))
 
 			if self.facingLeft:
 
 				sprite = pygame.transform.flip(sprite, True, False)
 
-			Globals.window.blit(sprite, (x, y))
+			Globals.window.blit(sprite, (self.x, self.y))
 
 		else:
 
@@ -63,6 +58,7 @@ class JumpingEntity (BaseEntity):
 	jump_strength = None
 	momY = None
 	is_grounded = None
+	gravity_strength = None
 
 	def start_jump (self):
 
@@ -73,39 +69,36 @@ class JumpingEntity (BaseEntity):
 
 	def jump_update (self):
 
-		self.delta_time = time.time() - self.last_time
+		delta_time = time.time() - self.last_time
 
 		starting_y = self.y
 
 		if self.is_grounded == False:
 
-			self.momY -= 9.8 * Globals.block_size * self.delta_time
+			self.momY -= self.gravity_strength * delta_time
 
-			self.y -= self.momY * self.delta_time
+			self.y -= self.momY * delta_time
 
 			for platform in Globals.platforms:
 
 				collide_x = False
 				collide_y = False
 
-				block_con = Globals.pixel_size / Globals.block_size
-		
-				if self.x * block_con <= platform.x + platform.w:
-					if self.x * block_con + self.w >= platform.x:
+				if self.x <= platform.x + platform.w * Globals.block_size:
+					if self.x + self.w >= platform.x:
 
 						collide_x = True
-				print("%s compared to %s" % (self.y * block_con + self.h, platform.y ))
-				print("%sasdf compared to %s" % (starting_y *block_con, platform.y ))
 
-				if self.y * block_con + self.h >= platform.y :
-					if starting_y * block_con + self.h < platform.y:
+				if self.y + self.h >= platform.y :
+					if starting_y + self.h < platform.y:
 
 						collide_y = True
 
 				if collide_x and collide_y:
 
 					self.is_grounded = True
-					self.y = platform.y - self.h
+					self.y = (platform.y - self.h)
+					break
 				else:
 					self.is_grounded = False
 

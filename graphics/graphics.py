@@ -35,10 +35,12 @@ class Main ():
 
 		white = 50, 50, 50
 
-		player = Player(0, 14)
+		player = Player(0, 12)
 
 		Globals.platforms = [
-			Platform(1, 9, 5, 1, pygame.image.load("assets/images/blocks/temp_block.png"), None)
+			Platform(x=1, y=10, w=5, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
+			Platform(x=7, y=4, w=3, h=2, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=pygame.image.load("assets/images/blocks/temp_block.png")),
+			Platform(x=12, y=7, w=2, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
 
 		k = KeyHandler()

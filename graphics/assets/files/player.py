@@ -5,11 +5,12 @@ import pygame
 class Player (JumpingEntity):
 
 	x_translate = 0
-	speed = 5
+	speed = 8
 
-	jump_strength = 10
+	jump_strength = 13
 	momY = 0
 	is_grounded = True
+	platform_under = None
 
 	last_time = 0
 	delta_time = 0
@@ -17,9 +18,9 @@ class Player (JumpingEntity):
 	def __init__(self, x, y):
 
 		self.x = x * Globals.block_size
-		self.y = y * (Globals.block_size / Globals.pixel_size)
-		self.w = 1
-		self.h = 2
+		self.y = y * Globals.block_size
+		self.w = 1 * Globals.block_size
+		self.h = 2 * Globals.block_size
 
 		self.jump_strength *= Globals.block_size
 
@@ -36,6 +37,8 @@ class Player (JumpingEntity):
 
 		self.is_animated = True
 		self.sprite_interval = 100
+
+		self.gravity_strength = 15 * Globals.block_size
 
 	def while_keys_down (self, keys):
 
