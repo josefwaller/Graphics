@@ -21,6 +21,7 @@ class BaseEntity ():
 	sprites = None
 	sprite_indexes = None
 	this_index = 0
+	platform_under = None
 
 	last_sprite_time = 0
 	sprite_interval = 0
@@ -69,6 +70,9 @@ class JumpingEntity (BaseEntity):
 
 	def jump_update (self):
 
+		if self.platform_under != None:
+			print("%s!%s" % (self.platform_under.x, self.x))
+
 		delta_time = time.time() - self.last_time
 
 		starting_y = self.y
@@ -98,8 +102,20 @@ class JumpingEntity (BaseEntity):
 
 					self.is_grounded = True
 					self.y = (platform.y - self.h)
+					self.platform_under = platform
 					break
 				else:
 					self.is_grounded = False
+
+		else:
+
+			platform = self.platform_under
+
+			if platform == None or self.x > platform.x + platform.w * Globals.block_size or self.x + self.w < platform.x:
+
+				self.is_grounded = False
+				self.momY = 0
+				self.platform_under = None
+
 
 		self.last_time = time.time()
