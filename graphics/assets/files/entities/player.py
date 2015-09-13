@@ -20,16 +20,16 @@ class Player (JumpingEntity):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
-		self.w = 1 * Globals.block_size
-		self.h = 2 * Globals.block_size
+		self.w = int(10 * (Globals.block_size / 16))
+		self.h = int(19 * (Globals.block_size / 16))
 
 		self.jump_strength *= Globals.block_size
 
 		self.sprites = [
-			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
 			pygame.image.load("assets/images/player/run_1.png").convert_alpha(),
 			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_1.png").convert_alpha(),
+			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
+			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
 		]
 
 		self.sprite_indexes = [
