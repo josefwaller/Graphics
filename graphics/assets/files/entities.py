@@ -25,9 +25,10 @@ class BaseEntity ():
 	last_sprite_time = 0
 	sprite_interval = 0
 
-	facingLeft = False
+	facing_left = False
 
 	def render (self):
+		print("ASDF")
 
 		if self.is_animated:
 			self.unix = time.time() * 1000
@@ -42,7 +43,7 @@ class BaseEntity ():
 
 			sprite = pygame.transform.scale(self.sprites[self.sprite_indexes[self.this_index]], (self.w, self.h))
 
-			if not self.facingLeft:
+			if self.facing_left:
 
 				sprite = pygame.transform.flip(sprite, True, False)
 
