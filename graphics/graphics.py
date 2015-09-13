@@ -3,10 +3,11 @@ import pygame
 import json
 import time
 
-from assets.files.player import Player
-from assets.files.platform import Platform
-from assets.files.key_handler import KeyHandler
-from assets.files.globals import Globals
+from assets.files.entities.player import Player
+from assets.files.entities.platform import Platform
+from assets.files.utilities.key_handler import KeyHandler
+from assets.files.utilities.globals import Globals
+from assets.files.entities.enemies.walker import Walker
 
 class Main ():
 
@@ -25,8 +26,6 @@ class Main ():
 		Globals.block_size = int(Globals.window.get_size()[1] / 16)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
 
-		print(Globals.block_size)
-
 		self.play_game()
 
 
@@ -40,8 +39,11 @@ class Main ():
 		Globals.platforms = [
 			Platform(x=1, y=10, w=5, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
 			Platform(x=7, y=4, w=3, h=2, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=pygame.image.load("assets/images/blocks/temp_block.png")),
-			Platform(x=12, y=7, w=2, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
+			Platform(x=12, y=7, w=2, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
+			Platform(x=0, y=15, w=25, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
+
+		enemy = Walker(x=7, y=2)
 
 		k = KeyHandler()
 
@@ -57,6 +59,8 @@ class Main ():
 
 			player.update()
 
+			enemy.update()
+
 			for platform in Globals.platforms:
 
 				platform.render()
@@ -70,4 +74,3 @@ class Main ():
 if __name__ == "__main__":
 
 	main = Main()
-	#main.playGame()

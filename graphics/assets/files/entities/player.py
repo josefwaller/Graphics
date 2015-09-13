@@ -1,5 +1,7 @@
-from .entities import JumpingEntity
-from .globals import Globals
+from .jumping_entity import JumpingEntity
+from ..utilities.globals import Globals
+
+import time
 import pygame
 
 class Player (JumpingEntity):
@@ -10,7 +12,6 @@ class Player (JumpingEntity):
 	jump_strength = 13
 	momY = 0
 	is_grounded = True
-	platform_under = None
 
 	last_time = 0
 	delta_time = 0
@@ -35,6 +36,8 @@ class Player (JumpingEntity):
 			1
 		]
 
+		self.jump_last_time = time.time()
+
 		self.is_animated = True
 		self.sprite_interval = 100
 
@@ -46,13 +49,13 @@ class Player (JumpingEntity):
 
 			self.x_translate = -1
 			self.sprite_indexes = range(4)
-			self.facingLeft = True
+			self.facing_left = True
 
 		if pygame.K_RIGHT in keys:
 
 			self.x_translate = 1
 			self.sprite_indexes = range(4)
-			self.facingLeft = False
+			self.facing_left = False
 
 		if pygame.K_RIGHT not in keys and pygame.K_LEFT not in keys:
 

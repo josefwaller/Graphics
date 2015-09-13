@@ -1,8 +1,8 @@
 import pygame
-from .globals import Globals
-from .entities import BaseEntity
+from assets.files.utilities.globals import Globals
+from .base_entity import BaseEntity
 
-class Platform ():
+class Platform (BaseEntity):
 
 	top_block = None
 	inner_block = None
