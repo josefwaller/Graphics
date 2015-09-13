@@ -42,7 +42,7 @@ class BaseEntity ():
 
 			sprite = pygame.transform.scale(self.sprites[self.sprite_indexes[self.this_index]], (self.w, self.h))
 
-			if self.facingLeft:
+			if not self.facingLeft:
 
 				sprite = pygame.transform.flip(sprite, True, False)
 

@@ -33,7 +33,7 @@ class Main ():
 
 	def play_game(self):
 
-		white = 50, 50, 50
+		white = 255, 0, 255
 
 		player = Player(0, 12)
 
