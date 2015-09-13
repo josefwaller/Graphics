@@ -13,6 +13,8 @@ class Main ():
 
 	def __init__(self):
 
+		print("ASFD")
+
 		#creats the window, loads images, etc
 
 		#initializes setting
@@ -34,7 +36,7 @@ class Main ():
 
 		white = 255, 0, 255
 
-		player = Player(0, 12)
+		player = Player(0, 11)
 
 		Globals.platforms = [
 			Platform(x=1, y=10, w=5, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
