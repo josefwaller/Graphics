@@ -9,29 +9,22 @@ class JumpingEntity (BaseEntity):
 	momY = None
 	is_grounded = None
 	gravity_strength = None
-	jump_last_time = None
-
-	def __init__ (self):
-		print("ASDF")
 
 	def start_jump (self):
 
 		self.momY = self.jump_strength
 
 		self.is_grounded = False
-		self.jump_last_time = time.time()
 
 	def jump_update (self):
-
-		delta_time = time.time() - self.jump_last_time
 
 		starting_y = self.y
 
 		if self.is_grounded == False:
 
-			self.momY -= self.gravity_strength * delta_time
+			self.momY -= self.gravity_strength * self.delta_time
 
-			self.y -= self.momY * delta_time
+			self.y -= self.momY * self.delta_time
 
 			for platform in Globals.platforms:
 
@@ -66,6 +59,3 @@ class JumpingEntity (BaseEntity):
 				self.is_grounded = False
 				self.momY = 0
 				self.platform_under = None
-
-
-		self.jump_last_time = time.time()

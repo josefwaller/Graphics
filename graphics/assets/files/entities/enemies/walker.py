@@ -19,12 +19,15 @@ class Walker (JumpingEntity):
 
 		self.is_animated = True
 
+		self.sprite_interval = 150
+
 		self.last_time = time.time()
 
 		self.sprites = [
 			pygame.image.load("assets/images/enemies/walker/run_1.png"),
 			pygame.image.load("assets/images/enemies/walker/run_2.png"),
-			pygame.image.load("assets/images/enemies/walker/run_3.png")
+			pygame.image.load("assets/images/enemies/walker/run_3.png"),
+			pygame.image.load("assets/images/enemies/walker/run_2.png")
 		]
 
 		self.gravity_strength = 10
@@ -38,17 +41,19 @@ class Walker (JumpingEntity):
 
 		self.jump_last_time = time.time()
 
-	def update (self):
-
-		delta_time = time.time() - self.last_time
+	def move (self):
 
 		if self.facing_left == True:
-			self.x += self.speed * delta_time
+			self.x += self.speed * self.delta_time
 
 		else:
-			self.x -= self.speed * delta_time
+			self.x -= self.speed * self.delta_time
+
+	def update (self):
+
+		self.set_delta_time()
+
+		self.move()
 
 		self.jump_update()
 		self.render()
-
-		self.last_time = time.time()

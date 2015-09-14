@@ -28,7 +28,7 @@ class Platform (BaseEntity):
 			y = self.y + (Globals.block_size * h)
 
 			for w in range(self.w):
-				x = self.x + (Globals.block_size * w)
+				x = self.x + (Globals.block_size * w) + Globals.camera_offset['x']
 
 				if h == 0:
 					Globals.window.blit(top_block, (x, y))

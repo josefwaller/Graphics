@@ -7,7 +7,7 @@ import pygame
 class Player (JumpingEntity):
 
 	x_translate = 0
-	speed = 8
+	speed = 300
 
 	jump_strength = 13
 	momY = 0
@@ -15,6 +15,8 @@ class Player (JumpingEntity):
 
 	last_time = 0
 	delta_time = 0
+
+	last_move_time = 0
 
 	def __init__(self, x, y):
 
@@ -43,6 +45,8 @@ class Player (JumpingEntity):
 
 		self.gravity_strength = 15 * Globals.block_size
 
+		self.last_move_time = time.time()
+
 	def while_keys_down (self, keys):
 
 		if pygame.K_LEFT in keys:
@@ -67,9 +71,21 @@ class Player (JumpingEntity):
 			self.start_jump()
 
 
+	def move (self):
+
+		self.x += self.x_translate * self.speed * self.delta_time
+
+
 	def update (self):
 
-		self.x += self.x_translate * self.speed
+		self.set_delta_time()
+
+		self.move()
+
+		if self.x > Globals.window.get_size()[0] - 500:
+
+			Globals.camera_offset['x'] = - (self.x - (Globals.window.get_size()[0] - 500))
+			print(Globals.camera_offset['x'])
 
 		self.jump_update()
 

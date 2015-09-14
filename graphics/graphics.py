@@ -42,10 +42,10 @@ class Main ():
 			Platform(x=1, y=10, w=5, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
 			Platform(x=7, y=4, w=3, h=2, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=pygame.image.load("assets/images/blocks/temp_block.png")),
 			Platform(x=12, y=7, w=2, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
-			Platform(x=0, y=15, w=25, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
+			Platform(x=0, y=15, w=45, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
 
-		enemy = Walker(x=7, y=2)
+		enemy = Walker(x=7, y=1)
 
 		k = KeyHandler()
 

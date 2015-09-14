@@ -28,6 +28,18 @@ class BaseEntity ():
 
 	facing_left = False
 
+	last_time = 0
+
+	def set_delta_time(self):
+
+		if self.last_time == 0:
+			self.last_time = time.time()
+
+		self.delta_time = time.time() - self.last_time
+
+		self.last_time = time.time()
+
+
 	def render (self):
 
 		if self.is_animated:
@@ -47,7 +59,7 @@ class BaseEntity ():
 
 				sprite = pygame.transform.flip(sprite, True, False)
 
-			Globals.window.blit(sprite, (self.x, self.y))
+			Globals.window.blit(sprite, (self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y']))
 
 		else:
 
