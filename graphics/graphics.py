@@ -45,7 +45,7 @@ class Main ():
 			Platform(x=0, y=15, w=45, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
 
-		enemy = Walker(x=7, y=1)
+		enemy = Walker(x=7, y=1, turn1=7, turn2=10)
 
 		k = KeyHandler()
 

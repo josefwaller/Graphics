@@ -85,8 +85,7 @@ class Player (JumpingEntity):
 		if self.x > Globals.window.get_size()[0] - 500:
 
 			Globals.camera_offset['x'] = - (self.x - (Globals.window.get_size()[0] - 500))
-			print(Globals.camera_offset['x'])
 
-		self.jump_update()
+		self.gravity_update()
 
 		self.render()

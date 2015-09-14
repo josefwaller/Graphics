@@ -7,15 +7,23 @@ import pygame
 class Walker (JumpingEntity):
 
 	facing_left = False
-	speed = 8
+	speed = 100
 
-	def __init__(self, x, y, facing_left=False):
+	def __init__(self, x, y, turn1, turn2, facing_left=True):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 		self.w = Globals.block_size
 		self.h = 2 * Globals.block_size
 		self.facing_left = facing_left
+
+		if turn1 > turn2:
+			self.turn_one = turn2 * Globals.block_size
+			self.turn_two = turn1 * Globals.block_size
+
+		else:
+			self.turn_one = turn1 * Globals.block_size
+			self.turn_two = turn2 * Globals.block_size
 
 		self.is_animated = True
 
@@ -44,10 +52,17 @@ class Walker (JumpingEntity):
 	def move (self):
 
 		if self.facing_left == True:
-			self.x += self.speed * self.delta_time
+			self.x -= self.speed * self.delta_time
 
 		else:
-			self.x -= self.speed * self.delta_time
+			self.x += self.speed * self.delta_time
+
+		if self.x < self.turn_one:
+			self.facing_left = False
+
+		elif self.x > self.turn_two:
+			self.facing_left = True
+			print("Turning")
 
 	def update (self):
 
@@ -55,5 +70,5 @@ class Walker (JumpingEntity):
 
 		self.move()
 
-		self.jump_update()
+		self.gravity_update()
 		self.render()
