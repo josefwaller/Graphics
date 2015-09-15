@@ -1,10 +1,10 @@
 from assets.files.utilities.globals import Globals
-from assets.files.entities.jumping_entity import JumpingEntity
+from assets.files.entities.enemies.base_enemy import BaseEnemy
 
 import time
 import pygame
 
-class Walker (JumpingEntity):
+class Walker (BaseEnemy):
 
 	facing_left = False
 	speed = 100

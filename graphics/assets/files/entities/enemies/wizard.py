@@ -1,10 +1,10 @@
-from assets.files.entities.base_entity import BaseEntity
+from assets.files.entities.enemies.base_enemy import BaseEnemy
 from assets.files.utilities.globals import Globals
 
 import time
 import pygame
 
-class Wizard (BaseEntity):
+class Wizard (BaseEnemy):
 
 	last_missile_time = None
 	missile_delay = None
@@ -52,7 +52,6 @@ class Wizard (BaseEntity):
 		else:
 
 			if time.time() - self.last_missile_time >= self.missile_delay:
-				Globals.enemies.append(Missile(x=self.x, y=self.y, starting_time=time.time()))
 
 				self.sprite_indexes = [1]
 
@@ -62,30 +61,47 @@ class Wizard (BaseEntity):
 				else:
 					self.facing_left = False
 
+				if self.facing_left:
+					direction = 1
+				else:
+					direction = -1
+
+				Globals.enemies.append(Missile(x=self.x, y=self.y, starting_time=time.time(), direction=direction))
+
 				self.attack_time = time.time()
 				self.is_attacking = True
+
+		self.check_for_player_collision()
 
 		self.render()
 
 
-class Missile (BaseEntity):
+class Missile (BaseEnemy):
 
 	lifespan = None
 	starting_time = None
 	speed = None
 
-	def __init__(self, x, y, starting_time):
+	momX = None
+	moxY = None
+
+	def __init__(self, x, y, starting_time, direction=1):
 
 		self.x = x
 		self.y = y
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size
-		self.lifespan = 3
+		self.lifespan = 5
 
-		self.speed = 200
+		self.speed = 5
 
 		self.starting_time = starting_time
+
+		self.momX = 30 * direction
+		self.momY = 0
+
+		self.turn_speed = 5
 
 		self.is_animated = False
 		self.image = pygame.image.load("assets/images/blocks/temp_block.png").convert_alpha()
@@ -111,8 +127,11 @@ class Missile (BaseEntity):
 
 			y_translate = -1
 
-		self.x += self.speed * x_translate * self.delta_time
-		self.y += self.speed * y_translate * self.delta_time
+		self.momX += x_translate * self.turn_speed
+		self.momY += y_translate * self.turn_speed
+
+		self.x += self.momX * self.speed * self.delta_time
+		self.y += self.momY * self.speed * self.delta_time
 
 		if time.time() - self.starting_time >= self.lifespan:
 			Globals.enemies.remove(self)
@@ -123,5 +142,7 @@ class Missile (BaseEntity):
 		self.set_delta_time()
 
 		self.move()
+
+		self.check_for_player_collision()
 
 		self.render()
