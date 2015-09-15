@@ -27,6 +27,7 @@ class Main ():
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 16)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
+		Globals.gravity_strength = int(Globals.block_size * 15)
 
 		self.play_game()
 
@@ -45,7 +46,9 @@ class Main ():
 			Platform(x=0, y=15, w=45, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
 
-		enemy = Walker(x=7, y=1, turn1=7, turn2=10)
+		Globals.enemies = [
+			Walker(x=7, y=1, turn1=7, turn2=10)
+		]
 
 		k = KeyHandler()
 
@@ -61,7 +64,9 @@ class Main ():
 
 			player.update()
 
-			enemy.update()
+			for enemy in Globals.enemies:
+
+				enemy.update()
 
 			for platform in Globals.platforms:
 

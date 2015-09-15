@@ -18,12 +18,16 @@ class Player (JumpingEntity):
 
 	last_move_time = 0
 
+	is_dead = None
+
 	def __init__(self, x, y):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 		self.w = int(10 * (Globals.block_size / 16))
 		self.h = int(19 * (Globals.block_size / 16))
+
+		self.is_dead = False
 
 		self.jump_strength *= Globals.block_size
 
@@ -42,8 +46,6 @@ class Player (JumpingEntity):
 
 		self.is_animated = True
 		self.sprite_interval = 100
-
-		self.gravity_strength = 15 * Globals.block_size
 
 		self.last_move_time = time.time()
 
@@ -75,6 +77,17 @@ class Player (JumpingEntity):
 
 		self.x += self.x_translate * self.speed * self.delta_time
 
+		for enemy in Globals.enemies:
+
+			if enemy.x < self.x + self.w:
+				if enemy.x + enemy.w > self.x:
+
+					if enemy.y > self.y + self.h:
+						if enemy.y + enemy.h < self.y:
+
+							self.id_dead = True
+							print("is dead")
+
 
 	def update (self):
 
@@ -82,9 +95,9 @@ class Player (JumpingEntity):
 
 		self.move()
 
-		if self.x > Globals.window.get_size()[0] - 500:
+		if self.x >= Globals.window.get_size()[0] / 2:
 
-			Globals.camera_offset['x'] = - (self.x - (Globals.window.get_size()[0] - 500))
+			Globals.camera_offset['x'] = - (self.x - Globals.window.get_size()[0] / 2)
 
 		self.gravity_update()
 

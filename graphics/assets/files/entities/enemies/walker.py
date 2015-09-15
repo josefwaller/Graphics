@@ -38,8 +38,6 @@ class Walker (JumpingEntity):
 			pygame.image.load("assets/images/enemies/walker/run_2.png")
 		]
 
-		self.gravity_strength = 10
-
 		self.sprite_indexes = [
 			0,
 			1,
@@ -60,9 +58,8 @@ class Walker (JumpingEntity):
 		if self.x < self.turn_one:
 			self.facing_left = False
 
-		elif self.x > self.turn_two:
+		elif self.x + self.w > self.turn_two:
 			self.facing_left = True
-			print("Turning")
 
 	def update (self):
 

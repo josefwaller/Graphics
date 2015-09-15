@@ -8,7 +8,6 @@ class JumpingEntity (BaseEntity):
 	jump_strength = None
 	momY = None
 	is_grounded = None
-	gravity_strength = None
 
 	def start_jump (self):
 
@@ -22,7 +21,7 @@ class JumpingEntity (BaseEntity):
 
 		if self.is_grounded == False:
 
-			self.momY -= self.gravity_strength * self.delta_time
+			self.momY -= Globals.gravity_strength * self.delta_time
 
 			self.y -= self.momY * self.delta_time
 
