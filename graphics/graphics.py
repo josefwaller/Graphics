@@ -6,6 +6,8 @@ import time
 from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
 
+from assets.files.entities.tools.bow_and_arrow import BowAndArrow
+
 from assets.files.entities.enemies.walker import Walker
 from assets.files.entities.enemies.wizard import Wizard
 
@@ -15,8 +17,6 @@ from assets.files.utilities.globals import Globals
 class Main ():
 
 	def __init__(self):
-
-		print("ASFD")
 
 		#creats the window, loads images, etc
 
@@ -55,6 +55,8 @@ class Main ():
 			Wizard(x=15, y=14)
 		]
 
+		arrow = BowAndArrow(x=5, y=14)
+
 		k = KeyHandler()
 
 		while True:
@@ -75,8 +77,6 @@ class Main ():
 			for platform in Globals.platforms:
 
 				platform.render()
-
-			platform.render()
 
 			pygame.display.flip()
 
