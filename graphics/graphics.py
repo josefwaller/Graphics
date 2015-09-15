@@ -5,9 +5,12 @@ import time
 
 from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
+
+from assets.files.entities.enemies.walker import Walker
+from assets.files.entities.enemies.wizard import Wizard
+
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
-from assets.files.entities.enemies.walker import Walker
 
 class Main ():
 
@@ -27,7 +30,8 @@ class Main ():
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 16)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
-		Globals.gravity_strength = int(Globals.block_size * 15)
+
+		Globals.gravity_strength = 15 * Globals.block_size
 
 		self.play_game()
 
@@ -37,17 +41,18 @@ class Main ():
 
 		white = 255, 0, 255
 
-		player = Player(0, 11)
+		Globals.player = Player(0, 11)
 
 		Globals.platforms = [
 			Platform(x=1, y=10, w=5, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
-			Platform(x=7, y=4, w=3, h=2, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=pygame.image.load("assets/images/blocks/temp_block.png")),
+			Platform(x=7, y=4, w=10, h=2, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=pygame.image.load("assets/images/blocks/temp_block.png")),
 			Platform(x=12, y=7, w=2, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None),
 			Platform(x=0, y=15, w=45, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None)
 		]
 
 		Globals.enemies = [
-			Walker(x=7, y=1, turn1=7, turn2=10)
+			Walker(x=7, y=1, turn1=7, turn2=10),
+			Wizard(x=15, y=14)
 		]
 
 		k = KeyHandler()
@@ -58,14 +63,13 @@ class Main ():
 
 				keys = k.new_event(event)
 
-				player.while_keys_down(keys)
+				Globals.player.while_keys_down(keys)
 
 			Globals.window.fill(white)
 
-			player.update()
+			Globals.player.update()
 
 			for enemy in Globals.enemies:
-
 				enemy.update()
 
 			for platform in Globals.platforms:

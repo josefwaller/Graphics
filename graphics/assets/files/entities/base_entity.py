@@ -45,6 +45,8 @@ class BaseEntity ():
 
 	def render (self):
 
+		sprite = 0
+
 		if self.is_animated:
 			self.unix = time.time() * 1000
 			
@@ -56,18 +58,19 @@ class BaseEntity ():
 			if self.this_index >= len(self.sprite_indexes):
 				self.this_index = 0
 
-			sprite = pygame.transform.scale(self.sprites[self.sprite_indexes[self.this_index]], (self.w, self.h))
-
-			if not self.facing_left:
-
-				sprite = pygame.transform.flip(sprite, True, False)
-
-			Globals.window.blit(sprite, (self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y']))
+			sprite = self.sprites[self.sprite_indexes[self.this_index]]
 
 		else:
 
-			#draw
-			print("Not animated")
+			sprite = self.image
+
+		sprite = pygame.transform.scale(sprite, (self.w, self.h))
+
+		if not self.facing_left:
+
+			sprite = pygame.transform.flip(sprite, True, False)
+
+		Globals.window.blit(sprite, (self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y']))
 
 	def gravity_update (self):
 

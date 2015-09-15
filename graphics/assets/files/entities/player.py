@@ -34,8 +34,7 @@ class Player (JumpingEntity):
 		self.sprites = [
 			pygame.image.load("assets/images/player/run_1.png").convert_alpha(),
 			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
+			pygame.image.load("assets/images/player/run_3.png").convert_alpha()
 		]
 
 		self.sprite_indexes = [
@@ -54,13 +53,13 @@ class Player (JumpingEntity):
 		if pygame.K_LEFT in keys:
 
 			self.x_translate = -1
-			self.sprite_indexes = range(4)
+			self.sprite_indexes = [0, 1, 2, 1]
 			self.facing_left = True
 
 		if pygame.K_RIGHT in keys:
 
 			self.x_translate = 1
-			self.sprite_indexes = range(4)
+			self.sprite_indexes = [0, 1, 2, 1]
 			self.facing_left = False
 
 		if pygame.K_RIGHT not in keys and pygame.K_LEFT not in keys:
