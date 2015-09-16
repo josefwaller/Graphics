@@ -13,30 +13,44 @@ class BaseRanged (BaseEnemy):
 
 	def should_attack (self):
 
-		if self.is_attacking:
+			visible_x = False
+			visible_y = False
 
-			if time.time() - self.attack_time >= self.attack_duration:
+			if Globals.player.x + Globals.player.w > self.x - self.visible_range:
+				if Globals.player.x < self.x + self.w + self.visible_range:
+					visible_x = True
 
-				self.is_attacking = False
-				self.facing_left = False
-				self.sprite_indexes = self.idle_indexes
+			if Globals.player.y + Globals.player.h > self.y - self.visible_range:
+				if Globals.player.y < self.y + self.h + self.visible_range:
+					visible_y = True
+			if visible_x and visible_y:
 
-				self.last_attack_time = time.time()
 
-		else:
+				if self.is_attacking:
 
-			if Globals.player.x > self.x:
-				self.facing_left = True
+					if time.time() - self.attack_time >= self.attack_duration:
 
-			else:
-				self.facing_left = False
+						self.is_attacking = False
+						self.facing_left = False
+						self.sprite_indexes = self.idle_indexes
 
-			if time.time() - self.last_attack_time >= self.attack_duration:
+						self.last_attack_time = time.time()
 
-				self.sprite_indexes = self.attack_indexes
+				else:
 
-				self.attack_time = time.time()
-				self.is_attacking = True
+					if Globals.player.x > self.x:
+						self.facing_left = True
 
-				return True
-		return False
+					else:
+						self.facing_left = False
+
+					if time.time() - self.last_attack_time >= self.attack_delay:
+
+						self.sprite_indexes = self.attack_indexes
+
+						self.attack_time = time.time()
+						self.is_attacking = True
+
+						return True
+						
+			return False

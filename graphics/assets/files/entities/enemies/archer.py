@@ -21,7 +21,7 @@ class Archer (BaseRanged):
 		self.w = int((Globals.block_size/16) * 11)
 		self.h = int((Globals.block_size/16) * 13)
 
-		self.last_arrow_time = time.time()
+		self.last_attack_time = time.time()
 
 		self.sprites = [
 
@@ -37,12 +37,16 @@ class Archer (BaseRanged):
 		self.attack_indexes = [0,1]
 
 		self.sprite_indexes = self.idle_indexes
+
+		self.sprite_indexes = self.attack_indexes
 		self.sprite_interval = 300
 
-		self.last_arrow_time = time.time()
-		self.arrow_delay = 0.2
+		self.last_attack_time = time.time()
+		self.attack_delay = 0.2
 		self.is_attacking = False
 		self.attack_duration = 2
+
+		self.visible_range = 10 * Globals.block_size
 
 	def attack (self):
 

@@ -34,6 +34,8 @@ class Wizard (BaseRanged):
 
 		self.attack_duration = 1
 
+		self.attack_delay = 1
+
 		self.w = Globals.block_size
 		self.h = Globals.block_size
 
