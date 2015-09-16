@@ -13,6 +13,10 @@ class Wizard (BaseEnemy):
 	is_attacking = None
 	attack_time = None
 	attack_duration = None
+	visible_range = None
+
+	attack_indexes = None
+	idle_indexes = None
 
 	def __init__(self, x, y, time_offset=0, missile_delay=1):
 
@@ -22,22 +26,29 @@ class Wizard (BaseEnemy):
 		self.last_missile_time = time.time() + (time_offset * 1000)
 		self.missile_delay = missile_delay
 		self.missiles = []
+		self.visible_range = 10 * Globals.block_size
 
 		self.sprites = [
-			pygame.image.load("assets/images/enemies/wizard/front.png").convert_alpha(),
+			pygame.image.load("assets/images/enemies/wizard/front1.png").convert_alpha(),
+			pygame.image.load("assets/images/enemies/wizard/front2.png").convert_alpha(),
 			pygame.image.load("assets/images/enemies/wizard/side.png").convert_alpha()
 		]
 
 		self.is_animated = True
+		
+		self.attack_indexes = [2]
+		self.idle_indexes = [0, 1]
 
-		self.sprite_indexes = [0]
+		self.sprite_indexes = self.idle_indexes
+		self.sprite_interval = 100
 
 		self.attack_duration = 1
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size
 
-	def update (self):
+	def attack (self):
+
 
 		if self.is_attacking:
 
@@ -45,32 +56,39 @@ class Wizard (BaseEnemy):
 
 				self.is_attacking = False
 				self.facing_left = False
-				self.sprite_indexes = [0]
+				self.sprite_indexes = self.idle_indexes
 
 				self.last_missile_time = time.time()
 
 		else:
 
-			if time.time() - self.last_missile_time >= self.missile_delay:
+			if Globals.player.x < self.x + self.visible_range:
+				if Globals.player.x + self.visible_range > self.x:
 
-				self.sprite_indexes = [1]
+					if time.time() - self.last_missile_time >= self.missile_delay:
 
-				if Globals.player.x > self.x:
-					self.facing_left = True
+						self.sprite_indexes = self.attack_indexes
 
-				else:
-					self.facing_left = False
+						if Globals.player.x > self.x:
+							self.facing_left = True
 
-				if self.facing_left:
-					direction = 1
-				else:
-					direction = -1
+						else:
+							self.facing_left = False
 
-				Globals.enemies.append(Missile(x=self.x, y=self.y, starting_time=time.time(), direction=direction))
+						if self.facing_left:
+							direction = 1
+						else:
+							direction = -1
 
-				self.attack_time = time.time()
-				self.is_attacking = True
+						Globals.enemies.append(Missile(x=self.x, y=self.y, direction=direction))
 
+						self.attack_time = time.time()
+						self.is_attacking = True
+
+
+	def update (self):
+
+		self.attack()
 		self.check_for_player_collision()
 
 		self.render()
@@ -85,18 +103,18 @@ class Missile (BaseEnemy):
 	momX = None
 	moxY = None
 
-	def __init__(self, x, y, starting_time, direction=1):
+	def __init__(self, x, y, direction=1):
 
 		self.x = x
 		self.y = y
 
-		self.w = Globals.block_size
-		self.h = Globals.block_size
-		self.lifespan = 5
+		self.w = int(3 * (Globals.block_size/16))
+		self.h = int(3 * (Globals.block_size/16))
+		self.lifespan = 3
 
 		self.speed = 5
 
-		self.starting_time = starting_time
+		self.starting_time = time.time()
 
 		self.momX = 30 * direction
 		self.momY = 0
@@ -104,7 +122,7 @@ class Missile (BaseEnemy):
 		self.turn_speed = 5
 
 		self.is_animated = False
-		self.image = pygame.image.load("assets/images/blocks/temp_block.png").convert_alpha()
+		self.image = pygame.image.load("assets/images/enemies/wizard/missile.png").convert_alpha()
 
 	def move (self):
 

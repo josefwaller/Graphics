@@ -42,6 +42,10 @@ class BaseEntity ():
 
 		self.last_time = time.time()
 
+	def make_pixelated(self, num):
+
+		return int(num * (Globals.block_size / 16))
+
 
 	def render (self):
 
