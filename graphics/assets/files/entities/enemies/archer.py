@@ -1,10 +1,11 @@
 from assets.files.utilities.globals import Globals
+from assets.files.entities.enemies.base_ranged import BaseRanged
 from assets.files.entities.enemies.base_enemy import BaseEnemy
 
 import time
 import pygame
 
-class Archer (BaseEnemy):
+class Archer (BaseRanged):
 
 	last_arrow_time = None
 	arrow_delay = None
@@ -32,50 +33,27 @@ class Archer (BaseEnemy):
 
 		self.is_animated = True
 
-		self.idle_indexes = [0, 1]
-		self.attack_indexes = [2]
+		self.idle_indexes = [2]
+		self.attack_indexes = [0,1]
 
 		self.sprite_indexes = self.idle_indexes
 		self.sprite_interval = 300
 
 		self.last_arrow_time = time.time()
-		self.arrow_delay = 2
+		self.arrow_delay = 0.2
 		self.is_attacking = False
-		self.attack_duration = 0.1
+		self.attack_duration = 2
 
 	def attack (self):
 
-		if self.is_attacking:
+		if self.should_attack():
 
-			if time.time() - self.attack_time >= self.attack_duration:
-
-				self.is_attacking = False
-				self.facing_left = False
-				self.sprite_indexes = self.idle_indexes
-
-				self.last_arrow_time = time.time()
-
-		else:
-
-			if Globals.player.x > self.x:
-				self.facing_left = True
-
+			if self.facing_left:
+				direction = 1
 			else:
-				self.facing_left = False
+				direction = -1
 
-			if time.time() - self.last_arrow_time >= self.arrow_delay:
-
-				self.sprite_indexes = self.attack_indexes
-
-				if self.facing_left:
-					direction = 1
-				else:
-					direction = -1
-
-				Globals.enemies.append(Arrow(x=self.x, y=self.y + int(self.h / 2), direction=direction))
-
-				self.attack_time = time.time()
-				self.is_attacking = True
+			Globals.enemies.append(Arrow(x=self.x, y=self.y + int(self.h / 2), direction=direction))
 
 
 	def update (self):
@@ -99,7 +77,7 @@ class Arrow (BaseEnemy):
 		self.x = x
 		self.y = y
 
-		self.speed = 5 * Globals.block_size
+		self.speed = 20 * Globals.block_size
 
 		self.w = self.make_pixelated(6)
 		self.h = self.make_pixelated(3)

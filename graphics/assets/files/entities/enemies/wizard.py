@@ -1,22 +1,12 @@
 from assets.files.entities.enemies.base_enemy import BaseEnemy
+from assets.files.entities.enemies.base_ranged import BaseRanged
+
 from assets.files.utilities.globals import Globals
 
 import time
 import pygame
 
-class Wizard (BaseEnemy):
-
-	last_missile_time = None
-	missile_delay = None
-	missiles = None
-
-	is_attacking = None
-	attack_time = None
-	attack_duration = None
-	visible_range = None
-
-	attack_indexes = None
-	idle_indexes = None
+class Wizard (BaseRanged):
 
 	def __init__(self, x, y, time_offset=0, missile_delay=1):
 
@@ -49,41 +39,14 @@ class Wizard (BaseEnemy):
 
 	def attack (self):
 
+		if self.should_attack():
 
-		if self.is_attacking:
+			if self.facing_left:
+				direction = 1
+			else:
+				direction = -1
 
-			if time.time() - self.attack_time >= self.attack_duration:
-
-				self.is_attacking = False
-				self.facing_left = False
-				self.sprite_indexes = self.idle_indexes
-
-				self.last_missile_time = time.time()
-
-		else:
-
-			if Globals.player.x < self.x + self.visible_range:
-				if Globals.player.x + self.visible_range > self.x:
-
-					if time.time() - self.last_missile_time >= self.missile_delay:
-
-						self.sprite_indexes = self.attack_indexes
-
-						if Globals.player.x > self.x:
-							self.facing_left = True
-
-						else:
-							self.facing_left = False
-
-						if self.facing_left:
-							direction = 1
-						else:
-							direction = -1
-
-						Globals.enemies.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction))
-
-						self.attack_time = time.time()
-						self.is_attacking = True
+			Globals.enemies.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction))
 
 
 	def update (self):
@@ -129,7 +92,7 @@ class Missile (BaseEnemy):
 		x_translate = 0
 		y_translate = 0
 
-		if Globals.player.x  > self.x:
+		if Globals.player.x  + Globals.player.w > self.x:
 
 			x_translate = 1
 
@@ -137,11 +100,11 @@ class Missile (BaseEnemy):
 
 			x_translate = -1
 
-		if Globals.player.y > self.y + self.h:
+		if Globals.player.y > self.y:
 
 			y_translate = 1
 
-		elif Globals.player.y < self.y - self.h:
+		elif Globals.player.y + Globals.player.h < self.y:
 
 			y_translate = -1
 
