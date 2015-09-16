@@ -1,5 +1,7 @@
-from .jumping_entity import JumpingEntity
-from ..utilities.globals import Globals
+from assets.files.entities.jumping_entity import JumpingEntity
+from assets.files.utilities.globals import Globals
+
+from assets.files.entities.tools.arrow import Arrow
 
 import time
 import pygame
@@ -19,15 +21,19 @@ class Player (JumpingEntity):
 	last_move_time = 0
 
 	is_dead = None
+	
+	tool = None
 
 	def __init__(self, x, y):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
-		self.w = int(10 * (Globals.block_size / 16))
-		self.h = int(19 * (Globals.block_size / 16))
+		self.w = self.make_pixelated(10)
+		self.h = self.make_pixelated(19)
 
 		self.is_dead = False
+
+		self.tool = "None"
 
 		self.jump_strength *= Globals.block_size
 
@@ -71,6 +77,24 @@ class Player (JumpingEntity):
 
 			self.start_jump()
 
+		if pygame.K_SPACE in keys:
+
+			self.use_tool()
+
+	def use_tool (self):
+
+		if self.tool == "Bow and Arrow":
+
+			if self.facing_left:
+				x = self.x
+				direction = -1
+
+			else:
+				x = self.x + self.h
+				direction = 1
+		
+			Globals.projectiles.append(Arrow(x=x, y=self.y + int(self.h / 2), direction=direction, is_enemy=False))
+
 
 	def move (self):
 
@@ -78,14 +102,10 @@ class Player (JumpingEntity):
 
 		for enemy in Globals.enemies:
 
-			if enemy.x < self.x + self.w:
-				if enemy.x + enemy.w > self.x:
+			if self.check_for_collision(enemy):
 
-					if enemy.y > self.y + self.h:
-						if enemy.y + enemy.h < self.y:
-
-							self.id_dead = True
-							print("is dead")
+				self.is_dead = True
+				print("is dead")
 
 
 	def update (self):

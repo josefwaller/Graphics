@@ -48,7 +48,7 @@ class Wizard (BaseRanged):
 			else:
 				direction = -1
 
-			Globals.enemies.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction))
+			Globals.projectiles.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction, is_enemy=True))
 
 
 	def update (self):
@@ -68,7 +68,7 @@ class Missile (BaseEnemy):
 	momX = None
 	moxY = None
 
-	def __init__(self, x, y, direction=1):
+	def __init__(self, x, y, direction=1, is_enemy=True):
 
 		self.x = x
 		self.y = y
@@ -78,6 +78,8 @@ class Missile (BaseEnemy):
 		self.lifespan = 1
 
 		self.speed = 5
+
+		self.is_enemy = is_enemy
 
 		self.starting_time = time.time()
 
@@ -94,30 +96,32 @@ class Missile (BaseEnemy):
 		x_translate = 0
 		y_translate = 0
 
-		if Globals.player.x  + Globals.player.w > self.x:
+		if self.is_enemy:
 
-			x_translate = 1
+			if Globals.player.x  + Globals.player.w > self.x:
 
-		elif Globals.player.x < self.x + self.w:
+				x_translate = 1
 
-			x_translate = -1
+			elif Globals.player.x < self.x + self.w:
 
-		if Globals.player.y > self.y:
+				x_translate = -1
 
-			y_translate = 1
+			if Globals.player.y > self.y:
 
-		elif Globals.player.y + Globals.player.h < self.y:
+				y_translate = 1
 
-			y_translate = -1
+			elif Globals.player.y + Globals.player.h < self.y:
 
-		self.momX += x_translate * self.turn_speed
-		self.momY += y_translate * self.turn_speed
+				y_translate = -1
 
-		self.x += self.momX * self.speed * self.delta_time
-		self.y += self.momY * self.speed * self.delta_time
+			self.momX += x_translate * self.turn_speed
+			self.momY += y_translate * self.turn_speed
 
-		if time.time() - self.starting_time >= self.lifespan:
-			Globals.enemies.remove(self)
+			self.x += self.momX * self.speed * self.delta_time
+			self.y += self.momY * self.speed * self.delta_time
+
+			if time.time() - self.starting_time >= self.lifespan:
+				Globals.projectiles.remove(self)
 
 
 	def update(self):

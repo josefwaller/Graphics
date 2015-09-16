@@ -6,3 +6,4 @@ class Globals:
     	"x": 0,
     	"y": 0
     }
+    projectiles = []

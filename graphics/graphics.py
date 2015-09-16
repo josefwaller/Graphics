@@ -73,12 +73,18 @@ class Main ():
 
 			Globals.player.update()
 
+			arrow.update()
+
 			for enemy in Globals.enemies:
 				enemy.update()
 
 			for platform in Globals.platforms:
 
 				platform.render()
+
+			for projectile in Globals.projectiles:
+
+				projectile.update()
 
 			pygame.display.flip()
 
