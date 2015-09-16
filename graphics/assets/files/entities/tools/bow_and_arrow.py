@@ -1,9 +1,17 @@
-from assets.files.entities import BaseEntity
-from assets.files.utilities import Globals
+from assets.files.entities.base_entity import BaseEntity
+from assets.files.utilities.globals import Globals
+
+import pygame
+import time
 
 class BowAndArrow (BaseEntity):
 
-	def __init__ (self):
+	def __init__ (self, x, y):
+
+		self.x = x
+		self.y = y
+
+		self.image = pygame.image.load("assets/images/blocks/temp_block.png").convert_alpha()
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size
