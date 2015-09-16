@@ -46,6 +46,14 @@ class BaseEntity ():
 
 		return int(num * (Globals.block_size / 16))
 
+	def check_for_collision(self, target):
+		if target.x + target.w > self.x:
+			if target.x < self.x + self.w:
+				if target.y + target.h > self.y:
+					if target.y < self.y + self.h:
+						return True
+
+		return False
 
 	def render (self):
 

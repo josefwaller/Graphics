@@ -80,7 +80,7 @@ class Wizard (BaseEnemy):
 						else:
 							direction = -1
 
-						Globals.enemies.append(Missile(x=self.x, y=self.y, direction=direction))
+						Globals.enemies.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction))
 
 						self.attack_time = time.time()
 						self.is_attacking = True
@@ -110,7 +110,7 @@ class Missile (BaseEnemy):
 
 		self.w = int(3 * (Globals.block_size/16))
 		self.h = int(3 * (Globals.block_size/16))
-		self.lifespan = 3
+		self.lifespan = 1
 
 		self.speed = 5
 

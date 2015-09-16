@@ -72,7 +72,7 @@ class Archer (BaseEnemy):
 				else:
 					direction = -1
 
-				Globals.enemies.append(Arrow(x=self.x, y=self.y, direction=direction))
+				Globals.enemies.append(Arrow(x=self.x, y=self.y + int(self.h / 2), direction=direction))
 
 				self.attack_time = time.time()
 				self.is_attacking = True
@@ -83,6 +83,8 @@ class Archer (BaseEnemy):
 		self.set_delta_time()
 
 		self.attack()
+
+		self.gravity_update()
 
 		self.check_for_player_collision()
 
@@ -115,6 +117,11 @@ class Arrow (BaseEnemy):
 	def move (self):
 
 		self.x += self.speed * self.delta_time * self.direction
+
+		if self.is_grounded:
+
+			Globals.enemies.remove(self)
+			return
 
 	def update (self):
 
