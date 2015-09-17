@@ -25,6 +25,8 @@ class BowAndArrow (BaseEntity):
 
 			player.tool = "Bow and Arrow"
 
+			player.sprite_indexes = [3, 4, 5, 4]
+
 	def update (self):
 
 		self.set_delta_time()

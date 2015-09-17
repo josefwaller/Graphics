@@ -40,7 +40,12 @@ class Player (JumpingEntity):
 		self.sprites = [
 			pygame.image.load("assets/images/player/run_1.png").convert_alpha(),
 			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_3.png").convert_alpha()
+			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
+
+			#Bow and arrow
+			pygame.image.load("assets/images/player/bar_1.png"),
+			pygame.image.load("assets/images/player/bar_2.png"),
+			pygame.image.load("assets/images/player/bar_3.png")
 		]
 
 		self.sprite_indexes = [
@@ -56,22 +61,32 @@ class Player (JumpingEntity):
 
 	def while_keys_down (self, keys):
 
-		if pygame.K_LEFT in keys:
+		if self.tool == "Bow and Arrow":
 
-			self.x_translate = -1
-			self.sprite_indexes = [0, 1, 2, 1]
-			self.facing_left = True
+			idle_sprites = [4]
+			running_sprites = [3, 4, 5, 4]
 
-		if pygame.K_RIGHT in keys:
+		else:
+			idle_sprites = [1]
+			running_sprites = [0, 1, 2, 1]
 
-			self.x_translate = 1
-			self.sprite_indexes = [0, 1, 2, 1]
-			self.facing_left = False
+		if pygame.K_LEFT in keys or pygame.K_RIGHT in keys:
+			self.sprite_indexes = running_sprites
+
+			if pygame.K_LEFT in keys:
+
+				self.x_translate = -1
+				self.facing_left = True
+
+			if pygame.K_RIGHT in keys:
+
+				self.x_translate = 1
+				self.facing_left = False
 
 		if pygame.K_RIGHT not in keys and pygame.K_LEFT not in keys:
 
 			self.x_translate = 0
-			self.sprite_indexes = [1]
+			self.sprite_indexes = idle_sprites
 
 		if pygame.K_UP in keys and self.is_grounded:
 
