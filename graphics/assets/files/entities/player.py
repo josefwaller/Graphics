@@ -20,6 +20,9 @@ class Player (JumpingEntity):
 
 	last_move_time = 0
 
+	last_hit = 0
+	recover_delay = 3
+
 	is_dead = None
 	
 	tool = None
@@ -136,14 +139,15 @@ class Player (JumpingEntity):
 
 	def on_hit (self):
 
-		if self.tool == None:
+		if time.time() - self.last_hit >= self.recover_delay:
 
-			print(self.tool)
+			if self.tool == None:
 
-			self.respawn()
-		else:
-			self.tool = None
-			self.sprites_indexes = self.no_tool_sprite_indexes
+				self.respawn()
+			else:
+				self.tool = None
+				self.sprite_indexes = [1]
+				self.last_hit = time.time()
 
 
 	def update (self):
