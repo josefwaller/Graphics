@@ -120,6 +120,11 @@ class Missile (BaseEnemy):
 			self.x += self.momX * self.speed * self.delta_time
 			self.y += self.momY * self.speed * self.delta_time
 
+			if self.is_enemy:
+
+				if self.check_for_collision(Globals.player):
+					Globals.player.on_hit()
+
 			if time.time() - self.starting_time >= self.lifespan:
 				Globals.projectiles.remove(self)
 
@@ -129,7 +134,5 @@ class Missile (BaseEnemy):
 		self.set_delta_time()
 
 		self.move()
-
-		self.check_for_player_collision()
 
 		self.render()

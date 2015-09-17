@@ -39,7 +39,7 @@ class Arrow (JumpingEntity):
 
 		if self.is_enemy:
 			if self.check_for_collision(Globals.player):
-				Globals.player.is_dead = True
+				Globals.player.on_hit()
 		else:
 			for enemy in Globals.enemies:
 				if self.check_for_collision(enemy):

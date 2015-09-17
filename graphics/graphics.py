@@ -12,6 +12,8 @@ from assets.files.entities.enemies.walker import Walker
 from assets.files.entities.enemies.wizard import Wizard
 from assets.files.entities.enemies.archer import Archer
 
+from assets.files.entities.checkpoint import Checkpoint
+
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 
@@ -54,8 +56,11 @@ class Main ():
 		Globals.enemies = [
 			Walker(x=7, y=1, turn1=7, turn2=10),
 			Wizard(x=15, y=14),
-			Archer(x=12, y=6)
+			Archer(x=12, y=6),
+			Archer(x=40, y=3)
 		]
+
+		checkpoint = Checkpoint(x=10, y=14)
 
 		arrow = BowAndArrow(x=5, y=14)
 
@@ -72,6 +77,8 @@ class Main ():
 			Globals.window.fill(white)
 
 			Globals.player.update()
+
+			checkpoint.update()
 
 			arrow.update()
 

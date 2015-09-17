@@ -33,7 +33,7 @@ class Player (JumpingEntity):
 
 		self.is_dead = False
 
-		self.tool = "None"
+		self.tool = None
 
 		self.jump_strength *= Globals.block_size
 
@@ -51,6 +51,8 @@ class Player (JumpingEntity):
 		self.sprite_indexes = [
 			1
 		]
+
+		self.no_tool_sprite_indexes = [0, 1, 2, 1]
 
 		self.jump_last_time = time.time()
 
@@ -119,8 +121,29 @@ class Player (JumpingEntity):
 
 			if self.check_for_collision(enemy):
 
-				self.is_dead = True
-				print("is dead")
+				self.on_hit()
+
+	def respawn (self):
+
+		if not self.checkpoint == None:
+
+			self.x = self.checkpoint.x + int(self.checkpoint.w / 2)
+			self.y = self.checkpoint.y - 2 * Globals.block_size
+
+			self.is_grounded = False
+
+			self.momY = 0
+
+	def on_hit (self):
+
+		if self.tool == None:
+
+			print(self.tool)
+
+			self.respawn()
+		else:
+			self.tool = None
+			self.sprites_indexes = self.no_tool_sprite_indexes
 
 
 	def update (self):
@@ -132,6 +155,9 @@ class Player (JumpingEntity):
 		if self.x >= Globals.window.get_size()[0] / 2:
 
 			Globals.camera_offset['x'] = - (self.x - Globals.window.get_size()[0] / 2)
+
+		else:
+			Globals.camera_offset['x'] = 0
 
 		self.gravity_update()
 
