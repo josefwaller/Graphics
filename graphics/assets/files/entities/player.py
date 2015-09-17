@@ -1,7 +1,7 @@
 from assets.files.entities.jumping_entity import JumpingEntity
 from assets.files.utilities.globals import Globals
 
-from assets.files.entities.tools.arrow import Arrow
+from assets.files.entities.projectiles.arrow import Arrow
 
 import time
 import pygame

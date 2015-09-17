@@ -1,6 +1,6 @@
 from assets.files.utilities.globals import Globals
 from assets.files.entities.enemies.base_ranged import BaseRanged
-from assets.files.entities.tools.arrow import Arrow
+from assets.files.entities.projectiles.arrow import Arrow
 
 import time
 import pygame
