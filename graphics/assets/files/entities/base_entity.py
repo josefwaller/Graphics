@@ -90,7 +90,7 @@ class BaseEntity ():
 
 		if self.is_grounded == False:
 
-			self.momY -= self.gravity_strength * self.delta_time
+			self.momY -= Globals.gravity_strength * self.delta_time
 
 			self.y -= self.momY * self.delta_time
 

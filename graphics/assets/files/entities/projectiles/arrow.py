@@ -1,10 +1,10 @@
 from assets.files.utilities.globals import Globals
-from assets.files.entities.jumping_entity import JumpingEntity
+from assets.files.entities.projectiles.base_projectile import BaseProjectile
 
 import time
 import pygame
 
-class Arrow (JumpingEntity):
+class Arrow (BaseProjectile):
 
 	def __init__ (self, x, y, direction, is_enemy=True):
 

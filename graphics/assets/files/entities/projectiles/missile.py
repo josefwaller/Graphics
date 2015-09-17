@@ -1,12 +1,12 @@
 from assets.files.utilities.globals import Globals
 
-from assets.files.entities.base_entity import BaseEntity
+from assets.files.entities.projectiles.base_projectile import BaseProjectile
 
 import pygame
 import time
 
 
-class Missile (BaseEntity):
+class Missile (BaseProjectile):
 
 	lifespan = None
 	starting_time = None
@@ -76,10 +76,12 @@ class Missile (BaseEntity):
 				Globals.projectiles.remove(self)
 
 
-	def update(self):
+	def update (self):
 
 		self.set_delta_time()
 
 		self.move()
+
+		self.check_for_player()
 
 		self.render()

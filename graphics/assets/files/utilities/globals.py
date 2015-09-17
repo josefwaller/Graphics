@@ -6,4 +6,5 @@ class Globals:
     	"x": 0,
     	"y": 0
     }
-    projectiles = []
+    projectiles = [],
+    gravity_strength = 50
