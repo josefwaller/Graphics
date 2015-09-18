@@ -16,6 +16,9 @@ from assets.files.entities.checkpoint import Checkpoint
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
+from level_editor import LevelEditor
+
+import sys
 
 class Main ():
 
@@ -24,8 +27,8 @@ class Main ():
 		#creats the window, loads images, etc
 
 		#initializes setting
-		settingsFile = open("assets/settings/settings.json", "r")
-		settings = json.loads(settingsFile.read())
+		settings_file = open("assets/settings/settings.json", "r")
+		settings = json.loads(settings_file.read())
 
 		#Sets the window dimensions
 		windowSize = width, height = settings['screenWidth'], settings['screenHeight']
@@ -35,6 +38,10 @@ class Main ():
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
 
 		Globals.gravity_strength = 15 * Globals.block_size
+
+		#loads level
+		# level_file = open("assets/levels/l1.json","r")
+		# level = json.loads(level_file.read())
 
 		self.play_game()
 
@@ -99,4 +106,10 @@ class Main ():
 
 if __name__ == "__main__":
 
-	main = Main()
+	if sys.argv[1] == "playgame":
+
+		main = Main()
+
+	elif sys.argv[1] == "leveleditor":
+
+		main = LevelEditor()
