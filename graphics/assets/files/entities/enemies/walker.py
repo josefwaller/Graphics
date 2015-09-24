@@ -10,11 +10,6 @@ class Walker (BaseEnemy):
 	speed = 100
 
 	def __init__(self, x, y, turn1, turn2, facing_left=True):
-
-		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
-		self.w = Globals.block_size
-		self.h = 2 * Globals.block_size
 		self.facing_left = facing_left
 
 		if turn1 > turn2:
@@ -46,6 +41,8 @@ class Walker (BaseEnemy):
 		]
 
 		self.jump_last_time = time.time()
+
+		self.entity_init(x, y)
 
 	def move (self):
 

@@ -15,12 +15,6 @@ class Archer (BaseRanged):
 
 	def __init__ (self, x, y):
 
-		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
-
-		self.w = int((Globals.block_size/16) * 11)
-		self.h = int((Globals.block_size/16) * 13)
-
 		self.last_attack_time = time.time()
 
 		self.sprites = [
@@ -47,6 +41,8 @@ class Archer (BaseRanged):
 		self.attack_duration = 2
 
 		self.visible_range = 10 * Globals.block_size
+
+		self.entity_init(x, y)
 
 	def attack (self):
 

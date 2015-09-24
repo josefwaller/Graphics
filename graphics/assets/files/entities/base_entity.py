@@ -33,6 +33,20 @@ class BaseEntity ():
 
 	last_time = 0
 
+	def entity_init (self, x, y):
+
+		if self.is_animated:
+
+			self.h = self.make_pixelated(self.sprites[0].get_size()[1])
+			self.w = self.make_pixelated(self.sprites[0].get_size()[0])
+
+		else:
+			self.h = self.make_pixelated(self.image.get_size()[1])
+			self.w = self.make_pixelated(self.image.get_size()[0])
+
+		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
+		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
+
 	def set_delta_time(self):
 
 		if self.last_time == 0:

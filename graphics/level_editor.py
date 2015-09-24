@@ -1,41 +1,30 @@
 from assets.files.utilities.key_handler import KeyHandler
+from assets.files.utilities.globals import Globals
+
+from assets.files.entities.platform import Platform
 
 import pygame
 
 class LevelEditor():
 
+	item_chosen = [0, 0]
+	menu_width = None
+	items = []
+
 	block_chosen = [0, 0]
 
-	blocks = [[]]
+	entities = []
 
 	def __init__(self):
 
-		windowSize = width, height = 500, 500
+		self.level_width = 20
+		self.menu_width = 300
+		windowSize = width, height = 100 + (self.level_width * 30), 480
 		self.window = pygame.display.set_mode(windowSize)
 
 		self.block_size = int(self.window.get_size()[1] / 16)
 
-		self.level_width = 20
-
-		for i in range(self.level_width):
-
-			if len(self.blocks) <= i:
-
-				self.blocks.append([])
-
-			for x in range(16):
-
-				if len(self.blocks[i]) <= x:
-
-					self.blocks[i].append(False)
-
-				try:
-
-					self.blocks[i][x]
-
-				except IndexError:
-
-					print("Index error")
+		Globals.block_size = int(self.window.get_size()[1] / 16)
 
 		self.run_editor()
 
@@ -69,21 +58,21 @@ class LevelEditor():
 
 					self.block_chosen[1] += 1
 
+				#Spawns different entities
+
 				if pygame.K_RETURN in keys:
 
 					x = self.block_chosen[0]
 					y = self.block_chosen[1]
 
-					self.blocks[x][y] = not self.blocks[x][y]
+					self.entities.append(Platform(x=x, y=y, w=1, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None))
 
-			for x in range(len(self.blocks)):
+			for x in self.entities:
 
-				for i in range(len(self.blocks[x])):
+				print(x)
 
-					if self.blocks[x][i] == True:
+				x.render()
 
-						pygame.draw.rect(self.window, (0, 0, 0), [x * self.block_size, i * self.block_size, self.block_size, self.block_size])
-
-			pygame.draw.rect(self.window, red, [self.block_chosen[0] * self.block_size, self.block_chosen[1] * self.block_size, self.block_size, self.block_size])
+			pygame.draw.rect(self.window, red, [self.block_chosen[0] * self.block_size + self.menu_width, self.block_chosen[1] * self.block_size, self.block_size, self.block_size])
 
 			pygame.display.flip()

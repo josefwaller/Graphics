@@ -18,8 +18,6 @@ from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 from level_editor import LevelEditor
 
-import sys
-
 class Main ():
 
 	def __init__(self):
@@ -113,3 +111,5 @@ if __name__ == "__main__":
 	elif sys.argv[1] == "leveleditor":
 
 		main = LevelEditor()
+
+

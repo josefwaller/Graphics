@@ -12,9 +12,6 @@ class Wizard (BaseRanged):
 
 	def __init__(self, x, y, time_offset=0, missile_delay=1):
 
-		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
-
 		self.last_missile_time = time.time() + (time_offset * 1000)
 		self.missile_delay = missile_delay
 		self.missiles = []
@@ -38,8 +35,7 @@ class Wizard (BaseRanged):
 
 		self.attack_delay = 1
 
-		self.w = Globals.block_size
-		self.h = Globals.block_size
+		self.entity_init(x, y)
 
 	def attack (self):
 

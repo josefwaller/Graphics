@@ -23,16 +23,16 @@ class Player (JumpingEntity):
 	last_hit = 0
 	recover_delay = 3
 
+	is_blinking = False
+	last_blink = 0
+	blink_delay = 0.1
+	is_showing = True
+
 	is_dead = None
 	
 	tool = None
 
 	def __init__(self, x, y):
-
-		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
-		self.w = self.make_pixelated(10)
-		self.h = self.make_pixelated(19)
 
 		self.is_dead = False
 
@@ -63,6 +63,8 @@ class Player (JumpingEntity):
 		self.sprite_interval = 100
 
 		self.last_move_time = time.time()
+
+		self.entity_init(x, y)
 
 	def while_keys_down (self, keys):
 
@@ -148,6 +150,9 @@ class Player (JumpingEntity):
 				self.tool = None
 				self.sprite_indexes = [1]
 				self.last_hit = time.time()
+				self.last_blink - time.time()
+				self.is_blinking = True
+				self.blink_start_time = time.time()
 
 
 	def update (self):
@@ -165,4 +170,15 @@ class Player (JumpingEntity):
 
 		self.gravity_update()
 
-		self.render()
+		if self.is_blinking:
+			if time.time() - self.last_blink >= self.blink_delay:
+				self.last_blink = time.time()
+				self.is_showing =  not self.is_showing
+
+			if time.time() - self.last_hit >= self.recover_delay:
+				self.is_blinking = False
+				self.is_showing = True
+
+		if self.is_showing:
+
+			self.render()
