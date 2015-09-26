@@ -11,9 +11,11 @@ class JumpingEntity (BaseEntity):
 
 	def start_jump (self):
 
-		self.momY = self.jump_strength
+		if self.is_grounded:
 
-		self.is_grounded = False
+			self.momY = self.jump_strength
+
+			self.is_grounded = False
 
 	def gravity_update (self):
 

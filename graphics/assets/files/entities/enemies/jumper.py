@@ -9,6 +9,7 @@ class Jumper (SmartEnemy):
 	was_landed = False
 	jump_delay = 0
 	recoil_delay = 0
+	x_translate = 0
 
 	def __init__(self, x, y):
 
@@ -32,7 +33,7 @@ class Jumper (SmartEnemy):
 		self.visible_range = 20 * Globals.block_size
 		self.attack_duration = 1
 		self.attack_delay = 1
-		self.speed = 10 * Globals.block_size
+		self.speed = 5 * Globals.block_size
 		self.jump_strength = 13 * Globals.block_size
 
 		self.landing_pause = 2000
@@ -44,7 +45,19 @@ class Jumper (SmartEnemy):
 		self.momY = 0
 
 	def attack (self):
-		pass
+		if self.is_grounded:
+
+			if self.facing_left:
+				self.x_translate = 1
+
+			else:
+				self.x_translate = -1
+
+			self.speed = abs(Globals.player.x - self.x) * (3/4)
+
+		self.start_jump()
+
+		self.x += (self.speed * self.x_translate) * self.delta_time
 
 
 	def update (self):
@@ -53,18 +66,7 @@ class Jumper (SmartEnemy):
 
 		direction = 0
 
-		if self.should_attack():
-			if self.facing_left:
-				direction = -1
-			else:
-				direction = 1
-
-			self.start_jump()
-
-		
-		self.momX = self.speed * direction
-
-		self.x += self.momX * self.delta_time
+		self.should_attack()
 
 		self.gravity_update()
 
