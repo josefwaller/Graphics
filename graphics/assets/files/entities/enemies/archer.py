@@ -19,9 +19,9 @@ class Archer (SmartEnemy):
 
 		self.sprites = [
 
-			pygame.image.load("assets/images/enemies/archer/archer_1.png").convert_alpha(),
-			pygame.image.load("assets/images/enemies/archer/archer_2.png").convert_alpha(),
-			pygame.image.load("assets/images/enemies/archer/archer_shoot.png").convert_alpha()
+			self.img_load("enemies/archer/archer_1.png"),
+			self.img_load("enemies/archer/archer_2.png"),
+			self.img_load("enemies/archer/archer_shoot.png")
 
 		]
 

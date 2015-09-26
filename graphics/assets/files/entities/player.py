@@ -41,14 +41,14 @@ class Player (JumpingEntity):
 		self.jump_strength *= Globals.block_size
 
 		self.sprites = [
-			pygame.image.load("assets/images/player/run_1.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_2.png").convert_alpha(),
-			pygame.image.load("assets/images/player/run_3.png").convert_alpha(),
+			self.img_load("player/run_1.png"),
+			self.img_load("player/run_2.png"),
+			self.img_load("player/run_3.png"),
 
 			#Bow and arrow
-			pygame.image.load("assets/images/player/bar_1.png"),
-			pygame.image.load("assets/images/player/bar_2.png"),
-			pygame.image.load("assets/images/player/bar_3.png")
+			self.img_load("player/bar_1.png"),
+			self.img_load("player/bar_2.png"),
+			self.img_load("player/bar_3.png")
 		]
 
 		self.sprite_indexes = [

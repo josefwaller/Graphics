@@ -27,10 +27,10 @@ class Walker (BaseEnemy):
 		self.last_time = time.time()
 
 		self.sprites = [
-			pygame.image.load("assets/images/enemies/walker/run_1.png"),
-			pygame.image.load("assets/images/enemies/walker/run_2.png"),
-			pygame.image.load("assets/images/enemies/walker/run_3.png"),
-			pygame.image.load("assets/images/enemies/walker/run_2.png")
+			self.img_load("enemies/walker/run_1.png"),
+			self.img_load("enemies/walker/run_2.png"),
+			self.img_load("enemies/walker/run_3.png"),
+			self.img_load("enemies/walker/run_2.png")
 		]
 
 		self.sprite_indexes = [

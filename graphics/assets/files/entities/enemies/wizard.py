@@ -17,9 +17,9 @@ class Wizard (SmartEnemy):
 		self.visible_range = 10 * Globals.block_size
 
 		self.sprites = [
-			pygame.image.load("assets/images/enemies/wizard/front1.png").convert_alpha(),
-			pygame.image.load("assets/images/enemies/wizard/front2.png").convert_alpha(),
-			pygame.image.load("assets/images/enemies/wizard/side.png").convert_alpha()
+			self.img_load("enemies/wizard/front1.png"),
+			self.img_load("enemies/wizard/front2.png"),
+			self.img_load("enemies/wizard/side.png")
 		]
 
 		self.is_animated = True
