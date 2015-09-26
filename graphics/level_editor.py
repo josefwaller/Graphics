@@ -65,7 +65,7 @@ class LevelEditor():
 					x = self.block_chosen[0]
 					y = self.block_chosen[1]
 
-					self.entities.append(Platform(x=x, y=y, w=1, h=1, top_block=pygame.image.load("assets/images/blocks/temp_block.png"), inner_block=None))
+					self.entities.append(Platform(x=x, y=y, w=1, h=1, top_block="blocks/temp_block.png", inner_block=None))
 
 			for x in self.entities:
 

@@ -26,7 +26,7 @@ class Checkpoint (BaseEntity):
 		self.flag.x = self.x
 		self.flag.y = self.y + Globals.block_size - self.flag.h
 		self.flag.is_animated = False
-		self.flag.image = pygame.image.load("assets/images/props/flag.png")
+		self.flag.image = self.img_load("props/flag.png")
 
 		self.flag_speed = 300
 
@@ -38,7 +38,7 @@ class Checkpoint (BaseEntity):
 		self.pole.w = self.make_pixelated(2)
 		self.pole.h = self.h
 		self.pole.is_animated = False
-		self.pole.image = pygame.image.load("assets/images/props/pole.png")
+		self.pole.image = self.img_load("props/pole.png")
 
 	def update (self):
 

@@ -11,7 +11,7 @@ class BowAndArrow (BaseEntity):
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 
-		self.image = pygame.image.load("assets/images/blocks/temp_block.png").convert_alpha()
+		self.image = self.img_load("blocks/temp_block.png")
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size

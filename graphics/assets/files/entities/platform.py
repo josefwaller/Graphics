@@ -15,8 +15,10 @@ class Platform (BaseEntity):
 		self.h = h
 		self.s = Globals.block_size
 
-		self.top_block = top_block
-		self.inner_block = inner_block
+		self.top_block = self.img_load(top_block)
+
+		if not inner_block == None:
+			self.inner_block = self.img_load(inner_block)
 
 	def render (self):
 

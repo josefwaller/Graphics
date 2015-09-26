@@ -36,7 +36,7 @@ class Missile (BaseProjectile):
 		self.turn_speed = 5
 
 		self.is_animated = False
-		self.image = pygame.image.load("assets/images/enemies/wizard/missile.png").convert_alpha()
+		self.image = self.img_load("enemies/wizard/missile.png")
 
 	def move (self):
 

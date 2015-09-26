@@ -16,7 +16,7 @@ class Arrow (BaseProjectile):
 		self.w = self.make_pixelated(6)
 		self.h = self.make_pixelated(3)
 
-		self.image = pygame.image.load("assets/images/enemies/archer/arrow.png").convert_alpha()
+		self.image = self.img_load("enemies/archer/arrow.png")
 
 		self.direction = direction
 
