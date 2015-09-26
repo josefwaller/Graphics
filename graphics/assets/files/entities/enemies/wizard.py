@@ -1,5 +1,5 @@
 from assets.files.entities.enemies.base_enemy import BaseEnemy
-from assets.files.entities.enemies.base_ranged import BaseRanged
+from assets.files.entities.enemies.smart_enemy import SmartEnemy
 
 from assets.files.entities.projectiles.missile import Missile
 
@@ -8,13 +8,12 @@ from assets.files.utilities.globals import Globals
 import time
 import pygame
 
-class Wizard (BaseRanged):
+class Wizard (SmartEnemy):
 
 	def __init__(self, x, y, time_offset=0, missile_delay=1):
 
 		self.last_missile_time = time.time() + (time_offset * 1000)
 		self.missile_delay = missile_delay
-		self.missiles = []
 		self.visible_range = 10 * Globals.block_size
 
 		self.sprites = [
@@ -33,25 +32,26 @@ class Wizard (BaseRanged):
 
 		self.attack_duration = 1
 
-		self.attack_delay = 1
+		self.attack_delay = 2
 
 		self.entity_init(x, y)
 
 	def attack (self):
 
-		if self.should_attack():
+		if self.facing_left:
+			direction = 1
+		else:
+			direction = -1
 
-			if self.facing_left:
-				direction = 1
-			else:
-				direction = -1
-
-			Globals.projectiles.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction, is_enemy=True))
+		Globals.projectiles.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction, is_enemy=True))
+		self.end_attack()
 
 
 	def update (self):
 
-		self.attack()
+		self.set_delta_time()
+
+		self.should_attack()
 		self.check_for_player_collision()
 
 		self.render()

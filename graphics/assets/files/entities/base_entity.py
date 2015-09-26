@@ -33,6 +33,14 @@ class BaseEntity ():
 
 	last_time = 0
 
+	def img_load(self, url):
+
+		full_url = "assets/images/%s" % url
+
+		image = pygame.image.load(full_url).convert_alpha()
+
+		return image 
+
 	def entity_init (self, x, y):
 
 		if self.is_animated:
