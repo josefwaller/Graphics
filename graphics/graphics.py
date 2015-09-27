@@ -14,6 +14,7 @@ from assets.files.entities.enemies.archer import Archer
 from assets.files.entities.enemies.jumper import Jumper
 
 from assets.files.entities.checkpoint import Checkpoint
+from assets.files.entities.sky import Sky
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
@@ -48,15 +49,15 @@ class Main ():
 
 	def play_game(self):
 
-		white = 255, 0, 255
-
 		Globals.player = Player(0, 11)
 
+		sky = Sky()
+
 		Globals.platforms = [
-			Platform(x=1, y=10, w=5, h=1, top_block="blocks/temp_block.png", inner_block=None),
-			Platform(x=7, y=4, w=10, h=2, top_block="blocks/temp_block.png", inner_block="blocks/temp_block.png"),
-			Platform(x=12, y=7, w=2, h=1, top_block="blocks/temp_block.png", inner_block=None),
-			Platform(x=0, y=15, w=45, h=1, top_block="blocks/temp_block.png", inner_block=None)
+			Platform(x=1, y=10, w=5, h=1, top_block="blocks/snow_top.png", inner_block=None),
+			Platform(x=7, y=4, w=10, h=2, top_block="blocks/snow_top.png", inner_block="blocks/snow.png"),
+			Platform(x=12, y=7, w=2, h=1, top_block="blocks/snow_top.png", inner_block=None),
+			Platform(x=0, y=15, w=45, h=1, top_block="blocks/snow_top.png", inner_block=None)
 		]
 
 		Globals.enemies = [
@@ -81,7 +82,7 @@ class Main ():
 
 				Globals.player.while_keys_down(keys)
 
-			Globals.window.fill(white)
+			sky.update()
 
 			Globals.player.update()
 
