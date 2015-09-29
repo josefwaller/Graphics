@@ -69,7 +69,8 @@ class Player (JumpingEntity):
 
 		self.hitboxes = [
 
-			Hitbox(x=0,y=0,w=self.w,h=self.h,parent=self)
+			Hitbox(x=0,y=0,w=self.w,h=self.make_pixelated(12), parent=self),
+			Hitbox(x=self.make_pixelated(2), y=self.make_pixelated(12), w=self.make_pixelated(6), h=self.make_pixelated(7), parent=self)
 		]
 
 	def while_keys_down (self, keys):

@@ -3,6 +3,7 @@ import time
 import pygame
 
 from assets.files.utilities.globals import Globals
+from assets.files.utilities.hitbox import Hitbox
 
 #Defualt class for everything
 class BaseEntity ():
@@ -43,6 +44,13 @@ class BaseEntity ():
 
 	def entity_init (self, x, y):
 
+		try:
+			self.hitboxes
+		except AttributeError:
+			self.hitboxes = [
+				Hitbox(x=self.x, y=self.y, h=self.h, w=self.w, parent=self)
+			]
+
 		if self.is_animated:
 
 			self.h = self.make_pixelated(self.sprites[0].get_size()[1])
@@ -69,11 +77,16 @@ class BaseEntity ():
 		return int(num * (Globals.block_size / 16))
 
 	def check_for_collision(self, target):
-		if target.x + target.w > self.x:
-			if target.x < self.x + self.w:
-				if target.y + target.h > self.y:
-					if target.y < self.y + self.h:
-						return True
+
+		for hb in target.hitboxes:
+			hb.update()
+			
+			if hb.x + hb.w > self.x:
+				if hb.x < self.x + self.w:
+					if hb.y + hb.h > self.y:
+						if hb.y < self.y + self.h:
+							return True
+							break
 
 		return False
 

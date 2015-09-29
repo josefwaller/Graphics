@@ -8,18 +8,18 @@ class BaseEnemy (JumpingEntity):
 		collide_x = False
 		collide_y = False
 
-		player = Globals.player
+		for hb in Globals.player.hitboxes:
 
-		if self.x < player.x + player.w:
-			if self.x + self.w > player.x:
+			if self.x < hb.x + hb.w:
+				if self.x + self.w > hb.x:
 
-				collide_x = True
+					collide_x = True
 
-		if self.y < player.y + player.h:
-			if self.y + self.h > player.y:
+			if self.y < hb.y + hb.w:
+				if self.y + self.h > hb.y:
 
-				collide_y = True
+					collide_y = True
 
-		if collide_x and collide_y:
+			if collide_x and collide_y:
 
-			Globals.player.is_alive = False
+				Globals.hb.is_alive = False
