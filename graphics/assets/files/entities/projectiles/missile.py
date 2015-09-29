@@ -16,12 +16,6 @@ class Missile (BaseProjectile):
 	moxY = None
 
 	def __init__(self, x, y, direction=1, is_enemy=True):
-
-		self.x = x
-		self.y = y
-
-		self.w = int(3 * (Globals.block_size/16))
-		self.h = int(3 * (Globals.block_size/16))
 		self.lifespan = 1
 
 		self.speed = 5
@@ -37,6 +31,11 @@ class Missile (BaseProjectile):
 
 		self.is_animated = False
 		self.image = self.img_load("enemies/wizard/missile.png")
+
+		self.entity_init(x, y)
+
+		self.x = x
+		self.y = y
 
 	def move (self):
 

@@ -11,7 +11,8 @@ class BowAndArrow (BaseEntity):
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 
-		self.image = self.img_load("blocks/temp_block.png")
+		self.image = self.img_load("tools/bar.png")
+		self.facing_left = False
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size
