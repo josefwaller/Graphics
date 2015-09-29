@@ -2,6 +2,7 @@ from assets.files.entities.jumping_entity import JumpingEntity
 from assets.files.utilities.globals import Globals
 
 from assets.files.entities.projectiles.arrow import Arrow
+from assets.files.utilities.hitbox import Hitbox
 
 import time
 import pygame
@@ -65,6 +66,11 @@ class Player (JumpingEntity):
 		self.last_move_time = time.time()
 
 		self.entity_init(x, y)
+
+		self.hitboxes = [
+
+			Hitbox(x=0,y=0,w=self.w,h=self.h,parent=self)
+		]
 
 	def while_keys_down (self, keys):
 
@@ -182,3 +188,6 @@ class Player (JumpingEntity):
 		if self.is_showing:
 
 			self.render()
+
+		for hb in self.hitboxes:
+			hb.update()
