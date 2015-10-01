@@ -38,6 +38,10 @@ class Jumper (SmartEnemy):
 
 		self.landing_pause = 2000
 
+		self.hitboxes = []
+		self.add_hitbox(x=4, y=3, w=7, h=14)
+		self.add_hitbox(x=12, y=2, w=4, h=4)
+
 		self.entity_init(x, y)
 		self.last_jump = time.time()
 		self.momY = 0

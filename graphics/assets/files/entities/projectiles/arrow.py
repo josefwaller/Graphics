@@ -16,6 +16,8 @@ class Arrow (BaseProjectile):
 
 		self.is_enemy = is_enemy
 
+		self.is_static = False
+
 		if self.direction == 1:
 			self.facing_left = True
 
