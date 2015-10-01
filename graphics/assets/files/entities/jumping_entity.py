@@ -8,6 +8,7 @@ class JumpingEntity (BaseEntity):
 	jump_strength = None
 	momY = None
 	is_grounded = None
+	is_static = False
 
 	def start_jump (self):
 

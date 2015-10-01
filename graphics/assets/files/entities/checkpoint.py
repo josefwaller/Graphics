@@ -24,7 +24,7 @@ class Checkpoint (BaseEntity):
 		self.flag.h = self.make_pixelated(6)
 
 		self.flag.x = self.x
-		self.flag.y = self.y + Globals.block_size - self.flag.h
+		self.flag.y = self.y + self.h - self.flag.h
 		self.flag.is_animated = False
 		self.flag.image = self.img_load("props/flag.png")
 
@@ -33,16 +33,19 @@ class Checkpoint (BaseEntity):
 		self.pole = BaseEntity()
 
 		self.pole.x = self.x
-		self.pole.y = self.y - int(self.h / 2)
+		self.pole.y = self.y
 
 		self.pole.w = self.make_pixelated(2)
 		self.pole.h = self.h
 		self.pole.is_animated = False
 		self.pole.image = self.img_load("props/pole.png")
 
+		self.hitboxes = []
+
+		self.add_hitbox(x=0, y=0, w=self.pole.w, h=32)
+
 	def update (self):
 
-		self.set_delta_time()
 
 		if self.check_for_collision(Globals.player):
 			Globals.player.checkpoint = self
@@ -55,6 +58,7 @@ class Checkpoint (BaseEntity):
 				self.flag_rising = False
 				self.flag_risen = True
 				self.flag.y = self.pole.y
+				print("flag risen")
 
 		self.render()
 

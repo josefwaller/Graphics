@@ -8,14 +8,16 @@ class BowAndArrow (BaseEntity):
 
 	def __init__ (self, x, y):
 
-		self.x = x * Globals.block_size
-		self.y = y * Globals.block_size
-
 		self.image = self.img_load("tools/bar.png")
 		self.facing_left = False
 
 		self.w = Globals.block_size
 		self.h = Globals.block_size
+
+		self.entity_init(0, 0)
+
+		self.x = x * Globals.block_size
+		self.y = y * Globals.block_size
 
 
 	def check_for_player (self):
@@ -30,8 +32,4 @@ class BowAndArrow (BaseEntity):
 
 	def update (self):
 
-		self.set_delta_time()
-
 		self.check_for_player()
-
-		self.render()

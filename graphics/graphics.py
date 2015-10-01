@@ -68,7 +68,7 @@ class Main ():
 			Jumper(x= 30, y=3)
 		]
 
-		checkpoint = Checkpoint(x=10, y=14)
+		checkpoint = Checkpoint(x=10, y=13)
 
 		arrow = BowAndArrow(x=5, y=14)
 
@@ -86,9 +86,9 @@ class Main ():
 
 			Globals.player.base_update()
 
-			checkpoint.update()
+			checkpoint.base_update()
 
-			arrow.update()
+			arrow.base_update()
 
 			for enemy in Globals.enemies:
 				enemy.base_update()

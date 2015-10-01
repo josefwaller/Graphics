@@ -35,6 +35,7 @@ class BaseEntity ():
 	last_time = 0
 
 	is_showing = True
+	is_static = True
 
 	def img_load(self, url):
 
@@ -65,6 +66,20 @@ class BaseEntity ():
 				Hitbox(x=0, y=0, h=self.h, w=self.w, parent=self)
 			]
 
+	def add_hitbox (self, x, y, w, h):
+
+		x = self.make_pixelated(x)
+		y = self.make_pixelated(y)
+		w = self.make_pixelated(w)
+		h = self.make_pixelated(h)
+
+		try:
+			self.hitboxes
+		except AttributeError:
+			self.hitboxes = []
+
+		self.hitboxes.append(Hitbox(x=x, y=y, w=w, h=h, parent=self))
+
 	def set_delta_time(self):
 
 		if self.last_time == 0:
@@ -81,19 +96,23 @@ class BaseEntity ():
 	def check_for_collision(self, target):
 
 		for hb in target.hitboxes:
+
+			for shb in self.hitboxes:
 			
-			if hb.x + hb.w > self.x:
-				if hb.x < self.x + self.w:
-					if hb.y + hb.h > self.y:
-						if hb.y < self.y + self.h:
-							return True
-							break
+				if hb.x + hb.w > shb.x:
+					if hb.x < shb.x + self.w:
+						if hb.y + hb.h > shb.y:
+							if hb.y < shb.y + self.h:
+								return True
+								break
 
 		return False
 
 	def base_update(self):
 		self.set_delta_time()
-		self.gravity_update()
+
+		if not self.is_static:
+			self.gravity_update()
 
 		self.update()
 
@@ -102,7 +121,7 @@ class BaseEntity ():
 
 		for hb in self.hitboxes:
 			hb.update()
-			
+
 	def render (self):
 
 		sprite = 0
