@@ -22,4 +22,4 @@ class BaseEnemy (JumpingEntity):
 
 			if collide_x and collide_y:
 
-				Globals.hb.is_alive = False
+				Globals.player.on_hit()

@@ -1,4 +1,5 @@
 from assets.files.utilities.globals import Globals
+from assets.files.utilities.hitbox import Hitbox
 
 from assets.files.entities.projectiles.base_projectile import BaseProjectile
 
@@ -77,10 +78,5 @@ class Missile (BaseProjectile):
 
 	def update (self):
 
-		self.set_delta_time()
-
 		self.move()
-
-		self.check_for_player()
-
 		self.render()

@@ -33,15 +33,13 @@ class Jumper (SmartEnemy):
 		self.visible_range = 20 * Globals.block_size
 		self.attack_duration = 1
 		self.attack_delay = 1
-		self.speed = 5 * Globals.block_size
+		self.speed = 50 * Globals.block_size
 		self.jump_strength = 13 * Globals.block_size
 
 		self.landing_pause = 2000
 
 		self.entity_init(x, y)
 		self.last_jump = time.time()
-
-		self.set_delta_time()
 		self.momY = 0
 
 	def attack (self):
@@ -53,22 +51,17 @@ class Jumper (SmartEnemy):
 			else:
 				self.x_translate = -1
 
-			self.speed = abs(Globals.player.x - self.x) * (3/4)
+			self.speed = abs(Globals.player.x - self.x) * 0.5
 
-		self.start_jump()
+			self.start_jump()
+
+			print(self.delta_time)
 
 		self.x += (self.speed * self.x_translate) * self.delta_time
 
 
 	def update (self):
 
-		self.set_delta_time()
-
 		direction = 0
 
 		self.should_attack()
-
-		self.gravity_update()
-
-
-		self.render()

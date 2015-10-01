@@ -49,9 +49,5 @@ class Wizard (SmartEnemy):
 
 	def update (self):
 
-		self.set_delta_time()
-
 		self.should_attack()
 		self.check_for_player_collision()
-
-		self.render()

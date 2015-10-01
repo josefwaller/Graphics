@@ -8,13 +8,7 @@ class Arrow (BaseProjectile):
 
 	def __init__ (self, x, y, direction, is_enemy=True):
 
-		self.x = x
-		self.y = y
-
 		self.speed = 20 * Globals.block_size
-
-		self.w = self.make_pixelated(6)
-		self.h = self.make_pixelated(3)
 
 		self.image = self.img_load("enemies/archer/arrow.png")
 
@@ -27,6 +21,11 @@ class Arrow (BaseProjectile):
 
 		else:
 			self.facing_left = False
+
+		self.entity_init(x, y)
+
+		self.x = x
+		self.y = y
 
 	def move (self):
 
@@ -49,10 +48,4 @@ class Arrow (BaseProjectile):
 
 	def update (self):
 
-		self.set_delta_time()
-
 		self.move()
-
-		self.gravity_update()
-
-		self.render()

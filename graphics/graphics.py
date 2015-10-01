@@ -84,22 +84,22 @@ class Main ():
 
 			sky.update()
 
-			Globals.player.update()
+			Globals.player.base_update()
 
 			checkpoint.update()
 
 			arrow.update()
 
 			for enemy in Globals.enemies:
-				enemy.update()
+				enemy.base_update()
 
 			for platform in Globals.platforms:
 
-				platform.render()
+				platform.base_update()
 
 			for projectile in Globals.projectiles:
 
-				projectile.update()
+				projectile.base_update()
 
 			pygame.display.flip()
 

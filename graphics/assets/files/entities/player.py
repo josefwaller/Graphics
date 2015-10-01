@@ -73,6 +73,8 @@ class Player (JumpingEntity):
 			Hitbox(x=self.make_pixelated(2), y=self.make_pixelated(12), w=self.make_pixelated(6), h=self.make_pixelated(7), parent=self)
 		]
 
+		self.is_showing = True
+
 	def while_keys_down (self, keys):
 
 		if self.tool == "Bow and Arrow":
@@ -161,12 +163,7 @@ class Player (JumpingEntity):
 				self.is_blinking = True
 				self.blink_start_time = time.time()
 
-
-	def update (self):
-
-		self.set_delta_time()
-
-		self.move()
+	def move_camera (self):
 
 		if self.x >= Globals.window.get_size()[0] / 2:
 
@@ -175,7 +172,7 @@ class Player (JumpingEntity):
 		else:
 			Globals.camera_offset['x'] = 0
 
-		self.gravity_update()
+	def blink(self): 
 
 		if self.is_blinking:
 			if time.time() - self.last_blink >= self.blink_delay:
@@ -186,9 +183,11 @@ class Player (JumpingEntity):
 				self.is_blinking = False
 				self.is_showing = True
 
-		if self.is_showing:
 
-			self.render()
+	def update (self):
 
-		for hb in self.hitboxes:
-			hb.update()
+		self.move()
+
+		self.move_camera()
+
+		self.blink()

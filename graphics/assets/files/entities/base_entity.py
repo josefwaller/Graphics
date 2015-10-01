@@ -34,6 +34,8 @@ class BaseEntity ():
 
 	last_time = 0
 
+	is_showing = True
+
 	def img_load(self, url):
 
 		full_url = "assets/images/%s" % url
@@ -43,13 +45,6 @@ class BaseEntity ():
 		return image 
 
 	def entity_init (self, x, y):
-
-		try:
-			self.hitboxes
-		except AttributeError:
-			self.hitboxes = [
-				Hitbox(x=self.x, y=self.y, h=self.h, w=self.w, parent=self)
-			]
 
 		if self.is_animated:
 
@@ -62,6 +57,13 @@ class BaseEntity ():
 
 		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
 		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
+
+		try:
+			self.hitboxes
+		except AttributeError:
+			self.hitboxes = [
+				Hitbox(x=0, y=0, h=self.h, w=self.w, parent=self)
+			]
 
 	def set_delta_time(self):
 
@@ -79,7 +81,6 @@ class BaseEntity ():
 	def check_for_collision(self, target):
 
 		for hb in target.hitboxes:
-			hb.update()
 			
 			if hb.x + hb.w > self.x:
 				if hb.x < self.x + self.w:
@@ -90,6 +91,18 @@ class BaseEntity ():
 
 		return False
 
+	def base_update(self):
+		self.set_delta_time()
+		self.gravity_update()
+
+		self.update()
+
+		if self.is_showing:
+			self.render()
+
+		for hb in self.hitboxes:
+			hb.update()
+			
 	def render (self):
 
 		sprite = 0

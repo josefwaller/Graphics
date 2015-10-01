@@ -1,6 +1,7 @@
 import pygame
 from assets.files.utilities.globals import Globals
 from .base_entity import BaseEntity
+from assets.files.utilities.hitbox import Hitbox
 
 class Platform (BaseEntity):
 
@@ -15,10 +16,17 @@ class Platform (BaseEntity):
 		self.h = h
 		self.s = Globals.block_size
 
+		self.hitboxes = [
+			Hitbox(x=0, y=0, w=self.w * Globals.block_size, h=self.h * Globals.block_size, parent=self)
+		]
+
 		self.top_block = self.img_load(top_block)
 
 		if not inner_block == None:
 			self.inner_block = self.img_load(inner_block)
+
+	def update (self):
+		pass
 
 	def render (self):
 

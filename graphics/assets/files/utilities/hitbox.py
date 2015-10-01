@@ -20,6 +20,8 @@ class Hitbox ():
 		self.h = h
 		self.parent = parent
 
+		self.update()
+
 	def update (self):
 
 		self.x = self.parent.x + self.offset_x
