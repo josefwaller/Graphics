@@ -40,18 +40,8 @@ class Main ():
 		Globals.gravity_strength = 15 * Globals.block_size
 
 		#loads level
-		# level_file = open("assets/levels/l1.json","r")
-		# level = json.loads(level_file.read())
-
-		self.play_game()
-
-
-
-	def play_game(self):
-
-		Globals.player = Player(0, 11)
-
-		sky = Sky()
+		level_file = open("assets/levels/l1.json","r")
+		level = json.loads(level_file.read())
 
 		Globals.platforms = [
 			Platform(x=1, y=10, w=5, h=1, top_block="blocks/snow_top.png", inner_block=None),
@@ -59,6 +49,21 @@ class Main ():
 			Platform(x=12, y=7, w=2, h=1, top_block="blocks/snow_top.png", inner_block=None),
 			Platform(x=0, y=15, w=45, h=1, top_block="blocks/snow_top.png", inner_block=None)
 		]
+		for thing in level:
+			if thing['type'] == 'platform':
+				Globals.platforms.append(Platform(x=thing['x'], y=thing['y'], w=thing['w'], h=thing['h'], top_block="blocks/snow_top.png", inner_block="blocks/snow.png"))
+
+			elif thing['type'] == 'player':
+				Globals.player = Player(x=thing['x'], y=thing['y'])
+
+		self.play_game()
+
+
+
+	def play_game(self):
+
+		sky = Sky()
+
 
 		Globals.enemies = [
 			Walker(x=7, y=1, turn1=7, turn2=10),
