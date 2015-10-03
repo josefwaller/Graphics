@@ -25,10 +25,10 @@ class Hitbox ():
 	def update (self):
 
 		if self.parent.facing_left:
-			self.x = self.parent.x - self.offset_x
+			self.x = self.parent.x + (self.parent.w - self.offset_x) - self.w
 
 		else:
-			self.x = self.parent.x + self.offset_x
+			self.x = self.parent.x  + self.offset_x
 
 		self.y = self.parent.y + self.offset_y
 
@@ -40,4 +40,4 @@ class Hitbox ():
 
 		pink = (255, 0, 255)
 
-		pygame.draw.rect(Globals.window, pink, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2)
+		pygame.draw.rect(Globals.window, pink, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
