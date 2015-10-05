@@ -1,8 +1,6 @@
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 
-from assets.files.entities.platform import Platform
-
 import pygame
 
 class LevelEditor():
@@ -34,9 +32,15 @@ class LevelEditor():
 
 		red = 255, 0, 0
 
+		sky = pygame.image.load("assets/images/props/sky.png").convert_alpha()
+
+		converter = sky.get_size()[0] / sky.get_size()[1]
+
+		sky = pygame.transform.scale(sky, (int(self.window.get_size()[0] * converter), self.window.get_size()[1]))
+
 		while True:
 
-			pygame.draw.rect(self.window, (255, 255, 255), [0, 0, self.window.get_size()[0], self.window.get_size()[1]], self.window.get_size()[0])
+			self.window.blit(sky, (0, 0))
 
 			for event in pygame.event.get():
 
@@ -60,19 +64,70 @@ class LevelEditor():
 
 				#Spawns different entities
 
+				spawn_entity = False
+				new_entity = {
+					"type": None,
+					"x": self.block_chosen[0],
+					"y": self.block_chosen[1]
+				}
+
 				if pygame.K_RETURN in keys:
 
-					x = self.block_chosen[0]
-					y = self.block_chosen[1]
+					new_entity['type'] = 'platform'
+					spawn_entity = True
 
-					self.entities.append(Platform(x=x, y=y, w=1, h=1, top_block="blocks/temp_block.png", inner_block=None))
+				elif pygame.K_p in keys:
+
+					new_entity['type'] = 'player'
+					spawn_entity = True
+
+				elif pygame.K_b in keys:
+
+					new_entity['type'] = 'walker'
+					spawn_entity = True
+
+				elif pygame.K_a in keys:
+
+					new_entity['type'] = 'archer'
+					spawn_entity = True
+
+				elif pygame.K_w in keys:
+
+					new_entity['type'] = 'wizard'
+					spawn_entity = True
+
+				elif pygame.K_j in keys:
+
+					new_entity['type'] = 'jumper'
+					spawn_entity = True
+
+				if spawn_entity:
+					self.entities.append(new_entity)
 
 			for x in self.entities:
 
-				print(x)
+				if x['type'] == 'platform':
+					image = pygame.image.load("assets/images/blocks/snow.png").convert_alpha()
 
-				x.render()
+				elif x['type'] == 'player':
+					image = pygame.image.load("assets/images/player/run_1.png").convert_alpha()
 
-			pygame.draw.rect(self.window, red, [self.block_chosen[0] * self.block_size + self.menu_width, self.block_chosen[1] * self.block_size, self.block_size, self.block_size])
+				elif x['type'] == 'wizard':
+					image = pygame.image.load("assets/images/enemies/wizard/front1.png").convert_alpha()
+
+				elif x['type'] == 'archer':
+					image = pygame.image.load("assets/images/enemies/archer/archer_1.png").convert_alpha()
+
+				elif x['type'] == 'walker':
+					image = pygame.image.load("assets/images/enemies/walker/run_1.png").convert_alpha()
+
+				elif x['type'] == 'jumper':
+					image = pygame.image.load("assets/images/enemies/jumper/jumper_stand_1.png").convert_alpha()
+
+
+				image = pygame.transform.scale(image, (self.block_size, self.block_size))
+
+				self.window.blit(image, (x['x'] * self.block_size, x['y'] * self.block_size))
+			pygame.draw.rect(self.window, red, [self.block_chosen[0] * self.block_size, self.block_chosen[1] * self.block_size, self.block_size, self.block_size])
 
 			pygame.display.flip()
