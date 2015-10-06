@@ -43,11 +43,20 @@ class Main ():
 		level_file = open("assets/levels/l1.json","r")
 		level = json.loads(level_file.read())
 
+
+		Globals.enemies = [
+			# Walker(x=7, y=1, turn1=7, turn2=10),
+			# Wizard(x=15, y=14),
+			# Archer(x=12, y=6),
+			# Archer(x=40, y=3),
+			# Jumper(x= 30, y=3)
+		]
+
 		Globals.platforms = [
-			Platform(x=1, y=10, w=5, h=1, top_block="blocks/snow_top.png", inner_block=None),
-			Platform(x=7, y=4, w=10, h=2, top_block="blocks/snow_top.png", inner_block="blocks/snow.png"),
-			Platform(x=12, y=7, w=2, h=1, top_block="blocks/snow_top.png", inner_block=None),
-			Platform(x=0, y=15, w=45, h=1, top_block="blocks/snow_top.png", inner_block=None)
+			# Platform(x=1, y=10, w=5, h=1, top_block="blocks/snow_top.png", inner_block=None),
+			# Platform(x=7, y=4, w=10, h=2, top_block="blocks/snow_top.png", inner_block="blocks/snow.png"),
+			# Platform(x=12, y=7, w=2, h=1, top_block="blocks/snow_top.png", inner_block=None),
+			# Platform(x=0, y=15, w=45, h=1, top_block="blocks/snow_top.png", inner_block=None)
 		]
 		for thing in level:
 			if thing['type'] == 'platform':
@@ -56,6 +65,18 @@ class Main ():
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
 
+			elif thing['type'] == 'archer':
+				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
+
+			elif thing['type'] == 'walker':
+				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
+
+			elif thing['type'] == 'wizard':
+				Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
+
+			elif thing['type'] == 'jumper':
+				Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
+
 		self.play_game()
 
 
@@ -63,15 +84,6 @@ class Main ():
 	def play_game(self):
 
 		sky = Sky()
-
-
-		Globals.enemies = [
-			Walker(x=7, y=1, turn1=7, turn2=10),
-			Wizard(x=15, y=14),
-			Archer(x=12, y=6),
-			Archer(x=40, y=3),
-			Jumper(x= 30, y=3)
-		]
 
 		checkpoint = Checkpoint(x=10, y=13)
 
