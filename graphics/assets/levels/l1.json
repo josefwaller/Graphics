@@ -1,21 +1,26 @@
 [
 	{
-
 		"type": "platform",
-		"x": 0,
-		"y": 13,
-		"w": 10,
-		"h": 1
+		"w": 5,
+		"h": 1,
+		"x": 1,
+		"y": 6
 	},
 	{
 		"type": "player",
 		"x": 1,
-		"y": 11
+		"y": 4
 	},
 	{
-
-		"type": "wizard",
-		"x": 9,
-		"y": 11
+		"type": "walker",
+		"x": 5,
+		"y": 4,
+		"turn1": 1,
+		"turn2": 5
+	},
+	{
+		"type": "checkpoint",
+		"x": 1,
+		"y": 6
 	}
 ]

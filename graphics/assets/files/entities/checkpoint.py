@@ -17,6 +17,7 @@ class Checkpoint (BaseEntity):
 		self.y = y * Globals.block_size
 
 		self.h = 2 * Globals.block_size
+		self.y -= self.h
 
 		self.flag = BaseEntity()
 

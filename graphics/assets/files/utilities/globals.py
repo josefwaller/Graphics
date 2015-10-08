@@ -7,5 +7,7 @@ class Globals:
     	"y": 0
     }
     projectiles = []
+    tools = []
+    checkpoints = []
     debug = True
     gravity_strength = 5

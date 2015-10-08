@@ -45,22 +45,20 @@ class Main ():
 
 
 		Globals.enemies = [
-			# Walker(x=7, y=1, turn1=7, turn2=10),
-			# Wizard(x=15, y=14),
-			# Archer(x=12, y=6),
-			# Archer(x=40, y=3),
-			# Jumper(x= 30, y=3)
 		]
 
 		Globals.platforms = [
-			# Platform(x=1, y=10, w=5, h=1, top_block="blocks/snow_top.png", inner_block=None),
-			# Platform(x=7, y=4, w=10, h=2, top_block="blocks/snow_top.png", inner_block="blocks/snow.png"),
-			# Platform(x=12, y=7, w=2, h=1, top_block="blocks/snow_top.png", inner_block=None),
-			# Platform(x=0, y=15, w=45, h=1, top_block="blocks/snow_top.png", inner_block=None)
 		]
 		for thing in level:
 			if thing['type'] == 'platform':
-				Globals.platforms.append(Platform(x=thing['x'], y=thing['y'], w=thing['w'], h=thing['h'], top_block="blocks/snow_top.png", inner_block="blocks/snow.png"))
+				Globals.platforms.append(Platform(
+					x=thing['x'], 
+					y=thing['y'], 
+					w=thing['w'],
+					h=thing['h'],
+					top_block="blocks/snow_top.png", 
+					inner_block="blocks/snow.png"
+				))
 
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
@@ -77,6 +75,12 @@ class Main ():
 			elif thing['type'] == 'jumper':
 				Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
 
+			elif thing['type'] == 'bar':
+				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
+
+			elif thing['type'] == 'checkpoint':
+				Globals.checkpoints.append(Checkpoint(x=thing['x'], y=thing['y']))
+
 		self.play_game()
 
 
@@ -84,10 +88,6 @@ class Main ():
 	def play_game(self):
 
 		sky = Sky()
-
-		checkpoint = Checkpoint(x=10, y=13)
-
-		arrow = BowAndArrow(x=5, y=14)
 
 		k = KeyHandler()
 
@@ -103,9 +103,11 @@ class Main ():
 
 			Globals.player.base_update()
 
-			checkpoint.base_update()
+			for c in Globals.checkpoints:
+				c.base_update()
 
-			arrow.base_update()
+			for t in Globals.tools:
+				t.base_update()
 
 			for enemy in Globals.enemies:
 				enemy.base_update()

@@ -60,9 +60,4 @@ class Walker (BaseEnemy):
 
 	def update (self):
 
-		self.set_delta_time()
-
 		self.move()
-
-		self.gravity_update()
-		self.render()
