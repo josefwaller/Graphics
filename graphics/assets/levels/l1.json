@@ -1,9 +1,9 @@
 [
 	{
 		"type": "platform",
-		"w": 5,
+		"w": 20,
 		"h": 1,
-		"x": 1,
+		"x": 0,
 		"y": 6
 	},
 	{
@@ -21,6 +21,7 @@
 	{
 		"type": "checkpoint",
 		"x": 1,
-		"y": 6
+		"y": 6,
+		"is_starter": true
 	}
 ]

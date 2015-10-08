@@ -30,6 +30,7 @@ class Player (JumpingEntity):
 	is_showing = True
 
 	is_dead = None
+	checkpoint = None
 	
 	tool = None
 

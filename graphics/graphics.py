@@ -79,7 +79,16 @@ class Main ():
 				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
 
 			elif thing['type'] == 'checkpoint':
-				Globals.checkpoints.append(Checkpoint(x=thing['x'], y=thing['y']))
+				c = Checkpoint(x=thing['x'], y=thing['y'])
+				Globals.checkpoints.append(c)
+
+				try:
+					if thing['is_starter'] == True:
+						Globals.player.checkpoint = c
+						c.flag_rising = True
+						print("ASDF")
+				except IndexError:
+					pass
 
 		self.play_game()
 
