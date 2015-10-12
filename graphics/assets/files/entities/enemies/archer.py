@@ -17,13 +17,24 @@ class Archer (SmartEnemy):
 
 		self.last_attack_time = time.time()
 
-		self.sprites = [
+		self.graphic_sprites = [
 
-			self.img_load("enemies/archer/archer_1.png"),
-			self.img_load("enemies/archer/archer_2.png"),
-			self.img_load("enemies/archer/archer_shoot.png")
+			[
+
+				self.img_load("enemies/archer/archer_1.png"),
+				self.img_load("enemies/archer/archer_2.png"),
+				self.img_load("enemies/archer/archer_shoot.png")
+
+			],
+			[
+				self.img_load("enemies/archer/16_archer_1.png"),
+				self.img_load("enemies/archer/16_archer_2.png"),
+				self.img_load("enemies/archer/16_archer_shoot.png")
+			]
 
 		]
+
+		self.sprites = self.graphic_sprites[0]
 
 		self.is_animated = True
 

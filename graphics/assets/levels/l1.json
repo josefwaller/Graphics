@@ -19,6 +19,21 @@
 		"turn2": 5
 	},
 	{
+		"type": "wizard",
+		"x" : 10,
+		"y" : 4
+	},
+	{
+		"type": "archer",
+		"x": 7,
+		"y": 4
+	},
+	{
+		"type": "jumper",
+		"x": 15,
+		"y": 4
+	},
+	{
 		"type": "checkpoint",
 		"x": 1,
 		"y": 6,

@@ -8,13 +8,19 @@ class Platform (BaseEntity):
 	top_block = None
 	inner_block = None
 
-	def __init__ (self, x, y, w, h, top_block, inner_block):
+	update_top_block = None
+	update_inner_block = None
+
+	def __init__ (self, x, y, w, h, top_block, inner_block, update_top_block=None, update_inner_block=None):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 		self.w = w
 		self.h = h
 		self.s = Globals.block_size
+
+		self.update_inner_block = update_inner_block
+		self.update_top_block = update_top_block
 
 		self.hitboxes = [
 			Hitbox(x=0, y=0, w=self.w * Globals.block_size, h=self.h * Globals.block_size, parent=self)
@@ -27,6 +33,13 @@ class Platform (BaseEntity):
 
 	def update (self):
 		pass
+
+	def update_graphics (self):
+
+		if not self.update_top_block == None and not self.update_inner_block == None:
+
+			self.inner_block = self.update_inner_block
+			self.top_block = self.update_top_block
 
 	def render (self):
 

@@ -15,20 +15,25 @@ class Jumper (SmartEnemy):
 
 		self.is_animated = True
 
-		self.sprites = [
-			self.img_load("enemies/jumper/jumper_stand_1.png"),
-			self.img_load("enemies/jumper/jumper_stand_2.png"),
-
-			self.img_load("enemies/jumper/jumper_jump.png"),
-			self.img_load("enemies/jumper/jumper_land.png")
+		self.graphic_sprites = [
+			[
+				self.img_load("enemies/jumper/jumper_jump.png"),
+				self.img_load("enemies/jumper/jumper_land.png")
+			],
+			[
+				self.img_load("enemies/jumper/16_jumper_jump.png"),
+				self.img_load("enemies/jumper/16_jumper_land.png")
+			]
 		]
+
+		self.sprites = self.graphic_sprites[0]
 
 		self.sprite_indexes = [0, 1]
 		self.sprite_interval = 500
 
 		self.idle_indexes = [0, 1]
-		self.attack_indexes = [2]
-		self.land_indexes = [3]
+		self.attack_indexes = [0]
+		self.land_indexes = [1]
 
 		self.visible_range = 20 * Globals.block_size
 		self.attack_duration = 1

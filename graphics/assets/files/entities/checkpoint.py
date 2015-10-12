@@ -27,7 +27,11 @@ class Checkpoint (BaseEntity):
 		self.flag.x = self.x
 		self.flag.y = self.y + self.h - self.flag.h
 		self.flag.is_animated = False
-		self.flag.image = self.img_load("props/flag.png")
+		self.flag.graphic_images = [
+			self.img_load("props/flag.png"),
+			self.img_load("props/16_flag.png")
+		]
+		self.flag.image = self.flag.graphic_images[0]
 
 		self.flag_speed = 300
 
@@ -39,11 +43,20 @@ class Checkpoint (BaseEntity):
 		self.pole.w = self.make_pixelated(2)
 		self.pole.h = self.h
 		self.pole.is_animated = False
-		self.pole.image = self.img_load("props/pole.png")
+		self.pole.graphic_images = [
+			self.img_load("props/pole.png"),
+			self.img_load("props/16_pole.png")
+		]
+		self.pole.image = self.pole.graphic_images[0]
 
 		self.hitboxes = []
 
 		self.add_hitbox(x=0, y=0, w=self.pole.w, h=32)
+
+	def update_graphics (self):
+
+		self.flag.update_graphics()
+		self.pole.update_graphics()
 
 	def update (self):
 

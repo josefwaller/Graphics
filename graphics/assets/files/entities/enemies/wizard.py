@@ -16,11 +16,20 @@ class Wizard (SmartEnemy):
 		self.missile_delay = missile_delay
 		self.visible_range = 10 * Globals.block_size
 
-		self.sprites = [
-			self.img_load("enemies/wizard/front1.png"),
-			self.img_load("enemies/wizard/front2.png"),
-			self.img_load("enemies/wizard/side.png")
+		self.graphic_sprites = [
+			[
+				self.img_load("enemies/wizard/front_1.png"),
+				self.img_load("enemies/wizard/front_2.png"),
+				self.img_load("enemies/wizard/side.png")
+			],
+			[
+				self.img_load("enemies/wizard/16_front_1.png"),
+				self.img_load("enemies/wizard/16_front_2.png"),
+				self.img_load("enemies/wizard/16_side.png")
+			]
 		]
+
+		self.sprites = self.graphic_sprites[0]
 
 		self.is_animated = True
 		

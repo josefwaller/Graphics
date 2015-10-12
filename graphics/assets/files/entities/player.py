@@ -31,6 +31,7 @@ class Player (JumpingEntity):
 
 	is_dead = None
 	checkpoint = None
+
 	
 	tool = None
 
@@ -42,16 +43,36 @@ class Player (JumpingEntity):
 
 		self.jump_strength *= Globals.block_size
 
-		self.sprites = [
-			self.img_load("player/run_1.png"),
-			self.img_load("player/run_2.png"),
-			self.img_load("player/run_3.png"),
+		self.graphic_sprites = [
 
-			#Bow and arrow
-			self.img_load("player/bar_1.png"),
-			self.img_load("player/bar_2.png"),
-			self.img_load("player/bar_3.png")
+			#8-bit
+			[
+				self.img_load("player/run_1.png"),
+				self.img_load("player/run_2.png"),
+				self.img_load("player/run_3.png"),
+
+				#Bow and arrow
+				self.img_load("player/bar_1.png"),
+				self.img_load("player/bar_2.png"),
+				self.img_load("player/bar_3.png")
+			],
+			#16-bit
+			[
+
+			self.img_load("player/16_run_1.png"),
+			self.img_load("player/16_run_2.png"),
+			self.img_load("player/16_run_3.png"),
+
+			self.img_load("player/16_bar_1.png"),
+			self.img_load("player/16_bar_2.png"),
+			self.img_load("player/16_bar_3.png")
+
+			]
 		]
+
+		self.sprites = self.graphic_sprites[0]
+
+		self.graphics_addon = 6
 
 		self.sprite_indexes = [
 			1

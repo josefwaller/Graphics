@@ -15,6 +15,7 @@ from assets.files.entities.enemies.jumper import Jumper
 
 from assets.files.entities.checkpoint import Checkpoint
 from assets.files.entities.sky import Sky
+from assets.files.entities.end_block import EndBlock
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
@@ -92,13 +93,13 @@ class Main ():
 
 		self.play_game()
 
-
-
 	def play_game(self):
 
 		sky = Sky()
 
 		k = KeyHandler()
+
+		g = EndBlock(x=5, y=2, num=16)
 
 		while True:
 
@@ -128,6 +129,8 @@ class Main ():
 			for projectile in Globals.projectiles:
 
 				projectile.base_update()
+
+			g.base_update()
 
 			pygame.display.flip()
 

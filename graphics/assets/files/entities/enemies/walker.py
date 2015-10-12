@@ -26,12 +26,20 @@ class Walker (BaseEnemy):
 
 		self.last_time = time.time()
 
-		self.sprites = [
-			self.img_load("enemies/walker/run_1.png"),
-			self.img_load("enemies/walker/run_2.png"),
-			self.img_load("enemies/walker/run_3.png"),
-			self.img_load("enemies/walker/run_2.png")
+		self.graphic_sprites = [
+			[
+				self.img_load("enemies/walker/run_1.png"),
+				self.img_load("enemies/walker/run_2.png"),
+				self.img_load("enemies/walker/run_3.png")
+			],
+			[
+				self.img_load("enemies/walker/16_run_1.png"),
+				self.img_load("enemies/walker/16_run_2.png"),
+				self.img_load("enemies/walker/16_run_3.png")
+			]
 		]
+
+		self.sprites = self.graphic_sprites[0]
 
 		self.sprite_indexes = [
 			0,
@@ -40,9 +48,11 @@ class Walker (BaseEnemy):
 			1
 		]
 
-		self.jump_last_time = time.time()
-
 		self.entity_init(x, y)
+
+		self.hitboxes = []
+		self.add_hitbox(x=4, y=3, w=8, h=6)
+		self.add_hitbox(x=6, y=9, w=5, h=8)
 
 	def move (self):
 

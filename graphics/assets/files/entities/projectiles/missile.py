@@ -31,7 +31,11 @@ class Missile (BaseProjectile):
 		self.turn_speed = 5
 
 		self.is_animated = False
-		self.image = self.img_load("enemies/wizard/missile.png")
+		self.graphic_images = [
+			self.img_load("enemies/wizard/missile.png"),
+			self.img_load("enemies/wizard/16_missile.png")
+		]
+		self.image = self.graphic_images[0]
 
 		self.entity_init(x, y)
 

@@ -27,6 +27,8 @@ class BaseEntity ():
 	this_index = 0
 	platform_under = None
 
+	last_graphics = Globals.graphics_level
+
 	last_sprite_time = 0
 	sprite_interval = 0
 
@@ -116,6 +118,10 @@ class BaseEntity ():
 
 		self.update()
 
+		if not self.last_graphics == Globals.graphics_level:
+
+			self.update_graphics()
+
 		if self.is_showing:
 			self.render()
 
@@ -150,6 +156,18 @@ class BaseEntity ():
 			sprite = pygame.transform.flip(sprite, True, False)
 
 		Globals.window.blit(sprite, (self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y']))
+
+	def update_graphics (self):
+				
+		if self.is_animated == False:
+
+			self.image = self.graphic_images[Globals.graphics_level]
+			
+		else:
+
+			self.sprites = self.graphic_sprites[Globals.graphics_level]
+
+		self.last_graphics = Globals.graphics_level 
 
 	def gravity_update (self):
 

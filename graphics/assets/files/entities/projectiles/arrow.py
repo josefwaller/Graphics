@@ -10,6 +10,11 @@ class Arrow (BaseProjectile):
 
 		self.speed = 20 * Globals.block_size
 
+		self.graphic_images = [
+			self.img_load("enemies/archer/arrow.png"),
+			self.img_load("enemies/archer/16_arrow.png")
+		]
+
 		self.image = self.img_load("enemies/archer/arrow.png")
 
 		self.direction = direction
