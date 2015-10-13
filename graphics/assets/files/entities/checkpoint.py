@@ -32,12 +32,13 @@ class Checkpoint (BaseEntity):
 			self.img_load("props/16_flag.png")
 		]
 		self.flag.image = self.flag.graphic_images[0]
+		self.flag.facing_left = True
 
 		self.flag_speed = 300
 
 		self.pole = BaseEntity()
 
-		self.pole.x = self.x
+		self.pole.x = self.flag.x + self.flag.w
 		self.pole.y = self.y
 
 		self.pole.w = self.make_pixelated(2)
