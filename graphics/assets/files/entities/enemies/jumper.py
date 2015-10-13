@@ -41,7 +41,8 @@ class Jumper (SmartEnemy):
 		self.speed = 50 * Globals.block_size
 		self.jump_strength = 13 * Globals.block_size
 
-		self.landing_pause = 2000
+		self.landing_pause = 5
+		self.landing_time = 0
 
 		self.hitboxes = []
 		self.add_hitbox(x=4, y=3, w=7, h=14)
@@ -54,19 +55,24 @@ class Jumper (SmartEnemy):
 	def attack (self):
 		if self.is_grounded:
 
-			if self.facing_left:
-				self.x_translate = 1
+			self.sprite_indexes = self.land_indexes
 
-			else:
-				self.x_translate = -1
+			if time.time() - self.landing_time >= self.landing_pause:
 
-			self.speed = abs(Globals.player.x - self.x) * 0.5
+				if self.facing_left:
+					self.x_translate = 1
 
-			self.start_jump()
+				else:
+					self.x_translate = -1
 
-			print(self.delta_time)
+				self.speed = abs(Globals.player.x - self.x) * 0.5
 
-		self.x += (self.speed * self.x_translate) * self.delta_time
+				self.start_jump()
+
+				self.landing_time = time.time()
+		else:
+
+			self.x += (self.speed * self.x_translate) * self.delta_time
 
 
 	def update (self):

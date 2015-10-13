@@ -35,7 +35,7 @@ class Main ():
 		windowSize = width, height = settings['screenWidth'], settings['screenHeight']
 		Globals.window = pygame.display.set_mode(windowSize)
 
-		Globals.block_size = int(Globals.window.get_size()[1] / 16)
+		Globals.block_size = int(Globals.window.get_size()[1] / 10)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
 
 		Globals.gravity_strength = 15 * Globals.block_size
@@ -58,7 +58,9 @@ class Main ():
 					w=thing['w'],
 					h=thing['h'],
 					top_block="blocks/snow_top.png", 
-					inner_block="blocks/snow.png"
+					inner_block="blocks/snow.png",
+					update_inner_block="blocks/16_snow.png",
+					update_top_block="blocks/16_snow_top.png"
 				))
 
 			elif thing['type'] == 'player':
@@ -95,7 +97,7 @@ class Main ():
 
 	def play_game(self):
 
-		sky = Sky()
+		sky = Sky("props/sky.png", "props/16_sky.png")
 
 		k = KeyHandler()
 
@@ -109,7 +111,7 @@ class Main ():
 
 				Globals.player.while_keys_down(keys)
 
-			sky.update()
+			sky.base_update()
 
 			Globals.player.base_update()
 

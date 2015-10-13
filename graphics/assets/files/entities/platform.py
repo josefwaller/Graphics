@@ -38,8 +38,8 @@ class Platform (BaseEntity):
 
 		if not self.update_top_block == None and not self.update_inner_block == None:
 
-			self.inner_block = self.update_inner_block
-			self.top_block = self.update_top_block
+			self.inner_block = self.img_load(self.update_inner_block)
+			self.top_block = self.img_load(self.update_top_block)
 
 	def render (self):
 
