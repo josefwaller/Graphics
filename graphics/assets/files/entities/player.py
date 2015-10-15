@@ -21,6 +21,9 @@ class Player (JumpingEntity):
 
 	last_move_time = 0
 
+	drawing_bow = False
+	bow_draw_time = 0
+
 	last_hit = 0
 	recover_delay = 3
 
@@ -54,7 +57,11 @@ class Player (JumpingEntity):
 				#Bow and arrow
 				self.img_load("player/bar_1.png"),
 				self.img_load("player/bar_2.png"),
-				self.img_load("player/bar_3.png")
+				self.img_load("player/bar_3.png"),
+
+				self.img_load("player/bar_shoot_1.png"),
+				self.img_load("player/bar_shoot_2.png"),
+				self.img_load("player/bar_shoot_full.png")
 			],
 			#16-bit
 			[
@@ -65,7 +72,12 @@ class Player (JumpingEntity):
 
 			self.img_load("player/16_bar_1.png"),
 			self.img_load("player/16_bar_2.png"),
-			self.img_load("player/16_bar_3.png")
+			self.img_load("player/16_bar_3.png"),
+
+
+			self.img_load("player/16_bar_shoot_1.png"),
+			self.img_load("player/16_bar_shoot_2.png"),
+			self.img_load("player/16_bar_shoot.png")
 
 			]
 		]
@@ -126,11 +138,20 @@ class Player (JumpingEntity):
 			self.x_translate = 0
 			self.sprite_indexes = idle_sprites
 
-		if pygame.K_UP in keys and self.is_grounded:
+		if pygame.K_UP in keys and self.is_grounded and not self.drawing_bow:
 
 			self.start_jump()
 
 		if pygame.K_SPACE in keys:
+
+			if self.tool == "Bow and Arrow":
+
+				if not self.drawing_bow:
+					self.bow_draw_time = time.time()
+
+				self.drawing_bow = True
+
+		elif self.drawing_bow:
 
 			self.use_tool()
 
@@ -148,16 +169,20 @@ class Player (JumpingEntity):
 		
 			Globals.projectiles.append(Arrow(x=x, y=self.y + int(self.h / 2), direction=direction, is_enemy=False))
 
+			self.drawing_bow = False
+
 
 	def move (self):
 
-		self.x += self.x_translate * self.speed * self.delta_time
+		if not self.drawing_bow:
 
-		for enemy in Globals.enemies:
+			self.x += self.x_translate * self.speed * self.delta_time
 
-			if self.check_for_collision(enemy):
+			for enemy in Globals.enemies:
 
-				self.on_hit()
+				if self.check_for_collision(enemy):
+
+					self.on_hit()
 
 	def respawn (self):
 
@@ -209,6 +234,22 @@ class Player (JumpingEntity):
 	def update (self):
 
 		self.move()
+
+		if self.tool == "Bow and Arrow" and self.drawing_bow:
+
+			self.sprite_indexes = [6]
+
+			t = time.time() - self.bow_draw_time
+
+			print(t)
+
+			if t > 0.5:
+
+				self.sprite_indexes = [7]
+
+				if t > 1:
+
+					self.sprite_indexes = [8]
 
 		self.move_camera()
 
