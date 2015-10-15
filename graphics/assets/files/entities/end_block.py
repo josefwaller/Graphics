@@ -26,8 +26,12 @@ class EndBlock (BaseEntity):
 	def update(self):
 
 		if self.check_for_collision(Globals.player) and not self.used:
-			print("Collision")
+			
 			Globals.graphics_level += 1
+
+			Globals.is_paused = True
+
+			Globals.pop_up_m.show_message("You now have sixteen bit graphics")
 
 			self.update_graphics()
 
