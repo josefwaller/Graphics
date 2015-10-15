@@ -45,8 +45,8 @@ class Jumper (SmartEnemy):
 		self.landing_time = 0
 
 		self.hitboxes = []
-		self.add_hitbox(x=4, y=3, w=7, h=14)
-		self.add_hitbox(x=12, y=2, w=4, h=4)
+		self.add_hitbox(x=5, y=10, w=5, h=8)
+		self.add_hitbox(x=10, y=2, w=10, h=16)
 
 		self.entity_init(x, y)
 		self.last_jump = time.time()
@@ -73,6 +73,8 @@ class Jumper (SmartEnemy):
 		else:
 
 			self.x += (self.speed * self.x_translate) * self.delta_time
+
+			self.sprite_indexes = self.attack_indexes
 
 
 	def update (self):

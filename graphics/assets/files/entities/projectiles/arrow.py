@@ -8,7 +8,7 @@ class Arrow (BaseProjectile):
 
 	def __init__ (self, x, y, direction, is_enemy=True):
 
-		self.speed = 20 * Globals.block_size
+		self.speed = 30 * Globals.block_size
 
 		self.graphic_images = [
 			self.img_load("enemies/archer/arrow.png"),

@@ -19,6 +19,8 @@ from assets.files.entities.end_block import EndBlock
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
+from assets.files.utilities.pop_up_manager import PopUpManager
+
 from level_editor import LevelEditor
 
 class Main ():
@@ -35,7 +37,7 @@ class Main ():
 		windowSize = width, height = settings['screenWidth'], settings['screenHeight']
 		Globals.window = pygame.display.set_mode(windowSize)
 
-		Globals.block_size = int(Globals.window.get_size()[1] / 10)
+		Globals.block_size = int(Globals.window.get_size()[1] / 15)
 		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
 
 		Globals.gravity_strength = 15 * Globals.block_size
@@ -43,6 +45,8 @@ class Main ():
 		#loads level
 		level_file = open("assets/levels/l1.json","r")
 		level = json.loads(level_file.read())
+
+		Globals.pop_up_m = PopUpManager()
 
 
 		Globals.enemies = [
@@ -72,11 +76,11 @@ class Main ():
 			elif thing['type'] == 'walker':
 				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
-			elif thing['type'] == 'wizard':
-				Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
+			# elif thing['type'] == 'wizard':
+			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
 
-			elif thing['type'] == 'jumper':
-				Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
+			# elif thing['type'] == 'jumper':
+			# 	Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
 
 			elif thing['type'] == 'bar':
 				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
@@ -111,6 +115,8 @@ class Main ():
 
 				Globals.player.while_keys_down(keys)
 
+				Globals.pop_up_m.on_input(keys)
+
 			sky.base_update()
 
 			Globals.player.base_update()
@@ -134,9 +140,11 @@ class Main ():
 
 			g.base_update()
 
+			Globals.pop_up_m.render()
+
 			pygame.display.flip()
 
-			time.sleep(1 / 30)
+			time.sleep(1 / 60)
 
 if __name__ == "__main__":
 

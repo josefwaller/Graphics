@@ -87,7 +87,7 @@ class BaseEntity ():
 		if self.last_time == 0:
 			self.last_time = time.time()
 
-		self.delta_time = time.time() - self.last_time
+		self.delta_time = (time.time() - self.last_time)
 
 		self.last_time = time.time()
 
@@ -100,11 +100,12 @@ class BaseEntity ():
 		for hb in target.hitboxes:
 
 			for shb in self.hitboxes:
+				
+				if hb.y + hb.h > shb.y:
+					if hb.y < shb.y + shb.h:
 			
-				if hb.x + hb.w > shb.x:
-					if hb.x < shb.x + self.w:
-						if hb.y + hb.h > shb.y:
-							if hb.y < shb.y + self.h:
+						if hb.x + hb.w > shb.x:
+							if hb.x < shb.x + self.w:
 								return True
 								break
 
@@ -113,20 +114,22 @@ class BaseEntity ():
 	def base_update(self):
 		self.set_delta_time()
 
-		if not self.is_static:
-			self.gravity_update()
+		if not Globals.is_paused:
 
-		self.update()
+			if not self.last_graphics == Globals.graphics_level:
 
-		if not self.last_graphics == Globals.graphics_level:
+				self.update_graphics()
 
-			self.update_graphics()
+			if not self.is_static:
+				self.gravity_update()
 
-		if self.is_showing:
-			self.render()
+			self.update()
 
-		for hb in self.hitboxes:
-			hb.update()
+			if self.is_showing:
+				self.render()
+
+			for hb in self.hitboxes:
+				hb.update()
 
 	def render (self):
 

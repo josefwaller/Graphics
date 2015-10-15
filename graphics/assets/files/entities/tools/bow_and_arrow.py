@@ -8,7 +8,12 @@ class BowAndArrow (BaseEntity):
 
 	def __init__ (self, x, y):
 
-		self.image = self.img_load("tools/bar.png")
+		self.graphic_images = [
+			self.img_load("tools/bar.png"),
+			self.img_load("tools/16_bar.png")
+		]
+
+		self.image = self.graphic_images[0]
 		self.facing_left = False
 
 		self.w = Globals.block_size
