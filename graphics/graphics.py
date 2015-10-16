@@ -109,6 +109,8 @@ class Main ():
 
 		while True:
 
+			starting_frame_time = time.time()
+
 			for event in pygame.event.get():
 
 				keys = k.new_event(event)
@@ -144,7 +146,8 @@ class Main ():
 
 			pygame.display.flip()
 
-			time.sleep(1 / 60)
+			while time.time() - starting_frame_time < 1 / 60:
+				pass
 
 if __name__ == "__main__":
 
