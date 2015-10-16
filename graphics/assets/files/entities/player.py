@@ -164,10 +164,10 @@ class Player (JumpingEntity):
 				direction = -1
 
 			else:
-				x = self.x + self.h
+				x = self.x + self.w
 				direction = 1
 		
-			Globals.projectiles.append(Arrow(x=x, y=self.y + int(self.h / 2), direction=direction, is_enemy=False))
+			Globals.projectiles.append(Arrow(x=x, y=self.y + int(self.h * (3/5)), direction=direction, is_enemy=False, speed=self.arrow_speed))
 
 			self.drawing_bow = False
 
@@ -241,13 +241,17 @@ class Player (JumpingEntity):
 
 			t = time.time() - self.bow_draw_time
 
-			print(t)
+			self.arrow_speed = 2
 
 			if t > 0.5:
+
+				self.arrow_speed = 20
 
 				self.sprite_indexes = [7]
 
 				if t > 1:
+
+					self.arrow_speed = 40
 
 					self.sprite_indexes = [8]
 
