@@ -9,7 +9,7 @@ class Globals:
     projectiles = []
     tools = []
     checkpoints = []
-    debug = False
+    debug = True
     gravity_strength = 5
     graphics_level = 0
     is_paused = False

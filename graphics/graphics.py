@@ -7,6 +7,7 @@ from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
 
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
+from assets.files.entities.tools.sword import Sword
 
 from assets.files.entities.enemies.walker import Walker
 from assets.files.entities.enemies.wizard import Wizard
@@ -70,11 +71,11 @@ class Main ():
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
 
-			elif thing['type'] == 'archer':
-				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
+			# elif thing['type'] == 'archer':
+			# 	Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
 
-			elif thing['type'] == 'walker':
-				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
+			# elif thing['type'] == 'walker':
+			# 	Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
 			# elif thing['type'] == 'wizard':
 			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
@@ -84,6 +85,9 @@ class Main ():
 
 			elif thing['type'] == 'bar':
 				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
+
+			elif thing['type'] == 'sword':
+				Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
 
 			elif thing['type'] == 'checkpoint':
 				c = Checkpoint(x=thing['x'], y=thing['y'])

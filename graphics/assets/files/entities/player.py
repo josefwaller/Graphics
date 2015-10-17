@@ -21,7 +21,7 @@ class Player (JumpingEntity):
 
 	last_move_time = 0
 
-	drawing_bow = False
+	using_tool = False
 	bow_draw_time = 0
 
 	last_hit = 0
@@ -61,23 +61,44 @@ class Player (JumpingEntity):
 
 				self.img_load("player/bar_shoot_1.png"),
 				self.img_load("player/bar_shoot_2.png"),
-				self.img_load("player/bar_shoot_full.png")
+				self.img_load("player/bar_shoot_full.png"),
+
+				#sword
+				self.img_load("player/sword_1.png"),
+				self.img_load("player/sword_2.png"),
+				self.img_load("player/sword_3.png"),
+
+				self.img_load("player/sword_attack_1.png"),
+				self.img_load("player/sword_attack_2.png"),
+				self.img_load("player/sword_attack_3.png"),
+				self.img_load("player/sword_attack_4.png")
 			],
 			#16-bit
 			[
 
-			self.img_load("player/16_run_1.png"),
-			self.img_load("player/16_run_2.png"),
-			self.img_load("player/16_run_3.png"),
+				self.img_load("player/16_run_1.png"),
+				self.img_load("player/16_run_2.png"),
+				self.img_load("player/16_run_3.png"),
 
-			self.img_load("player/16_bar_1.png"),
-			self.img_load("player/16_bar_2.png"),
-			self.img_load("player/16_bar_3.png"),
+				self.img_load("player/16_bar_1.png"),
+				self.img_load("player/16_bar_2.png"),
+				self.img_load("player/16_bar_3.png"),
 
+				#bar
 
-			self.img_load("player/16_bar_shoot_1.png"),
-			self.img_load("player/16_bar_shoot_2.png"),
-			self.img_load("player/16_bar_shoot.png")
+				self.img_load("player/16_bar_shoot_1.png"),
+				self.img_load("player/16_bar_shoot_2.png"),
+				self.img_load("player/16_bar_shoot_full.png"),
+
+				#sword
+				self.img_load("player/16_sword_1.png"),
+				self.img_load("player/16_sword_2.png"),
+				self.img_load("player/16_sword_3.png"),
+
+				self.img_load("player/16_sword_attack_1.png"),
+				self.img_load("player/16_sword_attack_2.png"),
+				self.img_load("player/16_sword_attack_3.png"),
+				self.img_load("player/16_sword_attack_4.png")
 
 			]
 		]
@@ -101,27 +122,17 @@ class Player (JumpingEntity):
 
 		self.entity_init(x, y)
 
-		self.hitboxes = [
+		self.hitboxes = []
 
-			Hitbox(x=0,y=0,w=self.w,h=self.make_pixelated(12), parent=self),
-			Hitbox(x=self.make_pixelated(2), y=self.make_pixelated(12), w=self.make_pixelated(6), h=self.make_pixelated(7), parent=self)
-		]
+		self.add_hitbox(x=10,y=0,w=10,h=12)
+		self.add_hitbox(x=12, y=12, w=6, h=7)
+		
 
 		self.is_showing = True
 
 	def while_keys_down (self, keys):
 
-		if self.tool == "Bow and Arrow":
-
-			idle_sprites = [4]
-			running_sprites = [3, 4, 5, 4]
-
-		else:
-			idle_sprites = [1]
-			running_sprites = [0, 1, 2, 1]
-
 		if pygame.K_LEFT in keys or pygame.K_RIGHT in keys:
-			self.sprite_indexes = running_sprites
 
 			if pygame.K_LEFT in keys:
 
@@ -136,9 +147,8 @@ class Player (JumpingEntity):
 		if pygame.K_RIGHT not in keys and pygame.K_LEFT not in keys:
 
 			self.x_translate = 0
-			self.sprite_indexes = idle_sprites
 
-		if pygame.K_UP in keys and self.is_grounded and not self.drawing_bow:
+		if pygame.K_UP in keys and self.is_grounded and not self.using_tool:
 
 			self.start_jump()
 
@@ -146,12 +156,18 @@ class Player (JumpingEntity):
 
 			if self.tool == "Bow and Arrow":
 
-				if not self.drawing_bow:
+				if not self.using_tool:
 					self.bow_draw_time = time.time()
 
-				self.drawing_bow = True
+				self.using_tool = True
 
-		elif self.drawing_bow:
+			elif self.tool == "Sword":
+
+				self.sword_time = time.time()
+
+				self.using_tool = True
+
+		elif self.using_tool and self.tool == "Bow and Arrow":
 
 			self.use_tool()
 
@@ -167,16 +183,39 @@ class Player (JumpingEntity):
 				x = self.x + self.w
 				direction = 1
 		
-			Globals.projectiles.append(Arrow(x=x, y=self.y + int(self.h * (3/5)), direction=direction, is_enemy=False, speed=self.arrow_speed))
+			Globals.projectiles.append(Arrow(x=self.x + (self.w / 2), y=self.y + int(self.h * (3/5)), direction=direction, is_enemy=False, speed=self.arrow_speed))
 
-			self.drawing_bow = False
+			self.using_tool = False
+
+		elif self.tool == "Sword":
+
+			pass
 
 
 	def move (self):
 
-		if not self.drawing_bow:
+		if self.tool == "Bow and Arrow":
 
+			idle_sprites = [4]
+			running_sprites = [3, 4, 5, 4]
+
+		elif self.tool == "Sword":
+
+			idle_sprites = [10]
+			running_sprites = [10, 11, 10, 9]
+
+		else:
+			idle_sprites = [1]
+			running_sprites = [0, 1, 2, 1]
+
+		if not self.using_tool:
 			self.x += self.x_translate * self.speed * self.delta_time
+
+			if self.x_translate == 0:
+				self.sprite_indexes = idle_sprites
+
+			else:
+				self.sprite_indexes = running_sprites
 
 			for enemy in Globals.enemies:
 
@@ -230,30 +269,56 @@ class Player (JumpingEntity):
 				self.is_blinking = False
 				self.is_showing = True
 
+	def animate_tool (self):
+
+		if self.using_tool:
+
+			if self.tool == "Bow and Arrow":
+
+				self.sprite_indexes = [6]
+
+				t = time.time() - self.bow_draw_time
+
+				self.arrow_speed = 2
+
+				if t > 0.5:
+
+					self.arrow_speed = 20
+
+					self.sprite_indexes = [7]
+
+					if t > 1:
+
+						self.arrow_speed = 40
+
+						self.sprite_indexes = [8]
+			elif self.tool == "Sword":
+
+				t = time.time() - self.sword_time
+				self.sprite_indexes = [12]
+
+				if t > 0.1:
+
+					self.sprite_indexes = [13]
+
+					if t > 0.2:
+
+						self.sprite_indexes = [14]
+
+						if t > 0.3: 
+
+							self.sprite_indexes = [15]
+
+							if t > 0.4:
+
+								self.using_tool = False
+
 
 	def update (self):
 
 		self.move()
 
-		if self.tool == "Bow and Arrow" and self.drawing_bow:
-
-			self.sprite_indexes = [6]
-
-			t = time.time() - self.bow_draw_time
-
-			self.arrow_speed = 2
-
-			if t > 0.5:
-
-				self.arrow_speed = 20
-
-				self.sprite_indexes = [7]
-
-				if t > 1:
-
-					self.arrow_speed = 40
-
-					self.sprite_indexes = [8]
+		self.animate_tool()
 
 		self.move_camera()
 
