@@ -23,3 +23,7 @@ class BaseEnemy (JumpingEntity):
 			if collide_x and collide_y:
 
 				Globals.player.on_hit()
+
+	def on_death (self):
+
+		Globals.enemies.remove(self)

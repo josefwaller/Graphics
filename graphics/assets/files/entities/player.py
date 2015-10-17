@@ -22,7 +22,10 @@ class Player (JumpingEntity):
 	last_move_time = 0
 
 	using_tool = False
+
+	sword_time = 0
 	bow_draw_time = 0
+	sword_range = 20
 
 	last_hit = 0
 	recover_delay = 3
@@ -189,7 +192,27 @@ class Player (JumpingEntity):
 
 		elif self.tool == "Sword":
 
-			pass
+			print("using sword")
+
+			for enemy in Globals.enemies:
+
+				for hb in enemy.hitboxes:
+
+					if self.facing_left:
+
+						if hb.x < self.x:
+
+							if hb.x > self.x - self.sword_range:
+
+								enemy.on_death()
+
+					else:
+
+						if hb.x > self.x + self.w:
+
+							if hb.x < self.x + self.w + self.sword_range:
+
+								enemy.on_death()
 
 
 	def move (self):
@@ -304,6 +327,8 @@ class Player (JumpingEntity):
 					if t > 0.2:
 
 						self.sprite_indexes = [14]
+
+						self.use_tool()
 
 						if t > 0.3: 
 

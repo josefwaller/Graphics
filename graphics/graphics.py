@@ -74,8 +74,8 @@ class Main ():
 			# elif thing['type'] == 'archer':
 			# 	Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
 
-			# elif thing['type'] == 'walker':
-			# 	Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
+			elif thing['type'] == 'walker':
+				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
 			# elif thing['type'] == 'wizard':
 			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
