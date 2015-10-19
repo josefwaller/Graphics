@@ -73,7 +73,6 @@ class Checkpoint (BaseEntity):
 				self.flag_rising = False
 				self.flag_risen = True
 				self.flag.y = self.pole.y
-				print("flag risen")
 
 		self.render()
 

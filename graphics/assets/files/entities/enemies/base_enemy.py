@@ -3,6 +3,8 @@ from assets.files.utilities.globals import Globals
 
 class BaseEnemy (JumpingEntity):
 
+	is_dead = False
+
 	def check_for_player_collision (self):
 
 		collide_x = False
@@ -26,4 +28,8 @@ class BaseEnemy (JumpingEntity):
 
 	def on_death (self):
 
-		Globals.enemies.remove(self)
+		if not self.is_dead:
+
+			Globals.enemies.remove(self)
+
+			self.is_dead = True

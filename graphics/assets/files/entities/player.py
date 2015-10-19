@@ -192,15 +192,13 @@ class Player (JumpingEntity):
 
 		elif self.tool == "Sword":
 
-			print("using sword")
-
 			for enemy in Globals.enemies:
 
 				for hb in enemy.hitboxes:
 
 					if self.facing_left:
 
-						if hb.x < self.x:
+						if hb.x < self.x :
 
 							if hb.x > self.x - self.sword_range:
 

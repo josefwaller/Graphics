@@ -114,11 +114,11 @@ class BaseEntity ():
 	def base_update(self):
 		self.set_delta_time()
 
+		if not self.last_graphics == Globals.graphics_level:
+
+			self.update_graphics()
+
 		if not Globals.is_paused:
-
-			if not self.last_graphics == Globals.graphics_level:
-
-				self.update_graphics()
 
 			if not self.is_static:
 				self.gravity_update()
