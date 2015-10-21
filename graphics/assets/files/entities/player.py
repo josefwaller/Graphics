@@ -1,7 +1,8 @@
 from assets.files.entities.jumping_entity import JumpingEntity
-from assets.files.utilities.globals import Globals
-
 from assets.files.entities.projectiles.arrow import Arrow
+from assets.files.entities.current_tool import CurrentTool
+
+from assets.files.utilities.globals import Globals
 from assets.files.utilities.hitbox import Hitbox
 
 import time
@@ -38,8 +39,8 @@ class Player (JumpingEntity):
 	is_dead = None
 	checkpoint = None
 
-	
 	tool = None
+	tool_entity = None
 
 	def __init__(self, x, y):
 
@@ -57,19 +58,9 @@ class Player (JumpingEntity):
 				self.img_load("player/run_2.png"),
 				self.img_load("player/run_3.png"),
 
-				#Bow and arrow
-				self.img_load("player/bar_1.png"),
-				self.img_load("player/bar_2.png"),
-				self.img_load("player/bar_3.png"),
-
 				self.img_load("player/bar_shoot_1.png"),
 				self.img_load("player/bar_shoot_2.png"),
 				self.img_load("player/bar_shoot_full.png"),
-
-				#sword
-				self.img_load("player/sword_1.png"),
-				self.img_load("player/sword_2.png"),
-				self.img_load("player/sword_3.png"),
 
 				self.img_load("player/sword_attack_1.png"),
 				self.img_load("player/sword_attack_2.png"),
@@ -83,20 +74,11 @@ class Player (JumpingEntity):
 				self.img_load("player/16_run_2.png"),
 				self.img_load("player/16_run_3.png"),
 
-				self.img_load("player/16_bar_1.png"),
-				self.img_load("player/16_bar_2.png"),
-				self.img_load("player/16_bar_3.png"),
-
 				#bar
 
 				self.img_load("player/16_bar_shoot_1.png"),
 				self.img_load("player/16_bar_shoot_2.png"),
 				self.img_load("player/16_bar_shoot_full.png"),
-
-				#sword
-				self.img_load("player/16_sword_1.png"),
-				self.img_load("player/16_sword_2.png"),
-				self.img_load("player/16_sword_3.png"),
 
 				self.img_load("player/16_sword_attack_1.png"),
 				self.img_load("player/16_sword_attack_2.png"),
@@ -130,8 +112,8 @@ class Player (JumpingEntity):
 		self.add_hitbox(x=10,y=0,w=10,h=12)
 		self.add_hitbox(x=12, y=12, w=6, h=7)
 		
-
 		self.is_showing = True
+
 
 	def while_keys_down (self, keys):
 
@@ -215,19 +197,8 @@ class Player (JumpingEntity):
 
 	def move (self):
 
-		if self.tool == "Bow and Arrow":
-
-			idle_sprites = [4]
-			running_sprites = [3, 4, 5, 4]
-
-		elif self.tool == "Sword":
-
-			idle_sprites = [10]
-			running_sprites = [10, 11, 10, 9]
-
-		else:
-			idle_sprites = [1]
-			running_sprites = [0, 1, 2, 1]
+		idle_sprites = [1]
+		running_sprites = [0, 1, 2, 1]
 
 		if not self.using_tool:
 			self.x += self.x_translate * self.speed * self.delta_time
@@ -294,9 +265,11 @@ class Player (JumpingEntity):
 
 		if self.using_tool:
 
+			Globals.player_tool_sprite.is_showing = False
+
 			if self.tool == "Bow and Arrow":
 
-				self.sprite_indexes = [6]
+				self.sprite_indexes = [3]
 
 				t = time.time() - self.bow_draw_time
 
@@ -306,35 +279,60 @@ class Player (JumpingEntity):
 
 					self.arrow_speed = 20
 
-					self.sprite_indexes = [7]
+					self.sprite_indexes = [4]
 
 					if t > 1:
 
 						self.arrow_speed = 40
 
-						self.sprite_indexes = [8]
+						self.sprite_indexes = [5]
 			elif self.tool == "Sword":
 
 				t = time.time() - self.sword_time
-				self.sprite_indexes = [12]
+				self.sprite_indexes = [6]
 
 				if t > 0.1:
 
-					self.sprite_indexes = [13]
+					self.sprite_indexes = [7]
 
 					if t > 0.2:
 
-						self.sprite_indexes = [14]
+						self.sprite_indexes = [8]
 
 						self.use_tool()
 
 						if t > 0.3: 
 
-							self.sprite_indexes = [15]
+							self.sprite_indexes = [9]
 
 							if t > 0.4:
 
 								self.using_tool = False
+
+		else:
+
+			Globals.player_tool_sprite.is_showing = True
+
+			if self.tool == "Bow and Arrow":
+
+				sprite_addon = 3
+
+			elif self.tool == "Sword":
+
+				sprite_addon = 0
+
+			elif self.tool == None:
+
+				Globals.player_tool_sprite.is_showing = False
+				return
+
+			try:
+
+				Globals.player_tool_sprite.sprite_indexes = [sprite_addon + self.sprite_indexes[self.this_index]]
+
+			except IndexError:
+
+				Globals.player_tool_sprite.sprite_indexes = [1 + sprite_addon]
 
 
 	def update (self):

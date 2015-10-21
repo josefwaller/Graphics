@@ -6,6 +6,7 @@ import time
 from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
 
+from assets.files.entities.current_tool import CurrentTool
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
 from assets.files.entities.tools.sword import Sword
 
@@ -111,6 +112,8 @@ class Main ():
 
 		g = EndBlock(x=5, y=2, num=16)
 
+		Globals.player_tool_sprite = CurrentTool()
+
 		while True:
 
 			starting_frame_time = time.time()
@@ -126,6 +129,8 @@ class Main ():
 			sky.base_update()
 
 			Globals.player.base_update()
+
+			Globals.player_tool_sprite.update()
 
 			for c in Globals.checkpoints:
 				c.base_update()
