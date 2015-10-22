@@ -10,6 +10,7 @@ class Walker (BaseEnemy):
 	speed = 100
 
 	def __init__(self, x, y, turn1, turn2, facing_left=True):
+
 		self.facing_left = facing_left
 
 		if turn1 > turn2:
@@ -48,11 +49,10 @@ class Walker (BaseEnemy):
 			1
 		]
 
-		self.entity_init(x, y)
-
-		self.hitboxes = []
 		self.add_hitbox(x=4, y=3, w=8, h=6)
 		self.add_hitbox(x=6, y=9, w=5, h=8)
+
+		self.entity_init(x, y)
 
 	def move (self):
 

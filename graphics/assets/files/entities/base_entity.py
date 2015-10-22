@@ -36,12 +36,31 @@ class BaseEntity ():
 
 	last_time = 0
 
+	last_position = {}
+
 	is_showing = True
 	is_static = True
 
+	least_x = 0
+
+	def clip_to_hitboxes (self):
+
+		self.least_x = self.w
+
+		for hb in self.hitboxes:
+
+			if hb.offset_x < self.least_x:
+
+				self.least_x = hb.offset_x
+
+		for hb in self.hitboxes:
+
+			hb.offset_x -= self.least_x
+
+
 	def img_load(self, url):
 
-		full_url = "assets/images/%s" % url
+		full_url = "assets/images/%s" % url 
 
 		image = pygame.image.load(full_url).convert_alpha()
 
@@ -67,6 +86,8 @@ class BaseEntity ():
 			self.hitboxes = [
 				Hitbox(x=0, y=0, h=self.h, w=self.w, parent=self)
 			]
+
+		self.clip_to_hitboxes()
 
 	def add_hitbox (self, x, y, w, h):
 
@@ -114,6 +135,9 @@ class BaseEntity ():
 	def base_update(self):
 		self.set_delta_time()
 
+		self.last_position['x'] = self.x
+		self.last_position['y'] = self.y
+
 		if not self.last_graphics == Globals.graphics_level:
 
 			self.update_graphics()
@@ -125,11 +149,23 @@ class BaseEntity ():
 
 			self.update()
 
+			self.check_platform_collision()
+
 			if self.is_showing:
 				self.render()
 
 			for hb in self.hitboxes:
 				hb.update()
+
+	def check_platform_collision(self):
+
+		pass
+
+		# for platform in Globals.platform:
+
+		# 	if self.check_for_collision(platform):
+
+		# 		if 
 
 	def render (self):
 
@@ -154,11 +190,13 @@ class BaseEntity ():
 
 		sprite = pygame.transform.scale(sprite, (self.w, self.h))
 
+		x = self.x + Globals.camera_offset['x'] - self.least_x
+
 		if not self.facing_left:
 
 			sprite = pygame.transform.flip(sprite, True, False)
 
-		Globals.window.blit(sprite, (self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y']))
+		Globals.window.blit(sprite, (x, self.y + Globals.camera_offset['y']))
 
 	def update_graphics (self):
 				
@@ -187,7 +225,7 @@ class BaseEntity ():
 				collide_x = False
 				collide_y = False
 
-				if self.x <= platform.x + platform.w * Globals.block_size:
+				if self.x <= platform.x + platform.w:
 					if self.x + self.w >= platform.x:
 
 						collide_x = True
@@ -210,7 +248,7 @@ class BaseEntity ():
 
 			platform = self.platform_under
 
-			if platform == None or self.x > platform.x + platform.w * Globals.block_size or self.x + self.w < platform.x:
+			if platform == None or self.x > platform.x + platform.w or self.x + self.w < platform.x:
 
 				self.is_grounded = False
 				self.momY = 0

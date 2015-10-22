@@ -50,12 +50,9 @@ class Archer (SmartEnemy):
 		self.attack_duration = 1
 
 		self.visible_range = 10 * Globals.block_size
-
-		self.hitboxes = []
 		self.add_hitbox(x=3, y=2, w=7, h=6)
 		self.add_hitbox(x=4, y=7, w=4, h=8)
 
-		self.entity_init(x, y)
 
 	def attack (self):
 

@@ -15,15 +15,15 @@ class Platform (BaseEntity):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
-		self.w = w
-		self.h = h
+		self.w = w * Globals.block_size
+		self.h = h * Globals.block_size
 		self.s = Globals.block_size
 
 		self.update_inner_block = update_inner_block
 		self.update_top_block = update_top_block
 
 		self.hitboxes = [
-			Hitbox(x=0, y=0, w=self.w * Globals.block_size, h=self.h * Globals.block_size, parent=self)
+			Hitbox(x=0, y=0, w=self.w, h=self.h, parent=self)
 		]
 
 		self.top_block = self.img_load(top_block)
@@ -32,7 +32,17 @@ class Platform (BaseEntity):
 			self.inner_block = self.img_load(inner_block)
 
 	def update (self):
-		pass
+
+		if not self.last_graphics == Globals.graphics_level:
+
+			self.update_graphics()
+
+		if self.is_showing:
+			self.render()
+
+		for hb in self.hitboxes:
+
+			hb.update()
 
 	def update_graphics (self):
 
@@ -47,10 +57,10 @@ class Platform (BaseEntity):
 		if self.h > 1:
 			inner_block = pygame.transform.scale(self.inner_block, (self.s, self.s))
 
-		for h in range(self.h):
+		for h in range(int(self.h / Globals.block_size)):
 			y = self.y + (Globals.block_size * h)
 
-			for w in range(self.w):
+			for w in range(int(self.w / Globals.block_size)):
 				x = self.x + (Globals.block_size * w) + Globals.camera_offset['x']
 
 				if h == 0:

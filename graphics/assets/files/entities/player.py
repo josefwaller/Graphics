@@ -105,13 +105,11 @@ class Player (JumpingEntity):
 
 		self.last_move_time = time.time()
 
-		self.entity_init(x, y)
-
-		self.hitboxes = []
-
 		self.add_hitbox(x=10,y=0,w=10,h=12)
 		self.add_hitbox(x=12, y=12, w=6, h=7)
 		
+
+		self.entity_init(x, y)
 		self.is_showing = True
 
 

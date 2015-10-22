@@ -143,7 +143,7 @@ class Main ():
 
 			for platform in Globals.platforms:
 
-				platform.base_update()
+				platform.update()
 
 			for projectile in Globals.projectiles:
 
