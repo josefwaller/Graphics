@@ -16,6 +16,9 @@ class BaseEntity ():
 	w = 0
 	h = 0
 
+	img_w = 0
+	img_h = 0
+
 	unix = 0
 
 	is_animated = False
@@ -43,9 +46,19 @@ class BaseEntity ():
 
 	least_x = 0
 
+
+	#Clips the entity dimensions to its hitboxes
+	#helps with collision detection
+
 	def clip_to_hitboxes (self):
 
 		self.least_x = self.w
+		self.least_y = self.h
+
+		most_w = 0
+		most_h = 0
+
+		#Cycles through to find the hitbox closest to the left/top
 
 		for hb in self.hitboxes:
 
@@ -53,9 +66,34 @@ class BaseEntity ():
 
 				self.least_x = hb.offset_x
 
+			if hb.offset_y < self.least_y:
+
+				self.least_y = hb.offset_y
+
+				print(hb.y)
+
+		#Changes all hitbox x/y values accordingly
+
 		for hb in self.hitboxes:
 
 			hb.offset_x -= self.least_x
+
+			hb.offset_y -= self.least_y
+
+		#Changes the player width/height to fit
+
+		for hb in self.hitboxes:
+
+			if hb.x + hb.w > most_w:
+
+				most_w = hb.x + hb.w
+
+			if hb.y + hb.h > most_h:
+
+				most_h = hb.y + hb.h
+
+		self.w = most_w
+		self.h = most_h
 
 
 	def img_load(self, url):
@@ -70,8 +108,8 @@ class BaseEntity ():
 
 		if self.is_animated:
 
-			self.h = self.make_pixelated(self.sprites[0].get_size()[1])
-			self.w = self.make_pixelated(self.sprites[0].get_size()[0])
+			self.img_h = self.make_pixelated(self.sprites[0].get_size()[1])
+			self.img_w = self.make_pixelated(self.sprites[0].get_size()[0])
 
 		else:
 			self.h = self.make_pixelated(self.image.get_size()[1])
@@ -188,7 +226,7 @@ class BaseEntity ():
 
 			sprite = self.image
 
-		sprite = pygame.transform.scale(sprite, (self.w, self.h))
+		sprite = pygame.transform.scale(sprite, (self.img_w, self.img_h))
 
 		x = self.x + Globals.camera_offset['x'] - self.least_x
 
