@@ -44,16 +44,35 @@ class BaseEntity ():
 	is_showing = True
 	is_static = True
 
-	least_x = 0
+	hitboxes = None
 
+	least_x = 0
+	least_y = 0
+
+
+	def entity_init (self, x, y):
+
+		if self.is_animated:
+
+			self.img_h = self.make_pixelated(self.sprites[0].get_size()[1])
+			self.img_w = self.make_pixelated(self.sprites[0].get_size()[0])
+
+		else:
+			self.h = self.make_pixelated(self.image.get_size()[1])
+			self.w = self.make_pixelated(self.image.get_size()[0])
+
+		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
+		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
+
+		self.clip_to_hitboxes()
 
 	#Clips the entity dimensions to its hitboxes
 	#helps with collision detection
 
 	def clip_to_hitboxes (self):
 
-		self.least_x = self.w
-		self.least_y = self.h
+		self.least_x = 5 * Globals.block_size
+		self.least_y = 5 * Globals.block_size
 
 		most_w = 0
 		most_h = 0
@@ -70,8 +89,6 @@ class BaseEntity ():
 
 				self.least_y = hb.offset_y
 
-				print(hb.y)
-
 		#Changes all hitbox x/y values accordingly
 
 		for hb in self.hitboxes:
@@ -84,13 +101,13 @@ class BaseEntity ():
 
 		for hb in self.hitboxes:
 
-			if hb.x + hb.w > most_w:
+			if hb.offset_x + hb.w > most_w:
 
-				most_w = hb.x + hb.w
+				most_w = hb.offset_x + hb.w
 
-			if hb.y + hb.h > most_h:
+			if hb.offset_y + hb.h > most_h:
 
-				most_h = hb.y + hb.h
+				most_h = hb.offset_y + hb.h
 
 		self.w = most_w
 		self.h = most_h
@@ -98,46 +115,26 @@ class BaseEntity ():
 
 	def img_load(self, url):
 
-		full_url = "assets/images/%s" % url 
+		try:
 
-		image = pygame.image.load(full_url).convert_alpha()
+			full_url = "assets/images/%s" % url 
+
+			image = pygame.image.load(full_url).convert_alpha()
+
+		except:
+			pass
 
 		return image 
 
-	def entity_init (self, x, y):
-
-		if self.is_animated:
-
-			self.img_h = self.make_pixelated(self.sprites[0].get_size()[1])
-			self.img_w = self.make_pixelated(self.sprites[0].get_size()[0])
-
-		else:
-			self.h = self.make_pixelated(self.image.get_size()[1])
-			self.w = self.make_pixelated(self.image.get_size()[0])
-
-		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
-		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
-
-		try:
-			self.hitboxes
-		except AttributeError:
-			self.hitboxes = [
-				Hitbox(x=0, y=0, h=self.h, w=self.w, parent=self)
-			]
-
-		self.clip_to_hitboxes()
-
 	def add_hitbox (self, x, y, w, h):
+
+		if self.hitboxes == None:
+			self.hitboxes = []
 
 		x = self.make_pixelated(x)
 		y = self.make_pixelated(y)
 		w = self.make_pixelated(w)
 		h = self.make_pixelated(h)
-
-		try:
-			self.hitboxes
-		except AttributeError:
-			self.hitboxes = []
 
 		self.hitboxes.append(Hitbox(x=x, y=y, w=w, h=h, parent=self))
 
@@ -156,18 +153,15 @@ class BaseEntity ():
 
 	def check_for_collision(self, target):
 
-		for hb in target.hitboxes:
+		for thb in target.hitboxes:
 
 			for shb in self.hitboxes:
 				
-				if hb.y + hb.h > shb.y:
-					if hb.y < shb.y + shb.h:
-			
-						if hb.x + hb.w > shb.x:
-							if hb.x < shb.x + self.w:
+				if shb.y < thb.y + thb.h:
+					if shb.y + shb.h > thb.y:
+						if shb.x < thb.x + thb.w:
+							if shb.x + shb.w > thb.x:
 								return True
-								break
-
 		return False
 
 	def base_update(self):
@@ -184,10 +178,10 @@ class BaseEntity ():
 
 			if not self.is_static:
 				self.gravity_update()
-
+ 
 			self.update()
 
-			self.check_platform_collision()
+			# self.check_platform_collision()
 
 			if self.is_showing:
 				self.render()
@@ -195,15 +189,22 @@ class BaseEntity ():
 			for hb in self.hitboxes:
 				hb.update()
 
+	def print_hitboxes (self):
+		for hb in self.hitboxes:
+			print("x:%s, y:%s, w:%s, h:%s" % (hb.x, hb.y, hb.w, hb.h))
+
 	def check_platform_collision(self):
 
-		pass
+		for platform in Globals.platforms:
 
-		# for platform in Globals.platform:
+			if self.check_for_collision(platform):
 
-		# 	if self.check_for_collision(platform):
+				if self.last_position['x'] <= platform.x:
 
-		# 		if 
+					self.x = platform.x - self.w
+
+				else:
+					self.x = platform.x + platform.w
 
 	def render (self):
 
@@ -226,15 +227,25 @@ class BaseEntity ():
 
 			sprite = self.image
 
+
+
 		sprite = pygame.transform.scale(sprite, (self.img_w, self.img_h))
 
 		x = self.x + Globals.camera_offset['x'] - self.least_x
+
+		y = self.y + Globals.camera_offset['y'] - self.least_y
 
 		if not self.facing_left:
 
 			sprite = pygame.transform.flip(sprite, True, False)
 
-		Globals.window.blit(sprite, (x, self.y + Globals.camera_offset['y']))
+		Globals.window.blit(sprite, (x, y))
+
+		if Globals.debug:
+
+			red = (255, 0, 0)
+
+			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
 
 	def update_graphics (self):
 				

@@ -84,23 +84,23 @@ class Main ():
 			# elif thing['type'] == 'jumper':
 			# 	Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
 
-			elif thing['type'] == 'bar':
-				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
+			# elif thing['type'] == 'bar':
+			# 	Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
 
-			elif thing['type'] == 'sword':
-				Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
+			# elif thing['type'] == 'sword':
+			# 	Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
 
-			elif thing['type'] == 'checkpoint':
-				c = Checkpoint(x=thing['x'], y=thing['y'])
-				Globals.checkpoints.append(c)
+			# elif thing['type'] == 'checkpoint':
+			# 	c = Checkpoint(x=thing['x'], y=thing['y'])
+			# 	Globals.checkpoints.append(c)
 
-				try:
-					if thing['is_starter'] == True:
-						Globals.player.checkpoint = c
-						c.flag_rising = True
-						print("ASDF")
-				except IndexError:
-					pass
+			# 	try:
+			# 		if thing['is_starter'] == True:
+			# 			Globals.player.checkpoint = c
+			# 			c.flag_rising = True
+			# 			print("ASDF")
+			# 	except KeyError:
+			# 		pass
 
 		self.play_game()
 

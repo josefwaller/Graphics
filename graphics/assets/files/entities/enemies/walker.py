@@ -54,6 +54,8 @@ class Walker (BaseEnemy):
 
 		self.entity_init(x, y)
 
+		self.name = "Walker 1"
+
 	def move (self):
 
 		if self.facing_left == True:

@@ -154,6 +154,10 @@ class Player (JumpingEntity):
 
 			self.use_tool()
 
+		if pygame.K_d in keys:
+
+			print(len(self.hitboxes))
+
 	def use_tool (self):
 
 		if self.tool == "Bow and Arrow":
@@ -168,7 +172,7 @@ class Player (JumpingEntity):
 		
 			Globals.projectiles.append(Arrow(x=self.x + (self.w / 2), y=self.y + int(self.h * (3/5)), direction=direction, is_enemy=False, speed=self.arrow_speed))
 
-			self.using_tool = False
+			self.using_tool = Falsse
 
 		elif self.tool == "Sword":
 

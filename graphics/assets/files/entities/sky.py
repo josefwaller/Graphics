@@ -28,7 +28,6 @@ class Sky (BaseEntity):
 		self.hitboxes = []
 
 	def update (self):
-		pass
 
 		self.x = Globals.camera_offset['x'] / 20
 

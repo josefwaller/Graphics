@@ -14,3 +14,4 @@ class Globals:
     gravity_strength = 5
     graphics_level = 0
     is_paused = False
+    pop_up_m = None

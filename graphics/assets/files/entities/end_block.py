@@ -11,6 +11,8 @@ class EndBlock (BaseEntity):
 			self.img_load("blocks/16_up_graphics_16.png")
 
 		]
+		self.image = self.graphic_images[0]
+
 		self.is_animated = False
 
 		self.facing_left = True
@@ -19,13 +21,16 @@ class EndBlock (BaseEntity):
 
 		self.used = False
 
-		self.update_graphics()
+		self.add_hitbox(0, 0, 1, 1)
 
 		self.entity_init(x, y)
+
+		self.update_graphics()
 
 	def update(self):
 
 		if self.check_for_collision(Globals.player) and not self.used:
+			return
 			
 			Globals.graphics_level += 1
 

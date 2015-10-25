@@ -35,11 +35,13 @@ class CurrentTool (BaseEntity):
 		self.w = Globals.player.w
 		self.h = Globals.player.h
 
+		self.least_x = 0
+
 		self.is_animated = True
 
 		self.sprite_indexes = [0]
 
-		self.is_showing = False
+		self.is_showing = True
 
 	def update (self):
 

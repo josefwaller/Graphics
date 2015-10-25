@@ -20,25 +20,15 @@ class Hitbox ():
 		self.h = h
 		self.parent = parent
 
-		self.last = {
-			"x": x,
-			"y": y
-		}
-
 		self.update()
 
 	def update (self):
-
-		if not self.x == None:
-
-			self.last['x'] = self.x
-			self.last['y'] = self.y
 
 		if self.parent.facing_left:
 			self.x = self.parent.x + self.offset_x
 
 		else:
-			self.x = self.parent.x  + self.offset_x
+			self.x = self.parent.x + self.offset_x
 
 		self.y = self.parent.y + self.offset_y
 
