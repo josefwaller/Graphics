@@ -5,6 +5,8 @@ class BowAndArrow (BaseTool):
 
 	def __init__ (self, x, y):
 
+		self.is_tool = True
+
 		self.graphic_images = [
 			self.img_load("tools/bar.png"),
 			self.img_load("tools/16_bar.png")
@@ -12,9 +14,8 @@ class BowAndArrow (BaseTool):
 
 		self.tool_init()
 
-		self.entity_init(0, 0)
-
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 
+		self.clip_to_hitboxes()
 		self.tool_name = "Bow and Arrow"

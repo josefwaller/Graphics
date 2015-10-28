@@ -33,6 +33,8 @@ class Checkpoint (BaseEntity):
 		]
 		self.flag.image = self.flag.graphic_images[0]
 		self.flag.facing_left = True
+		self.flag.is_static = True
+		self.flag.resize_images()
 
 		self.flag_speed = 300
 
@@ -49,6 +51,10 @@ class Checkpoint (BaseEntity):
 			self.img_load("props/16_pole.png")
 		]
 		self.pole.image = self.pole.graphic_images[0]
+		self.pole.is_static = True
+		self.pole.resize_images()
+
+		self.is_static = True
 
 		self.hitboxes = []
 

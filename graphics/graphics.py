@@ -78,29 +78,29 @@ class Main ():
 			elif thing['type'] == 'walker':
 				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
-			# elif thing['type'] == 'wizard':
-			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
+			elif thing['type'] == 'wizard':
+				Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
 
 			# elif thing['type'] == 'jumper':
 			# 	Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
 
-			# elif thing['type'] == 'bar':
-			# 	Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
+			elif thing['type'] == 'bar':
+				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
 
-			# elif thing['type'] == 'sword':
-			# 	Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
+			elif thing['type'] == 'sword':
+				Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
 
-			# elif thing['type'] == 'checkpoint':
-			# 	c = Checkpoint(x=thing['x'], y=thing['y'])
-			# 	Globals.checkpoints.append(c)
+			elif thing['type'] == 'checkpoint':
+				c = Checkpoint(x=thing['x'], y=thing['y'])
+				Globals.checkpoints.append(c)
 
-			# 	try:
-			# 		if thing['is_starter'] == True:
-			# 			Globals.player.checkpoint = c
-			# 			c.flag_rising = True
-			# 			print("ASDF")
-			# 	except KeyError:
-			# 		pass
+				try:
+					if thing['is_starter'] == True:
+						Globals.player.checkpoint = c
+						c.flag_rising = True
+						print("ASDF")
+				except KeyError:
+					pass
 
 		self.play_game()
 
@@ -113,6 +113,7 @@ class Main ():
 		g = EndBlock(x=5, y=2, num=16)
 
 		Globals.player_tool_sprite = CurrentTool()
+		pygame.init()
 
 		while True:
 

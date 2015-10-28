@@ -32,8 +32,8 @@ class CurrentTool (BaseEntity):
 		self.x = Globals.player.x
 		self.y = Globals.player.y
 
-		self.w = Globals.player.w
-		self.h = Globals.player.h
+		self.img_w = Globals.player.img_w
+		self.img_h = Globals.player.img_h
 
 		self.least_x = 0
 
@@ -43,10 +43,12 @@ class CurrentTool (BaseEntity):
 
 		self.is_showing = True
 
+		self.resize_images()
+
 	def update (self):
 
-		self.x = Globals.player.x
-		self.y = Globals.player.y
+		self.x = Globals.player.x - Globals.player.least_x
+		self.y = Globals.player.y - Globals.player.least_y
 
 		self.facing_left = Globals.player.facing_left
 

@@ -42,7 +42,7 @@ class BaseEntity ():
 	last_position = {}
 
 	is_showing = True
-	is_static = True
+	is_static = False
 
 	hitboxes = None
 
@@ -64,12 +64,48 @@ class BaseEntity ():
 		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
 		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
 
+		self.least_x = 0
+		self.least_y = 0
+
+		self.resize_images()
+
 		self.clip_to_hitboxes()
+		
+	def resize_images (self):
+
+		if self.is_animated:
+
+			for x in range(len(self.graphic_sprites)):
+
+				for i in range(len(self.graphic_sprites[x])):
+
+					if self.is_static:
+						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.w, self.h))
+					else:
+
+						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.img_w, self.img_h))
+
+		else:
+
+			for i in range(len(self.graphic_images)):
+
+				self.graphic_images[i] = pygame.transform.scale(self.graphic_images[i], (self.w, self.h))
+
+			self.image = self.graphic_images[0]
 
 	#Clips the entity dimensions to its hitboxes
 	#helps with collision detection
 
 	def clip_to_hitboxes (self):
+
+		if self.hitboxes == None:
+
+			self.hitboxes = []
+
+		if self.is_static:
+
+			self.add_hitbox(x=0, y=0, w=16, h=16)
+			return
 
 		self.least_x = 5 * Globals.block_size
 		self.least_y = 5 * Globals.block_size
@@ -226,14 +262,14 @@ class BaseEntity ():
 		else:
 
 			sprite = self.image
+		x = self.x + Globals.camera_offset['x']
 
+		y = self.y + Globals.camera_offset['y']
 
+		if not self.is_static:
 
-		sprite = pygame.transform.scale(sprite, (self.img_w, self.img_h))
-
-		x = self.x + Globals.camera_offset['x'] - self.least_x
-
-		y = self.y + Globals.camera_offset['y'] - self.least_y
+			x -= self.least_x
+			y -= self.least_y
 
 		if not self.facing_left:
 
@@ -246,6 +282,9 @@ class BaseEntity ():
 			red = (255, 0, 0)
 
 			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
+
+
+
 
 	def update_graphics (self):
 				

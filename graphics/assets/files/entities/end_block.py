@@ -14,6 +14,7 @@ class EndBlock (BaseEntity):
 		self.image = self.graphic_images[0]
 
 		self.is_animated = False
+		self.is_static = True
 
 		self.facing_left = True
 

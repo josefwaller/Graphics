@@ -13,8 +13,6 @@ class Sword (BaseTool):
 
 		self.tool_init()
 
-		self.entity_init(0, 0)
-
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
 

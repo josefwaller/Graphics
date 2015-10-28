@@ -28,14 +28,17 @@ class Missile (BaseProjectile):
 		self.momX = 30 * direction
 		self.momY = 0
 
-		self.turn_speed = 5
+		self.turn_speed = 500
 
 		self.is_animated = False
+		self.is_static = True
 		self.graphic_images = [
 			self.img_load("enemies/wizard/missile.png"),
 			self.img_load("enemies/wizard/16_missile.png")
 		]
 		self.image = self.graphic_images[0]
+
+		self.add_hitbox(x=0, y=0, w=2, h=2)
 
 		self.entity_init(x, y)
 
@@ -61,12 +64,12 @@ class Missile (BaseProjectile):
 
 				y_translate = 1
 
-			elif Globals.player.y + Globals.player.h < self.y:
+			elif Globals.player.y < self.y:
 
 				y_translate = -1
 
-			self.momX += x_translate * self.turn_speed
-			self.momY += y_translate * self.turn_speed
+			self.momX += x_translate * self.turn_speed * self.delta_time
+			self.momY += y_translate * self.turn_speed * self.delta_time
 
 			self.x += self.momX * self.speed * self.delta_time
 			self.y += self.momY * self.speed * self.delta_time

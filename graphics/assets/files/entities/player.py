@@ -172,7 +172,7 @@ class Player (JumpingEntity):
 		
 			Globals.projectiles.append(Arrow(x=self.x + (self.w / 2), y=self.y + int(self.h * (3/5)), direction=direction, is_enemy=False, speed=self.arrow_speed))
 
-			self.using_tool = Falsse
+			self.using_tool = False
 
 		elif self.tool == "Sword":
 

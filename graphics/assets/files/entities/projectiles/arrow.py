@@ -15,13 +15,16 @@ class Arrow (BaseProjectile):
 			self.img_load("enemies/archer/16_arrow.png")
 		]
 
-		self.image = self.img_load("enemies/archer/arrow.png")
+		self.image = self.graphic_images[0]
 
 		self.direction = direction
 
 		self.is_enemy = is_enemy
+		
+		self.add_hitbox(x=0, y=0, h=2, w=6)
 
 		self.is_static = False
+		self.is_animated = False
 
 		if self.direction == 1:
 			self.facing_left = True
