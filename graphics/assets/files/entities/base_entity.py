@@ -102,8 +102,6 @@ class BaseEntity ():
 
 			self.hitboxes = []
 
-		if self.is_static:
-
 			self.add_hitbox(x=0, y=0, w=16, h=16)
 			return
 

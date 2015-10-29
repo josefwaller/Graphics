@@ -38,7 +38,7 @@ class Missile (BaseProjectile):
 		]
 		self.image = self.graphic_images[0]
 
-		self.add_hitbox(x=0, y=0, w=2, h=2)
+		self.add_hitbox(x=0, y=0, w=6, h=6)
 
 		self.entity_init(x, y)
 
@@ -52,21 +52,35 @@ class Missile (BaseProjectile):
 
 		if self.is_enemy:
 
-			if Globals.player.x  + Globals.player.w > self.x:
+			if Globals.player.x > self.x + self.w:
 
 				x_translate = 1
 
-			elif Globals.player.x < self.x + self.w:
+			elif Globals.player.x + Globals.player.w < self.x:
 
 				x_translate = -1
 
-			if Globals.player.y > self.y:
+			elif Globals.player.x + Globals.player.w > self.x and Globals.player.x < self.x + self.w:
+
+				if self.momX > 0:
+					x_translate = -1
+				elif self.momX < 0:
+					x_translate = 1
+
+			if Globals.player.y > self.y + self.h:
 
 				y_translate = 1
 
-			elif Globals.player.y < self.y:
+			elif Globals.player.y + Globals.player.h < self.y:
 
 				y_translate = -1
+
+			elif Globals.player.y < self.y + self.w and Globals.player.y + Globals.player.h > self.y:
+
+				if self.momY > 0:
+					y_translate = -1
+				elif self.momY < 0:
+					y_translate = 1
 
 			self.momX += x_translate * self.turn_speed * self.delta_time
 			self.momY += y_translate * self.turn_speed * self.delta_time

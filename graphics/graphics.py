@@ -98,7 +98,6 @@ class Main ():
 					if thing['is_starter'] == True:
 						Globals.player.checkpoint = c
 						c.flag_rising = True
-						print("ASDF")
 				except KeyError:
 					pass
 
