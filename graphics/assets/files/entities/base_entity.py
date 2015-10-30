@@ -39,7 +39,7 @@ class BaseEntity ():
 
 	last_time = 0
 
-	last_position = {}
+	last_position = None
 
 	is_showing = True
 	is_static = False
@@ -201,9 +201,6 @@ class BaseEntity ():
 	def base_update(self):
 		self.set_delta_time()
 
-		self.last_position['x'] = self.x
-		self.last_position['y'] = self.y
-
 		if not self.last_graphics == Globals.graphics_level:
 
 			self.update_graphics()
@@ -215,30 +212,53 @@ class BaseEntity ():
  
 			self.update()
 
-			# self.check_platform_collision()
+			for hb in self.hitboxes:
+				hb.update()
+
+			if not self.is_static:
+				self.check_platform_collision()
 
 			if self.is_showing:
 				self.render()
-
-			for hb in self.hitboxes:
-				hb.update()
 
 	def print_hitboxes (self):
 		for hb in self.hitboxes:
 			print("x:%s, y:%s, w:%s, h:%s" % (hb.x, hb.y, hb.w, hb.h))
 
 	def check_platform_collision(self):
+		try:
+			self.last_position['x']
+			self.last_position['y']
+		except TypeError:
+			print("Reset x and y")
+
+			self.last_position = {
+				"x": self.x,
+				"y": self.y
+			}
 
 		for platform in Globals.platforms:
 
-			if self.check_for_collision(platform):
+			if self.x + self.w > platform.x:
+				if self.x < platform.x + platform.w:
+					if self.y + self.h > platform.y:
+						if self.y < platform.y + platform.h:
 
-				if self.last_position['x'] <= platform.x:
+							if self.last_position['y'] > platform.y + platform.h and self.y < platform.y + platform.h:
+								self.y = platform.y + platform.h
 
-					self.x = platform.x - self.w
+								self.momY *= -0.5
 
-				else:
-					self.x = platform.x + platform.w
+							
+							if self.last_position['x'] >= platform.x + platform.w and self.x < platform.x + platform.w:
+								self.x = platform.x + platform.w
+
+							elif self.last_position['x'] + self.w <= platform.x and self.x + self.w > platform.x:
+								self.x = platform.x - self.w
+
+
+		self.last_position['x'] = self.x
+		self.last_position['y'] = self.y
 
 	def render (self):
 

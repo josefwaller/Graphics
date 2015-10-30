@@ -28,6 +28,8 @@ class Platform (BaseEntity):
 
 		self.top_block = self.img_load(top_block)
 
+		self.is_static = True
+
 		if not inner_block == None:
 			self.inner_block = self.img_load(inner_block)
 

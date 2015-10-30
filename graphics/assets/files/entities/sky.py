@@ -20,7 +20,9 @@ class Sky (BaseEntity):
 			self.img_load(update_img)
 		]
 
-		self.image = self.graphic_images[0]
+		self.image = self.graphic_images[0]\
+
+		self.is_static = True
 
 		converter = self.image.get_size()[0] / self.image.get_size()[1]
 		self.w = int(self.w * converter)

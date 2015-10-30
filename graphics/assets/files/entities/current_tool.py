@@ -44,6 +44,7 @@ class CurrentTool (BaseEntity):
 		self.is_showing = True
 
 		self.resize_images()
+		self.is_static = True
 
 	def update (self):
 
