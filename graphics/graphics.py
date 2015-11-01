@@ -40,7 +40,7 @@ class Main ():
 		Globals.window = pygame.display.set_mode(windowSize)
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
-		Globals.pixel_size = int(Globals.window.get_size()[1] / 256)
+		Globals.pixel_size = int(Globals.block_size / 16)
 
 		Globals.gravity_strength = 15 * Globals.block_size
 

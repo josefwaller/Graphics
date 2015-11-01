@@ -1,6 +1,6 @@
 class Globals:
-    pixel_size = None
     block_size = None
+    pixels_per_block = 0
     window = None
     camera_offset = {
     	"x": 0,

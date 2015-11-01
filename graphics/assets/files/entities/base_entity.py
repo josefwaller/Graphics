@@ -149,14 +149,9 @@ class BaseEntity ():
 
 	def img_load(self, url):
 
-		try:
+		full_url = "assets/images/%s" % url 
 
-			full_url = "assets/images/%s" % url 
-
-			image = pygame.image.load(full_url).convert_alpha()
-
-		except:
-			pass
+		image = pygame.image.load(full_url).convert_alpha()
 
 		return image 
 

@@ -22,8 +22,6 @@ class EndBlock (BaseEntity):
 
 		self.used = False
 
-		self.add_hitbox(0, 0, 1, 1)
-
 		self.entity_init(x, y)
 
 		self.update_graphics()

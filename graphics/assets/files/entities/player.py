@@ -58,14 +58,14 @@ class Player (JumpingEntity):
 				self.img_load("player/run_2.png"),
 				self.img_load("player/run_3.png"),
 
-				self.img_load("player/bar_shoot_1.png"),
-				self.img_load("player/bar_shoot_2.png"),
-				self.img_load("player/bar_shoot_full.png"),
+				self.img_load("player/shoot_1.png"),
+				self.img_load("player/shoot_2.png"),
+				self.img_load("player/shoot_3.png"),
 
-				self.img_load("player/sword_attack_1.png"),
-				self.img_load("player/sword_attack_2.png"),
-				self.img_load("player/sword_attack_3.png"),
-				self.img_load("player/sword_attack_4.png")
+				self.img_load("player/swing_1.png"),
+				self.img_load("player/swing_2.png"),
+				self.img_load("player/swing_3.png"),
+				self.img_load("player/swing_4.png")
 			],
 			#16-bit
 			[
@@ -95,8 +95,6 @@ class Player (JumpingEntity):
 		self.sprite_indexes = [
 			1
 		]
-
-		self.no_tool_sprite_indexes = [0, 1, 2, 1]
 
 		self.jump_last_time = time.time()
 
@@ -265,13 +263,14 @@ class Player (JumpingEntity):
 
 	def animate_tool (self):
 
-		if self.using_tool:
+		Globals.player_tool_sprite.is_showing = True
 
-			Globals.player_tool_sprite.is_showing = False
+		if self.using_tool:
 
 			if self.tool == "Bow and Arrow":
 
 				self.sprite_indexes = [3]
+				Globals.player_tool_sprite.sprite_indexes = [10]
 
 				t = time.time() - self.bow_draw_time
 
@@ -282,12 +281,14 @@ class Player (JumpingEntity):
 					self.arrow_speed = 20
 
 					self.sprite_indexes = [4]
+					Globals.player_tool_sprite.sprite_indexes = [11]
 
 					if t > 1:
 
 						self.arrow_speed = 40
 
 						self.sprite_indexes = [5]
+						Globals.player_tool_sprite.sprite_indexes = [12]
 			elif self.tool == "Sword":
 
 				t = time.time() - self.sword_time
@@ -311,9 +312,9 @@ class Player (JumpingEntity):
 
 								self.using_tool = False
 
-		else:
+				Globals.player_tool_sprite.sprite_indexes = self.sprite_indexes
 
-			Globals.player_tool_sprite.is_showing = True
+		else:
 
 			if self.tool == "Bow and Arrow":
 

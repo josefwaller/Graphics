@@ -15,6 +15,15 @@ class CurrentTool (BaseEntity):
 				self.img_load("player/bar_1.png"),
 				self.img_load("player/bar_2.png"),
 				self.img_load("player/bar_3.png"),
+
+				self.img_load("player/sword_swing_1.png"),
+				self.img_load("player/sword_swing_2.png"),
+				self.img_load("player/sword_swing_3.png"),
+				self.img_load("player/sword_swing_4.png"),
+
+				self.img_load("player/bar_shoot_1.png"),
+				self.img_load("player/bar_shoot_2.png"),
+				self.img_load("player/bar_shoot_3.png"),
 			],
 			[
 				self.img_load("player/16_sword_1.png"),
