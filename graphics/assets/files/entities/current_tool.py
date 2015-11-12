@@ -12,18 +12,24 @@ class CurrentTool (BaseEntity):
 				self.img_load("player/sword_2.png"),
 				self.img_load("player/sword_3.png"),
 
-				self.img_load("player/bar_1.png"),
-				self.img_load("player/bar_2.png"),
-				self.img_load("player/bar_3.png"),
-
 				self.img_load("player/sword_swing_1.png"),
 				self.img_load("player/sword_swing_2.png"),
 				self.img_load("player/sword_swing_3.png"),
 				self.img_load("player/sword_swing_4.png"),
 
+				self.img_load("player/sword_jump.png"),
+				self.img_load("player/sword_fall.png"),
+
+				self.img_load("player/bar_1.png"),
+				self.img_load("player/bar_2.png"),
+				self.img_load("player/bar_3.png"),
+
 				self.img_load("player/bar_shoot_1.png"),
 				self.img_load("player/bar_shoot_2.png"),
 				self.img_load("player/bar_shoot_3.png"),
+
+				self.img_load("player/bar_jump.png"),
+				self.img_load("player/bar_fall.png"),
 			],
 			[
 				self.img_load("player/16_sword_1.png"),
@@ -62,6 +68,47 @@ class CurrentTool (BaseEntity):
 
 		self.facing_left = Globals.player.facing_left
 
+		self.animate()
+
 		if self.is_showing:
 
 			self.render()
+
+	def animate (self):
+
+		p = Globals.player
+
+		i = p.sprite_indexes[p.this_index]
+
+		if p.tool == None:
+			self.is_showing = False
+
+		else:
+
+			self.is_showing = True
+
+		if not p.using_tool:
+			s = i
+
+			if i == 10 or i == 11:
+				if p.tool == "Bow and Arrow":
+					s = i - 4
+				else:
+					s = i - 3
+
+			if p.tool == "Bow and Arrow":
+
+				self.sprite_indexes = [s + 9]
+
+			elif p.tool == "Sword":
+				self.sprite_indexes = [s]
+
+		elif p.using_tool:
+
+			if p.tool == "Bow and Arrow":
+
+				self.sprite_indexes = [i + 9]
+
+			elif p.tool == "Sword":
+
+				self.sprite_indexes = [i - 3]

@@ -65,7 +65,10 @@ class Player (JumpingEntity):
 				self.img_load("player/swing_1.png"),
 				self.img_load("player/swing_2.png"),
 				self.img_load("player/swing_3.png"),
-				self.img_load("player/swing_4.png")
+				self.img_load("player/swing_4.png"),
+
+				self.img_load("player/jump.png"),
+				self.img_load("player/fall.png")
 			],
 			#16-bit
 			[
@@ -203,17 +206,25 @@ class Player (JumpingEntity):
 		if not self.using_tool:
 			self.x += self.x_translate * self.speed * self.delta_time
 
-			if self.x_translate == 0:
-				self.sprite_indexes = idle_sprites
+			if self.is_grounded:
 
+				if self.x_translate == 0:
+					self.sprite_indexes = idle_sprites
+
+				else:
+					self.sprite_indexes = running_sprites
+
+				for enemy in Globals.enemies:
+
+					if self.check_for_collision(enemy):
+
+						self.on_hit()
 			else:
-				self.sprite_indexes = running_sprites
+				if self.momY > -150:
+					self.sprite_indexes = [10]
 
-			for enemy in Globals.enemies:
-
-				if self.check_for_collision(enemy):
-
-					self.on_hit()
+				else:
+					self.sprite_indexes = [11]
 
 	def respawn (self):
 
@@ -263,14 +274,14 @@ class Player (JumpingEntity):
 
 	def animate_tool (self):
 
-		Globals.player_tool_sprite.is_showing = True
+		if self.tool == None:
+			return
 
 		if self.using_tool:
 
 			if self.tool == "Bow and Arrow":
 
 				self.sprite_indexes = [3]
-				Globals.player_tool_sprite.sprite_indexes = [10]
 
 				t = time.time() - self.bow_draw_time
 
@@ -281,14 +292,13 @@ class Player (JumpingEntity):
 					self.arrow_speed = 20
 
 					self.sprite_indexes = [4]
-					Globals.player_tool_sprite.sprite_indexes = [11]
 
 					if t > 1:
 
 						self.arrow_speed = 40
 
 						self.sprite_indexes = [5]
-						Globals.player_tool_sprite.sprite_indexes = [12]
+
 			elif self.tool == "Sword":
 
 				t = time.time() - self.sword_time
@@ -312,30 +322,15 @@ class Player (JumpingEntity):
 
 								self.using_tool = False
 
-				Globals.player_tool_sprite.sprite_indexes = self.sprite_indexes
-
 		else:
 
 			if self.tool == "Bow and Arrow":
 
-				sprite_addon = 3
+				sprite_addon = 5
 
 			elif self.tool == "Sword":
 
 				sprite_addon = 0
-
-			elif self.tool == None:
-
-				Globals.player_tool_sprite.is_showing = False
-				return
-
-			try:
-
-				Globals.player_tool_sprite.sprite_indexes = [sprite_addon + self.sprite_indexes[self.this_index]]
-
-			except IndexError:
-
-				Globals.player_tool_sprite.sprite_indexes = [1 + sprite_addon]
 
 
 	def update (self):
