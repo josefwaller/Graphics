@@ -30,6 +30,18 @@ class CurrentTool (BaseEntity):
 
 				self.img_load("player/bar_jump.png"),
 				self.img_load("player/bar_fall.png"),
+
+				self.img_load("player/staff_1.png"),
+				self.img_load("player/staff_2.png"),
+				self.img_load("player/staff_3.png"),
+
+				self.img_load("player/staff_swing_1.png"),
+				self.img_load("player/staff_swing_2.png"),
+				self.img_load("player/staff_swing_3.png"),
+				self.img_load("player/staff_swing_4.png"),
+
+				self.img_load("player/staff_jump.png"),
+				self.img_load("player/staff_fall.png"),
 			],
 			[
 				self.img_load("player/16_sword_1.png"),
@@ -103,6 +115,10 @@ class CurrentTool (BaseEntity):
 			elif p.tool == "Sword":
 				self.sprite_indexes = [s]
 
+			elif p.tool == "Staff": 
+				print(s + 17)
+				self.sprite_indexes = [s + 17]
+
 		elif p.using_tool:
 
 			if p.tool == "Bow and Arrow":
@@ -112,3 +128,7 @@ class CurrentTool (BaseEntity):
 			elif p.tool == "Sword":
 
 				self.sprite_indexes = [i - 3]
+
+			elif p.tool == "Staff":
+
+				self.sprite_indexes = [i + 14]

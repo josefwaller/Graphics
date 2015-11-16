@@ -1,5 +1,8 @@
 from assets.files.entities.jumping_entity import JumpingEntity
+
 from assets.files.entities.projectiles.arrow import Arrow
+from assets.files.entities.projectiles.missile import Missile
+
 from assets.files.entities.current_tool import CurrentTool
 
 from assets.files.utilities.globals import Globals
@@ -24,8 +27,7 @@ class Player (JumpingEntity):
 
 	using_tool = False
 
-	sword_time = 0
-	bow_draw_time = 0
+	tool_time = 0
 	sword_range = 20
 
 	last_hit = 0
@@ -46,7 +48,7 @@ class Player (JumpingEntity):
 
 		self.is_dead = False
 
-		self.tool = None
+		self.tool = "Staff"
 
 		self.jump_strength *= Globals.block_size
 
@@ -141,13 +143,13 @@ class Player (JumpingEntity):
 			if self.tool == "Bow and Arrow":
 
 				if not self.using_tool:
-					self.bow_draw_time = time.time()
+					self.tool_time = time.time()
 
 				self.using_tool = True
 
-			elif self.tool == "Sword":
+			elif self.tool == "Sword" or self.tool == "Staff":
 
-				self.sword_time = time.time()
+				self.tool_time = time.time()
 
 				self.using_tool = True
 
@@ -196,6 +198,16 @@ class Player (JumpingEntity):
 							if hb.x < self.x + self.w + self.sword_range:
 
 								enemy.on_death()
+
+		elif self.tool == "Staff":
+
+			if self.facing_left:
+				x = self.x - (self.w)
+
+			else:
+				x = self.x + self.w + (self.w / 4)
+
+			Globals.projectiles.append(Missile(x=x, y=self.y + self.h * 3/5, is_enemy=False))
 
 
 	def move (self):
@@ -283,7 +295,7 @@ class Player (JumpingEntity):
 
 				self.sprite_indexes = [3]
 
-				t = time.time() - self.bow_draw_time
+				t = time.time() - self.tool_time
 
 				self.arrow_speed = 2
 
@@ -299,9 +311,9 @@ class Player (JumpingEntity):
 
 						self.sprite_indexes = [5]
 
-			elif self.tool == "Sword":
+			elif self.tool == "Sword" or self.tool == "Staff":
 
-				t = time.time() - self.sword_time
+				t = time.time() - self.tool_time
 				self.sprite_indexes = [6]
 
 				if t > 0.1:
@@ -312,7 +324,9 @@ class Player (JumpingEntity):
 
 						self.sprite_indexes = [8]
 
-						self.use_tool()
+						if self.tool == "Sword":
+
+							self.use_tool()
 
 						if t > 0.3: 
 
@@ -320,7 +334,11 @@ class Player (JumpingEntity):
 
 							if t > 0.4:
 
+								if self.tool == "Staff":
+									self.use_tool()
+
 								self.using_tool = False
+								self.sprite_indexes = [0, 1, 2, 1]
 
 		else:
 
