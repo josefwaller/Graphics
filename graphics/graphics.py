@@ -21,7 +21,7 @@ from assets.files.entities.end_block import EndBlock
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
-from assets.files.utilities.pop_up_manager import PopUpManager
+from assets.files.utilities.heads_up_display import HeadsUpDisplay
 
 from level_editor import LevelEditor
 
@@ -48,7 +48,7 @@ class Main ():
 		level_file = open("assets/levels/l1.json","r")
 		level = json.loads(level_file.read())
 
-		Globals.pop_up_m = PopUpManager()
+		Globals.hud = HeadsUpDisplay()
 
 
 		Globals.enemies = [
@@ -124,7 +124,7 @@ class Main ():
 
 				Globals.player.while_keys_down(keys)
 
-				Globals.pop_up_m.on_input(keys)
+				Globals.hud.on_input(keys)
 
 			sky.base_update()
 
@@ -151,7 +151,7 @@ class Main ():
 
 			g.base_update()
 
-			Globals.pop_up_m.render()
+			Globals.hud.render()
 
 			pygame.display.flip()
 

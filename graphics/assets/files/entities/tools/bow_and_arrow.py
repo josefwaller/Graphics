@@ -16,6 +16,4 @@ class BowAndArrow (BaseTool):
 
 		self.x = x * Globals.block_size
 		self.y = y * Globals.block_size
-
-		self.clip_to_hitboxes()
 		self.tool_name = "Bow and Arrow"
