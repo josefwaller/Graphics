@@ -1,6 +1,7 @@
 import calendar
 import time
 import pygame
+import sys
 
 from assets.files.utilities.globals import Globals
 from assets.files.utilities.hitbox import Hitbox
@@ -225,7 +226,6 @@ class BaseEntity ():
 			self.last_position['x']
 			self.last_position['y']
 		except TypeError:
-			print("Reset x and y")
 
 			self.last_position = {
 				"x": self.x,
@@ -270,7 +270,17 @@ class BaseEntity ():
 			if self.this_index >= len(self.sprite_indexes):
 				self.this_index = 0
 
-			sprite = self.sprites[self.sprite_indexes[self.this_index]]
+			try:
+
+				sprite = self.sprites[self.sprite_indexes[self.this_index]]
+
+			except IndexError:
+				print("Sprite Index out of bounds.")
+				print("---- Entity: %s" % self)
+				print("---- Index: %s" % self.sprite_indexes[self.this_index])
+				print("---- This Index: %s" % self.this_index)
+				sys.exit(0)
+
 
 		else:
 

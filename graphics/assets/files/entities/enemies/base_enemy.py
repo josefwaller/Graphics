@@ -26,7 +26,7 @@ class BaseEnemy (JumpingEntity):
 
 				Globals.player.on_hit()
 
-	def on_death (self):
+	def on_hit (self):
 
 		if not self.is_dead:
 

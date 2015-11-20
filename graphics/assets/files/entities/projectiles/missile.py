@@ -5,7 +5,7 @@ from assets.files.entities.projectiles.base_projectile import BaseProjectile
 
 import pygame
 import time
-import Math
+import math
 
 
 class Missile (BaseProjectile):
@@ -54,6 +54,8 @@ class Missile (BaseProjectile):
 		x_translate = 0
 		y_translate = 0
 
+		if not self.target == None:
+
 			if self.target.x > self.x + self.w:
 
 				x_translate = 1
@@ -94,9 +96,16 @@ class Missile (BaseProjectile):
 
 				if self.check_for_collision(self.target):
 					self.target.on_hit()
+					Globals.projectiles.remove(self)
 
 			if time.time() - self.starting_time >= self.lifespan:
 				Globals.projectiles.remove(self)
+
+		elif self.target == None:
+
+			self.x += self.momX * self.speed * self.delta_time
+
+			self.momX += (math.fabs(self.momX) / self.momX) * self.turn_speed * self.delta_time
 
 	def find_target (self): 
 
@@ -105,16 +114,16 @@ class Missile (BaseProjectile):
 		
 		for e in Globals.enemies:
 
-			x = Math.abs(e.x - self.x)
-			y = Math.abs(e.y - self.y)
+			x = math.fabs(e.x - self.x)
+			y = math.fabs(e.y - self.y)
 
-			distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+			distance = math.sqrt(math.pow(x, 2) + math.pow(y, 2))
 
-			if distance < least_distance:
+			if least_distance == None or distance < least_distance:
 				least_distance = distance
 				enemy = e
 
-		return e
+		return enemy
 
 	def update (self):
 

@@ -149,17 +149,15 @@ class Player (JumpingEntity):
 
 			elif self.tool == "Sword" or self.tool == "Staff":
 
-				self.tool_time = time.time()
+				if not self.using_tool:
 
-				self.using_tool = True
+					self.tool_time = time.time()
+
+					self.using_tool = True
 
 		elif self.using_tool and self.tool == "Bow and Arrow":
 
 			self.use_tool()
-
-		if pygame.K_d in keys:
-
-			print(len(self.hitboxes))
 
 	def use_tool (self):
 
@@ -197,17 +195,19 @@ class Player (JumpingEntity):
 
 							if hb.x < self.x + self.w + self.sword_range:
 
-								enemy.on_death()
+								enemy.on_hit()
 
 		elif self.tool == "Staff":
 
 			if self.facing_left:
 				x = self.x - (self.w)
+				direction = -1
 
 			else:
 				x = self.x + self.w + (self.w / 4)
+				direction = 1
 
-			Globals.projectiles.append(Missile(x=x, y=self.y + self.h * 3/5, is_enemy=False))
+			Globals.projectiles.append(Missile(x=x, y=self.y + self.h * 3/5, is_enemy=False, direction=direction))
 
 
 	def move (self):

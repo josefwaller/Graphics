@@ -9,6 +9,7 @@ from assets.files.entities.platform import Platform
 from assets.files.entities.current_tool import CurrentTool
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
 from assets.files.entities.tools.sword import Sword
+from assets.files.entities.tools.staff import Staff
 
 from assets.files.entities.enemies.walker import Walker
 from assets.files.entities.enemies.wizard import Wizard
@@ -28,6 +29,7 @@ from level_editor import LevelEditor
 class Main ():
 
 	def __init__(self):
+		pygame.init()
 
 		#creats the window, loads images, etc
 
@@ -40,8 +42,7 @@ class Main ():
 		Globals.window = pygame.display.set_mode(windowSize)
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
-		Globals.pixel_size = int(Globals.block_size / 16)
-
+		Globals.pixels_per_block = 16
 		Globals.gravity_strength = 15 * Globals.block_size
 
 		#loads level
@@ -75,8 +76,8 @@ class Main ():
 			# elif thing['type'] == 'archer':
 			# 	Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
 
-			# elif thing['type'] == 'walker':
-			# 	Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
+			elif thing['type'] == 'walker':
+				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
 			# elif thing['type'] == 'wizard':
 			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
@@ -89,6 +90,9 @@ class Main ():
 
 			elif thing['type'] == 'sword':
 				Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
+
+			elif thing['type'] == "staff":
+				Globals.tools.append(Staff(x=thing['x'], y=thing['y']))
 
 			elif thing['type'] == 'checkpoint':
 				c = Checkpoint(x=thing['x'], y=thing['y'])
@@ -112,7 +116,6 @@ class Main ():
 		g = EndBlock(x=5, y=2, num=16)
 
 		Globals.player_tool_sprite = CurrentTool()
-		pygame.init()
 
 		while True:
 

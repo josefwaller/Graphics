@@ -90,8 +90,6 @@ class CurrentTool (BaseEntity):
 
 		p = Globals.player
 
-		i = p.sprite_indexes[p.this_index]
-
 		if p.tool == None:
 			self.is_showing = False
 
@@ -99,36 +97,48 @@ class CurrentTool (BaseEntity):
 
 			self.is_showing = True
 
-		if not p.using_tool:
-			s = i
+		if self.is_showing:
+			if not p.is_showing: 
+				self.is_showing = False
+				return
 
-			if i == 10 or i == 11:
+			try:
+
+				i = p.sprite_indexes[p.this_index]
+
+			except IndexError:
+				return
+				#The player will call an error for this
+
+			if not p.using_tool:
+				s = i
+
+				if i == 10 or i == 11:
+					if p.tool == "Bow and Arrow":
+						s = i - 4
+					else:
+						s = i - 3
+
 				if p.tool == "Bow and Arrow":
-					s = i - 4
-				else:
-					s = i - 3
 
-			if p.tool == "Bow and Arrow":
+					self.sprite_indexes = [s + 9]
 
-				self.sprite_indexes = [s + 9]
+				elif p.tool == "Sword":
+					self.sprite_indexes = [s]
 
-			elif p.tool == "Sword":
-				self.sprite_indexes = [s]
+				elif p.tool == "Staff":
+					self.sprite_indexes = [s + 17]
 
-			elif p.tool == "Staff": 
-				print(s + 17)
-				self.sprite_indexes = [s + 17]
+			elif p.using_tool:
 
-		elif p.using_tool:
+				if p.tool == "Bow and Arrow":
 
-			if p.tool == "Bow and Arrow":
+					self.sprite_indexes = [i + 9]
 
-				self.sprite_indexes = [i + 9]
+				elif p.tool == "Sword":
 
-			elif p.tool == "Sword":
+					self.sprite_indexes = [i - 3]
 
-				self.sprite_indexes = [i - 3]
+				elif p.tool == "Staff":
 
-			elif p.tool == "Staff":
-
-				self.sprite_indexes = [i + 14]
+					self.sprite_indexes = [i + 14]
