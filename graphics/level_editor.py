@@ -140,33 +140,34 @@ class LevelEditor():
 				if pygame.K_n in keys:
 					self.print_to_file("assets/levels/l1.json")
 
-			for x in range(len(self.entities)):
-				for y in range(len(self.entities[x])):
+	def render (self):
 
-					if self.entities[x][y] == 'platform':
-						image = pygame.image.load("assets/images/blocks/snow.png").convert_alpha()
+		for x in range(len(self.entities)):
+			for y in range(len(self.entities[x])):
 
-					elif self.entities[x][y] == 'player':
-						image = pygame.image.load("assets/images/player/run_1.png").convert_alpha()
+				if self.entities[x][y] == 'platform':
+					image = pygame.image.load("assets/images/blocks/snow.png").convert_alpha()
 
-					elif self.entities[x][y] == 'wizard':
-						image = pygame.image.load("assets/images/enemies/wizard/front1.png").convert_alpha()
+				elif self.entities[x][y] == 'player':
+					image = pygame.image.load("assets/images/player/run_1.png").convert_alpha()
 
-					elif self.entities[x][y] == 'archer':
-						image = pygame.image.load("assets/images/enemies/archer/archer_1.png").convert_alpha()
+				elif self.entities[x][y] == 'wizard':
+					image = pygame.image.load("assets/images/enemies/wizard/front1.png").convert_alpha()
 
-					elif self.entities[x][y] == 'walker':
-						image = pygame.image.load("assets/images/enemies/walker/run_1.png").convert_alpha()
+				elif self.entities[x][y] == 'archer':
+					image = pygame.image.load("assets/images/enemies/archer/archer_1.png").convert_alpha()
 
-					elif self.entities[x][y] == 'jumper':
-						image = pygame.image.load("assets/images/enemies/jumper/jumper_stand_1.png").convert_alpha()
+				elif self.entities[x][y] == 'walker':
+					image = pygame.image.load("assets/images/enemies/walker/run_1.png").convert_alpha()
 
-					if not self.entities[x][y] == None:
+				elif self.entities[x][y] == 'jumper':
+					image = pygame.image.load("assets/images/enemies/jumper/jumper_stand_1.png").convert_alpha()
 
-						image = pygame.transform.scale(image, (self.block_size, self.block_size))
+				if not self.entities[x][y] == None:
 
-						self.window.blit(image, (x * self.block_size, y * self.block_size))
+					image = pygame.transform.scale(image, (self.block_size, self.block_size))
+
+				self.window.blit(image, (x * self.block_size, y * self.block_size))
 			pygame.draw.rect(self.window, red, [self.block_chosen[0] * self.block_size, self.block_chosen[1] * self.block_size, self.block_size, self.block_size])
 
 			pygame.display.flip()
-

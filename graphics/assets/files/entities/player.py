@@ -48,8 +48,6 @@ class Player (JumpingEntity):
 
 		self.is_dead = False
 
-		self.tool = "Staff"
-
 		self.jump_strength *= Globals.block_size
 
 		self.graphic_sprites = [
@@ -72,23 +70,24 @@ class Player (JumpingEntity):
 				self.img_load("player/jump.png"),
 				self.img_load("player/fall.png")
 			],
+
 			#16-bit
 			[
-
 				self.img_load("player/16_run_1.png"),
 				self.img_load("player/16_run_2.png"),
 				self.img_load("player/16_run_3.png"),
 
-				#bar
+				self.img_load("player/16_shoot_1.png"),
+				self.img_load("player/16_shoot_2.png"),
+				self.img_load("player/16_shoot_3.png"),
 
-				self.img_load("player/16_bar_shoot_1.png"),
-				self.img_load("player/16_bar_shoot_2.png"),
-				self.img_load("player/16_bar_shoot_full.png"),
+				self.img_load("player/16_swing_1.png"),
+				self.img_load("player/16_swing_2.png"),
+				self.img_load("player/16_swing_3.png"),
+				self.img_load("player/16_swing_4.png"),
 
-				self.img_load("player/16_sword_attack_1.png"),
-				self.img_load("player/16_sword_attack_2.png"),
-				self.img_load("player/16_sword_attack_3.png"),
-				self.img_load("player/16_sword_attack_4.png")
+				self.img_load("player/16_jump.png"),
+				self.img_load("player/16_fall.png")
 
 			]
 		]
@@ -237,6 +236,11 @@ class Player (JumpingEntity):
 
 				else:
 					self.sprite_indexes = [11]
+
+		if self.x < 0:
+			self.x = 0
+		elif self.x > Globals.level_width:
+			self.x = Globals.level_width - self.w
 
 	def respawn (self):
 

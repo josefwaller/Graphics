@@ -73,17 +73,17 @@ class Main ():
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
 
-			# elif thing['type'] == 'archer':
-			# 	Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
+			elif thing['type'] == 'archer':
+				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
 
 			elif thing['type'] == 'walker':
 				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
 
-			# elif thing['type'] == 'wizard':
-			# 	Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
+			elif thing['type'] == 'wizard':
+				Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
 
-			# elif thing['type'] == 'jumper':
-			# 	Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
+			elif thing['type'] == 'jumper':
+				Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
 
 			elif thing['type'] == 'bar':
 				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
@@ -105,6 +105,13 @@ class Main ():
 				except KeyError:
 					pass
 
+			elif thing['type'] == 'endblock':
+				Globals.endblock = EndBlock(x=thing['x'], y=thing['y'])
+
+			elif thing['type'] == 'level_settings':
+				Globals.level_width = thing['width'] * Globals.block_size
+				Globals.level_height = thing['height'] * Globals.block_size
+
 		self.play_game()
 
 	def play_game(self):
@@ -112,8 +119,6 @@ class Main ():
 		sky = Sky("props/sky.png", "props/16_sky.png")
 
 		k = KeyHandler()
-
-		g = EndBlock(x=5, y=2, num=16)
 
 		Globals.player_tool_sprite = CurrentTool()
 
@@ -152,7 +157,7 @@ class Main ():
 
 				projectile.base_update()
 
-			g.base_update()
+			Globals.endblock.base_update()
 
 			Globals.hud.render()
 

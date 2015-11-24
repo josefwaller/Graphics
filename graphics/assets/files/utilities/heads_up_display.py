@@ -5,7 +5,7 @@ import math
 
 class HeadsUpDisplay ():
 
-	is_showing = False
+	mb_is_showing = False
 
 	mb_x = 0
 	mb_y = 0
@@ -35,12 +35,12 @@ class HeadsUpDisplay ():
 		pygame.font.init()
 
 		self.mb_title_font = pygame.font.Font("assets/fonts/Minecraftia-Regular.ttf", 30)
-		self.mb_message_font = pygame.font.Font("assets/fonts/Minecraftia-Regular.ttf", 16)
+		self.mb_message_font = pygame.font.Font("assets/fonts/Minecraftia-Regular.ttf", 22)
 
 		
 	def render (self):
 
-		if self.is_showing:
+		if self.mb_is_showing:
 
 			pygame.draw.rect(Globals.window, self.mb_border_color, [
 				self.mb_x - self.mb_border_w, 
@@ -84,13 +84,15 @@ class HeadsUpDisplay ():
 
 				ren = self.mb_message_font.render(line, False, self.mb_border_color)
 
-				Globals.window.blit(ren, (x, y + 16*line_indent))
+				Globals.window.blit(ren, (x, y + self.mb_message_font.size(line)[1] * line_indent))
 
 				line_indent += 1
 
 	def message_box(self, title, message):
 
-			self.is_showing = True
+			Globals.is_paused = True
+
+			self.mb_is_showing = True
 
 			line_index = 0
 
@@ -102,15 +104,19 @@ class HeadsUpDisplay ():
 
 			self.text_lines[0] = words[0]
 
-			needs_to_loop = True
+			create_new_line = True
 
-			while needs_to_loop:
+			while create_new_line:
 
-				needs_to_loop = False
+				create_new_line = False
 
 				while  len(words) - 1 >= word_index and self.mb_message_font.size(self.text_lines[line_index] + words[word_index])[0] < (self.mb_w - 10):
 
-					needs_to_loop = True
+					create_new_line = True
+
+					if words[word_index] == "\n":
+						word_index += 1
+						break
 
 					self.text_lines[line_index] += "  %s" % words[word_index]
 
@@ -126,4 +132,8 @@ class HeadsUpDisplay ():
 				line_index += 1
 
 	def on_input (self, keys):
-		pass
+		
+		if self.mb_is_showing:
+			if pygame.K_RETURN in keys:
+				self.mb_is_showing = False
+				Globals.is_paused = False

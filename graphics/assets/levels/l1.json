@@ -1,5 +1,10 @@
 [
 	{
+		"type": "level_settings",
+		"width": 20,
+		"height": 20
+	},
+	{
 		"type": "platform",
 		"w": 20,
 		"h": 1,
@@ -7,72 +12,13 @@
 		"y": 6
 	},
 	{
-		"type": "platform",
-		"x": 2,
-		"y": 8,
-		"w": 80,
-		"h": 1
-	},
-	{
-		"type": "platform",
-		"x": 10,
-		"y": 2,
-		"w": 3,
-		"h": 1
-	},
-	{
-		"type": "platform",
-		"x": 1,
-		"y": 0,
-		"w": 1,
-		"h": 1
-	},
-	{
 		"type": "player",
-		"x": 1,
+		"x": 3,
 		"y": 4
 	},
 	{
-		"type": "walker",
-		"x": 5,
-		"y": 3,
-		"turn1": 1,
-		"turn2": 5
-	},
-	{
-		"type": "staff",
-		"x": 8,
-		"y": 2
-	},
-	{
-		"type": "wizard",
-		"x" : 10,
-		"y" : 4
-	},
-	{
-		"type": "archer",
-		"x": 7,
-		"y": 4
-	},
-	{
-		"type": "jumper",
-		"x": 15,
-		"y": 4
-	},
-	{
-		"type": "checkpoint",
-		"x": 1,
-		"y": 6,
-		"is_starter": true
-	},
-	{
-		"type": "bar",
-		"x": 9,
-		"y": 5
-	},
-	{
-		"type": "sword",
-		"x": 15,
-		"y": 5
+		"type": "endblock",
+		"x": 20,
+		"y": 10
 	}
 ]

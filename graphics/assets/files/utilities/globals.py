@@ -15,3 +15,8 @@ class Globals:
     graphics_level = 0
     is_paused = False
     hud = None
+
+    level_width = 0
+    level_height = 0
+
+    endblock = None

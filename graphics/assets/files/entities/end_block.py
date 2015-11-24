@@ -3,7 +3,7 @@ from assets.files.utilities.globals import Globals
 
 class EndBlock (BaseEntity):
 
-	def __init__(self, x, y, num):
+	def __init__(self, x, y):
 
 		self.graphic_images = [
 
@@ -17,8 +17,6 @@ class EndBlock (BaseEntity):
 		self.is_static = True
 
 		self.facing_left = True
-
-		self.num = num
 
 		self.used = False
 
@@ -34,7 +32,7 @@ class EndBlock (BaseEntity):
 
 			Globals.is_paused = True
 
-			Globals.hud.message_box(title="title", message="You now have sixteen bit graphics")
+			Globals.hud.message_box(title="Conglaturations!", message="Congratuations! You have now unlocked 16-Bit graphics! Enjoy the beautiful look of high end graphics! \n \n Press ENTER to continue...")
 
 			self.update_graphics()
 
