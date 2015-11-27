@@ -46,7 +46,7 @@ class Main ():
 		Globals.gravity_strength = 15 * Globals.block_size
 
 		#loads level
-		level_file = open("assets/levels/l1.json","r")
+		level_file = open("assets/levels/current_level.json","r")
 		level = json.loads(level_file.read())
 
 		Globals.hud = HeadsUpDisplay()
@@ -72,6 +72,7 @@ class Main ():
 
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
+				print(thing['x'])
 
 			elif thing['type'] == 'archer':
 				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
@@ -123,6 +124,8 @@ class Main ():
 		Globals.player_tool_sprite = CurrentTool()
 
 		while True:
+
+			print(Globals.player.x)
 
 			starting_frame_time = time.time()
 

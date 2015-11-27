@@ -46,6 +46,7 @@ class Player (JumpingEntity):
 
 	def __init__(self, x, y):
 
+		print("X is %s" % x)
 		self.is_dead = False
 
 		self.jump_strength *= Globals.block_size
@@ -112,6 +113,7 @@ class Player (JumpingEntity):
 		
 
 		self.entity_init(x, y)
+		print("Now x is %s" % self.x)
 		self.is_showing = True
 
 

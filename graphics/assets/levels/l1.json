@@ -17,6 +17,12 @@
 		"y": 4
 	},
 	{
+		"type": "checkpoint",
+		"x": 2,
+		"y": 6,
+		"is_starter": true
+	},
+	{
 		"type": "endblock",
 		"x": 20,
 		"y": 10
