@@ -6,10 +6,9 @@ class BaseItem ():
 
 	x = 0
 	y = 0
-	w = 0
-	h = 0
+	s = 0
 
-	oiffset_x = 0
+	offset_x = 0
 
 	image = 0
 
@@ -24,6 +23,8 @@ class BaseItem ():
 		self.attributes = attributes.copy()
 		if not self.attributes['editable'] == None:
 			self.attributes['editable'] = attributes['editable'].copy()
+
+		#Accounts for the menu
 		self.offset_x = offset
 
 		print(self.x / LEGlobals.block_size)
@@ -46,6 +47,13 @@ class BaseItem ():
 			to_save['w'] = self.attributes['editable']['w']
 			to_save['h'] = self.attributes['editable']['h']
 
+		elif self.attributes['type'] == 'walker':
+
+			dis = (self.attributes['editable']['rounds'] + self.attributes['editable']['offset'])
+
+			to_save['turn1'] = (self.x / LEGlobals.block_size) + ((self.s / 2) / LEGlobals.block_size) - (dis / 2)
+			to_save['turn2'] = (self.x / LEGlobals.block_size) + ((self.s / 2) / LEGlobals.block_size) + (dis / 2)
+
 		to_save.pop('image')
 
 		return to_save
@@ -67,6 +75,25 @@ class BaseItem ():
 						y + z * self.s
 					))
 		else:
+
+			if self.attributes['type'] == 'walker':
+
+				black = (0, 0, 0)
+
+				rounds = self.attributes['editable']['rounds'] * LEGlobals.block_size
+				offset = self.attributes['editable']['offset'] * LEGlobals.block_size
+
+				x = self.x - int((rounds - offset - self.s) / 2) + LEGlobals.x_offset * LEGlobals.block_size + self.offset_x
+				y = self.y + int(self.s / 2) + LEGlobals.y_offset * LEGlobals.block_size
+				w = rounds
+				h = 0
+
+				print("X:%s, player's x: %s" % (x, self.x))
+
+				length = 4
+
+				pygame.draw.rect(LEGlobals.window, black, [x, y, w, h], length)
+
 			LEGlobals.window.blit(self.image, (
 				self.x + LEGlobals.x_offset * LEGlobals.block_size + self.offset_x, 
 				self.y + LEGlobals.y_offset * LEGlobals.block_size

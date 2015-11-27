@@ -125,8 +125,6 @@ class Main ():
 
 		while True:
 
-			print(Globals.player.x)
-
 			starting_frame_time = time.time()
 
 			for event in pygame.event.get():

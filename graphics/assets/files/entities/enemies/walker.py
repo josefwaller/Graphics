@@ -54,6 +54,9 @@ class Walker (BaseEnemy):
 
 		self.entity_init(x, y)
 
+		print("Walker:")
+		print("X:%s, Turn1:%s, Turn2:%s" % (self.x, self.turn_one, self.turn_two))
+
 		self.name = "Walker 1"
 
 	def move (self):

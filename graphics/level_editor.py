@@ -69,7 +69,7 @@ class LevelEditor ():
 				"type": "walker",
 				"selected": False,
 				"editable": {
-					"rounds": 5,
+					"rounds": 1,
 					"offset": 0
 				}
 			},
@@ -326,10 +326,10 @@ class LevelEditor ():
 
 					to_save.append(e.get_save())
 
-					if e.x + e.w > most_x:
-						most_x = e.x + e.w
-					if e.y + e.h > most_y:
-						most_y = e.y + e.h
+					if e.x + e.s > most_x:
+						most_x = e.x + e.s
+					if e.y + e.s > most_y:
+						most_y = e.y + e.s
 
 		to_save.append({
 			"type": "level_settings",
@@ -408,13 +408,13 @@ class LevelEditor ():
 
 			for item in item_row:
 
-				if not self.item_selected == None and self.item_selected['type'] == item['type']:
-					red = (255, 0, 0)
-					pygame.draw.rect(LEGlobals.window, red, [x, y, s, s])
-
 				image = pygame.transform.scale(item['image'], (s, s))
 
 				LEGlobals.window.blit(image, (x, y))
+
+				if not self.item_selected == None and self.item_selected['type'] == item['type']:
+					red = (255, 0, 0)
+					pygame.draw.rect(LEGlobals.window, red, [x, y, s, s], 4)
 
 				x += s
 
