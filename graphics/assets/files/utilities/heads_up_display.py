@@ -144,7 +144,7 @@ class HeadsUpDisplay ():
 			x = (w[0] - self.mb_title_font.size(self.mb_title)[0])/2
 			y = self.mb_y + 20
 
-			ren = self.mb_title_font.render(self.mb_title, False, self.text__color)
+			ren = self.mb_title_font.render(self.mb_title, False, self.text_color)
 			Globals.window.blit(ren, (x, y))
 
 

@@ -15,6 +15,7 @@ class Globals:
     graphics_level = 0
     is_paused = False
     hud = None
+    props = []
 
     level_width = 0
     level_height = 0

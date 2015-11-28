@@ -3,27 +3,12 @@ import pygame
 import json
 import time
 
-from assets.files.entities.player import Player
-from assets.files.entities.platform import Platform
-from assets.files.entities.trigger import Trigger
-
-from assets.files.entities.current_tool import CurrentTool
-from assets.files.entities.tools.bow_and_arrow import BowAndArrow
-from assets.files.entities.tools.sword import Sword
-from assets.files.entities.tools.staff import Staff
-
-from assets.files.entities.enemies.walker import Walker
-from assets.files.entities.enemies.wizard import Wizard
-from assets.files.entities.enemies.archer import Archer
-from assets.files.entities.enemies.jumper import Jumper
-
-from assets.files.entities.checkpoint import Checkpoint
-from assets.files.entities.sky import Sky
-from assets.files.entities.end_block import EndBlock
-
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
-from assets.files.utilities.heads_up_display import HeadsUpDisplay
+from assets.files.utilities.level_reader import LevelReader
+
+from assets.files.entities.sky import Sky
+from assets.files.entities.current_tool import CurrentTool
 
 from level_editor import LevelEditor
 
@@ -48,71 +33,9 @@ class Main ():
 
 		#loads level
 		level_file = open("assets/levels/current_level.json","r")
-		level = json.loads(level_file.read())
 
-		Globals.hud = HeadsUpDisplay()
-
-
-		Globals.enemies = [
-		]
-
-		Globals.platforms = [
-		]
-		for thing in level:
-			if thing['type'] == 'platform':
-				Globals.platforms.append(Platform(
-					x=thing['x'], 
-					y=thing['y'], 
-					w=thing['w'],
-					h=thing['h'],
-					top_block="blocks/snow_top.png", 
-					inner_block="blocks/snow.png",
-					update_inner_block="blocks/16_snow.png",
-					update_top_block="blocks/16_snow_top.png"
-				))
-
-			elif thing['type'] == 'player':
-				Globals.player = Player(x=thing['x'], y=thing['y'])
-				print(thing['x'])
-
-			elif thing['type'] == 'archer':
-				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
-
-			elif thing['type'] == 'walker':
-				Globals.enemies.append(Walker(x=thing['x'], y=thing['y'], turn1=thing['turn1'], turn2=thing['turn2']))
-
-			elif thing['type'] == 'wizard':
-				Globals.enemies.append(Wizard(x=thing['x'], y=thing['y']))
-
-			elif thing['type'] == 'jumper':
-				Globals.enemies.append(Jumper(x=thing['x'], y=thing['y']))
-
-			elif thing['type'] == 'bar':
-				Globals.tools.append(BowAndArrow(x=thing['x'], y=thing['y']))
-
-			elif thing['type'] == 'sword':
-				Globals.tools.append(Sword(x=thing['x'], y=thing['y']))
-
-			elif thing['type'] == "staff":
-				Globals.tools.append(Staff(x=thing['x'], y=thing['y']))
-
-			elif thing['type'] == 'checkpoint':
-				c = Checkpoint(x=thing['x'], y=thing['y'])
-				Globals.checkpoints.append(c)
-
-				try:
-					if thing['is_starter'] == True:
-						Globals.player.checkpoint = c
-						c.flag_rising = True
-				except KeyError:
-					pass
-
-			elif thing['type'] == 'endblock':
-				Globals.endblock = EndBlock(x=thing['x'], y=thing['y'])
-
-			elif thing['type'] == 'level_settings':
-				Globals.level_width = thing['width'] * Globals.block_size
-				Globals.level_height = thing['height'] * Globals.block_size
+		r = LevelReader()
+		r.read_level(level_file.read())
 
 		self.play_game()
 
@@ -121,13 +44,6 @@ class Main ():
 		sky = Sky("props/sky.png", "props/16_sky.png")
 
 		k = KeyHandler()
-
-		t = Trigger(x=0, y=0, w=5, h=5, on_enter=Globals.hud.dialog_box, parameters=[
-			['Hello! I am the main player in the graphics game. I am so cool. Lad di da di da da doo. So cool. HAHAHAHAHAHA.',
-			'This is the second line of dialog! LOLZ'],
-			['assets/images/player/run_2.png',
-			'assets/images/player/run_2.png']
-		])
 
 		Globals.player_tool_sprite = CurrentTool()
 
@@ -166,9 +82,10 @@ class Main ():
 
 				projectile.base_update()
 
-			Globals.endblock.base_update()
+			for prop in Globals.props:
+				prop.update()
 
-			t.update()
+			Globals.endblock.base_update()
 
 			Globals.hud.render()
 
