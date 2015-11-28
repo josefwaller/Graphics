@@ -5,6 +5,7 @@ import time
 
 from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
+from assets.files.entities.trigger import Trigger
 
 from assets.files.entities.current_tool import CurrentTool
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
@@ -121,6 +122,8 @@ class Main ():
 
 		k = KeyHandler()
 
+		t = Trigger(x=0, y=0, w=5, h=5, on_enter=Globals.hud.message_box, parameters=['Sucess', 'it workds'])
+
 		Globals.player_tool_sprite = CurrentTool()
 
 		while True:
@@ -159,6 +162,8 @@ class Main ():
 				projectile.base_update()
 
 			Globals.endblock.base_update()
+
+			t.update()
 
 			Globals.hud.render()
 

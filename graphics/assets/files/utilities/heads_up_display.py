@@ -135,5 +135,7 @@ class HeadsUpDisplay ():
 		
 		if self.mb_is_showing:
 			if pygame.K_RETURN in keys:
+
 				self.mb_is_showing = False
 				Globals.is_paused = False
+				self.text_lines = [""]
