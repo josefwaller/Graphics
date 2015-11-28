@@ -122,7 +122,10 @@ class Main ():
 
 		k = KeyHandler()
 
-		t = Trigger(x=0, y=0, w=5, h=5, on_enter=Globals.hud.message_box, parameters=['Sucess', 'it workds'])
+		t = Trigger(x=0, y=0, w=5, h=5, on_enter=Globals.hud.dialog_box, parameters=[
+			['it workds'],
+			['assets/images/player/run_2.png']
+		])
 
 		Globals.player_tool_sprite = CurrentTool()
 
