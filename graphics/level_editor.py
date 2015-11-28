@@ -108,6 +108,15 @@ class LevelEditor ():
 				"type": "endblock",
 				"selected": False,
 				"editable": None
+			},
+			{
+				"image": self.load_img("assets/images/blocks/16_snow.png"),
+				"type": "trigger",
+				"selected": False,
+				"editable": {
+					"w": 1,
+					"h": 1
+				}
 			}
 
 		]
@@ -166,7 +175,7 @@ class LevelEditor ():
 				int(LEGlobals.window.get_size()[1] - compass_size * (2/3)),
 				int(compass_size * (1/3)),
 				int(compass_size * (1/3)),
-				-1,
+				1,
 				0
 			]
 		]

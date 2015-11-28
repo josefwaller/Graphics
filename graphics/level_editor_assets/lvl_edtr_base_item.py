@@ -74,6 +74,17 @@ class BaseItem ():
 						x + i * self.s,
 						y + z * self.s
 					))
+		elif self.attributes['type'] == 'trigger':
+
+			x = self.x + LEGlobals.x_offset * LEGlobals.block_size + self.offset_x
+			y = self.y + LEGlobals.y_offset * LEGlobals.block_size
+			w = self.attributes['editable']['w'] * LEGlobals.block_size
+			h = self.attributes['editable']['h'] * LEGlobals.block_size
+
+			pink = (255, 0, 255)
+
+			pygame.draw.rect(LEGlobals.window, pink, [x, y, w, h], 10)
+
 		else:
 
 			if self.attributes['type'] == 'walker':
