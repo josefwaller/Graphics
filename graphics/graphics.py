@@ -123,8 +123,10 @@ class Main ():
 		k = KeyHandler()
 
 		t = Trigger(x=0, y=0, w=5, h=5, on_enter=Globals.hud.dialog_box, parameters=[
-			['it workds'],
-			['assets/images/player/run_2.png']
+			['Hello! I am the main player in the graphics game. I am so cool. Lad di da di da da doo. So cool. HAHAHAHAHAHA.',
+			'This is the second line of dialog! LOLZ'],
+			['assets/images/player/run_2.png',
+			'assets/images/player/run_2.png']
 		])
 
 		Globals.player_tool_sprite = CurrentTool()

@@ -38,6 +38,7 @@ class HeadsUpDisplay ():
 
 	dl_offset_left = 0
 	dl_image_s = 0
+	dl_padding = 0
 
 	dl_images = []
 	dl_dialogs = []
@@ -58,26 +59,30 @@ class HeadsUpDisplay ():
 		self.mb_y = (w[1] - self.mb_h) / 2
 
 		self.dl_x = 0
-		self.dl_y = w[1] * (9/10)
+		self.dl_y = w[1] * (8/10)
 		self.dl_w = w[0]
 		self.dl_h = w[1] - self.dl_y
 
-		self.dl_border_w = 2
+		self.dl_border_w = (Globals.block_size / Globals.pixels_per_block) * 2
 		self.dl_offset_left = int(self.dl_w * (1/10))
 		self.dl_image_s = int(self.dl_h * (1/2))
+		self.dl_padding = 10
 
 		pygame.font.init()
 
 		font_url = "assets/fonts/Minecraftia-Regular.ttf"
 
-		self.mb_title_font = pygame.font.Font(font_url, int(self.mb_h / 9))
-		self.mb_message_font = pygame.font.Font(font_url, int(self.mb_h / 13))
+		self.mb_title_font = pygame.font.Font(font_url, 30)
+		self.mb_message_font = pygame.font.Font(font_url, 22)
 
-		self.dl_font = pygame.font.Font(font_url, int(self.dl_h / 5))
+		self.dl_font = pygame.font.Font(font_url, 20)
+		print(self.dl_font.get_height())
 
 	def dialog_box (self, dialogs, images):
 
 		self.dl_is_showing = True
+
+		Globals.is_paused = True
 
 		self.dl_index = 0
 
@@ -87,36 +92,38 @@ class HeadsUpDisplay ():
 			i = pygame.transform.scale(i, (self.dl_image_s, self.dl_image_s))
 			self.dl_images.append(i)
 
-		for i in range(len(dialogs)):
+		self.dl_dialogs = []
 
-			words = dialogs[i].split(" ")
+		while len(self.dl_dialogs) < len(dialogs):
+			#Four strings for four lines
+			self.dl_dialogs.append(['', '', '', ''])
 
-			try:
-				self.dl_dialogs[i] = [""]
-			except IndexError:
-				self.dl_dialogs.append("")
+		for d in range(len(dialogs)):
 
-		for i in range(len(self.dl_dialogs)):
-			for x in range(4):
-				try:
-					self.dl_dialogs[i][x] = ""
-				except IndexError:
-					self.dl_dialogs[i].append("")
+			dialog = dialogs[d]
+			words = dialog.split(' ')
 
-		for i in range(len(self.dl_dialogs))
+			word_index = 0
+			line_index = 0
 
-			line = 0
+			while word_index < len(words):
 
-			for word in words:
+				line_str = self.dl_dialogs[d][line_index] + " " + words[word_index]
+				max_width = self.dl_w - (self.dl_x + self.dl_offset_left + self.dl_image_s + 2 * self.dl_padding)
 
-				if not self.dl_font.size(self.dl_dialogs[i][line] + " " + word) < self.dl_h - self.dl_offset_left - self.dl_image_s - 20:
-					line += 1
-
-				self.dl_dialogs[i][line] += " %s" % word
+				if self.dl_font.size(line_str)[0] > max_width:
+					line_index += 1
+				else:
+					self.dl_dialogs[d][line_index] = line_str
+					word_index += 1
 
 	def render (self):
 
+		w = Globals.window.get_size()
+
 		if self.mb_is_showing:
+
+			#Draws rectangles
 
 			pygame.draw.rect(Globals.window, self.border_color, [
 				self.mb_x - self.mb_border_w, 
@@ -137,19 +144,11 @@ class HeadsUpDisplay ():
 			x = (w[0] - self.mb_title_font.size(self.mb_title)[0])/2
 			y = self.mb_y + 20
 
-			while self.mb_title_font.size(self.mb_title)[0] > self.mb_w:
-				h = self.mb_title.font.get_height()
-
-				if self.mb_title.get_height() > 20:
-					self.mb_title_font = pygame.font.Font(pygame.font.Font("assets/fonts/Minecraftia-Regular.ttf", h - 1))
-				else:
-					raise Exception("Title text '%s' is too long." % self.mb_title)
-
-			ren = self.mb_title_font.render(self.mb_title, False, self.border_color)
+			ren = self.mb_title_font.render(self.mb_title, False, self.text__color)
 			Globals.window.blit(ren, (x, y))
 
 
-			#Prints MEssage
+			#Prints Message
 
 			line_indent = 0
 
@@ -158,13 +157,23 @@ class HeadsUpDisplay ():
 
 			for line in self.text_lines:
 
-				ren = self.mb_message_font.render(line, False, self.border_color)
+				ren = self.mb_message_font.render(line, False, self.text_color)
 
 				Globals.window.blit(ren, (x, y + self.mb_message_font.size(line)[1] * line_indent))
 
 				line_indent += 1
 
+
+			text = "Press ENTER to continue"
+			x = self.mb_x + self.mb_w - self.mb_message_font.size(text)[0]
+			y = self.mb_y + self.mb_h - self.mb_message_font.size(text)[1]
+
+			r = self.dl_font.render(text, False, self.text_color)
+			Globals.window.blit(r, (x, y))
+
 		elif self.dl_is_showing:
+
+			#Draws Rectangles
 
 			pygame.draw.rect(Globals.window, self.border_color, [
 				self.dl_x, 
@@ -180,16 +189,30 @@ class HeadsUpDisplay ():
 				self.dl_h
 			])
 
-			img_y = int(self.dl_y + (self.dl_h - self.dl_image_s) / 2)
+			#draws Image
 
+			img_y = int(self.dl_y + (self.dl_h - self.dl_image_s) / 2)
 			Globals.window.blit(self.dl_images[self.dl_index], (self.dl_offset_left, img_y))
+
+			#Draws Dialog
+
+			line_height = self.dl_font.get_linesize()
+			base_x = self.dl_offset_left + self.dl_x + self.dl_image_s + 10
 
 			for i in range(len(self.dl_dialogs[self.dl_index])):
 
 				line = self.dl_dialogs[self.dl_index][i]
 
-				r = self.dl_font.render(line)
-				Globals.window.blit(r, (self.dl_offset_left + self.dl_image_s + 10))
+				r = self.dl_font.render(line, False, self.text_color)
+
+				Globals.window.blit(r, (base_x, self.dl_y + self.dl_padding + line_height * i))
+
+			text = "Press ENTER to continue"
+			x = self.dl_x + self.dl_w - self.dl_font.size(text)[0] - self.dl_padding
+			y = self.dl_y + self.dl_h - self.dl_font.size(text)[1] - self.dl_padding
+
+			r = self.dl_font.render(text, False, self.text_color)
+			Globals.window.blit(r, (x, y))
 
 	def message_box(self, title, message):
 
@@ -241,4 +264,14 @@ class HeadsUpDisplay ():
 
 				self.mb_is_showing = False
 				Globals.is_paused = False
-				self.text_lines = [""]
+		if self.dl_is_showing:
+
+			if pygame.K_RETURN in keys:
+
+				self.dl_index += 1
+				if self.dl_index >= len(self.dl_dialogs):
+
+					self.text_lines = [""]
+					self.dl_is_showing = False
+					Globals.is_paused = False
+					self.dl_dialogs = []
