@@ -316,8 +316,6 @@ class LevelEditor ():
 
 								b['ent'][b['attr']] += b['inc']
 
-								print(b['ent'])
-
 	def save_to_file(self, file_name):
 
 		to_save = []

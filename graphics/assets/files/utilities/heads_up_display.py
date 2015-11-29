@@ -16,7 +16,7 @@ class HeadsUpDisplay ():
 	mb_w = 0
 	mb_h = 0
 
-	mb_border_w = 0
+	border_w = 0
 
 	text_lines = [""]
 
@@ -32,8 +32,6 @@ class HeadsUpDisplay ():
 	dl_w = 0
 	dl_h = 0
 
-	dl_border_w = 0
-
 	dl_index = 0
 
 	dl_offset_left = 0
@@ -45,7 +43,21 @@ class HeadsUpDisplay ():
 
 	dl_font = None
 
-	dl_font = None
+	pm_is_showing = False
+
+	pm_x = 0
+	pm_y = 0
+	pm_w = 0
+	pm_h = 0
+
+	pm_padding = 0
+	pm_selected_button = 0
+
+	pm_button_h = 0
+
+	pm_title_font = None
+	pm_button_font = None
+
 	def __init__(self):
 
 		w = Globals.window.get_size()
@@ -53,7 +65,7 @@ class HeadsUpDisplay ():
 		self.mb_w = math.floor((w[0] * (2/3)) / Globals.block_size) * Globals.block_size
 		self.mb_h = math.floor((self.mb_w / Globals.block_size) * (3/4)) * Globals.block_size
 
-		self.mb_border_w = (Globals.block_size / Globals.pixels_per_block) * 2
+		self.border_w = (Globals.block_size / Globals.pixels_per_block) * 2
 
 		self.mb_x = (w[0] - self.mb_w) / 2
 		self.mb_y = (w[1] - self.mb_h) / 2
@@ -63,10 +75,17 @@ class HeadsUpDisplay ():
 		self.dl_w = w[0]
 		self.dl_h = w[1] - self.dl_y
 
-		self.dl_border_w = (Globals.block_size / Globals.pixels_per_block) * 2
 		self.dl_offset_left = int(self.dl_w * (1/10))
 		self.dl_image_s = int(self.dl_h * (1/2))
 		self.dl_padding = 10
+
+		self.pm_w = w[0] * (1/3)
+		self.pm_h = w[1] * (3/4)
+		self.pm_x = (w[0] - self.pm_w) / 2
+		self.pm_y = (w[1] - self.pm_h) / 2
+
+		self.pm_padding = 20
+		self.pm_button_h = 40
 
 		pygame.font.init()
 
@@ -76,7 +95,20 @@ class HeadsUpDisplay ():
 		self.mb_message_font = pygame.font.Font(font_url, 22)
 
 		self.dl_font = pygame.font.Font(font_url, 20)
-		print(self.dl_font.get_height())
+
+		self.pm_title_font = pygame.font.Font(font_url, 30)
+		self.pm_button_font = pygame.font.Font(font_url, 22)
+
+		self.pm_buttons = [
+			{
+				"text": "RESUME",
+				"on_click": self.resume
+			},
+			{
+				"text": "EXIT",
+				"on_click": self.quit
+			}
+		]
 
 	def dialog_box (self, dialogs, images):
 
@@ -119,17 +151,17 @@ class HeadsUpDisplay ():
 
 	def render (self):
 
-		w = Globals.window.get_size()
+		win = Globals.window.get_size()
 
 		if self.mb_is_showing:
 
 			#Draws rectangles
 
 			pygame.draw.rect(Globals.window, self.border_color, [
-				self.mb_x - self.mb_border_w, 
-				self.mb_y - self.mb_border_w, 
-				self.mb_w + 2 *self.mb_border_w, 
-				self.mb_h + 2 *self.mb_border_w
+				self.mb_x - self.border_w, 
+				self.mb_y - self.border_w, 
+				self.mb_w + 2 *self.border_w, 
+				self.mb_h + 2 *self.border_w
 			])
 
 			pygame.draw.rect(Globals.window, self.box_color, [
@@ -141,7 +173,7 @@ class HeadsUpDisplay ():
 
 			#Prints Title
 
-			x = (w[0] - self.mb_title_font.size(self.mb_title)[0])/2
+			x = (win[0] - self.mb_title_font.size(self.mb_title)[0])/2
 			y = self.mb_y + 20
 
 			ren = self.mb_title_font.render(self.mb_title, False, self.text_color)
@@ -177,9 +209,9 @@ class HeadsUpDisplay ():
 
 			pygame.draw.rect(Globals.window, self.border_color, [
 				self.dl_x, 
-				self.dl_y - self.dl_border_w,
+				self.dl_y - self.border_w,
 				self.dl_w,
-				self.dl_border_w
+				self.border_w
 			])
 
 			pygame.draw.rect(Globals.window, self.box_color, [
@@ -213,6 +245,60 @@ class HeadsUpDisplay ():
 
 			r = self.dl_font.render(text, False, self.text_color)
 			Globals.window.blit(r, (x, y))
+
+		elif self.pm_is_showing:
+
+			pygame.draw.rect(Globals.window, self.border_color, [
+				self.pm_x - self.border_w,
+				self.pm_y - self.border_w,
+				self.pm_w + 2 * self.border_w,
+				self.pm_h + 2 * self.border_w
+			])
+
+			pygame.draw.rect(Globals.window, self.box_color, [
+				self.pm_x,
+				self.pm_y,
+				self.pm_w,
+				self.pm_h
+			])
+
+			title_x = self.pm_x + (self.pm_w - self.pm_title_font.size("MENU")[0]) / 2
+			title_y = self. pm_y + self.pm_padding
+			r = self.pm_title_font.render("MENU", False, self.text_color)
+			Globals.window.blit(r, (title_x, title_y))
+
+			offset_y = self.pm_y + 2 * self.pm_padding + self.pm_title_font.size("MENU")[1]
+
+			x = self.pm_x + self.pm_padding
+			w = self.pm_w - 2 * self.pm_padding
+			h = self.pm_button_h
+
+			for i in range(len(self.pm_buttons)):
+
+				button = self.pm_buttons[i]
+
+				y = offset_y + (self.pm_button_h + self.pm_padding) * i - self.border_w
+
+				pygame.draw.rect(Globals.window, self.border_color, [
+					x - self.border_w,
+					y - self.border_w,
+					w + 2 * self.border_w,
+					h + 2 * self.border_w
+				])
+
+				pygame.draw.rect(Globals.window, self.box_color, [
+					x,
+					y,
+					w,
+					h
+				])
+
+				text_x = x + (w - self.pm_button_font.size(button['text'])[0]) / 2
+				text_y = y + (h - self.pm_button_font.get_height()) / 2
+
+				r = self.pm_button_font.render(button['text'], False, self.text_color)
+
+				Globals.window.blit(r, (text_x, text_y))
 
 	def message_box(self, title, message):
 
@@ -264,7 +350,7 @@ class HeadsUpDisplay ():
 
 				self.mb_is_showing = False
 				Globals.is_paused = False
-		if self.dl_is_showing:
+		elif self.dl_is_showing:
 
 			if pygame.K_RETURN in keys:
 
@@ -275,3 +361,21 @@ class HeadsUpDisplay ():
 					self.dl_is_showing = False
 					Globals.is_paused = False
 					self.dl_dialogs = []
+
+		else:
+			if self.pm_is_showing:
+
+				if pygame.K_RETURN in keys:
+					pass
+			else:
+				if pygame.K_ESCAPE in keys:
+					self.pm_is_showing = True
+					self.pm_selected_button = 0
+					Globals.is_paused = True
+
+	def resume (self):
+		Globals.is_paused = False
+		self.pm_menu_is_Showing = False
+
+	def quit (self):
+		pass

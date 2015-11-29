@@ -51,7 +51,6 @@ class LevelReader ():
 
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
-				print(thing['x'])
 
 			elif thing['type'] == 'archer':
 				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))

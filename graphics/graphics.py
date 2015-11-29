@@ -55,9 +55,13 @@ class Main ():
 
 				keys = k.new_event(event)
 
-				Globals.player.while_keys_down(keys)
+				if event.type == pygame.QUIT:
+					pygame.quit()
+					sys.exit()
 
-				Globals.hud.on_input(keys)
+			Globals.player.while_keys_down(keys)
+
+			Globals.hud.on_input(keys)
 
 			sky.base_update()
 
