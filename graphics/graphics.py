@@ -6,6 +6,7 @@ import time
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 from assets.files.utilities.level_reader import LevelReader
+from assets.files.utilities.main_menu import MainMenu
 
 from assets.files.entities.sky import Sky
 from assets.files.entities.current_tool import CurrentTool
@@ -45,6 +46,8 @@ class Main ():
 
 		k = KeyHandler()
 
+		m = MainMenu()
+
 		Globals.player_tool_sprite = CurrentTool()
 
 		while True:
@@ -59,39 +62,47 @@ class Main ():
 					pygame.quit()
 					sys.exit()
 
-			Globals.player.while_keys_down(keys)
+			if Globals.in_menu:
 
-			Globals.hud.on_input(keys)
+				m.update()
 
-			sky.base_update()
+			else:
 
-			Globals.player.base_update()
+				if not Globals.is_paused:
 
-			Globals.player_tool_sprite.update()
+					Globals.player.while_keys_down(keys)
 
-			for c in Globals.checkpoints:
-				c.base_update()
+				Globals.hud.on_input(keys)
 
-			for t in Globals.tools:
-				t.base_update()
+				sky.base_update()
 
-			for enemy in Globals.enemies:
-				enemy.base_update()
+				Globals.player.base_update()
 
-			for platform in Globals.platforms:
+				Globals.player_tool_sprite.update()
 
-				platform.update()
+				for c in Globals.checkpoints:
+					c.base_update()
 
-			for projectile in Globals.projectiles:
+				for t in Globals.tools:
+					t.base_update()
 
-				projectile.base_update()
+				for enemy in Globals.enemies:
+					enemy.base_update()
 
-			for prop in Globals.props:
-				prop.update()
+				for platform in Globals.platforms:
 
-			Globals.endblock.base_update()
+					platform.update()
 
-			Globals.hud.render()
+				for projectile in Globals.projectiles:
+
+					projectile.base_update()
+
+				for prop in Globals.props:
+					prop.update()
+
+				Globals.endblock.base_update()
+
+				Globals.hud.render()
 
 			pygame.display.flip()
 

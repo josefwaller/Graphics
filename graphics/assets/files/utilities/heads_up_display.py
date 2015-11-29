@@ -2,12 +2,13 @@ from assets.files.utilities.globals import Globals
 
 import pygame
 import math
+import sys
 
 class HeadsUpDisplay ():
 
-	border_color = (65, 65, 65)
-	box_color = (128, 128, 128)
-	text_color = (187, 187, 187)
+	border_color = (255, 255, 255)
+	box_color = (0, 0, 0)
+	text_color = (255, 255, 255)
 
 	mb_is_showing = False
 
@@ -279,6 +280,16 @@ class HeadsUpDisplay ():
 
 				y = offset_y + (self.pm_button_h + self.pm_padding) * i - self.border_w
 
+				if self.pm_selected_button == i:
+
+					fill_color = self.border_color
+					text_color = self.box_color
+
+				else:
+
+					fill_color = self.box_color
+					text_color = self.text_color
+
 				pygame.draw.rect(Globals.window, self.border_color, [
 					x - self.border_w,
 					y - self.border_w,
@@ -286,7 +297,7 @@ class HeadsUpDisplay ():
 					h + 2 * self.border_w
 				])
 
-				pygame.draw.rect(Globals.window, self.box_color, [
+				pygame.draw.rect(Globals.window, fill_color, [
 					x,
 					y,
 					w,
@@ -296,7 +307,7 @@ class HeadsUpDisplay ():
 				text_x = x + (w - self.pm_button_font.size(button['text'])[0]) / 2
 				text_y = y + (h - self.pm_button_font.get_height()) / 2
 
-				r = self.pm_button_font.render(button['text'], False, self.text_color)
+				r = self.pm_button_font.render(button['text'], False, text_color)
 
 				Globals.window.blit(r, (text_x, text_y))
 
@@ -366,7 +377,16 @@ class HeadsUpDisplay ():
 			if self.pm_is_showing:
 
 				if pygame.K_RETURN in keys:
-					pass
+					self.pm_buttons[self.pm_selected_button]['on_click']()
+					self.pm_is_showing = False
+
+				elif pygame.K_UP in keys:
+					if self.pm_selected_button >= 1:
+						self.pm_selected_button -= 1
+				elif pygame.K_DOWN in keys:
+					if self.pm_selected_button < len(self.pm_buttons) - 1:
+						self.pm_selected_button += 1
+				
 			else:
 				if pygame.K_ESCAPE in keys:
 					self.pm_is_showing = True
@@ -378,4 +398,5 @@ class HeadsUpDisplay ():
 		self.pm_menu_is_Showing = False
 
 	def quit (self):
-		pass
+		pygame.exit()
+		sys.exit()

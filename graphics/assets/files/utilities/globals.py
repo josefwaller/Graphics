@@ -16,7 +16,7 @@ class Globals:
     is_paused = False
     hud = None
     props = []
-
+    in_menu = True
     level_width = 0
     level_height = 0
 
