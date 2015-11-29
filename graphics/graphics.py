@@ -50,9 +50,13 @@ class Main ():
 
 		Globals.player_tool_sprite = CurrentTool()
 
+		keys = [[],[]]
+
 		while True:
 
 			starting_frame_time = time.time()
+
+			keys[1] = []
 
 			for event in pygame.event.get():
 
@@ -65,14 +69,15 @@ class Main ():
 			if Globals.in_menu:
 
 				m.update()
+				m.on_input(keys[1])
 
 			else:
 
 				if not Globals.is_paused:
 
-					Globals.player.while_keys_down(keys)
+					Globals.player.while_keys_down(keys[0])
 
-				Globals.hud.on_input(keys)
+				Globals.hud.on_input(keys[0])
 
 				sky.base_update()
 
