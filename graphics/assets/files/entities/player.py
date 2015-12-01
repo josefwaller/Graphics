@@ -52,23 +52,42 @@ class Player (JumpingEntity):
 
 		self.graphic_sprites = [
 
+			#Temp
+			[
+				self.img_load("player/temp/t_run_1.png"),
+				self.img_load("player/temp/t_run_2.png"),
+				self.img_load("player/temp/t_run_3.png"),
+
+				self.img_load("player/temp/t_shoot_1.png"),
+				self.img_load("player/temp/t_shoot_2.png"),
+				self.img_load("player/temp/t_shoot_3.png"),
+
+				self.img_load("player/temp/t_swing_1.png"),
+				self.img_load("player/temp/t_swing_2.png"),
+				self.img_load("player/temp/t_swing_3.png"),
+				self.img_load("player/temp/t_swing_4.png"),
+
+				self.img_load("player/temp/t_jump.png"),
+				self.img_load("player/temp/t_fall.png")
+			],
+
 			#8-bit
 			[
-				self.img_load("player/run_1.png"),
-				self.img_load("player/run_2.png"),
-				self.img_load("player/run_3.png"),
+				self.img_load("player/8bit/8_run_1.png"),
+				self.img_load("player/8bit/8_run_2.png"),
+				self.img_load("player/8bit/8_run_3.png"),
 
-				self.img_load("player/shoot_1.png"),
-				self.img_load("player/shoot_2.png"),
-				self.img_load("player/shoot_3.png"),
+				self.img_load("player/8bit/8_shoot_1.png"),
+				self.img_load("player/8bit/8_shoot_2.png"),
+				self.img_load("player/8bit/8_shoot_3.png"),
 
-				self.img_load("player/swing_1.png"),
-				self.img_load("player/swing_2.png"),
-				self.img_load("player/swing_3.png"),
-				self.img_load("player/swing_4.png"),
+				self.img_load("player/8bit/8_swing_1.png"),
+				self.img_load("player/8bit/8_swing_2.png"),
+				self.img_load("player/8bit/8_swing_3.png"),
+				self.img_load("player/8bit/8_swing_4.png"),
 
-				self.img_load("player/jump.png"),
-				self.img_load("player/fall.png")
+				self.img_load("player/8bit/8_jump.png"),
+				self.img_load("player/8bit/8_fall.png")
 			],
 
 			#16-bit
@@ -94,8 +113,6 @@ class Player (JumpingEntity):
 
 		self.sprites = self.graphic_sprites[0]
 
-		self.graphics_addon = 6
-
 		self.sprite_indexes = [
 			1
 		]
@@ -107,10 +124,9 @@ class Player (JumpingEntity):
 
 		self.last_move_time = time.time()
 
-		self.add_hitbox(x=10,y=0,w=10,h=12)
-		self.add_hitbox(x=12, y=12, w=6, h=7)
+		self.add_hitbox(x=16,y=0,w=10,h=12)
+		self.add_hitbox(x=18, y=12, w=6, h=7)
 		
-
 		self.entity_init(x, y)
 		self.is_showing = True
 
@@ -267,6 +283,7 @@ class Player (JumpingEntity):
 				self.last_blink - time.time()
 				self.is_blinking = True
 				self.blink_start_time = time.time()
+				self.using_tool = False
 
 	def move_camera (self):
 

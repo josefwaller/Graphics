@@ -161,10 +161,10 @@ class BaseEntity ():
 		if self.hitboxes == None:
 			self.hitboxes = []
 
-		x = self.make_pixelated(x)
-		y = self.make_pixelated(y)
-		w = self.make_pixelated(w)
-		h = self.make_pixelated(h)
+		x = x * Globals.block_size / 16
+		y = y * Globals.block_size / 16
+		w = w * Globals.block_size / 16
+		h = h * Globals.block_size / 16
 
 		self.hitboxes.append(Hitbox(x=x, y=y, w=w, h=h, parent=self))
 
@@ -179,7 +179,7 @@ class BaseEntity ():
 
 	def make_pixelated(self, num):
 
-		return int(num * (Globals.block_size / 16))
+		return int(num * (Globals.block_size / Globals.pixels_per_block))
 
 	def check_for_collision(self, target):
 

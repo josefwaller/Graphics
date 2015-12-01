@@ -28,7 +28,7 @@ class Main ():
 		Globals.window = pygame.display.set_mode(windowSize)
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
-		Globals.pixels_per_block = 16
+		Globals.pixels_per_block = 10
 		Globals.gravity_strength = 15 * Globals.block_size
 		Globals.graphics_level = self.settings['graphics_level']
 
