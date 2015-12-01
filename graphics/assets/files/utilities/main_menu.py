@@ -1,6 +1,9 @@
 from assets.files.utilities.globals import Globals
+from assets.files.utilities.level_reader import LevelReader
 
 import pygame
+import sys
+import json
 
 class MainMenu ():
 
@@ -127,10 +130,34 @@ class MainMenu ():
 			Globals.window.blit(r, (font_x, font_y))
 
 	def resume (self):
-		pass
+		
+		#loads level
+		level_file = open("assets/levels/l%s.json" % Globals.graphics_level,"r")
+		r = LevelReader()
+		r.read_level(level_file.read())
+		level_file.close()
+
+		Globals.in_menu = False
+
 	def quit (self):
-		pass
+		pygame.quit()
+		sys.exit()
 	def new_game (self):
-		pass
+
+		#Resets everything
+		settings_file = open("assets/settings/settings.json", "r+")
+		old_settings = json.loads(settings_file.read())
+		new_settings = old_settings.copy()
+		new_settings['graphics_level'] = 0
+		settings_file.seek(0)
+		settings_file.write(json.dumps(new_settings))
+		
+		#loads level
+		level_file = open("assets/levels/l1.json","r")
+		r = LevelReader()
+		r.read_level(level_file.read())
+		level_file.close()
+
+		Globals.in_menu = False
 
 

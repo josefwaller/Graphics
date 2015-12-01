@@ -5,15 +5,13 @@ import time
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
-from assets.files.utilities.level_reader import LevelReader
 from assets.files.utilities.main_menu import MainMenu
-
-from assets.files.entities.sky import Sky
-from assets.files.entities.current_tool import CurrentTool
 
 from level_editor import LevelEditor
 
 class Main ():
+
+	settings = None
 
 	def __init__(self):
 		pygame.init()
@@ -22,33 +20,25 @@ class Main ():
 
 		#initializes setting
 		settings_file = open("assets/settings/settings.json", "r")
-		settings = json.loads(settings_file.read())
+		self.settings = json.loads(settings_file.read())
+		settings_file.close()
 
 		#Sets the window dimensions
-		windowSize = width, height = settings['screenWidth'], settings['screenHeight']
+		windowSize = width, height = self.settings['screen_width'], self.settings['screen_height']
 		Globals.window = pygame.display.set_mode(windowSize)
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
 		Globals.pixels_per_block = 16
 		Globals.gravity_strength = 15 * Globals.block_size
-
-		#loads level
-		level_file = open("assets/levels/current_level.json","r")
-
-		r = LevelReader()
-		r.read_level(level_file.read())
+		Globals.graphics_level = self.settings['graphics_level']
 
 		self.play_game()
 
 	def play_game(self):
 
-		sky = Sky("props/sky.png", "props/16_sky.png")
-
 		k = KeyHandler()
 
 		m = MainMenu()
-
-		Globals.player_tool_sprite = CurrentTool()
 
 		keys = [[],[]]
 
@@ -79,7 +69,7 @@ class Main ():
 
 				Globals.hud.on_input(keys[0])
 
-				sky.base_update()
+				Globals.sky.base_update()
 
 				Globals.player.base_update()
 
@@ -111,7 +101,7 @@ class Main ():
 
 			pygame.display.flip()
 
-			while time.time() - starting_frame_time < 1 / 60:
+			while time.time() - starting_frame_time < 1 / self.settings['fps']:
 				pass
 
 if __name__ == "__main__":

@@ -59,6 +59,12 @@ class LevelEditor ():
 					}
 			},
 			{
+				"image": self.load_img("assets/images/props/pole.png"),
+				"type": "checkpoint",
+				"selected": None,
+				"editable": None
+			},
+			{
 				"image" : self.load_img("assets/images/enemies/wizard/front_1.png"),
 				"type": "wizard",
 				"selected": False,
@@ -285,6 +291,7 @@ class LevelEditor ():
 
 		if not self.item_selected == None and self.mouse[1] == True:
 
+			#Gets the indexes
 			x = int(self.mouse[0][0] / LEGlobals.block_size) - LEGlobals.x_offset
 			y = int(self.mouse[0][1] / LEGlobals.block_size) - LEGlobals.y_offset
 
@@ -294,7 +301,7 @@ class LevelEditor ():
 			else:
 
 				self.entities[x][y] = BaseItem(
-					x= int((self.mouse[0][0] - self.menu_width) / LEGlobals.block_size) * LEGlobals.block_size - LEGlobals.x_offset, 
+					x= int((self.mouse[0][0] - self.menu_width) / LEGlobals.block_size) * LEGlobals.block_size - (LEGlobals.x_offset * LEGlobals.block_size), 
 					y= y * LEGlobals.block_size,
 					image=pygame.transform.scale(self.item_selected['image'], (LEGlobals.block_size, LEGlobals.block_size)), 
 					attributes=self.item_selected.copy(),

@@ -1,6 +1,8 @@
 from assets.files.entities.player import Player
 from assets.files.entities.platform import Platform
 from assets.files.entities.trigger import Trigger
+from assets.files.entities.sky import Sky
+from assets.files.entities.current_tool import CurrentTool
 
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
 from assets.files.entities.tools.sword import Sword
@@ -26,10 +28,11 @@ class LevelReader ():
 
 	def read_level(self, level_str):
 
+		Globals.sky = Sky("props/sky.png", "props/16_sky.png")
+
 		level = json.loads(level_str)
 
 		Globals.hud = HeadsUpDisplay()
-
 
 		Globals.enemies = [
 		]
@@ -51,6 +54,7 @@ class LevelReader ():
 
 			elif thing['type'] == 'player':
 				Globals.player = Player(x=thing['x'], y=thing['y'])
+				Globals.player_tool_sprite = CurrentTool()
 
 			elif thing['type'] == 'archer':
 				Globals.enemies.append(Archer(x=thing['x'], y=thing['y'],))
