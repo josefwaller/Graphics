@@ -23,12 +23,12 @@ import json
 
 class LevelReader ():
 
-	def __init__ (self):
+	def __init__(self):
 		pass
 
 	def read_level(self, level_str):
 
-		Globals.sky = Sky("props/sky.png", "props/16_sky.png")
+		Globals.sky = Sky(["props/t_sky.png", "props/sky.png", "props/16_sky.png"])
 
 		level = json.loads(level_str)
 
@@ -46,8 +46,8 @@ class LevelReader ():
 					y=thing['y'], 
 					w=thing['w'],
 					h=thing['h'],
-					top_block="blocks/snow_top.png", 
-					inner_block="blocks/snow.png",
+					top_block="blocks/t_dirt_top.png",
+					inner_block="blocks/t_dirt.png",
 					update_inner_block="blocks/16_snow.png",
 					update_top_block="blocks/16_snow_top.png"
 				))
@@ -82,7 +82,7 @@ class LevelReader ():
 				Globals.checkpoints.append(c)
 
 				try:
-					if thing['is_starter'] == True:
+					if thing['is_starter']:
 						Globals.player.checkpoint = c
 						c.flag_rising = True
 				except KeyError:
@@ -112,6 +112,10 @@ class LevelReader ():
 					images = thing['on_enter']['images']
 					param = [dialogs, images]
 					func = Globals.hud.dialog_box
+
+				else:
+					print("Trigger Entity has improper on_enter attribute: %s" % thing['on_enter']['type'])
+					return
 
 				Globals.props.append(
 					Trigger(x=x, y=y, w=w, h=h, on_enter=func, parameters=param)

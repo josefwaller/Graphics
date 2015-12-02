@@ -1,13 +1,14 @@
 from assets.files.entities.tools.base_tool import BaseTool
 from assets.files.utilities.globals import Globals
 
-class BowAndArrow (BaseTool):
+class BowAndArrow(BaseTool):
 
-	def __init__ (self, x, y):
+	def __init__(self, x, y):
 
 		self.is_tool = True
 
 		self.graphic_images = [
+			self.img_load("tools/t_bar.png"),
 			self.img_load("tools/bar.png"),
 			self.img_load("tools/16_bar.png")
 		]

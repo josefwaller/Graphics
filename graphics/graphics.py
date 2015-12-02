@@ -9,23 +9,23 @@ from assets.files.utilities.main_menu import MainMenu
 
 from level_editor import LevelEditor
 
-class Main ():
+class Main:
 
 	settings = None
 
 	def __init__(self):
 		pygame.init()
 
-		#creats the window, loads images, etc
+		# creates the window, loads images, etc
 
-		#initializes setting
+		# initializes setting
 		settings_file = open("assets/settings/settings.json", "r")
 		self.settings = json.loads(settings_file.read())
 		settings_file.close()
 
-		#Sets the window dimensions
-		windowSize = width, height = self.settings['screen_width'], self.settings['screen_height']
-		Globals.window = pygame.display.set_mode(windowSize)
+		# Sets the window dimensions
+		window_size = self.settings['screen_width'], self.settings['screen_height']
+		Globals.window = pygame.display.set_mode(window_size)
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
 		Globals.pixels_per_block = 10

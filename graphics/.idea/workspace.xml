@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Josef.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/player/temp/temp_player.psd" afterPath="$PROJECT_DIR$/assets/images/player/temp/temp_player.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/base_entity.py" afterPath="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/current_tool.py" afterPath="$PROJECT_DIR$/assets/files/entities/current_tool.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/jumping_entity.py" afterPath="$PROJECT_DIR$/assets/files/entities/jumping_entity.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/player.py" afterPath="$PROJECT_DIR$/assets/files/entities/player.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/images/blocks/up_graphics_16.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/player/temp/t_bar_fall.png" afterPath="$PROJECT_DIR$/assets/images/player/temp/t_bar_fall.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/player/temp/t_bar_jump.png" afterPath="$PROJECT_DIR$/assets/images/player/temp/t_bar_jump.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Josef.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Josef.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/end_block.py" afterPath="$PROJECT_DIR$/assets/files/entities/end_block.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/platform.py" afterPath="$PROJECT_DIR$/assets/files/entities/platform.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/sky.py" afterPath="$PROJECT_DIR$/assets/files/entities/sky.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/tools/bow_and_arrow.py" afterPath="$PROJECT_DIR$/assets/files/entities/tools/bow_and_arrow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/tools/staff.py" afterPath="$PROJECT_DIR$/assets/files/entities/tools/staff.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/tools/sword.py" afterPath="$PROJECT_DIR$/assets/files/entities/tools/sword.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/globals.py" afterPath="$PROJECT_DIR$/assets/files/utilities/globals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/level_reader.py" afterPath="$PROJECT_DIR$/assets/files/utilities/level_reader.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/settings/settings.json" afterPath="$PROJECT_DIR$/assets/settings/settings.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graphics.py" afterPath="$PROJECT_DIR$/graphics.py" />
     </list>
     <ignored path="graphics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,31 +41,91 @@
         <entry file="file://$PROJECT_DIR$/assets/files/utilities/globals.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/files/entities/player.py">
+      <file leaf-file-name="current_tool.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/files/entities/current_tool.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+              <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
               <folding>
-                <element signature="e#0#62#0" expanded="true" />
+                <element signature="e#0#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="current_tool.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/files/entities/current_tool.py">
+      <file leaf-file-name="sky.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/files/entities/sky.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32771537">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="level_reader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/files/utilities/level_reader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="117" column="26" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sword.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/files/entities/tools/sword.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="end_block.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/files/entities/end_block.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="platform.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/files/entities/platform.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.14044943">
+              <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphics.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,16 +153,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jumping_entity.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/files/entities/jumping_entity.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -107,11 +162,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/assets/files/entities/jumping_entity.py" />
-        <option value="$PROJECT_DIR$/assets/files/utilities/globals.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/player.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/checkpoint.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/current_tool.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/sky.py" />
+        <option value="$PROJECT_DIR$/graphics.py" />
+        <option value="$PROJECT_DIR$/assets/files/utilities/level_reader.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/tools/bow_and_arrow.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/tools/staff.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/tools/sword.py" />
+        <option value="$PROJECT_DIR$/assets/files/utilities/globals.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/end_block.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/platform.py" />
       </list>
     </option>
   </component>
@@ -215,6 +278,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,14 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/utilities/globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/entities/player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -444,10 +529,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/entities/current_tool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32771537">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/sky.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/tools/bow_and_arrow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4681648">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/tools/staff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7659176">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/utilities/level_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="26" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/utilities/globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/tools/sword.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/end_block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/platform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.14044943">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

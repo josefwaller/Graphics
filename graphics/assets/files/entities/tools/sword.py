@@ -1,11 +1,13 @@
 from assets.files.entities.tools.base_tool import BaseTool
 from assets.files.utilities.globals import Globals
 
+
 class Sword (BaseTool):
 
 	def __init__(self, x, y):
 
 		self.graphic_images = [
+			self.img_load("tools/t_sword.png"),
 			self.img_load("tools/sword.png"),
 			self.img_load("tools/sword.png")
 		]
