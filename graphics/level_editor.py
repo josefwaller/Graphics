@@ -4,7 +4,8 @@ import json
 from level_editor_assets.lvl_edtr_base_item import BaseItem
 from level_editor_assets.lvl_edtr_globals import LEGlobals
 
-class LevelEditor ():
+
+class LevelEditor:
 
 	menu_width = 150
 	attr_menu_width = 150
@@ -29,24 +30,24 @@ class LevelEditor ():
 
 	def __init__ (self):
 
-		windowSize = width, height = 800, 600
+		windowSize = 800, 600
 		LEGlobals.window = pygame.display.set_mode(windowSize)
 
-		self.mouse = [[0,0], 0]
+		self.mouse = [[0, 0], 0]
 
 		self.items = [
 			{
 				"image": self.load_img("assets/images/blocks/temp_block.png"),
 				"type": "delete",
 				"selected": False,
-				"editable" : None
+				"editable": None
 
 			},
 			{
 				"image": self.load_img("assets/images/player/8bit/8_run_2.png"),
 				"type": "player",
 				"selected": False,
-				"editable" : None
+				"editable": None
 			},
 			{
 				"image": self.load_img("assets/images/blocks/snow.png"),
@@ -65,10 +66,10 @@ class LevelEditor ():
 				"editable": None
 			},
 			{
-				"image" : self.load_img("assets/images/enemies/wizard/front_1.png"),
+				"image": self.load_img("assets/images/enemies/wizard/front_1.png"),
 				"type": "wizard",
 				"selected": False,
-				"editable" : None
+				"editable": None
 			},
 			{
 				"image": self.load_img("assets/images/enemies/walker/run_2.png"),
@@ -110,7 +111,7 @@ class LevelEditor ():
 				"editable": None
 			},
 			{
-				"image": self.load_img("assets/images/blocks/up_graphics_16.png"),
+				"image": self.load_img("assets/images/blocks/8_up_graphics_16.png"),
 				"type": "endblock",
 				"selected": False,
 				"editable": None
@@ -133,7 +134,6 @@ class LevelEditor ():
 
 			c.append([])
 
-
 		for i in range(len(self.items)):
 
 			i_rounded = int(i/4)
@@ -141,8 +141,6 @@ class LevelEditor ():
 			c[i_rounded].append(self.items[i])
 
 		self.items = c.copy()
-
-
 
 		compass_size = 90
 		#   _ _ _
@@ -199,14 +197,14 @@ class LevelEditor ():
 		}
 		self.entities = []
 
-		while len(self.entities) < 20:
+		while len(self.entities) < 100:
 			self.entities.append([])
 
 		for i in range(len(self.entities)):
 			while len(self.entities[i]) < int(LEGlobals.window.get_size()[1] / LEGlobals.block_size):
 				self.entities[i].append(None)
 
-
+		# Runs editor loop
 		self.run_editor()
 
 	def run_editor (self):

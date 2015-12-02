@@ -17,6 +17,10 @@ class Jumper (SmartEnemy):
 
 		self.graphic_sprites = [
 			[
+				self.img_load("enemies/jumper/t_jumper_jump.png"),
+				self.img_load("enemies/jumper/t_jumper_land.png")
+			],
+			[
 				self.img_load("enemies/jumper/jumper_jump.png"),
 				self.img_load("enemies/jumper/jumper_land.png")
 			],
@@ -45,8 +49,10 @@ class Jumper (SmartEnemy):
 		self.landing_time = 0
 
 		self.hitboxes = []
-		self.add_hitbox(x=5, y=10, w=5, h=8)
-		self.add_hitbox(x=10, y=2, w=10, h=16)
+		self.add_hitbox(x=8, y=1, w=5, h=12)
+
+		self.h = 16
+		self.w = 24
 
 		self.entity_init(x, y)
 		self.last_jump = time.time()

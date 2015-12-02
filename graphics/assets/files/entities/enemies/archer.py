@@ -3,7 +3,7 @@ from assets.files.entities.enemies.smart_enemy import SmartEnemy
 from assets.files.entities.projectiles.arrow import Arrow
 
 import time
-import pygame
+
 
 class Archer (SmartEnemy):
 
@@ -13,12 +13,19 @@ class Archer (SmartEnemy):
 	is_attacking = None
 	attack_duration = None
 
-	def __init__ (self, x, y):
+	def __init__(self, x, y):
 
 		self.last_attack_time = time.time()
 
 		self.graphic_sprites = [
 
+			[
+
+				self.img_load("enemies/archer/t_archer_1.png"),
+				self.img_load("enemies/archer/t_archer_2.png"),
+				self.img_load("enemies/archer/t_archer_shoot.png")
+
+			],
 			[
 
 				self.img_load("enemies/archer/archer_1.png"),
@@ -39,7 +46,7 @@ class Archer (SmartEnemy):
 		self.is_animated = True
 
 		self.idle_indexes = [2]
-		self.attack_indexes = [0,1]
+		self.attack_indexes = [0, 1]
 
 		self.sprite_indexes = self.idle_indexes
 		self.sprite_interval = 300
@@ -50,9 +57,12 @@ class Archer (SmartEnemy):
 		self.attack_duration = 1
 
 		self.visible_range = 10 * Globals.block_size
-		self.add_hitbox(x=3, y=2, w=7, h=6)
-		self.add_hitbox(x=4, y=7, w=4, h=8)
+		self.add_hitbox(x=3, y=0, w=5, h=6)
+		self.add_hitbox(x=4, y=7, w=4, h=4)
 
+		self.w = 13
+		self.h = 13
+		self.entity_init(x, y)
 
 	def attack (self):
 

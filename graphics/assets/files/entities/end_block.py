@@ -28,6 +28,7 @@ class EndBlock (BaseEntity):
 
 		self.facing_left = True
 
+		self.add_hitbox(0, 0, 16, 16)
 		self.used = False
 
 		self.entity_init(x, y)

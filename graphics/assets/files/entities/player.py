@@ -290,7 +290,7 @@ class Player (JumpingEntity):
 	def on_hit(self):
 
 		# Checks if the player is still recovering
-		if time.time() - self.last_hit >= self.recover_delay:
+		if time.time() - self.last_hit <= self.recover_delay:
 
 			# Decides whether to respawn or lose tool
 			if self.tool is None:

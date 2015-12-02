@@ -244,14 +244,12 @@ class BaseEntity:
 		self.last_position['x'] = self.x
 		self.last_position['y'] = self.y
 
-	def render (self):
-
-		sprite = 0
+	def render(self):
 
 		if self.is_animated:
-			self.unix = time.time() * 1000
+			unix = time.time() * 1000
 			
-			if self.last_sprite_time < self.unix - self.sprite_interval:
+			if self.last_sprite_time < unix - self.sprite_interval:
 
 				self.this_index += 1
 				self.last_sprite_time = time.time() * 1000
@@ -270,12 +268,10 @@ class BaseEntity:
 				print("---- This Index: %s" % self.this_index)
 				sys.exit(0)
 
-
 		else:
 
 			sprite = self.image
 		x = self.x + Globals.camera_offset['x']
-
 		y = self.y + Globals.camera_offset['y']
 
 		if not self.is_static:
@@ -296,12 +292,9 @@ class BaseEntity:
 
 			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
 
-
-
-
-	def update_graphics (self):
+	def update_graphics(self):
 				
-		if self.is_animated == False:
+		if not self.is_animated:
 
 			self.image = self.graphic_images[Globals.graphics_level]
 			

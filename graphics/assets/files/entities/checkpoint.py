@@ -1,7 +1,7 @@
 from assets.files.utilities.globals import Globals
 from assets.files.entities.base_entity import BaseEntity
 
-import pygame
+
 class Checkpoint (BaseEntity):
 
 	flag = None
@@ -21,8 +21,8 @@ class Checkpoint (BaseEntity):
 
 		self.flag = BaseEntity()
 
-		self.flag.w = self.make_pixelated(9)
-		self.flag.h = self.make_pixelated(6)
+		self.flag.w = self.scale_relative(9)
+		self.flag.h = self.scale_relative(6)
 
 		self.flag.x = self.x
 		self.flag.y = self.y + self.h - self.flag.h
@@ -43,7 +43,7 @@ class Checkpoint (BaseEntity):
 		self.pole.x = self.flag.x + self.flag.w
 		self.pole.y = self.y
 
-		self.pole.w = self.make_pixelated(2)
+		self.pole.w = self.scale_relative(2)
 		self.pole.h = self.h
 		self.pole.is_animated = False
 		self.pole.graphic_images = [
@@ -60,13 +60,12 @@ class Checkpoint (BaseEntity):
 
 		self.add_hitbox(x=0, y=0, w=self.pole.w, h=32)
 
-	def update_graphics (self):
+	def update_graphics(self):
 
 		self.flag.update_graphics()
 		self.pole.update_graphics()
 
-	def update (self):
-
+	def update(self):
 
 		if self.check_for_collision(Globals.player):
 			Globals.player.checkpoint = self
@@ -82,7 +81,7 @@ class Checkpoint (BaseEntity):
 
 		self.render()
 
-	def render (self):
+	def render(self):
 
 		self.flag.render()
 		self.pole.render()
