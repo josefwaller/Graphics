@@ -53,14 +53,8 @@ class BaseEntity ():
 
 	def entity_init (self, x, y):
 
-		if self.is_animated:
-
-			self.img_h = self.make_pixelated(self.sprites[0].get_size()[1])
-			self.img_w = self.make_pixelated(self.sprites[0].get_size()[0])
-
-		else:
-			self.h = self.make_pixelated(self.image.get_size()[1])
-			self.w = self.make_pixelated(self.image.get_size()[0])
+		self.h *= self.scale_relative(1)
+		self.w *= self.scale_relative(1)
 
 		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
 		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
@@ -84,7 +78,7 @@ class BaseEntity ():
 						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.w, self.h))
 					else:
 
-						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.img_w, self.img_h))
+						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.w, self.h))
 
 		else:
 
@@ -161,10 +155,10 @@ class BaseEntity ():
 		if self.hitboxes == None:
 			self.hitboxes = []
 
-		x = x * Globals.block_size / 16
-		y = y * Globals.block_size / 16
-		w = w * Globals.block_size / 16
-		h = h * Globals.block_size / 16
+		x = self.scale_relative(x)
+		y = self.scale_relative(y)
+		w = self.scale_relative(w)
+		h = self.scale_relative(h)
 
 		self.hitboxes.append(Hitbox(x=x, y=y, w=w, h=h, parent=self))
 
@@ -177,9 +171,9 @@ class BaseEntity ():
 
 		self.last_time = time.time()
 
-	def make_pixelated(self, num):
+	def scale_relative(self, num):
 
-		return int(num * (Globals.block_size / Globals.pixels_per_block))
+		return int(num * (Globals.block_size / 16))
 
 	def check_for_collision(self, target):
 
@@ -342,7 +336,7 @@ class BaseEntity ():
 						collide_x = True
 
 				if self.y + self.h >= platform.y :
-					if starting_y + self.h < platform.y:
+					if starting_y + self.h <= platform.y:
 
 						collide_y = True
 

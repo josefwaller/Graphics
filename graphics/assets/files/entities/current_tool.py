@@ -8,6 +8,42 @@ class CurrentTool (BaseEntity):
 
 		self.graphic_sprites = [
 			[
+				self.img_load("player/temp/t_sword_1.png"),
+				self.img_load("player/temp/t_sword_2.png"),
+				self.img_load("player/temp/t_sword_3.png"),
+
+				self.img_load("player/temp/t_sword_swing_1.png"),
+				self.img_load("player/temp/t_sword_swing_2.png"),
+				self.img_load("player/temp/t_sword_swing_3.png"),
+				self.img_load("player/temp/t_sword_swing_4.png"),
+
+				self.img_load("player/temp/t_sword_jump.png"),
+				self.img_load("player/temp/t_sword_fall.png"),
+
+				self.img_load("player/temp/t_bar_1.png"),
+				self.img_load("player/temp/t_bar_2.png"),
+				self.img_load("player/temp/t_bar_3.png"),
+
+				self.img_load("player/temp/t_bar_shoot_1.png"),
+				self.img_load("player/temp/t_bar_shoot_2.png"),
+				self.img_load("player/temp/t_bar_shoot_3.png"),
+
+				self.img_load("player/8bit/8_bar_jump.png"),
+				self.img_load("player/8bit/8_bar_fall.png"),
+
+				self.img_load("player/8bit/8_staff_1.png"),
+				self.img_load("player/8bit/8_staff_2.png"),
+				self.img_load("player/8bit/8_staff_3.png"),
+
+				self.img_load("player/8bit/8_staff_swing_1.png"),
+				self.img_load("player/8bit/8_staff_swing_2.png"),
+				self.img_load("player/8bit/8_staff_swing_3.png"),
+				self.img_load("player/8bit/8_staff_swing_4.png"),
+
+				self.img_load("player/8bit/8_staff_jump.png"),
+				self.img_load("player/8bit/8_staff_fall.png"),
+			],
+			[
 				self.img_load("player/8bit/8_sword_1.png"),
 				self.img_load("player/8bit/8_sword_2.png"),
 				self.img_load("player/8bit/8_sword_3.png"),
@@ -44,40 +80,40 @@ class CurrentTool (BaseEntity):
 				self.img_load("player/8bit/8_staff_fall.png"),
 			],
 			[
-				self.img_load("player/16_sword_1.png"),
-				self.img_load("player/16_sword_2.png"),
-				self.img_load("player/16_sword_3.png"),
+				self.img_load("player/16bit/16_sword_1.png"),
+				self.img_load("player/16bit/16_sword_2.png"),
+				self.img_load("player/16bit/16_sword_3.png"),
 
-				self.img_load("player/16_sword_swing_1.png"),
-				self.img_load("player/16_sword_swing_2.png"),
-				self.img_load("player/16_sword_swing_3.png"),
-				self.img_load("player/16_sword_swing_4.png"),
+				self.img_load("player/16bit/16_sword_swing_1.png"),
+				self.img_load("player/16bit/16_sword_swing_2.png"),
+				self.img_load("player/16bit/16_sword_swing_3.png"),
+				self.img_load("player/16bit/16_sword_swing_4.png"),
 
-				self.img_load("player/16_sword_jump.png"),
-				self.img_load("player/16_sword_fall.png"),
+				self.img_load("player/16bit/16_sword_jump.png"),
+				self.img_load("player/16bit/16_sword_fall.png"),
 
-				self.img_load("player/16_bar_1.png"),
-				self.img_load("player/16_bar_2.png"),
-				self.img_load("player/16_bar_3.png"),
+				self.img_load("player/16bit/16_bar_1.png"),
+				self.img_load("player/16bit/16_bar_2.png"),
+				self.img_load("player/16bit/16_bar_3.png"),
 
-				self.img_load("player/16_bar_shoot_1.png"),
-				self.img_load("player/16_bar_shoot_2.png"),
-				self.img_load("player/16_bar_shoot_3.png"),
+				self.img_load("player/16bit/16_bar_shoot_1.png"),
+				self.img_load("player/16bit/16_bar_shoot_2.png"),
+				self.img_load("player/16bit/16_bar_shoot_3.png"),
 
-				self.img_load("player/16_bar_jump.png"),
-				self.img_load("player/16_bar_fall.png"),
+				self.img_load("player/16bit/16_bar_jump.png"),
+				self.img_load("player/16bit/16_bar_fall.png"),
 
-				self.img_load("player/16_staff_1.png"),
-				self.img_load("player/16_staff_2.png"),
-				self.img_load("player/16_staff_3.png"),
+				self.img_load("player/16bit/16_staff_1.png"),
+				self.img_load("player/16bit/16_staff_2.png"),
+				self.img_load("player/16bit/16_staff_3.png"),
 
-				self.img_load("player/16_staff_swing_1.png"),
-				self.img_load("player/16_staff_swing_2.png"),
-				self.img_load("player/16_staff_swing_3.png"),
-				self.img_load("player/16_staff_swing_4.png"),
+				self.img_load("player/16bit/16_staff_swing_1.png"),
+				self.img_load("player/16bit/16_staff_swing_2.png"),
+				self.img_load("player/16bit/16_staff_swing_3.png"),
+				self.img_load("player/16bit/16_staff_swing_4.png"),
 
-				self.img_load("player/16_staff_jump.png"),
-				self.img_load("player/16_staff_fall.png"),
+				self.img_load("player/16bit/16_staff_jump.png"),
+				self.img_load("player/16bit/16_staff_fall.png"),
 			]
 		]
 
@@ -137,7 +173,8 @@ class CurrentTool (BaseEntity):
 				i = p.sprite_indexes[p.this_index]
 
 			except IndexError:
-				return
+				print("Tool Sprite IndexOutOfRange!")
+				print("p.this_index: %s" % p.this_index)
 				#The player will call an error for this
 
 			if not p.using_tool:

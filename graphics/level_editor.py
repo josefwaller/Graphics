@@ -43,7 +43,7 @@ class LevelEditor ():
 
 			},
 			{
-				"image": self.load_img("assets/images/player/run_2.png"),
+				"image": self.load_img("assets/images/player/8bit/8_run_2.png"),
 				"type": "player",
 				"selected": False,
 				"editable" : None

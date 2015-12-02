@@ -92,21 +92,21 @@ class Player (JumpingEntity):
 
 			#16-bit
 			[
-				self.img_load("player/16_run_1.png"),
-				self.img_load("player/16_run_2.png"),
-				self.img_load("player/16_run_3.png"),
+				self.img_load("player/16bit/16_run_1.png"),
+				self.img_load("player/16bit/16_run_2.png"),
+				self.img_load("player/16bit/16_run_3.png"),
 
-				self.img_load("player/16_shoot_1.png"),
-				self.img_load("player/16_shoot_2.png"),
-				self.img_load("player/16_shoot_3.png"),
+				self.img_load("player/16bit/16_shoot_1.png"),
+				self.img_load("player/16bit/16_shoot_2.png"),
+				self.img_load("player/16bit/16_shoot_3.png"),
 
-				self.img_load("player/16_swing_1.png"),
-				self.img_load("player/16_swing_2.png"),
-				self.img_load("player/16_swing_3.png"),
-				self.img_load("player/16_swing_4.png"),
+				self.img_load("player/16bit/16_swing_1.png"),
+				self.img_load("player/16bit/16_swing_2.png"),
+				self.img_load("player/16bit/16_swing_3.png"),
+				self.img_load("player/16bit/16_swing_4.png"),
 
-				self.img_load("player/16_jump.png"),
-				self.img_load("player/16_fall.png")
+				self.img_load("player/16bit/16_jump.png"),
+				self.img_load("player/16bit/16_fall.png")
 
 			]
 		]
@@ -124,8 +124,11 @@ class Player (JumpingEntity):
 
 		self.last_move_time = time.time()
 
-		self.add_hitbox(x=16,y=0,w=10,h=12)
-		self.add_hitbox(x=18, y=12, w=6, h=7)
+		self.add_hitbox(x=10,y=0,w=10,h=12)
+		self.add_hitbox(x=12, y=12, w=6, h=3)
+
+		self.h = 19
+		self.w = 38
 		
 		self.entity_init(x, y)
 		self.is_showing = True
