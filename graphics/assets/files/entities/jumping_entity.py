@@ -6,7 +6,6 @@ from assets.files.utilities.globals import Globals
 class JumpingEntity (BaseEntity):
 
 	jump_strength = None
-	momY = None
 	is_grounded = None
 	is_static = False
 

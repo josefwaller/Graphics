@@ -1,154 +1,148 @@
-import calendar
-import time
-import pygame
-import sys
-
+# Default class for everything
 from assets.files.utilities.globals import Globals
 from assets.files.utilities.hitbox import Hitbox
 
-#Defualt class for everything
-class BaseEntity ():
-	momY = None
+import pygame
+import time
+import sys
+
+
+class BaseEntity:
+
+	# Gravity attributes
 	is_grounded = None
 	gravity_strength = None
 
+	# Position  of the entity
 	x = 0
 	y = 0
 	w = 0
 	h = 0
 
+	# The dimensions of the sprites
 	img_w = 0
 	img_h = 0
 
-	unix = 0
-
+	# Whether or not the sprites change
 	is_animated = False
 
+	# The image if it is not animated
+	graphic_images = []
 	image = None
 
+	# Animation sprites and indexes\
+	graphic_sprites = []
 	sprites = None
 	sprite_indexes = None
 	this_index = 0
+
+	# The platform the entity is standing on
 	platform_under = None
 
+	# Graphics level
 	last_graphics = Globals.graphics_level
 
+	# Times for animation
 	last_sprite_time = 0
 	sprite_interval = 0
 
 	facing_left = False
 
 	last_time = 0
-
 	last_position = None
 
 	is_showing = True
+
+	# whether or not the entity is affected by gravity
 	is_static = False
 
+	# The entity's hitboxes
 	hitboxes = None
 
-	least_x = 0
-	least_y = 0
+	# The offset with which to draw the image
+	image_offset_x = 0
+	image_offset_y = 0
 
+	# Initializes basic stats
+	# Used by almost all entities
+	def entity_init(self, x, y):
 
-	def entity_init (self, x, y):
-
+		# Scales the width/height relative
 		self.h *= self.scale_relative(1)
 		self.w *= self.scale_relative(1)
 
-		self.x = x * Globals.block_size + (Globals.block_size - self.w) / 2
-		self.y = y * Globals.block_size + (Globals.block_size - self.h) / 2
+		# Sets the X/Y coords
+		self.x = x * Globals.block_size
+		self.y = y * Globals.block_size
 
-		self.least_x = 0
-		self.least_y = 0
-
+		# Does basic initializing function
 		self.resize_images()
-
 		self.clip_to_hitboxes()
-		
-	def resize_images (self):
 
+	# Resizes all the images to the proper width/height
+	def resize_images(self):
+
+		# Resizes all sprites
 		if self.is_animated:
-
 			for x in range(len(self.graphic_sprites)):
-
 				for i in range(len(self.graphic_sprites[x])):
-
 					if self.is_static:
 						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.w, self.h))
 					else:
-
 						self.graphic_sprites[x][i] = pygame.transform.scale(self.graphic_sprites[x][i], (self.w, self.h))
 
+		# Resizes all images
 		else:
-
 			for i in range(len(self.graphic_images)):
-
 				self.graphic_images[i] = pygame.transform.scale(self.graphic_images[i], (self.w, self.h))
-
 			self.image = self.graphic_images[0]
 
-	#Clips the entity dimensions to its hitboxes
-	#helps with collision detection
+	# Clips the entity dimensions to its hitboxes
+	# helps with collision detection
+	def clip_to_hitboxes(self):
 
-	def clip_to_hitboxes (self):
-
-		if self.hitboxes == None:
-
+		# Sets the default hitbox to be one block_size long
+		if self.hitboxes is None:
 			self.hitboxes = []
-
 			self.add_hitbox(x=0, y=0, w=16, h=16)
 			return
 
-		self.least_x = 5 * Globals.block_size
-		self.least_y = 5 * Globals.block_size
+		# sets the image offsets to be very large
+		self.image_offset_x = 5 * Globals.block_size
+		self.image_offset_y = 5 * Globals.block_size
 
+		# Cycles through to find the hitbox closest to the left/top
+
+		for hb in self.hitboxes:
+			if hb.offset_x < self.image_offset_x:
+				self.image_offset_x = hb.offset_x
+
+			if hb.offset_y < self.image_offset_y:
+				self.image_offset_y = hb.offset_y
+
+		# Changes all hitbox x/y values accordingly
+
+		for hb in self.hitboxes:
+			hb.offset_x -= self.image_offset_x
+			hb.offset_y -= self.image_offset_y
+
+		# Changes the player width/height to fit
+
+		# Gets the most width/height
 		most_w = 0
 		most_h = 0
-
-		#Cycles through to find the hitbox closest to the left/top
-
-		for hb in self.hitboxes:
-
-			if hb.offset_x < self.least_x:
-
-				self.least_x = hb.offset_x
-
-			if hb.offset_y < self.least_y:
-
-				self.least_y = hb.offset_y
-
-		#Changes all hitbox x/y values accordingly
-
-		for hb in self.hitboxes:
-
-			hb.offset_x -= self.least_x
-
-			hb.offset_y -= self.least_y
-
-		#Changes the player width/height to fit
-
 		for hb in self.hitboxes:
 
 			if hb.offset_x + hb.w > most_w:
-
 				most_w = hb.offset_x + hb.w
 
 			if hb.offset_y + hb.h > most_h:
-
 				most_h = hb.offset_y + hb.h
 
+		# Sets the player's width/height
 		self.w = most_w
 		self.h = most_h
 
-
-	def img_load(self, url):
-
-		full_url = "assets/images/%s" % url 
-
-		image = pygame.image.load(full_url).convert_alpha()
-
-		return image 
 
 	def add_hitbox (self, x, y, w, h):
 
@@ -239,12 +233,13 @@ class BaseEntity ():
 								self.momY *= -0.5
 
 							
-							if self.last_position['x'] >= platform.x + platform.w and self.x < platform.x + platform.w:
-								self.x = platform.x + platform.w
+							if self.last_position['x'] >= platform.x + platform.w:
+								if self.x < platform.x + platform.w:
+									self.x = platform.x + platform.w
 
-							elif self.last_position['x'] + self.w <= platform.x and self.x + self.w > platform.x:
-								self.x = platform.x - self.w
-
+							elif self.last_position['x'] + self.w <= platform.x:
+								if self.x + self.w > platform.x:
+									self.x = platform.x - self.w
 
 		self.last_position['x'] = self.x
 		self.last_position['y'] = self.y
@@ -285,8 +280,9 @@ class BaseEntity ():
 
 		if not self.is_static:
 
-			x -= self.least_x
-			y -= self.least_y
+			# Moves the image over to fit with the hitboxes
+			x -= self.image_offset_x
+			y -= self.image_offset_y
 
 		if not self.facing_left:
 
@@ -353,8 +349,14 @@ class BaseEntity ():
 
 			platform = self.platform_under
 
-			if platform == None or self.x > platform.x + platform.w or self.x + self.w < platform.x:
+			if platform is None or self.x > platform.x + platform.w or self.x + self.w < platform.x:
 
 				self.is_grounded = False
 				self.momY = 0
 				self.platform_under = None
+
+	def img_load(self, url):
+
+		full_url = "assets/images/%s" % url
+		image = pygame.image.load(full_url).convert_alpha()
+		return image
