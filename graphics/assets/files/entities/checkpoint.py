@@ -28,6 +28,7 @@ class Checkpoint (BaseEntity):
 		self.flag.y = self.y + self.h - self.flag.h
 		self.flag.is_animated = False
 		self.flag.graphic_images = [
+			self.img_load("props/t_flag.png"),
 			self.img_load("props/flag.png"),
 			self.img_load("props/16_flag.png")
 		]
@@ -47,6 +48,7 @@ class Checkpoint (BaseEntity):
 		self.pole.h = self.h
 		self.pole.is_animated = False
 		self.pole.graphic_images = [
+			self.img_load("props/t_pole.png"),
 			self.img_load("props/pole.png"),
 			self.img_load("props/16_pole.png")
 		]

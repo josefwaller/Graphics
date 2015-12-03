@@ -54,6 +54,8 @@ class BaseItem ():
 			to_save['turn1'] = (self.x / LEGlobals.block_size) + ((self.s / 2) / LEGlobals.block_size) - (dis / 2)
 			to_save['turn2'] = (self.x / LEGlobals.block_size) + ((self.s / 2) / LEGlobals.block_size) + (dis / 2)
 
+		elif self.attributes['type'] == 'checkpoint':
+			to_save['y'] += 1
 		to_save.pop('image')
 
 		return to_save

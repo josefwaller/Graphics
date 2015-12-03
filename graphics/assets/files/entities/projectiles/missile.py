@@ -37,6 +37,7 @@ class Missile (BaseProjectile):
 		self.is_animated = False
 		self.is_static = True
 		self.graphic_images = [
+			self.img_load("enemies/wizard/t_missile.png"),
 			self.img_load("enemies/wizard/missile.png"),
 			self.img_load("enemies/wizard/16_missile.png")
 		]
@@ -44,6 +45,8 @@ class Missile (BaseProjectile):
 
 		self.add_hitbox(x=0, y=0, w=6, h=6)
 
+		self.w = 6
+		self.h = 6
 		self.entity_init(x, y)
 
 		self.x = x

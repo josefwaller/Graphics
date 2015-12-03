@@ -18,6 +18,11 @@ class Wizard (SmartEnemy):
 
 		self.graphic_sprites = [
 			[
+				self.img_load("enemies/wizard/t_front_1.png"),
+				self.img_load("enemies/wizard/t_front_2.png"),
+				self.img_load("enemies/wizard/t_side.png")
+			],
+			[
 				self.img_load("enemies/wizard/front_1.png"),
 				self.img_load("enemies/wizard/front_2.png"),
 				self.img_load("enemies/wizard/side.png")

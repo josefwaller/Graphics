@@ -12,7 +12,8 @@ class Globals:
 	current_tool = None
 	player = None
 	checkpoints = []
-	debug = True
+	platforms = []
+	debug = False
 	gravity_strength = 5
 	graphics_level = 0
 	is_paused = False
