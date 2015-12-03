@@ -43,11 +43,11 @@ class Platform (BaseEntity):
 			if not self.last_graphics == Globals.graphics_level:
 				self.update_graphics()
 
-			if self.is_showing:
-				self.render()
-
 			for hb in self.hitboxes:
 				hb.update()
+
+		if self.is_showing:
+			self.render()
 
 	def update_graphics(self):
 

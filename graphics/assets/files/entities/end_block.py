@@ -1,6 +1,9 @@
 from assets.files.entities.base_entity import BaseEntity
 from assets.files.utilities.globals import Globals
 
+import time
+import pygame
+
 
 class EndBlock (BaseEntity):
 
@@ -38,8 +41,6 @@ class EndBlock (BaseEntity):
 	def update(self):
 
 		if self.check_for_collision(Globals.player) and not self.used:
-			
-			Globals.graphics_level += 1
 
 			Globals.is_paused = True
 
@@ -47,8 +48,7 @@ class EndBlock (BaseEntity):
 				title="Congratulations!",
 				message=
 				"Congratulations! You have now unlocked 16-Bit graphics! Enjoy the beautiful look of high end graphics! "
-				"\n \n Press ENTER to continue...")
-
-			self.update_graphics()
+				"\n \n Press ENTER to continue...",
+				fade_out=True)
 
 			self.used = True

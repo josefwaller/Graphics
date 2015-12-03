@@ -202,8 +202,8 @@ class BaseEntity:
 			if not self.is_static:
 				self.check_platform_collision()
 
-			if self.is_showing:
-				self.render()
+		if self.is_showing:
+			self.render()
 
 	def print_hitboxes (self):
 		for hb in self.hitboxes:
@@ -248,14 +248,15 @@ class BaseEntity:
 
 		if self.is_animated:
 			unix = time.time() * 1000
-			
-			if self.last_sprite_time < unix - self.sprite_interval:
 
-				self.this_index += 1
-				self.last_sprite_time = time.time() * 1000
+			if not Globals.is_paused:
+				if self.last_sprite_time < unix - self.sprite_interval:
 
-			if self.this_index >= len(self.sprite_indexes):
-				self.this_index = 0
+					self.this_index += 1
+					self.last_sprite_time = time.time() * 1000
+
+				if self.this_index >= len(self.sprite_indexes):
+					self.this_index = 0
 
 			try:
 
@@ -308,7 +309,7 @@ class BaseEntity:
 
 		starting_y = self.y
 
-		if self.is_grounded == False:
+		if self.is_grounded is False:
 
 			self.momY -= Globals.gravity_strength * self.delta_time
 
@@ -324,7 +325,7 @@ class BaseEntity:
 
 						collide_x = True
 
-				if self.y + self.h >= platform.y :
+				if self.y + self.h >= platform.y:
 					if starting_y + self.h <= platform.y:
 
 						collide_y = True

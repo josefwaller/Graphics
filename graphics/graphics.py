@@ -85,17 +85,16 @@ class Main:
 					enemy.base_update()
 
 				for platform in Globals.platforms:
-
 					platform.update()
 
 				for projectile in Globals.projectiles:
-
 					projectile.base_update()
 
 				for prop in Globals.props:
 					prop.update()
 
-				Globals.endblock.base_update()
+				if Globals.endblock is not None:
+					Globals.endblock.base_update()
 
 				Globals.hud.render()
 

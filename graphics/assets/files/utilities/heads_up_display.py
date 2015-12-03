@@ -3,12 +3,21 @@ from assets.files.utilities.globals import Globals
 import pygame
 import math
 import sys
+import time
+
 
 class HeadsUpDisplay ():
 
 	border_color = (255, 255, 255)
 	box_color = (0, 0, 0)
 	text_color = (255, 255, 255)
+
+	rect_alpha = None
+	fade_duration = 400
+	fade_start_time = 0
+	is_fading_out = False
+
+	should_fade_out = False
 
 	mb_is_showing = False
 
@@ -128,7 +137,7 @@ class HeadsUpDisplay ():
 		self.dl_dialogs = []
 
 		while len(self.dl_dialogs) < len(dialogs):
-			#Four strings for four lines
+			# Four strings for four lines
 			self.dl_dialogs.append(['', '', '', ''])
 
 		for d in range(len(dialogs)):
@@ -156,7 +165,7 @@ class HeadsUpDisplay ():
 
 		if self.mb_is_showing:
 
-			#Draws rectangles
+			# Draws rectangles
 
 			pygame.draw.rect(Globals.window, self.border_color, [
 				self.mb_x - self.border_w, 
@@ -172,7 +181,7 @@ class HeadsUpDisplay ():
 				self.mb_h
 			])
 
-			#Prints Title
+			# Prints Title
 
 			x = (win[0] - self.mb_title_font.size(self.mb_title)[0])/2
 			y = self.mb_y + 20
@@ -181,7 +190,7 @@ class HeadsUpDisplay ():
 			Globals.window.blit(ren, (x, y))
 
 
-			#Prints Message
+			# Prints Message
 
 			line_indent = 0
 
@@ -196,7 +205,6 @@ class HeadsUpDisplay ():
 
 				line_indent += 1
 
-
 			text = "Press ENTER to continue"
 			x = self.mb_x + self.mb_w - self.mb_message_font.size(text)[0]
 			y = self.mb_y + self.mb_h - self.mb_message_font.size(text)[1]
@@ -206,7 +214,7 @@ class HeadsUpDisplay ():
 
 		elif self.dl_is_showing:
 
-			#Draws Rectangles
+			# Draws Rectangles
 
 			pygame.draw.rect(Globals.window, self.border_color, [
 				self.dl_x, 
@@ -222,12 +230,12 @@ class HeadsUpDisplay ():
 				self.dl_h
 			])
 
-			#draws Image
+			# draws Image
 
 			img_y = int(self.dl_y + (self.dl_h - self.dl_image_s) / 2)
 			Globals.window.blit(self.dl_images[self.dl_index], (self.dl_offset_left, img_y))
 
-			#Draws Dialog
+			# Draws Dialog
 
 			line_height = self.dl_font.get_linesize()
 			base_x = self.dl_offset_left + self.dl_x + self.dl_image_s + 10
@@ -311,7 +319,10 @@ class HeadsUpDisplay ():
 
 				Globals.window.blit(r, (text_x, text_y))
 
-	def message_box(self, title, message):
+		elif self.is_fading_out:
+			self.fade_out()
+
+	def message_box(self, title, message, fade_out=False):
 
 			Globals.is_paused = True
 
@@ -320,6 +331,8 @@ class HeadsUpDisplay ():
 			line_index = 0
 
 			self.mb_title = title
+
+			self.should_fade_out = fade_out
 
 			word_index = 1
 
@@ -345,7 +358,7 @@ class HeadsUpDisplay ():
 
 					word_index += 1
 
-			#Adds a new line
+			# Adds a new line
 
 				try:
 					self.text_lines[line_index + 1]
@@ -354,13 +367,19 @@ class HeadsUpDisplay ():
 
 				line_index += 1
 
-	def on_input (self, keys):
+	def on_input(self, keys):
 		
 		if self.mb_is_showing:
 			if pygame.K_RETURN in keys:
 
-				self.mb_is_showing = False
-				Globals.is_paused = False
+				if self.should_fade_out:
+					self.mb_is_showing = False
+					self.is_fading_out = True
+					self.fade_start_time = time.time()
+				else:
+					self.mb_is_showing = False
+					Globals.is_paused = False
+
 		elif self.dl_is_showing:
 
 			if pygame.K_RETURN in keys:
@@ -393,10 +412,30 @@ class HeadsUpDisplay ():
 					self.pm_selected_button = 0
 					Globals.is_paused = True
 
-	def resume (self):
+	def resume(self):
 		Globals.is_paused = False
-		self.pm_menu_is_Showing = False
+		self.pm_is_showing = False
 
-	def quit (self):
-		pygame.exit()
-		sys.exit()
+	def quit(self):
+		Globals.in_menu = True
+
+	# Creates the fade to block look
+	def fade_out(self):
+
+		# Sets up initially
+		if self.rect_alpha is None:
+			self.rect_alpha = 0
+
+		window = pygame.Surface(Globals.window.get_size())
+		window.set_alpha(self.rect_alpha)
+		window.fill((0, 0, 0))
+		Globals.window.blit(window, (0, 0))
+
+		self.rect_alpha = int((time.time() - self.fade_start_time) * (255 / 1))
+		print(self.rect_alpha)
+
+		if self.rect_alpha > 255:
+			self.is_fading_out = False
+			Globals.is_paused = False
+			Globals.graphics_level += 1
+			Globals.in_menu = True
