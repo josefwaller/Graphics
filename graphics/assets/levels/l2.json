@@ -1,1 +1,37 @@
-[{"editable": {"w": 1, "h": 1}, "x": 2, "h": 1, "y": 9, "w": 1, "type": "platform", "selected": false}, {"editable": null, "x": 2, "y": 6, "type": "player", "selected": false}, {"editable": null, "x": 2, "y": 8, "type": "checkpoint", "selected": null}, {"editable": {"w": 10, "h": 1}, "x": 2, "h": 1, "y": 9, "w": 10, "type": "platform", "selected": false}, {"editable": {"rounds": 6, "offset": 0}, "turn1": 3.5, "x": 6, "y": 8, "turn2": 9.5, "type": "walker", "selected": false}, {"editable": null, "x": 11, "y": 5, "type": "endblock", "selected": false}, {"width": 12, "type": "level_settings", "height": 10}]
+{
+	"entities": [{
+		"selected": false,
+		"y": 7,
+		"type": "player",
+		"editable": null,
+		"x": 1
+	}, {
+		"selected": null,
+		"y": 9,
+		"type": "checkpoint",
+		"editable": null,
+		"x": 1
+	}, {
+		"selected": false,
+		"y": 9,
+		"w": 7,
+		"type": "platform",
+		"h": 1,
+		"editable": {
+			"h": 1,
+			"w": 7
+		},
+		"x": 1
+	}, {
+		"selected": false,
+		"y": 7,
+		"type": "endblock",
+		"editable": null,
+		"x": 7
+	}],
+	"level_settings": {
+		"height": 10,
+		"width": 8,
+		"type": "level_settings"
+	}
+}

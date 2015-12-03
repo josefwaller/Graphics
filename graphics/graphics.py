@@ -9,6 +9,7 @@ from assets.files.utilities.main_menu import MainMenu
 
 from level_editor import LevelEditor
 
+
 class Main:
 
 	settings = None
@@ -40,7 +41,7 @@ class Main:
 
 		m = MainMenu()
 
-		keys = [[],[]]
+		keys = [[], []]
 
 		while True:
 

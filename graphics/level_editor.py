@@ -285,9 +285,9 @@ class LevelEditor:
 			#No button was there
 			self.item_selected = None
 
-	def  check_for_item_placement (self):
+	def check_for_item_placement (self):
 
-		if not self.item_selected == None and self.mouse[1] == True:
+		if not self.item_selected is None and self.mouse[1] == True:
 
 			#Gets the indexes
 			x = int(self.mouse[0][0] / LEGlobals.block_size) - LEGlobals.x_offset
@@ -343,20 +343,23 @@ class LevelEditor:
 					if e.y + e.s > most_y:
 						most_y = e.y + e.s
 
-		to_save.append({
+		level_settings = ({
 			"type": "level_settings",
 			"width": int(most_x / LEGlobals.block_size),
 			"height": int(most_y / LEGlobals.block_size)
 		})
-
+		final_to_save = {
+			"level_settings": level_settings,
+			"entities": to_save
+		}
 		f = open("assets/levels/%s" % file_name, "w")
-		f.write(json.dumps(to_save))
+		f.write(json.dumps(final_to_save))
 
 	def render (self):
 
 		#Draws sky
 
-		sky = pygame.image.load("assets/images/props/sky.png").convert_alpha()
+		sky = pygame.image.load("assets/images/props/8_sky.png").convert_alpha()
 
 		sky = pygame.transform.scale(sky, (LEGlobals.window.get_size()[0] - self.menu_width - self.attr_menu_width, LEGlobals.window.get_size()[1]))
 

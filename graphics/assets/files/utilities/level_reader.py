@@ -32,22 +32,23 @@ class LevelReader ():
 
 		Globals.hud = HeadsUpDisplay()
 
-		Globals.enemies = [
-		]
+		Globals.enemies = []
+		Globals.platforms = []
+		Globals.checkpoints = []
 
-		Globals.platforms = [
-		]
-		for thing in level:
+		settings = level['level_settings']
+		Globals.level_width = settings['width'] * Globals.block_size
+		Globals.level_height = settings['height'] * Globals.block_size
+
+		Globals.sky = Sky()
+
+		for thing in level['entities']:
 			if thing['type'] == 'platform':
 				Globals.platforms.append(Platform(
 					x=thing['x'], 
 					y=thing['y'], 
 					w=thing['w'],
 					h=thing['h'],
-					top_block="blocks/t_dirt_top.png",
-					inner_block="blocks/t_dirt.png",
-					update_inner_block="blocks/16_snow.png",
-					update_top_block="blocks/16_snow_top.png"
 				))
 
 			elif thing['type'] == 'player':
@@ -88,11 +89,6 @@ class LevelReader ():
 
 			elif thing['type'] == 'endblock':
 				Globals.endblock = EndBlock(x=thing['x'], y=thing['y'])
-
-			elif thing['type'] == 'level_settings':
-				Globals.level_width = thing['width'] * Globals.block_size
-				Globals.level_height = thing['height'] * Globals.block_size
-				Globals.sky = Sky(image=thing['sky_image'])
 
 			elif thing['type'] == 'trigger':
 				x = thing['x']

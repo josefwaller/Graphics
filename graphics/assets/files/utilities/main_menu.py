@@ -4,6 +4,7 @@ from assets.files.utilities.level_reader import LevelReader
 import pygame
 import json
 import time
+import sys
 
 
 class MainMenu:
@@ -107,7 +108,14 @@ class MainMenu:
 		self.fade_in = True
 		self.fade_alpha = 255
 		self.fade_start_time = time.time()
-		print("Set up")
+
+		# Saves the graphics level
+		settings_file = open("assets/settings/settings.json", "r+")
+		settings = json.loads(settings_file.read())
+		settings['graphics_level'] = Globals.graphics_level
+		settings_file.seek(0)
+		settings_file.write(json.dumps(settings))
+		settings_file.close()
 
 	def update(self):
 		if not self.graphics_level == Globals.graphics_level:
@@ -178,7 +186,7 @@ class MainMenu:
 	def resume():
 		
 		# loads level
-		level_file = open("assets/levels/l%s.json" % Globals.graphics_level, "r")
+		level_file = open("assets/levels/l%s.json" % (Globals.graphics_level + 1), "r")
 		r = LevelReader()
 		r.read_level(level_file.read())
 		level_file.close()
@@ -187,8 +195,8 @@ class MainMenu:
 
 	@staticmethod
 	def quit():
-		Globals.in_menu = True
-		Globals.is_paused = False
+		pygame.quit()
+		sys.exit()
 
 	@staticmethod
 	def new_game():
@@ -198,6 +206,7 @@ class MainMenu:
 		old_settings = json.loads(settings_file.read())
 		new_settings = old_settings.copy()
 		new_settings['graphics_level'] = 0
+		Globals.graphics_level = 0
 		settings_file.seek(0)
 		settings_file.write(json.dumps(new_settings))
 		

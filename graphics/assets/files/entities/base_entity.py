@@ -50,6 +50,7 @@ class BaseEntity:
 
 	last_time = 0
 	last_position = None
+	delta_time = 0
 
 	is_showing = True
 
@@ -79,7 +80,7 @@ class BaseEntity:
 		self.resize_images()
 		self.clip_to_hitboxes()
 
-		if self.is_animated:
+		if not self.is_animated:
 			self.image = self.graphic_images[Globals.graphics_level]
 
 		else:
@@ -101,7 +102,7 @@ class BaseEntity:
 		else:
 			for i in range(len(self.graphic_images)):
 				self.graphic_images[i] = pygame.transform.scale(self.graphic_images[i], (self.w, self.h))
-			self.image = self.graphic_images[0]
+			self.image = self.graphic_images[Globals.graphics_level]
 
 	# Clips the entity dimensions to its hitboxes
 	# helps with collision detection
@@ -198,7 +199,7 @@ class BaseEntity:
 
 			if not self.is_static:
 				self.gravity_update()
- 
+
 			self.update()
 
 			for hb in self.hitboxes:
@@ -233,11 +234,11 @@ class BaseEntity:
 						if self.y < platform.y + platform.h:
 
 							if self.last_position['y'] > platform.y + platform.h and self.y < platform.y + platform.h:
+
 								self.y = platform.y + platform.h
 
 								self.momY *= -0.5
 
-							
 							if self.last_position['x'] >= platform.x + platform.w:
 								if self.x < platform.x + platform.w:
 									self.x = platform.x + platform.w
@@ -275,8 +276,8 @@ class BaseEntity:
 				sys.exit(0)
 
 		else:
-
 			sprite = self.image
+
 		x = self.x + Globals.camera_offset['x']
 		y = self.y + Globals.camera_offset['y']
 

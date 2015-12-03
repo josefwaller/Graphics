@@ -9,14 +9,20 @@ class Sky (BaseEntity):
 	x_addon = 0
 	sky_image = None
 
-	def __init__(self, image):
+	def __init__(self):
 		self.x = Globals.camera_offset['x'] / 20
 		self.w = Globals.window.get_size()[0]
 		self.h = Globals.window.get_size()[1]
 
 		self.is_animated = False
 
-		self.image = self.img_load(image)
+		self.graphic_images = [
+			self.img_load("props/t_sky.png"),
+			self.img_load("props/8_sky.png"),
+			self.img_load("props/16_sky.png")
+		]
+
+		self.image = self.graphic_images[Globals.graphics_level]
 
 		self.is_static = True
 

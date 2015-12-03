@@ -1,36 +1,37 @@
-[{
-	"selected": false,
-	"y": 7,
-	"x": 3,
-	"type": "player",
-	"editable": null
-}, {
-	"selected": false,
-	"h": 1,
-	"y": 9,
-	"x": 3,
-	"type": "platform",
-	"w": 5,
-	"editable": {
+{
+	"entities": [{
+		"selected": false,
+		"y": 7,
+		"type": "player",
+		"editable": null,
+		"x": 1
+	}, {
+		"selected": null,
+		"y": 9,
+		"type": "checkpoint",
+		"editable": null,
+		"x": 1
+	}, {
+		"selected": false,
+		"y": 9,
+		"w": 7,
+		"type": "platform",
 		"h": 1,
-		"w": 5
+		"editable": {
+			"h": 1,
+			"w": 7
+		},
+		"x": 1
+	}, {
+		"selected": false,
+		"y": 7,
+		"type": "endblock",
+		"editable": null,
+		"x": 7
+	}],
+	"level_settings": {
+		"height": 10,
+		"width": 8,
+		"type": "level_settings"
 	}
-}, {
-	"selected": null,
-	"y": 9,
-	"x": 4,
-	"type": "checkpoint",
-	"editable": null
-}, {
-	"selected": false,
-	"y": 7,
-	"x": 6,
-	"type": "endblock",
-	"editable": null
-}, {
-	"width": 7,
-	"height": 10,
-	"type": "level_settings",
-  	"sky_image": "props/t_sky.png",
-	"graphics_level": 0
-}]
+}
