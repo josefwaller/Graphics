@@ -9,19 +9,14 @@ class Sky (BaseEntity):
 	x_addon = 0
 	sky_image = None
 
-	def __init__ (self, imgs):
+	def __init__(self, image):
 		self.x = Globals.camera_offset['x'] / 20
 		self.w = Globals.window.get_size()[0]
 		self.h = Globals.window.get_size()[1]
 
 		self.is_animated = False
 
-		self.graphic_images = []
-
-		for img in imgs:
-			self.graphic_images.append(self.img_load(img))
-
-		self.image = self.graphic_images[0]\
+		self.image = self.img_load(image)
 
 		self.is_static = True
 
@@ -39,4 +34,3 @@ class Sky (BaseEntity):
 		img = pygame.transform.scale(self.image, (self.w, self.h))
 
 		Globals.window.blit(img, (self.x, 0))
-

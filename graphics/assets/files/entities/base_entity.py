@@ -79,6 +79,12 @@ class BaseEntity:
 		self.resize_images()
 		self.clip_to_hitboxes()
 
+		if self.is_animated:
+			self.image = self.graphic_images[Globals.graphics_level]
+
+		else:
+			self.sprites = self.graphic_sprites[Globals.graphics_level]
+
 	# Resizes all the images to the proper width/height
 	def resize_images(self):
 
@@ -143,10 +149,9 @@ class BaseEntity:
 		self.w = most_w
 		self.h = most_h
 
+	def add_hitbox(self, x, y, w, h):
 
-	def add_hitbox (self, x, y, w, h):
-
-		if self.hitboxes == None:
+		if self.hitboxes is None:
 			self.hitboxes = []
 
 		x = self.scale_relative(x)
@@ -184,10 +189,10 @@ class BaseEntity:
 
 	def base_update(self):
 		self.set_delta_time()
-
-		if not self.last_graphics == Globals.graphics_level:
-
-			self.update_graphics()
+		#
+		# if not self.last_graphics == Globals.graphics_level:
+		#
+		# 	self.update_graphics()
 
 		if not Globals.is_paused:
 

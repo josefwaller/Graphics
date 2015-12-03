@@ -432,7 +432,6 @@ class HeadsUpDisplay ():
 		Globals.window.blit(window, (0, 0))
 
 		self.rect_alpha = int((time.time() - self.fade_start_time) * (255 / 1))
-		print(self.rect_alpha)
 
 		if self.rect_alpha > 255:
 			self.is_fading_out = False

@@ -1,1 +1,36 @@
-[{"selected": false, "y": 7, "x": 3, "type": "player", "editable": null}, {"selected": false, "h": 1, "y": 9, "x": 3, "type": "platform", "w": 5, "editable": {"h": 1, "w": 5}}, {"selected": null, "y": 9, "x": 4, "type": "checkpoint", "editable": null}, {"selected": false, "y": 7, "x": 6, "type": "endblock", "editable": null}, {"width": 7, "height": 10, "type": "level_settings"}]
+[{
+	"selected": false,
+	"y": 7,
+	"x": 3,
+	"type": "player",
+	"editable": null
+}, {
+	"selected": false,
+	"h": 1,
+	"y": 9,
+	"x": 3,
+	"type": "platform",
+	"w": 5,
+	"editable": {
+		"h": 1,
+		"w": 5
+	}
+}, {
+	"selected": null,
+	"y": 9,
+	"x": 4,
+	"type": "checkpoint",
+	"editable": null
+}, {
+	"selected": false,
+	"y": 7,
+	"x": 6,
+	"type": "endblock",
+	"editable": null
+}, {
+	"width": 7,
+	"height": 10,
+	"type": "level_settings",
+  	"sky_image": "props/t_sky.png",
+	"graphics_level": 0
+}]

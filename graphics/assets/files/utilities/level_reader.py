@@ -28,8 +28,6 @@ class LevelReader ():
 
 	def read_level(self, level_str):
 
-		Globals.sky = Sky(["props/t_sky.png", "props/sky.png", "props/16_sky.png"])
-
 		level = json.loads(level_str)
 
 		Globals.hud = HeadsUpDisplay()
@@ -94,6 +92,7 @@ class LevelReader ():
 			elif thing['type'] == 'level_settings':
 				Globals.level_width = thing['width'] * Globals.block_size
 				Globals.level_height = thing['height'] * Globals.block_size
+				Globals.sky = Sky(image=thing['sky_image'])
 
 			elif thing['type'] == 'trigger':
 				x = thing['x']
