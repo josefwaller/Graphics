@@ -18,10 +18,22 @@ class MainMenu:
 
 	sky = None
 
-	grey = (192, 192, 192)
-	dark_grey = (64, 64, 64)
+	colors_one = [
+		(192, 192, 192),
+		(0, 0, 0),
+		(192, 192, 192)
+	]
+	colors_two = [
+		(64, 64, 64),
+		(255, 255, 255),
+		(64, 64, 64)
+	]
+
+	color_one = None
+	color_two = None
 
 	fade_in = True
+	fade_out = False
 	fade_alpha = 0
 	fade_duration = 1
 	fade_start_time = 0
@@ -30,7 +42,7 @@ class MainMenu:
 
 	buttons = []
 
-	selected_button = 1
+	selected_button = 0
 
 	def __init__(self):
 
@@ -117,16 +129,25 @@ class MainMenu:
 		settings_file.write(json.dumps(settings))
 		settings_file.close()
 
+		self.color_one = self.colors_one[Globals.graphics_level]
+		self.color_two = self.colors_two[Globals.graphics_level]
+
 	def update(self):
 		if not self.graphics_level == Globals.graphics_level:
 			self.set_up()
 
 		self.render()
+		self.move_sky()
+
+	def move_sky(self):
+
+		pass
 
 	def on_input(self, keys):
 
 		if pygame.K_RETURN in keys:
-			self.buttons[self.selected_button]['on_click']()
+			if not self.fade_in and not self.fade_out:
+				self.buttons[self.selected_button]['on_click']()
 
 		elif pygame.K_UP in keys and self.selected_button >= 1:
 			self.selected_button -= 1
@@ -143,12 +164,12 @@ class MainMenu:
 			y = self.b_min_y + i * (1.5 * self.b_h)
 
 			if self.selected_button == i:
-				box_color = self.dark_grey
-				border_color = self.grey
+				box_color = self.color_two
+				border_color = self.color_one
 
 			else:
-				box_color = self.grey
-				border_color = self.dark_grey
+				box_color = self.color_one
+				border_color = self.color_two
 
 			pygame.draw.rect(Globals.window, border_color, [
 				self.b_x - self.b_border_w,
@@ -170,20 +191,27 @@ class MainMenu:
 			r = self.b_font.render(self.buttons[i]["text"], False, border_color)
 			Globals.window.blit(r, (font_x, font_y))
 
-		if self.fade_in:
+		if self.fade_in or self.fade_out:
 			rect = pygame.Surface(Globals.window.get_size())
 			rect.set_alpha(self.fade_alpha)
 			Globals.window.blit(rect, (0, 0))
 
 			time_since = time.time() - self.fade_start_time
 
-			self.fade_alpha = int(255 - (time_since * (255 / self.fade_duration)))
+			if self.fade_in:
+				self.fade_alpha = int(255 - (time_since * (255 / self.fade_duration)))
 
-			if self.fade_alpha < 0:
-				self.fade_in = False
+				if self.fade_alpha < 0:
+					self.fade_in = False
 
-	@staticmethod
-	def resume():
+			elif self.fade_out:
+				self.fade_alpha = int(time_since * (255 / self.fade_duration))
+
+				if self.fade_alpha > 255:
+					self.fade_out = False
+					Globals.in_menu = False
+
+	def resume(self):
 		
 		# loads level
 		level_file = open("assets/levels/l%s.json" % (Globals.graphics_level + 1), "r")
@@ -191,15 +219,11 @@ class MainMenu:
 		r.read_level(level_file.read())
 		level_file.close()
 
-		Globals.in_menu = False
+		self.fade_out = True
+		self.fade_alpha = 0
+		self.fade_start_time = time.time()
 
-	@staticmethod
-	def quit():
-		pygame.quit()
-		sys.exit()
-
-	@staticmethod
-	def new_game():
+	def new_game(self):
 
 		# Resets everything
 		settings_file = open("assets/settings/settings.json", "r+")
@@ -207,6 +231,7 @@ class MainMenu:
 		new_settings = old_settings.copy()
 		new_settings['graphics_level'] = 0
 		Globals.graphics_level = 0
+		self.graphics_level = Globals.graphics_level
 		settings_file.seek(0)
 		settings_file.write(json.dumps(new_settings))
 		
@@ -216,4 +241,11 @@ class MainMenu:
 		r.read_level(level_file.read())
 		level_file.close()
 
-		Globals.in_menu = False
+		self.fade_out = True
+		self.fade_alpha = 0
+		self.fade_start_time = time.time()
+
+	@staticmethod
+	def quit():
+		pygame.quit()
+		sys.exit()

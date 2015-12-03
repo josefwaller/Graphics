@@ -28,10 +28,11 @@ class HeadsUpDisplay:
 
 	# Rectangle used for fading in/out
 	rect_alpha = None
-	fade_duration = 400
+	fade_duration = 1
 	fade_start_time = 0
 	is_fading_out = False
 	should_fade_out = False
+	should_fade_in = False
 
 	# Width of border
 	border_w = 0
@@ -154,6 +155,9 @@ class HeadsUpDisplay:
 				"on_click": self.quit
 			}
 		]
+
+		self.is_fading_in = True
+		self.fade_start_time = None
 
 	# Displays a dialog box with the given dialog
 	def dialog_box(self, dialogs, images):
@@ -361,6 +365,8 @@ class HeadsUpDisplay:
 		# Checks if it needs to fade out
 		elif self.is_fading_out:
 			self.fade_out()
+		elif self.is_fading_in:
+			self.fade_in()
 
 	# Shows a message box with a given message
 	def message_box(self, title, message, fade_out=False):
@@ -472,10 +478,27 @@ class HeadsUpDisplay:
 		window.fill((0, 0, 0))
 		Globals.window.blit(window, (0, 0))
 
-		self.rect_alpha = int((time.time() - self.fade_start_time) * (255 / 1))
+		self.rect_alpha = int((time.time() - self.fade_start_time) * (255 / self.fade_duration))
 
 		if self.rect_alpha > 255:
 			self.is_fading_out = False
 			Globals.is_paused = False
 			Globals.graphics_level += 1
 			Globals.in_menu = True
+
+	def fade_in(self):
+
+		if self.rect_alpha is None:
+			self.rect_alpha = 255
+
+		if self.fade_start_time is None:
+			self.fade_start_time = time.time()
+
+		rect = pygame.Surface(Globals.window.get_size())
+		rect.set_alpha(self.rect_alpha)
+		rect.fill((0, 0, 0))
+		Globals.window.blit(rect, (0, 0))
+
+		self.rect_alpha = 255 - int((time.time() - self.fade_start_time) * (255 / self.fade_duration))
+		if self.rect_alpha < 0:
+			self.is_fading_in = False
