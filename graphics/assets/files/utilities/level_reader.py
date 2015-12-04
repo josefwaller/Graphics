@@ -3,6 +3,7 @@ from assets.files.entities.platform import Platform
 from assets.files.entities.trigger import Trigger
 from assets.files.entities.sky import Sky
 from assets.files.entities.current_tool import CurrentTool
+from assets.files.entities.prop import Prop
 
 from assets.files.entities.tools.bow_and_arrow import BowAndArrow
 from assets.files.entities.tools.sword import Sword
@@ -89,6 +90,9 @@ class LevelReader:
 
 			elif thing['type'] == 'endblock':
 				Globals.endblock = EndBlock(x=thing['x'], y=thing['y'])
+
+			elif thing['type'] == 'prop':
+				Globals.props.append(Prop(x=thing['x'], y=thing['y'], images=thing['image']))
 
 			elif thing['type'] == 'trigger':
 				x = thing['x']

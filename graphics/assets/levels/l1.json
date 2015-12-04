@@ -50,7 +50,11 @@
 		},
 		"x": 3,
 		"type": "prop",
-		"y": 9
+		"y": 9,
+		"image": [
+			"props/t_guy_1.png",
+			"props/t_guy_2.png"
+		]
 	}, {
 		"selected": false,
 		"w": 3,
