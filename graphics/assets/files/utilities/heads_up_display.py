@@ -169,7 +169,7 @@ class HeadsUpDisplay:
 
 		# Gets all the images
 		for image in images:
-			i = pygame.image.load(image).convert_alpha()
+			i = pygame.image.load("assets/images/props/dialogs/%s" % image).convert_alpha()
 			i = pygame.transform.scale(i, (self.dl_image_s, self.dl_image_s))
 			self.dl_images.append(i)
 

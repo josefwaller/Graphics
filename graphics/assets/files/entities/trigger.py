@@ -26,6 +26,9 @@ class Trigger (BaseEntity):
 
 		self.on_enter = on_enter
 
+		if self.on_enter == "player_die":
+			self.on_enter = Globals.player.respawn
+
 	def check_for_collision(self, target):
 
 		if target.x + target.w > self.x:

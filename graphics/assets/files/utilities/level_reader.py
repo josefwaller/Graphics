@@ -21,7 +21,7 @@ from assets.files.utilities.heads_up_display import HeadsUpDisplay
 
 import json
 
-class LevelReader ():
+class LevelReader:
 
 	def __init__(self):
 		pass
@@ -103,11 +103,16 @@ class LevelReader ():
 					func = Globals.hud.message_box
 
 				elif thing['on_enter']['type'] == 'dialog_box':
-					dialogs = thing['on_enter']['dialogs']
-					images = thing['on_enter']['images']
+					file = open("assets/dialog/%s" % thing['on_enter']['file'])
+					dialog = json.loads(file.read())
+					dialogs = dialog['dialogs']
+					images = dialog['images']
 					param = [dialogs, images]
 					func = Globals.hud.dialog_box
 
+				elif thing['on_enter']['type'] == 'player_die':
+					func = "player_die"
+					param = []
 				else:
 					print("Trigger Entity has improper on_enter attribute: %s" % thing['on_enter']['type'])
 					return
