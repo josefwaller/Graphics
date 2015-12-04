@@ -9,18 +9,23 @@ import sys
 
 class MainMenu:
 
+	# The logo image
 	logo = None
 
+	# Logo coords
 	logo_x = 0
 	logo_y = 0
 
+	# Graphics level to compare with globals
 	graphics_level = 0
 
+	# Sky image, coords, speed and last time it moved
 	sky = None
-	sky_moving_left = False
-	sky_coords = [0, 0]
-	sky_acell = 5
+	sky_x = 0
+	sky_speed = 20
+	sky_last_time = 0
 
+	# Different colors for different graphics levels
 	colors_one = [
 		(192, 192, 192),
 		(0, 0, 0),
@@ -32,25 +37,28 @@ class MainMenu:
 		(64, 64, 64)
 	]
 
+	# The colors currently being used
 	color_one = None
 	color_two = None
 
+	# Fading variables
 	fade_in = True
 	fade_out = False
 	fade_alpha = 0
 	fade_duration = 1
 	fade_start_time = 0
 
-	last_keys = []
-
+	# The buttons
 	buttons = []
-
+	# Index of selected button
 	selected_button = 0
 
 	def __init__(self):
 
-		self.grahpics_level = Globals.graphics_level
-		
+		# Sets graphics level
+		self.graphics_level = Globals.graphics_level
+
+		# Loads images
 		self.logos = [
 			pygame.image.load("assets/images/menu/t_logo.png").convert_alpha(),
 			pygame.image.load("assets/images/menu/8_logo.png").convert_alpha(),
@@ -62,6 +70,7 @@ class MainMenu:
 			pygame.image.load("assets/images/props/16_sky.png").convert_alpha(),
 		]
 
+		# Gets window size for easy reference
 		w = Globals.window.get_size()
 
 		# Sets Buttons
@@ -81,6 +90,8 @@ class MainMenu:
 			}
 		]
 
+		# Sets button dimensions
+
 		self.b_min_y = w[1] / 2
 
 		self.b_w = w[0] / 5
@@ -88,17 +99,22 @@ class MainMenu:
 
 		self.b_x = (w[0] - self.b_w) / 2
 
-		self.b_border_w = 5
+		self.b_border_w = Globals.block_size / Globals.pixels_per_block
 
 		self.b_font = pygame.font.Font("assets/fonts/Minecraftia-Regular.ttf", 20)
 
 		self.set_up()
 
+	# Called when the graphics level is not the same as the Globals graphics level
 	def set_up(self):
 
+		# Gets window dimensions for easy reference
+		w = Globals.window.get_size()
+
+		# Sets graphics level
 		self.graphics_level = Globals.graphics_level
 
-		w = Globals.window.get_size()
+		self.sky_last_time = time.time()
 
 		self.logo = self.logos[Globals.graphics_level]
 		self.sky = self.skies[Globals.graphics_level]
@@ -136,25 +152,31 @@ class MainMenu:
 		self.color_two = self.colors_two[Globals.graphics_level]
 
 	def update(self):
+
+		#Checks if it should set up again
 		if not self.graphics_level == Globals.graphics_level:
 			self.set_up()
 
-		self.render()
+		# Moves sky and renders
 		self.move_sky()
+		self.render()
 
 	def move_sky(self):
+		# Gets the sky size
 		s = self.sky.get_size()
-		w = Globals.window.get_size()
 
-		max_x = 0
-		min_x = s[0] - w[0]
+		# Gets delta time
+		delta_time = time.time() - self.sky_last_time
 
-		if self.sky_moving_left:
-			self.sky_coords[0] -= s[0] / w[0]
-			if self.sky
-		else:
-			self.sky_coords[0] += sky_coords[0] / (s[0] - w[0])
+		# Moves the sky
+		self.sky_x -= self.sky_speed * delta_time
 
+		# Checks if the sky should be moved back
+		if self.sky_x <= 0 - s[0]:
+			self.sky_x += s[0]
+
+		# Sets last time
+		self.sky_last_time = time.time()
 
 	def on_input(self, keys):
 
@@ -170,7 +192,8 @@ class MainMenu:
 
 	def render(self):
 
-		Globals.window.blit(self.sky, self.sky_coords)
+		Globals.window.blit(self.sky, (self.sky_x, 0))
+		Globals.window.blit(self.sky, (self.sky_x + self.sky.get_size()[0], 0))
 		Globals.window.blit(self.logo, (self.logo_x, self.logo_y))
 
 		for i in range(len(self.buttons)):

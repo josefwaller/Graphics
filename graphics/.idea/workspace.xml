@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/main_menu.py" afterPath="$PROJECT_DIR$/assets/files/utilities/main_menu.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/levels/l1.json" afterPath="$PROJECT_DIR$/assets/levels/l1.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/settings/settings.json" afterPath="$PROJECT_DIR$/assets/settings/settings.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level_editor.py" afterPath="$PROJECT_DIR$/level_editor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py" afterPath="$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py" />
     </list>
     <ignored path="graphics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +27,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="globals.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/files/utilities/globals.py">
+      <file leaf-file-name="level_editor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/level_editor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.7240204">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+              <folding>
+                <element signature="e#4925#5669#0" expanded="false" />
+                <element signature="e#5702#5934#0" expanded="false" />
+                <element signature="e#5979#6331#0" expanded="false" />
+                <element signature="e#6374#6666#0" expanded="false" />
+                <element signature="e#7477#7723#0" expanded="false" />
+                <element signature="e#7764#8420#0" expanded="false" />
+                <element signature="e#11210#12254#0" expanded="false" />
+                <element signature="e#12286#12344#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="current_level.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/levels/current_level.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -37,20 +59,22 @@
       <file leaf-file-name="l1.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/levels/l1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            <state vertical-scroll-proportion="-2.2058823">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level_reader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/files/utilities/level_reader.py">
+      <file leaf-file-name="lvl_edtr_base_item.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+              <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
               <folding>
-                <element signature="e#0#47#0" expanded="true" />
+                <element signature="e#222#496#0" expanded="false" />
+                <element signature="e#529#639#0" expanded="false" />
+                <element signature="e#666#1424#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,23 +83,23 @@
       <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/settings/settings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="52" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_menu.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_menu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/files/utilities/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29812607">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
-                <element signature="e#659#1694#0" expanded="false" />
-                <element signature="e#3494#3818#0" expanded="false" />
-                <element signature="e#6215#6241#0" expanded="false" />
+                <element signature="e#3677#3844#0" expanded="false" />
+                <element signature="e#4228#4552#0" expanded="false" />
+                <element signature="e#7023#7049#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -94,16 +118,6 @@
                 <element signature="e#10115#11153#0" expanded="false" />
                 <element signature="e#11176#11230#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="platform.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/files/entities/platform.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -173,23 +187,23 @@
         <option value="$PROJECT_DIR$/assets/files/entities/projectiles/missile.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/projectiles/arrow.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/enemies/walker.py" />
-        <option value="$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py" />
         <option value="$PROJECT_DIR$/assets/files/utilities/globals.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/end_block.py" />
         <option value="$PROJECT_DIR$/assets/levels/l2.json" />
         <option value="$PROJECT_DIR$/graphics.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/checkpoint.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
-        <option value="$PROJECT_DIR$/level_editor.py" />
         <option value="$PROJECT_DIR$/assets/levels/current_level.json" />
-        <option value="$PROJECT_DIR$/assets/levels/l1.json" />
         <option value="$PROJECT_DIR$/assets/files/entities/platform.py" />
         <option value="$PROJECT_DIR$/assets/files/utilities/level_reader.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/sky.py" />
         <option value="$PROJECT_DIR$/assets/levels/l3.json" />
-        <option value="$PROJECT_DIR$/assets/settings/settings.json" />
         <option value="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" />
+        <option value="$PROJECT_DIR$/assets/settings/settings.json" />
         <option value="$PROJECT_DIR$/assets/files/utilities/main_menu.py" />
+        <option value="$PROJECT_DIR$/assets/levels/l1.json" />
+        <option value="$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py" />
+        <option value="$PROJECT_DIR$/level_editor.py" />
       </list>
     </option>
   </component>
@@ -239,6 +253,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="level_editor_assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -521,14 +549,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/assets/files/utilities/main_menu.py</url>
-          <line>137</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -581,9 +602,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-            <element signature="e#659#1694#0" expanded="false" />
-            <element signature="e#3494#3818#0" expanded="false" />
-            <element signature="e#6215#6241#0" expanded="false" />
+            <element signature="e#3677#3844#0" expanded="false" />
+            <element signature="e#4228#4552#0" expanded="false" />
+            <element signature="e#7023#7049#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -807,16 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/entities/end_block.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -849,22 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/level_editor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/levels/l1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,14 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/settings/settings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="52" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/entities/base_entity.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -956,15 +943,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/settings/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="52" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/utilities/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29812607">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-            <element signature="e#659#1694#0" expanded="false" />
-            <element signature="e#3494#3818#0" expanded="false" />
-            <element signature="e#6215#6241#0" expanded="false" />
+            <element signature="e#3677#3844#0" expanded="false" />
+            <element signature="e#4228#4552#0" expanded="false" />
+            <element signature="e#7023#7049#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level_editor_assets/lvl_edtr_base_item.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+          <folding>
+            <element signature="e#222#496#0" expanded="false" />
+            <element signature="e#529#639#0" expanded="false" />
+            <element signature="e#666#1424#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/levels/l1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2058823">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/levels/current_level.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level_editor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7240204">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="e#4925#5669#0" expanded="false" />
+            <element signature="e#5702#5934#0" expanded="false" />
+            <element signature="e#5979#6331#0" expanded="false" />
+            <element signature="e#6374#6666#0" expanded="false" />
+            <element signature="e#7477#7723#0" expanded="false" />
+            <element signature="e#7764#8420#0" expanded="false" />
+            <element signature="e#11210#12254#0" expanded="false" />
+            <element signature="e#12286#12344#0" expanded="false" />
           </folding>
         </state>
       </provider>

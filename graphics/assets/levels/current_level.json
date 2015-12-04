@@ -1,0 +1,1 @@
+{"level_settings": {"type": "level_settings", "height": 10, "width": 8}, "entities": [{"selected": false, "type": "player", "y": 7, "x": 1, "editable": null}, {"selected": false, "type": "platform", "h": 1, "y": 9, "x": 1, "editable": {"h": 1, "w": 1}, "w": 1}, {"selected": false, "type": "endblock", "y": 7, "x": 7, "editable": null}]}
