@@ -41,7 +41,7 @@ class BaseItem ():
 
 		to_save['x'] = int(self.x / LEGlobals.block_size)
 		to_save['y'] = int(self.y / LEGlobals.block_size)
-		if self.attributes['type'] == "platform":
+		if self.attributes['type'] == "platform" or self.attributes['type'] == 'trigger':
 			to_save['w'] = self.attributes['editable']['w']
 			to_save['h'] = self.attributes['editable']['h']
 

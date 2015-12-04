@@ -68,7 +68,7 @@ class Main:
 
 					Globals.player.while_keys_down(keys[0])
 
-				Globals.hud.on_input(keys[0])
+				Globals.hud.on_input(keys[1])
 
 				Globals.sky.base_update()
 

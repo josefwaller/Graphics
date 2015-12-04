@@ -19,7 +19,8 @@ class LevelEditor:
 	entity_selected = None
 	block_size = None
 
-	level_file = "assets/levels/l2.json"
+	level_file = "assets/levels/l1.json"
+	to_save_to = "l1.json"
 
 	buttons = []
 
@@ -50,6 +51,14 @@ class LevelEditor:
 				"type": "player",
 				"selected": False,
 				"editable": None
+			},
+			{
+				"image": self.load_img("assets/images/props/t_guy_1.png"),
+				"type": "prop",
+				"selected": False,
+				"editable": {
+					"num": 0
+				}
 			},
 			{
 				"image": self.load_img("assets/images/blocks/snow.png"),
@@ -174,7 +183,7 @@ class LevelEditor:
 				int(compass_size * (1/3)),
 				int(compass_size * (1/3)),
 				0,
-				1
+				-1
 			],
 			[
 				0,
@@ -254,20 +263,23 @@ class LevelEditor:
 
 			self.mouse[0] = pygame.mouse.get_pos()
 
-			if not self.check_for_compass_movement():
+			try:
+				if not self.check_for_compass_movement():
 
+					if self.mouse[0][0] < self.menu_width:
+						self.check_for_menu_selection()
 
-				if self.mouse[0][0] < self.menu_width:
-					self.check_for_menu_selection()
+					elif self.mouse[0][0] > self.menu_width and self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
 
-				elif self.mouse[0][0] > self.menu_width and self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
-					
-					if not self.check_for_entity_selection() and self.item_selected['type'] is not None:
+						if not self.check_for_entity_selection() and self.item_selected['type'] is not None:
 
-						self.check_for_item_placement()
+							self.check_for_item_placement()
 
-				elif self.mouse[0][0] > LEGlobals.window.get_size()[0] - self.attr_menu_width:
-					self.check_for_attribute_changes()
+					elif self.mouse[0][0] > LEGlobals.window.get_size()[0] - self.attr_menu_width:
+						self.check_for_attribute_changes()
+			except:
+				self.save_to_file(self.to_save_to)
+				print("Some error thingy happened")
 
 			self.check_for_save()
 
@@ -282,7 +294,7 @@ class LevelEditor:
 				if self.mouse[0][0] < p[0] + p[2]:
 					if self.mouse[0][1] > p[1]:
 						if self.mouse[0][1] < p[1] + p[2]:
-							self.save_to_file("current_level.json")
+							self.save_to_file(self.to_save_to)
 
 	def check_for_compass_movement (self):
 
