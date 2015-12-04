@@ -17,6 +17,9 @@ class MainMenu:
 	graphics_level = 0
 
 	sky = None
+	sky_moving_left = False
+	sky_coords = [0, 0]
+	sky_acell = 5
 
 	colors_one = [
 		(192, 192, 192),
@@ -140,8 +143,18 @@ class MainMenu:
 		self.move_sky()
 
 	def move_sky(self):
+		s = self.sky.get_size()
+		w = Globals.window.get_size()
 
-		pass
+		max_x = 0
+		min_x = s[0] - w[0]
+
+		if self.sky_moving_left:
+			self.sky_coords[0] -= s[0] / w[0]
+			if self.sky
+		else:
+			self.sky_coords[0] += sky_coords[0] / (s[0] - w[0])
+
 
 	def on_input(self, keys):
 
@@ -157,7 +170,7 @@ class MainMenu:
 
 	def render(self):
 
-		Globals.window.blit(self.sky, (0, 0))
+		Globals.window.blit(self.sky, self.sky_coords)
 		Globals.window.blit(self.logo, (self.logo_x, self.logo_y))
 
 		for i in range(len(self.buttons)):
