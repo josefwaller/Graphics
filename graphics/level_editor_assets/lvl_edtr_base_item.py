@@ -24,10 +24,8 @@ class BaseItem ():
 		if not self.attributes['editable'] == None:
 			self.attributes['editable'] = attributes['editable'].copy()
 
-		#Accounts for the menu
+		# Accounts for the menu
 		self.offset_x = offset
-
-		print(self.x / LEGlobals.block_size)
 
 	def load_image(self, img):
 
@@ -100,8 +98,6 @@ class BaseItem ():
 				y = self.y + int(self.s / 2) + LEGlobals.y_offset * LEGlobals.block_size
 				w = rounds
 				h = 0
-
-				print("X:%s, player's x: %s" % (x, self.x))
 
 				length = 4
 

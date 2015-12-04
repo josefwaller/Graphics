@@ -1,34 +1,34 @@
 {
 	"entities": [{
-		"selected": false,
-		"y": 7,
-		"type": "player",
-		"editable": null,
-		"x": 1
-	}, {
-		"selected": null,
-		"y": 9,
-		"type": "checkpoint",
-		"editable": null,
-		"x": 1
-	}, {
-		"selected": false,
-		"y": 9,
-		"w": 7,
-		"type": "platform",
-		"h": 1,
-		"editable": {
+			"selected": false,
+			"y": 7,
+			"type": "player",
+			"editable": null,
+			"x": 1
+		}, {
+			"selected": null,
+			"y": 9,
+			"type": "checkpoint",
+			"editable": null,
+			"x": 1
+		}, {
+			"selected": false,
+			"y": 9,
+			"w": 7,
+			"type": "platform",
 			"h": 1,
-			"w": 7
-		},
-		"x": 1
-	}, {
-		"selected": false,
-		"y": 7,
-		"type": "endblock",
-		"editable": null,
-		"x": 7
-	}],
+			"editable": {
+				"h": 1,
+				"w": 7
+			},
+			"x": 1
+		}, {
+			"selected": false,
+			"y": 7,
+			"type": "endblock",
+			"editable": null,
+			"x": 7
+		}],
 	"level_settings": {
 		"height": 10,
 		"width": 8,
