@@ -11,24 +11,24 @@ class HeadsUpDisplay:
 	# The different colors
 	# In arrays, one value for each graphics level
 	border_colors = [
-		(255, 255, 255),
-		(255, 255, 255),
-		(255, 255, 255)
+		(192, 192, 192),
+		(0, 0, 0),
+		(192, 192, 192)
 	]
 	box_colors = [
-		(0, 0, 0),
-		(0, 0, 0),
-		(0, 0, 0)
+		(64, 64, 64),
+		(255, 255, 255),
+		(64, 64, 64)
 	]
 	text_colors = [
-		(255, 255, 255),
-		(255, 255, 255),
-		(255, 255, 255)
+		(192, 192, 192),
+		(0, 0, 0),
+		(192, 192, 192)
 	]
 
 	# Rectangle used for fading in/out
 	rect_alpha = None
-	fade_duration = 1
+	fade_duration = 0.5
 	fade_start_time = 0
 	is_fading_out = False
 	should_fade_out = False

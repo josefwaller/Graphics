@@ -45,7 +45,7 @@ class MainMenu:
 	fade_in = True
 	fade_out = False
 	fade_alpha = 0
-	fade_duration = 1
+	fade_duration = 0.5
 	fade_start_time = 0
 
 	# The buttons
