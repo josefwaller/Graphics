@@ -13,7 +13,10 @@ class Globals:
 	player = None
 	checkpoints = []
 	platforms = []
-	debug = False
+	music = "16.wav"
+	music_fade_out = None
+	music_fade_in = None
+	debug = True
 	gravity_strength = 5
 	graphics_level = 0
 	is_paused = False

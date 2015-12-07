@@ -6,6 +6,7 @@ import time
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 from assets.files.utilities.main_menu import MainMenu
+from assets.files.utilities.sound_manager import SoundManager
 
 from level_editor import LevelEditor
 
@@ -38,12 +39,14 @@ class Main:
 	def play_game(self):
 
 		k = KeyHandler()
-
 		m = MainMenu()
+		s = SoundManager()
 
 		keys = [[], []]
 
 		while True:
+
+			s.update()
 
 			starting_frame_time = time.time()
 

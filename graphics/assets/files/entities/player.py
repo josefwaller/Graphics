@@ -170,11 +170,15 @@ class Player (JumpingEntity):
 		# Checks for tool use
 		if pygame.K_SPACE in keys:
 
-			# Sets up tool variables
-			if not self.using_tool:
-				self.tool_time = time.time()
+			if self.tool is not None:
+				# Sets up tool variables
+				if not self.using_tool:
+					self.tool_time = time.time()
 
-			self.using_tool = True
+				self.using_tool = True
+
+		if pygame.K_k in keys and Globals.debug:
+			self.respawn()
 
 		# For Bow and Arrow, releases arrow
 		elif self.using_tool and self.tool == "Bow and Arrow":
