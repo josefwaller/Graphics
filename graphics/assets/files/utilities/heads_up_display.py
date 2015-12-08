@@ -422,6 +422,7 @@ class HeadsUpDisplay:
 				if self.should_fade_out:
 					self.mb_is_showing = False
 					self.is_fading_out = True
+					Globals.music_fade_out = True
 					self.fade_start_time = time.time()
 				else:
 					self.mb_is_showing = False
@@ -472,6 +473,7 @@ class HeadsUpDisplay:
 		# Sets up initially
 		if self.rect_alpha is None:
 			self.rect_alpha = 0
+			Globals.music_fade_out = True
 
 		window = pygame.Surface(Globals.window.get_size())
 		window.set_alpha(self.rect_alpha)
@@ -484,6 +486,7 @@ class HeadsUpDisplay:
 			self.is_fading_out = False
 			Globals.is_paused = False
 			Globals.graphics_level += 1
+			Globals.music_fade_in = True
 			Globals.in_menu = True
 
 	def fade_in(self):

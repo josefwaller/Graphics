@@ -114,8 +114,10 @@ class MainMenu:
 		# Sets graphics level
 		self.graphics_level = Globals.graphics_level
 
+		# Sets up sky
 		self.sky_last_time = time.time()
 
+		# Sets logo and sky images
 		self.logo = self.logos[Globals.graphics_level]
 		self.sky = self.skies[Globals.graphics_level]
 
@@ -148,12 +150,16 @@ class MainMenu:
 		settings_file.write(json.dumps(settings))
 		settings_file.close()
 
+		# Gets the button colors
 		self.color_one = self.colors_one[Globals.graphics_level]
 		self.color_two = self.colors_two[Globals.graphics_level]
 
+		# Sets the selected button to continues
+		self.selected_button = 0
+
 	def update(self):
 
-		#Checks if it should set up again
+		# Checks if it should set up again
 		if not self.graphics_level == Globals.graphics_level:
 			self.set_up()
 
@@ -246,6 +252,7 @@ class MainMenu:
 				if self.fade_alpha > 255:
 					self.fade_out = False
 					Globals.in_menu = False
+					Globals.music_fade_in = True
 
 	def resume(self):
 		
@@ -256,6 +263,7 @@ class MainMenu:
 		level_file.close()
 
 		self.fade_out = True
+		Globals.music_fade_out = True
 		self.fade_alpha = 0
 		self.fade_start_time = time.time()
 
@@ -278,6 +286,7 @@ class MainMenu:
 		level_file.close()
 
 		self.fade_out = True
+		Globals.music_fade_out = True
 		self.fade_alpha = 0
 		self.fade_start_time = time.time()
 

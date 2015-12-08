@@ -15,7 +15,7 @@ class Globals:
 	platforms = []
 	music = "16_game.wav"
 	music_fade_out = None
-	music_fade_in = None
+	music_fade_in = True
 	debug = True
 	gravity_strength = 5
 	graphics_level = 0
