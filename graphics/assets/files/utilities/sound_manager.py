@@ -26,13 +26,13 @@ class SoundManager:
 		# Updates music
 		if Globals.graphics_level == 0:
 			self.menu_music = "t_menu.wav"
-			self.game_music = "t.wav"
+			self.game_music = "t_game.wav"
 		elif Globals.graphics_level == 1:
 			self.menu_music = "8_menu.wav"
-			self.game_music = "8.wav"
+			self.game_music = "8_game.wav"
 		elif Globals.graphics_level == 2:
 			self.menu_music = "16_menu.wav"
-			self.game_music = "16.wav"
+			self.game_music = "16_game.wav"
 
 		self.graphics_level = Globals.graphics_level
 

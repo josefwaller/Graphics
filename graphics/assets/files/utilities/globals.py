@@ -13,7 +13,7 @@ class Globals:
 	player = None
 	checkpoints = []
 	platforms = []
-	music = "16.wav"
+	music = "16_game.wav"
 	music_fade_out = None
 	music_fade_in = None
 	debug = True
