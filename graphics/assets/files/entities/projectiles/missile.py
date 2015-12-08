@@ -26,6 +26,7 @@ class Missile (BaseProjectile):
 			self.target = Globals.player
 		else:
 			self.target = self.find_target()
+			print(self.target)
 
 		self.starting_time = time.time()
 
@@ -57,7 +58,10 @@ class Missile (BaseProjectile):
 		x_translate = 0
 		y_translate = 0
 
-		if not self.target == None:
+		if not self.is_enemy:
+			print("Player's missile target is %s" % self.target)
+
+		if self.target is not None:
 
 			if self.target.x > self.x + self.w:
 
@@ -104,13 +108,13 @@ class Missile (BaseProjectile):
 			if time.time() - self.starting_time >= self.lifespan:
 				Globals.projectiles.remove(self)
 
-		elif self.target == None:
+		elif self.target is None:
 
 			self.x += self.momX * self.speed * self.delta_time
 
 			self.momX += (math.fabs(self.momX) / self.momX) * self.turn_speed * self.delta_time
 
-	def find_target (self): 
+	def find_target(self):
 
 		least_distance = None
 		enemy = None
@@ -122,13 +126,14 @@ class Missile (BaseProjectile):
 
 			distance = math.sqrt(math.pow(x, 2) + math.pow(y, 2))
 
-			if least_distance == None or distance < least_distance:
+			if least_distance is None or distance < least_distance:
 				least_distance = distance
 				enemy = e
 
+		print(enemy)
 		return enemy
 
-	def update (self):
+	def update(self):
 
 		self.move()
 		self.render()

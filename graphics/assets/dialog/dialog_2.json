@@ -1,0 +1,12 @@
+{
+  "dialogs": [
+	  "How did you get here?",
+	  "Yeah! That's right! Who can't move now!",
+	  "Anyways you're going the wrong way fool."
+  ],
+  "images": [
+	  "t_player_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_guy_dialog.png"
+  ]
+}

@@ -103,7 +103,7 @@ class LevelReader:
 				if thing['on_enter']['type'] == 'message_box':
 					text = thing['on_enter']['text']
 					title = thing['on_enter']['title']
-					param = [text, title]
+					param = [title, text]
 					func = Globals.hud.message_box
 
 				elif thing['on_enter']['type'] == 'dialog_box':

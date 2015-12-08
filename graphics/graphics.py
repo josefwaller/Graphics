@@ -28,6 +28,8 @@ class Main:
 		# Sets the window dimensions
 		window_size = self.settings['screen_width'], self.settings['screen_height']
 		Globals.window = pygame.display.set_mode(window_size)
+		pygame.display.set_caption("Graphics")
+		pygame.display.set_icon(pygame.image.load("assets/images/menu/icon.png").convert_alpha())
 
 		Globals.block_size = int(Globals.window.get_size()[1] / 15)
 		Globals.pixels_per_block = 10

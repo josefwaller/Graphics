@@ -16,7 +16,7 @@ class Globals:
 	music = "16_game.wav"
 	music_fade_out = None
 	music_fade_in = True
-	debug = True
+	debug = False
 	gravity_strength = 5
 	graphics_level = 0
 	is_paused = False

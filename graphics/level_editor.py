@@ -19,7 +19,7 @@ class LevelEditor:
 	entity_selected = None
 	block_size = None
 
-	level_file = "assets/levels/l1.json"
+	level_file = None
 	to_save_to = "l1.json"
 
 	buttons = []

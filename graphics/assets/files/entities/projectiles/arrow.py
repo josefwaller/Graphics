@@ -60,30 +60,31 @@ class Arrow (BaseProjectile):
 					Globals.projectiles.remove(self)
 					return
 
-	def check_for_collision(self, target):
-
-		collide_x = False
-		collide_y = False
-
-		# Checks for x collision
-		if self.direction == 1:
-			if self.x > target.x:
-				if self.last_x < target.x + target.w:
-					collide_x = True
-		elif self.direction == (-1):
-			if self.x < target.x + target.w:
-				if self.last_x > target.x:
-					collide_x = True
-
-		# Checks for y collision
-		if self.y < target.y:
-			if self.y > target.y - target.w:
-				collide_y = True
-
-		if collide_x and collide_y:
-			return True
-
-		return False
+	# def check_for_collision(self, target):
+	#
+	# 	collide_x = False
+	# 	collide_y = False
+	#
+	# 	# Checks for x collision
+	# 	if self.direction == 1:
+	# 		if self.x > target.x:
+	# 			if self.last_x < target.x + target.w:
+	# 				collide_x = True
+	# 	elif self.direction == (-1):
+	# 		if self.x < target.x + target.w:
+	# 			if self.last_x > target.x:
+	# 				collide_x = True
+	#
+	# 	# Checks for y collision
+	# 	if self.y + self.h > target.y:
+	# 		if self.y < target.y + target.h:
+	# 			collide_y = True
+	#
+	# 	if collide_x and collide_y:
+	# 		print("Arrow death!")
+	# 		return True
+	#
+	# 	return False
 
 	def update(self):
 

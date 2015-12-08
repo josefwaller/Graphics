@@ -14,6 +14,7 @@ class Trigger (BaseEntity):
 	on_enter = None
 
 	used = False
+	can_be_used = True
 
 	def __init__ (self, x, y, w, h, on_enter, parameters):
 
@@ -28,6 +29,7 @@ class Trigger (BaseEntity):
 
 		if self.on_enter == "player_die":
 			self.on_enter = Globals.player.respawn
+			self.can_be_used = False
 
 	def check_for_collision(self, target):
 
@@ -46,7 +48,8 @@ class Trigger (BaseEntity):
 		if self.check_for_collision(p) and not self.used:
 
 			self.on_enter(*self.para)
-			self.used = True
+			if self.can_be_used:
+				self.used = True
 
 		if Globals.debug:
 

@@ -177,13 +177,13 @@ class Player (JumpingEntity):
 
 				self.using_tool = True
 
-		if pygame.K_k in keys and Globals.debug:
-			self.respawn()
-
 		# For Bow and Arrow, releases arrow
 		elif self.using_tool and self.tool == "Bow and Arrow":
 
 			self.use_tool()
+
+		if pygame.K_k in keys and Globals.debug:
+			self.respawn()
 
 	# Does misc stuff depending on the tool
 	def use_tool(self):
@@ -216,7 +216,7 @@ class Player (JumpingEntity):
 					if self.facing_left:
 						if hb.x < self.x:
 							if hb.x > self.x - self.sword_range:
-								enemy.on_death()
+								enemy.on_hit()
 
 					else:
 						if hb.x > self.x + self.w:
