@@ -48,7 +48,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = None
+	tool = "Staff"
 
 	def __init__(self, x, y):
 
@@ -316,6 +316,15 @@ class Player (JumpingEntity):
 			Globals.camera_offset['x'] = - (self.x - Globals.window.get_size()[0] / 2)
 		else:
 			Globals.camera_offset['x'] = 0
+
+		Globals.camera_offset['y'] = (Globals.window.get_size()[1] / 2) - self.y
+
+		if Globals.camera_offset['y'] > 0:
+			Globals.camera_offset['y'] = 0
+		# if self.y - Globals.camera_offset['y'] >= Globals.window.get_size()[1] * (3/4) and self.momY < 150:
+		# 	Globals.camera_offset['y'] = - (self.y - Globals.window.get_size()[1] * (3/4))
+		# elif self.y - Globals.camera_offset['y'] < Globals.window.get_size()[1] * (1/4):
+		# 	Globals.camera_offset['y'] = - (self.y - Globals.window.get_size()[1] * (1/4))
 
 	# Creates the blinking animation used when the player is hit
 	def blink(self): 

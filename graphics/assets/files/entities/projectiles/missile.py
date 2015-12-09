@@ -22,12 +22,6 @@ class Missile (BaseProjectile):
 
 		self.speed = 5
 
-		if is_enemy:
-			self.target = Globals.player
-		else:
-			self.target = self.find_target()
-			print(self.target)
-
 		self.starting_time = time.time()
 
 		self.momX = 30 * direction
@@ -53,7 +47,13 @@ class Missile (BaseProjectile):
 		self.x = x
 		self.y = y
 
-	def move (self):
+		if is_enemy:
+			self.target = Globals.player
+		else:
+			self.target = self.find_target()
+			print(self.target)
+
+	def move(self):
 
 		x_translate = 0
 		y_translate = 0
@@ -129,8 +129,8 @@ class Missile (BaseProjectile):
 			if least_distance is None or distance < least_distance:
 				least_distance = distance
 				enemy = e
+				print("Distance: %s, enemy: %s" % (distance, enemy))
 
-		print(enemy)
 		return enemy
 
 	def update(self):

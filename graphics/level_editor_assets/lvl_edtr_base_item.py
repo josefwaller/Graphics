@@ -59,7 +59,7 @@ class BaseItem ():
 		return to_save
 
 
-	def render (self):
+	def render(self):
 
 		if self.attributes['type'] == 'platform':
 
@@ -74,6 +74,11 @@ class BaseItem ():
 						x + i * self.s,
 						y + z * self.s
 					))
+
+			color = (0, 255, 0)
+			w = self.attributes['editable']['w']
+			h = self.attributes['editable']['h']
+			pygame.draw.rect(LEGlobals.window, color, [x, y, self.s * w, self.s * h], 1)
 		elif self.attributes['type'] == 'trigger':
 
 			x = self.x + LEGlobals.x_offset * LEGlobals.block_size + self.offset_x

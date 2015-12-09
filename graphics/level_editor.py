@@ -22,6 +22,8 @@ class LevelEditor:
 	level_file = None
 	to_save_to = "l1.json"
 
+	level_dimensions = None
+
 	buttons = []
 
 	mouse = None
@@ -31,114 +33,19 @@ class LevelEditor:
 
 	compass_buttons = []
 
-	def __init__ (self):
+	def __init__(self):
 
-		windowSize = 800, 600
-		LEGlobals.window = pygame.display.set_mode(windowSize)
+		window_size = 800, 600
+		LEGlobals.window = pygame.display.set_mode(window_size)
 
 		self.mouse = [[0, 0], 0]
 
-		self.base_items = [
-			{
-				"image": self.load_img("assets/images/blocks/temp_block.png"),
-				"type": "delete",
-				"selected": False,
-				"editable": None
+		# Reads items
+		item_file = open("level_editor_assets/lvl_edtr_items.json", "r")
+		self.base_items = json.loads(item_file.read())
+		item_file.close()
 
-			},
-			{
-				"image": self.load_img("assets/images/player/8bit/8_run_2.png"),
-				"type": "player",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/props/t_guy_1.png"),
-				"type": "prop",
-				"selected": False,
-				"editable": {
-					"num": 0
-				}
-			},
-			{
-				"image": self.load_img("assets/images/blocks/snow.png"),
-				"type": "platform",
-				"selected": False,
-				"editable": 
-					{
-						"w" : 1,
-						"h" : 1
-					}
-			},
-			{
-				"image": self.load_img("assets/images/props/pole.png"),
-				"type": "checkpoint",
-				"selected": None,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/enemies/wizard/front_1.png"),
-				"type": "wizard",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/enemies/walker/run_2.png"),
-				"type": "walker",
-				"selected": False,
-				"editable": {
-					"rounds": 1,
-					"offset": 0
-				}
-			},
-			{
-				"image": self.load_img("assets/images/enemies/archer/archer_1.png"),
-				"type": "archer",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/enemies/jumper/jumper_land.png"),
-				"type": "jumper",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/tools/bar.png"),
-				"type": "bar",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/tools/staff.png"),
-				"type": "staff",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/tools/sword.png"),
-				"type": "sword",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/blocks/8_up_graphics_16.png"),
-				"type": "endblock",
-				"selected": False,
-				"editable": None
-			},
-			{
-				"image": self.load_img("assets/images/blocks/16_snow.png"),
-				"type": "trigger",
-				"selected": False,
-				"editable": {
-					"w": 1,
-					"h": 1
-				}
-			}
-
-		]
-
+		# Stuff in the menu
 		c = []
 
 		for i in range(int(len(self.base_items) / 4) + 1):
@@ -147,53 +54,16 @@ class LevelEditor:
 
 		for i in range(len(self.base_items)):
 
+			# Rounds to 4 a row
 			i_rounded = int(i/4)
 
 			c[i_rounded].append(self.base_items[i])
 
 		self.items = c.copy()
 
-		compass_size = 90
-		#   _ _ _
-		#  |_|_|_|
-		#  |_|_|_|
-		#  |_|_|_|
+		self.level_dimensions = [80, 40]
 
-		self.compass_buttons = [
-
-			[
-				int(compass_size * (1/3)),
-				int(LEGlobals.window.get_size()[1] - compass_size),
-				int(compass_size * (1/3)),
-				int(compass_size * (1/3)),
-				0,
-				1
-			],
-			[
-				int(compass_size * (2/3)),
-				int(LEGlobals.window.get_size()[1] - compass_size * (2/3)),
-				int(compass_size * (1/3)),
-				int(compass_size * (1/3)),
-				-1,
-				0
-			],
-			[
-				int(compass_size * (1/3)),
-				int(LEGlobals.window.get_size()[1] - compass_size * (1/3)),
-				int(compass_size * (1/3)),
-				int(compass_size * (1/3)),
-				0,
-				-1
-			],
-			[
-				0,
-				int(LEGlobals.window.get_size()[1] - compass_size * (2/3)),
-				int(compass_size * (1/3)),
-				int(compass_size * (1/3)),
-				1,
-				0
-			]
-		]
+		self.set_compass_proportions(90)
 
 		self.save_button = [
 
@@ -209,11 +79,11 @@ class LevelEditor:
 		}
 		self.entities = []
 
-		while len(self.entities) < 100:
+		while len(self.entities) < self.level_dimensions[0]:
 			self.entities.append([])
 
 		for i in range(len(self.entities)):
-			while len(self.entities[i]) < int(LEGlobals.window.get_size()[1] / LEGlobals.block_size):
+			while len(self.entities[i]) < self.level_dimensions[1]:
 				self.entities[i].append(None)
 
 		if self.level_file is not None:
@@ -249,7 +119,7 @@ class LevelEditor:
 		# Runs editor loop
 		self.run_editor()
 
-	def run_editor (self):
+	def run_editor(self):
 		
 		while True:
 
@@ -285,7 +155,7 @@ class LevelEditor:
 
 			self.render()
 
-	def check_for_save (self):
+	def check_for_save(self):
 
 		p = self.save_button
 
@@ -296,7 +166,7 @@ class LevelEditor:
 						if self.mouse[0][1] < p[1] + p[2]:
 							self.save_to_file(self.to_save_to)
 
-	def check_for_compass_movement (self):
+	def check_for_compass_movement(self):
 
 		for b in self.compass_buttons:
 
@@ -313,7 +183,7 @@ class LevelEditor:
 								return True
 		return False
 
-	def check_for_menu_selection (self):
+	def check_for_menu_selection(self):
 
 		item_row = int(self.mouse[0][1] / (self.menu_width / 4))
 
@@ -330,7 +200,7 @@ class LevelEditor:
 			# No button was there
 			self.item_selected = None
 
-	def check_for_item_placement (self):
+	def check_for_item_placement(self):
 
 		if not self.item_selected is None and self.mouse[1] == True:
 
@@ -351,7 +221,7 @@ class LevelEditor:
 					offset=self.menu_width
 				)
 
-	def check_for_attribute_changes (self):
+	def check_for_attribute_changes(self):
 		
 		for b in self.buttons:
 
@@ -398,7 +268,7 @@ class LevelEditor:
 		f = open("assets/levels/%s" % file_name, "w")
 		f.write(json.dumps(final_to_save))
 
-	def render (self):
+	def render(self):
 
 		# Draws sky
 
@@ -428,7 +298,7 @@ class LevelEditor:
 			x += 1
 			y = 0
 
-		#Draws things
+		# Draws things
 
 		for e_x in range(len(self.entities)):
 			for e_y in range(len(self.entities[e_x])):
@@ -442,10 +312,20 @@ class LevelEditor:
 							pygame.draw.rect(LEGlobals.window, red, [e_x * s, e_y * s, s, s])
 
 				e = self.entities[e_x][e_y]
-				if not e == None:
+				if e is not None:
 					e.render()
 
-		#Draws compass
+		# Draws level boundaries
+
+			pink = (255, 0, 255)
+			pygame.draw.rect(LEGlobals.window, pink, [
+				LEGlobals.x_offset * LEGlobals.block_size + self.menu_width,
+				LEGlobals.y_offset * LEGlobals.block_size,
+				LEGlobals.block_size * self.level_dimensions[0],
+				LEGlobals.block_size * self.level_dimensions[1]
+			], 4)
+
+		# Draws compass
 
 		for b in self.compass_buttons:
 
@@ -454,7 +334,7 @@ class LevelEditor:
 			pygame.draw.rect(LEGlobals.window, new_grey, (self.menu_width + b[0], b[1], b[2], b[3]))
 
 
-		#Draws item menu
+		# Draws item menu
 
 		pygame.draw.rect(LEGlobals.window,grey, [0, 0, self.menu_width, LEGlobals.window.get_size()[1]])
 
@@ -479,7 +359,7 @@ class LevelEditor:
 			y += s
 			x = 0
 
-		#Draws Attribute Menu
+		# Draws Attribute Menu
 		pygame.draw.rect(LEGlobals.window, grey, [
 			LEGlobals.window.get_size()[0] - self.attr_menu_width,
 			0,
@@ -574,3 +454,41 @@ class LevelEditor:
 		img = pygame.image.load(img).convert_alpha()
 
 		return img
+
+	def set_compass_proportions(self, compass_size):
+
+		self.compass_buttons = [
+
+			[
+				int(compass_size * (1/3)),
+				int(LEGlobals.window.get_size()[1] - compass_size),
+				int(compass_size * (1/3)),
+				int(compass_size * (1/3)),
+				0,
+				1
+			],
+			[
+				int(compass_size * (2/3)),
+				int(LEGlobals.window.get_size()[1] - compass_size * (2/3)),
+				int(compass_size * (1/3)),
+				int(compass_size * (1/3)),
+				-1,
+				0
+			],
+			[
+				int(compass_size * (1/3)),
+				int(LEGlobals.window.get_size()[1] - compass_size * (1/3)),
+				int(compass_size * (1/3)),
+				int(compass_size * (1/3)),
+				0,
+				-1
+			],
+			[
+				0,
+				int(LEGlobals.window.get_size()[1] - compass_size * (2/3)),
+				int(compass_size * (1/3)),
+				int(compass_size * (1/3)),
+				1,
+				0
+			]
+		]

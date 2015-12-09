@@ -378,6 +378,7 @@ class HeadsUpDisplay:
 			line_index = 0
 
 			self.mb_title = title
+			self.text_lines = ["", "", "", ""]
 			word_index = 1
 
 			# Checks whether the box should fade out when done

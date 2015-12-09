@@ -1,1024 +1,845 @@
 {
 	"entities": [{
-		"x": 6,
-		"editable": null,
+		"type": "platform",
+		"h": 6,
+		"y": 10,
+		"editable": {
+			"h": 6,
+			"w": 6
+		},
+		"selected": false,
+		"w": 6,
+		"x": 0
+	}, {
 		"type": "player",
-		"y": 7,
-		"selected": false
-	},{
-		"x": 0,
-		"editable": {
-			"w": 1,
-			"h": 15
-		},
-		"type": "trigger",
-		"y": 0,
-		"w": 1,
-		"h": 15,
-	  	"on_enter": {
-		  "type": "player_die"
-		},
-		"selected": false
-	}, {
-		"x": 1,
-		"editable": {
-			"w": 12,
-			"h": 1
-		},
-		"type": "trigger",
-		"y": 14,
-		"w": 12,
-		"h": 1,
-	  	"on_enter": {
-		  "type": "player_die"
-		},
-		"selected": false
-	}, {
-		"x": 6,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 9,
-		"selected": null
-	}, {
-		"x": 6,
-		"editable": {
-			"w": 7,
-			"h": 15
-		},
-		"type": "platform",
-		"y": 9,
-		"w": 7,
-		"h": 15,
-		"selected": false
-	}, {
-		"x": 10,
-		"editable": {
-			"w": 1,
-			"h": 8
-		},
-		"type": "trigger",
-		"y": 1,
-		"w": 1,
-		"h": 8,
-	  	"on_enter": {
-		  "type": "dialog_box",
-		  "file": "dialog_1.json"
-		},
-		"selected": false
-	}, {
-		"x": 10,
-		"editable": {
-			"num": 0
-		},
-		"type": "prop",
 		"y": 8,
-		"selected": false,
-		"image": [
-			"props/t_guy_1.png",
-			"props/t_guy_2.png"
-		]
-	}, {
-		"x": 13,
-		"editable": {
-			"w": 4,
-			"h": 1
-		},
-		"type": "trigger",
-		"y": 14,
-		"w": 4,
-		"h": 1,
-	  	"on_enter": {
-		  "type": "player_die"
-		},
-		"selected": false
-	}, {
-		"x": 17,
-		"editable": {
-			"w": 3,
-			"h": 6
-		},
-		"type": "trigger",
-		"y": 1,
-		"w": 3,
-		"h": 6,
-	  	"on_enter": {
-		  	"type": "message_box",
-			"title": "Enemies",
-			"text": "You are unlikable. You just have to face that. Some people want to kill you.\n With swords. Don't let them."
-		},
-		"selected": false
-	}, {
-		"x": 17,
-		"editable": {
-			"w": 3,
-			"h": 10
-		},
-		"type": "platform",
-		"y": 7,
-		"w": 3,
-		"h": 10,
-		"selected": false
-	}, {
-		"x": 18,
 		"editable": null,
+		"selected": false,
+		"x": 1
+	}, {
 		"type": "checkpoint",
-		"y": 7,
-		"selected": null
-	}, {
-		"x": 20,
-		"editable": {
-			"w": 19,
-			"h": 1
-		},
-		"type": "trigger",
-		"y": 14,
-		"w": 19,
-		"h": 1,
-	  	"on_enter": {
-		  "type": "player_die"
-		},
-		"selected": false
-	}, {
-		"x": 22,
-		"editable": {
-			"w": 10,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 5,
-		"w": 10,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 23.0,
-		"x": 24,
-		"editable": {
-			"rounds": 3,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 4,
-		"selected": false,
-		"turn2": 26.0
-	}, {
-		"turn1": 27.0,
-		"x": 27,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 4,
-		"selected": false,
-		"turn2": 28.0
-	}, {
-		"turn1": 28.0,
-		"x": 29,
-		"editable": {
-			"rounds": 3,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 4,
-		"selected": false,
-		"turn2": 31.0
-	}, {
-		"x": 34,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 8,
-		"selected": null
-	}, {
-		"x": 33,
-		"editable": {
-			"w": 4,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 8,
-		"w": 4,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 39,
-		"editable": null,
-		"type": "archer",
-		"y": 2,
-		"selected": false
-	}, {
-		"x": 39,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 3,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 39,
-		"editable": {
-			"w": 12,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 6,
-		"w": 12,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 39,
-		"editable": {
-			"w": 1,
-			"h": 8
-		},
-		"type": "platform",
-		"y": 7,
-		"w": 1,
-		"h": 8,
-		"selected": false
-	}, {
-		"x": 40,
-		"editable": {
-			"w": 32,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 14,
-		"w": 32,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 41,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 14,
-		"selected": null
-	}, {
-		"x": 43,
-		"editable": {
-			"w": 5,
-			"h": 4
-		},
-		"type": "trigger",
-		"y": 2,
-		"w": 5,
-		"h": 4,
-	  	"on_enter": {
-		  "type": "message_box",
-		  "title": "Tools",
-		  "text": "There are many different tools you can pick up throughout the game.\n Just kidding, actually there are like 3.\n Why? LAZY DEVELOPERS."
-		},
-		"selected": false
-	}, {
-		"x": 45,
-		"editable": null,
-		"type": "bar",
-		"y": 5,
-		"selected": false
-	}, {
-		"x": 45,
-		"editable": {
-			"w": 12,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 11,
-		"w": 12,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 45.0,
-		"x": 47,
-		"editable": {
-			"rounds": 5,
-			"offset": 0
-		},
-		"type": "walker",
 		"y": 10,
-		"selected": false,
-		"turn2": 50.0
-	}, {
-		"x": 47,
 		"editable": null,
-		"type": "archer",
-		"y": 13,
-		"selected": false
+		"selected": null,
+		"x": 1
 	}, {
-		"x": 50,
-		"editable": null,
-		"type": "archer",
-		"y": 2,
-		"selected": false
-	}, {
-		"x": 50,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 3,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 50,
-		"editable": null,
-		"type": "archer",
-		"y": 13,
-		"selected": false
-	}, {
-		"x": 51,
-		"editable": {
-			"w": 5,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 6,
-		"w": 5,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 50.0,
-		"x": 52,
-		"editable": {
-			"rounds": 5,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 10,
-		"selected": false,
-		"turn2": 55.0
-	}, {
-		"x": 53,
-		"editable": null,
-		"type": "archer",
-		"y": 13,
-		"selected": false
-	}, {
-		"x": 54,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 6,
-		"selected": null
-	}, {
-		"x": 56,
-		"editable": null,
-		"type": "sword",
-		"y": 10,
-		"selected": false
-	}, {
-		"x": 56,
-		"editable": null,
-		"type": "archer",
-		"y": 13,
-		"selected": false
-	}, {
-		"x": 57,
-		"editable": {
-			"w": 1,
-			"h": 16
-		},
-		"type": "platform",
-		"y": -4,
-		"w": 1,
-		"h": 16,
-		"selected": false
-	}, {
-		"x": 58,
-		"editable": {
-			"w": 11,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 5,
-		"w": 11,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 59,
-		"editable": null,
-		"type": "archer",
-		"y": 13,
-		"selected": false
-	}, {
-		"x": 60,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 14,
-		"selected": null
-	}, {
-		"x": 65,
-		"editable": null,
-		"type": "jumper",
-		"y": 12,
-		"selected": false
-	}, {
-		"x": 67,
-		"editable": null,
-		"type": "jumper",
-		"y": 12,
-		"selected": false
-	}, {
-		"x": 69,
-		"editable": {
-			"w": 1,
-			"h": 7
-		},
-		"type": "platform",
-		"y": -9,
-		"w": 1,
+		"type": "trigger",
 		"h": 7,
-		"selected": false
-	}, {
-		"x": 69,
-		"editable": null,
-		"type": "jumper",
-		"y": 12,
-		"selected": false
-	}, {
-		"x": 69,
-		"editable": {
-			"w": 1,
-			"h": 8
-		},
-		"type": "platform",
-		"y": -2,
-		"w": 1,
-		"h": 8,
-		"selected": false
-	}, {
-		"x": 70,
-		"editable": null,
-		"type": "checkpoint",
-		"y": 5,
-		"selected": null
-	}, {
-		"x": 70,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 5,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 70,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 10,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 70,
-		"editable": {
-			"w": 13,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -2,
-		"w": 13,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 72,
-		"editable": null,
-		"type": "staff",
 		"y": 3,
-		"selected": false
-	}, {
-		"x": 72,
 		"editable": {
-			"w": 1,
-			"h": 11
+			"h": 7,
+			"w": 1
 		},
-		"type": "platform",
-		"y": 4,
-		"w": 1,
-		"h": 11,
-		"selected": false
-	}, {
-		"x": 72,
-		"editable": {
-			"w": 1,
-			"h": 1
+		"on_enter": {
+			"type": "dialog_box",
+			"file": "dialog_1.json"
 		},
-		"type": "platform",
-		"y": 7,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 73,
-		"editable": {
-			"w": 8,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 4,
-		"w": 8,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 73,
-		"editable": {
-			"w": 1,
-			"h": 4
-		},
-		"type": "trigger",
-		"y": -6,
-		"w": 1,
-		"h": 4,
 		"selected": false,
-	  	"on_enter": {
-		  "type": "dialog_box",
-		  "file": "dialog_2.json"
-		}
+		"w": 1,
+		"x": 4
 	}, {
-		"x": 73,
+		"type": "prop",
+		"y": 9,
 		"editable": {
 			"num": 0
 		},
-		"type": "prop",
-		"y": -3,
+		"image": ["props/t_guy_1.png","props/t_guy_2.png"],
 		"selected": false,
-		"image": [
-			"props/t_guy_1.png",
-			"props/t_guy_2.png"
-		]
+		"x": 4
 	}, {
-		"x": 73,
-		"editable": {
-			"w": 13,
-			"h": 1
-		},
 		"type": "platform",
-		"y": 14,
-		"w": 13,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 74,
-		"editable": {
-			"w": 8,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 11,
-		"w": 8,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 75,
-		"editable": null,
-		"type": "jumper",
+		"h": 6,
 		"y": 10,
-		"selected": false
-	}, {
-		"x": 77,
-		"editable": null,
-		"type": "jumper",
-		"y": 10,
-		"selected": false
-	}, {
-		"x": 79,
-		"editable": null,
-		"type": "jumper",
-		"y": 10,
-		"selected": false
-	}, {
-		"x": 80,
-		"editable": null,
-		"type": "wizard",
-		"y": 0,
-		"selected": false
-	}, {
-		"x": 80,
 		"editable": {
-			"w": 1,
-			"h": 1
+			"h": 6,
+			"w": 10
 		},
-		"type": "platform",
-		"y": 1,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 80,
-		"editable": null,
-		"type": "wizard",
-		"y": 3,
-		"selected": false
-	}, {
-		"x": 82,
-		"editable": null,
-		"type": "checkpoint",
-		"y": -2,
-		"selected": null
-	}, {
-		"x": 82,
-		"editable": {
-			"w": 1,
-			"h": 13
-		},
-		"type": "platform",
-		"y": -1,
-		"w": 1,
-		"h": 13,
-		"selected": false
-	}, {
-		"x": 83,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 2,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 83,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 6,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 83,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 10,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 83,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -2,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 85,
-		"editable": {
-			"w": 10,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -11,
+		"selected": false,
 		"w": 10,
-		"h": 1,
-		"selected": false
+		"x": 10
 	}, {
-		"x": 85,
-		"editable": {
-			"w": 1,
-			"h": 6
-		},
-		"type": "platform",
-		"y": -10,
-		"w": 1,
-		"h": 6,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -11,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": null,
-		"type": "archer",
-		"y": -10,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -9,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": null,
-		"type": "archer",
-		"y": -8,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -7,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": null,
-		"type": "archer",
-		"y": -6,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -5,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 7,
-			"h": 1
-		},
-		"type": "platform",
-		"y": -2,
-		"w": 7,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 86,
-		"editable": {
-			"w": 1,
-			"h": 16
-		},
-		"type": "platform",
-		"y": -1,
-		"w": 1,
-		"h": 16,
-		"selected": false
-	}, {
-		"x": 87,
-		"editable": {
-			"w": 8,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 14,
-		"w": 8,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 88.0,
-		"x": 88,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 2,
-		"selected": false,
-		"turn2": 89.0
-	}, {
-		"x": 88,
-		"editable": {
-			"w": 6,
-			"h": 1
-		},
-		"type": "platform",
+		"type": "trigger",
+		"h": 7,
 		"y": 3,
-		"w": 6,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 88,
 		"editable": {
-			"w": 1,
-			"h": 8
+			"h": 7,
+			"w": 1
 		},
-		"type": "platform",
-		"y": 4,
-		"w": 1,
-		"h": 8,
-		"selected": false
-	}, {
-		"x": 90,
-		"editable": {
-			"w": 1,
-			"h": 1
+		"on_enter": {
+			"type": "message_box",
+			"file": "mb_1.json"
 		},
-		"type": "platform",
-		"y": 1,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 89.0,
-		"x": 89,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 2,
 		"selected": false,
-		"turn2": 90.0
+		"w": 1,
+		"x": 11
 	}, {
-		"x": 90,
-		"editable": null,
-		"type": "endblock",
-		"y": 5,
-		"selected": false
-	}, {
-		"x": 89,
-		"editable": {
-			"w": 3,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 7,
-		"w": 3,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 89,
-		"editable": null,
-		"type": "archer",
+		"type": "walker",
+		"turn1": 12.0,
 		"y": 9,
-		"selected": false
-	}, {
-		"x": 89,
 		"editable": {
-			"w": 1,
-			"h": 1
+			"offset": 0,
+			"rounds": 5
 		},
-		"type": "platform",
-		"y": 10,
-		"w": 1,
-		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 90.0,
-		"x": 90,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 2,
+		"turn2": 17.0,
 		"selected": false,
-		"turn2": 91.0
+		"x": 14
 	}, {
-		"x": 90,
-		"editable": {
-			"w": 2,
-			"h": 1
-		},
 		"type": "platform",
-		"y": -8,
-		"w": 2,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 90,
+		"h": 11,
+		"y": 16,
 		"editable": {
-			"w": 1,
-			"h": 2
+			"h": 11,
+			"w": 1
 		},
-		"type": "platform",
-		"y": -4,
-		"w": 1,
-		"h": 2,
-		"selected": false
-	}, {
-		"turn1": 91.0,
-		"x": 91,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		},
-		"type": "walker",
-		"y": 2,
 		"selected": false,
-		"turn2": 92.0
-	}, {
-		"x": 92,
-		"editable": {
-			"w": 1,
-			"h": 1
-		},
-		"type": "platform",
-		"y": 10,
 		"w": 1,
+		"x": 15
+	}, {
+		"type": "platform",
 		"h": 1,
-		"selected": false
-	}, {
-		"turn1": 92.0,
-		"x": 92,
+		"y": 26,
 		"editable": {
-			"rounds": 1,
-			"offset": 0
+			"h": 1,
+			"w": 27
 		},
-		"type": "walker",
-		"y": 2,
 		"selected": false,
-		"turn2": 93.0
+		"w": 27,
+		"x": 16
 	}, {
-		"x": 92,
-		"editable": {
-			"w": 1,
-			"h": 6
-		},
 		"type": "platform",
-		"y": -8,
-		"w": 1,
+		"h": 1,
+		"y": 22,
+		"editable": {
+			"h": 1,
+			"w": 21
+		},
+		"selected": false,
+		"w": 21,
+		"x": 17
+	}, {
+		"type": "walker",
+		"turn1": 17.0,
+		"y": 9,
+		"editable": {
+			"offset": -2,
+			"rounds": 5
+		},
+		"turn2": 20.0,
+		"selected": false,
+		"x": 18
+	}, {
+		"type": "walker",
+		"turn1": 17.0,
+		"y": 25,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 20.0,
+		"selected": false,
+		"x": 18
+	}, {
+		"type": "trigger",
+		"h": 3,
+		"y": 13,
+		"editable": {
+			"h": 3,
+			"w": 3
+		},
+		"on_enter": {
+			"type": "message_box",
+			"file": "mb_1.json"
+		},
+		"selected": false,
+		"w": 3,
+		"x": 20
+	}, {
+		"type": "bar",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 20
+	}, {
+		"type": "walker",
+		"turn1": 20.0,
+		"y": 25,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 23.0,
+		"selected": false,
+		"x": 21
+	}, {
+		"type": "platform",
+		"h": 9,
+		"y": 7,
+		"editable": {
+			"h": 9,
+			"w": 13
+		},
+		"selected": false,
+		"w": 13,
+		"x": 23
+	}, {
+		"type": "walker",
+		"turn1": 23.0,
+		"y": 25,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 26.0,
+		"selected": false,
+		"x": 24
+	}, {
+		"type": "trigger",
 		"h": 6,
-		"selected": false
-	}, {
-		"x": 92,
+		"y": 16,
 		"editable": {
-			"w": 6,
-			"h": 1
+			"h": 6,
+			"w": 1
 		},
-		"type": "platform",
-		"y": 10,
-		"w": 6,
-		"h": 1,
-		"selected": false
-	}, {
-		"x": 93,
-		"editable": {
-			"w": 1,
-			"h": 1
+		"on_enter": {
+			"type": "player_die"
 		},
-		"type": "platform",
-		"y": 1,
+		"selected": false,
 		"w": 1,
-		"h": 1,
-		"selected": false
+		"x": 25
 	}, {
-		"x": 94,
+		"type": "walker",
+		"turn1": 26.0,
+		"y": 25,
 		"editable": {
-			"w": 1,
-			"h": 10
+			"offset": 0,
+			"rounds": 3
 		},
+		"turn2": 29.0,
+		"selected": false,
+		"x": 27
+	}, {
+		"type": "archer",
+		"y": 3,
+		"editable": null,
+		"selected": false,
+		"x": 29
+	}, {
 		"type": "platform",
+		"h": 1,
 		"y": 4,
-		"w": 1,
-		"h": 10,
-		"selected": false
-	}, {
-		"x": 94,
 		"editable": {
-			"w": 1,
-			"h": 5
+			"h": 1,
+			"w": 1
 		},
-		"type": "platform",
-		"y": -11,
+		"selected": false,
 		"w": 1,
-		"h": 5,
-		"selected": false
+		"x": 29
 	}, {
-		"x": 94,
-		"editable": {
-			"w": 1,
-			"h": 14
-		},
+		"type": "checkpoint",
+		"y": 7,
+		"editable": null,
+		"selected": null,
+		"x": 29
+	}, {
 		"type": "platform",
-		"y": -10,
+		"h": 6,
+		"y": 0,
+		"editable": {
+			"h": 6,
+			"w": 1
+		},
+		"selected": false,
 		"w": 1,
+		"x": 30
+	}, {
+		"type": "jumper",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 30
+	}, {
+		"type": "walker",
+		"turn1": 29.0,
+		"y": 25,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 32.0,
+		"selected": false,
+		"x": 30
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 5,
+		"editable": {
+			"h": 1,
+			"w": 4
+		},
+		"selected": false,
+		"w": 4,
+		"x": 31
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 2,
+		"editable": {
+			"h": 1,
+			"w": 4
+		},
+		"selected": false,
+		"w": 4,
+		"x": 32
+	}, {
+		"type": "jumper",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 33
+	}, {
+		"type": "platform",
 		"h": 14,
-		"selected": false
+		"y": 2,
+		"editable": {
+			"h": 14,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 36
+	}, {
+		"type": "checkpoint",
+		"y": 22,
+		"editable": null,
+		"selected": null,
+		"x": 37
+	}, {
+		"type": "platform",
+		"h": 23,
+		"y": 0,
+		"editable": {
+			"h": 23,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 38
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 6,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 39
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 10,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 39
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 14,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 39
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 18,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 39
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 22,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 39
+	}, {
+		"type": "trigger",
+		"h": 13,
+		"y": 27,
+		"editable": {
+			"h": 13,
+			"w": 1
+		},
+		"on_enter": {
+			"type": "player_die"
+		},
+		"selected": false,
+		"w": 1,
+		"x": 42
+	}, {
+		"type": "checkpoint",
+		"y": 6,
+		"editable": null,
+		"selected": null,
+		"x": 43
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 6,
+		"editable": {
+			"h": 1,
+			"w": 12
+		},
+		"selected": false,
+		"w": 12,
+		"x": 43
+	}, {
+		"type": "platform",
+		"h": 20,
+		"y": 7,
+		"editable": {
+			"h": 20,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 43
+	}, {
+		"type": "trigger",
+		"h": 1,
+		"y": 39,
+		"editable": {
+			"h": 1,
+			"w": 37
+		},
+		"on_enter": {
+			"type": "player_die"
+		},
+		"selected": false,
+		"w": 37,
+		"x": 43
+	}, {
+		"type": "platform",
+		"h": 5,
+		"y": 0,
+		"editable": {
+			"h": 5,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 45
+	}, {
+		"type": "sword",
+		"y": 5,
+		"editable": null,
+		"selected": false,
+		"x": 45
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 30,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 45
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 23,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 48
+	}, {
+		"type": "jumper",
+		"y": 5,
+		"editable": null,
+		"selected": false,
+		"x": 50
+	}, {
+		"type": "checkpoint",
+		"y": 22,
+		"editable": null,
+		"selected": null,
+		"x": 51
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 31,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 50
+	}, {
+		"type": "jumper",
+		"y": 5,
+		"editable": null,
+		"selected": false,
+		"x": 51
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 22,
+		"editable": {
+			"h": 1,
+			"w": 4
+		},
+		"selected": false,
+		"w": 4,
+		"x": 51
+	}, {
+		"type": "wizard",
+		"y": 5,
+		"editable": null,
+		"selected": false,
+		"x": 53
+	}, {
+		"type": "trigger",
+		"h": 7,
+		"y": 15,
+		"editable": {
+			"h": 7,
+			"w": 1
+		},
+		"on_enter": {
+			"type": "dialog_box",
+			"file": "dialog_2.json"
+		},
+		"selected": false,
+		"w": 1,
+		"x": 53
+	}, {
+		"type": "prop",
+		"y": 21,
+		"editable": {
+			"num": 0
+		},
+		"image": ["props/t_guy_1.png","props/t_guy_2.png"],
+		"selected": false,
+		"x": 53
+	}, {
+		"type": "platform",
+		"h": 5,
+		"y": 0,
+		"editable": {
+			"h": 5,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 55
+	}, {
+		"type": "walker",
+		"turn1": 55.0,
+		"y": 5,
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"turn2": 56.0,
+		"selected": false,
+		"x": 55
+	}, {
+		"type": "platform",
+		"h": 13,
+		"y": 6,
+		"editable": {
+			"h": 13,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 55
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 22,
+		"editable": {
+			"h": 1,
+			"w": 18
+		},
+		"selected": false,
+		"w": 18,
+		"x": 55
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 29,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 55
+	}, {
+		"type": "checkpoint",
+		"y": 18,
+		"editable": null,
+		"selected": null,
+		"x": 56
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 18,
+		"editable": {
+			"h": 1,
+			"w": 15
+		},
+		"selected": false,
+		"w": 15,
+		"x": 56
+	}, {
+		"type": "wizard",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 56
+	}, {
+		"type": "platform",
+		"h": 16,
+		"y": 0,
+		"editable": {
+			"h": 16,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 57
+	}, {
+		"type": "staff",
+		"y": 17,
+		"editable": null,
+		"selected": false,
+		"x": 59
+	}, {
+		"type": "walker",
+		"turn1": 57.0,
+		"y": 21,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 60.0,
+		"selected": false,
+		"x": 58
+	}, {
+		"type": "archer",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 60
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 30,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 60
+	}, {
+		"type": "walker",
+		"turn1": 60.0,
+		"y": 21,
+		"editable": {
+			"offset": 1,
+			"rounds": 2
+		},
+		"turn2": 63.0,
+		"selected": false,
+		"x": 61
+	}, {
+		"type": "archer",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 63
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 7,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 65
+	}, {
+		"type": "wizard",
+		"y": 14,
+		"editable": null,
+		"selected": false,
+		"x": 65
+	}, {
+		"type": "wizard",
+		"y": 6,
+		"editable": null,
+		"selected": false,
+		"x": 65
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 7,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 65
+	}, {
+		"type": "wizard",
+		"y": 10,
+		"editable": null,
+		"selected": false,
+		"x": 65
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 11,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 65
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 15,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 65
+	}, {
+		"type": "archer",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 66
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 29,
+		"editable": {
+			"h": 1,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 65
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 5,
+		"editable": {
+			"h": 1,
+			"w": 3
+		},
+		"selected": false,
+		"w": 3,
+		"x": 68
+	}, {
+		"type": "walker",
+		"turn1": 68.0,
+		"y": 4,
+		"editable": {
+			"offset": 0,
+			"rounds": 3
+		},
+		"turn2": 71.0,
+		"selected": false,
+		"x": 69
+	}, {
+		"type": "platform",
+		"h": 1,
+		"y": 30,
+		"editable": {
+			"h": 1,
+			"w": 4
+		},
+		"selected": false,
+		"w": 4,
+		"x": 70
+	}, {
+		"type": "platform",
+		"h": 14,
+		"y": 5,
+		"editable": {
+			"h": 14,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 71
+	}, {
+		"type": "sword",
+		"y": 21,
+		"editable": null,
+		"selected": false,
+		"x": 71
+	}, {
+		"type": "checkpoint",
+		"y": 22,
+		"editable": null,
+		"selected": null,
+		"x": 72
+	}, {
+		"type": "endblock",
+		"y": 27,
+		"editable": null,
+		"selected": false,
+		"x": 72
+	}, {
+		"type": "platform",
+		"h": 23,
+		"y": 0,
+		"editable": {
+			"h": 23,
+			"w": 1
+		},
+		"selected": false,
+		"w": 1,
+		"x": 73
 	}],
 	"level_settings": {
-		"width": 95,
-		"height": 15,
-		"type": "level_settings"
+		"type": "level_settings",
+		"height": 40,
+		"width": 74
 	}
 }
