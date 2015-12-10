@@ -297,7 +297,7 @@ class BaseEntity:
 
 			red = (255, 0, 0)
 
-			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
+			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y'], self.w, self.h], 2)
 
 	def update_graphics(self):
 				

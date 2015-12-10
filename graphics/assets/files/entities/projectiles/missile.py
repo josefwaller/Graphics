@@ -106,7 +106,8 @@ class Missile (BaseProjectile):
 					Globals.projectiles.remove(self)
 
 			if time.time() - self.starting_time >= self.lifespan:
-				Globals.projectiles.remove(self)
+				if self in Globals.projectiles:
+					Globals.projectiles.remove(self)
 
 		elif self.target is None:
 

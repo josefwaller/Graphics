@@ -1,0 +1,102 @@
+[
+	{
+		"image": "assets/images/blocks/temp_block.png",
+		"type": "delete",
+		"selected": false,
+		"editable": null
+
+	},
+	{
+		"image": "assets/images/player/8bit/8_run_2.png",
+		"type": "player",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/props/t_guy_1.png",
+		"type": "prop",
+		"selected": false,
+		"editable": {
+			"num": 0
+		}
+	},
+	{
+		"image": "assets/images/blocks/snow.png",
+		"type": "platform",
+		"selected": false,
+		"editable":
+			{
+				"w" : 1,
+				"h" : 1
+			}
+	},
+	{
+		"image": "assets/images/props/pole.png",
+		"type": "checkpoint",
+		"selected": null,
+		"editable": null
+	},
+	{
+		"image": "assets/images/enemies/wizard/front_1.png",
+		"type": "wizard",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/enemies/walker/run_2.png",
+		"type": "walker",
+		"selected": false,
+		"editable": {
+			"rounds": 1,
+			"offset": 0
+		}
+	},
+	{
+		"image": "assets/images/enemies/archer/archer_1.png",
+		"type": "archer",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/enemies/jumper/jumper_land.png",
+		"type": "jumper",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/tools/bar.png",
+		"type": "bar",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/tools/staff.png",
+		"type": "staff",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/tools/sword.png",
+		"type": "sword",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/blocks/8_up_graphics_16.png",
+		"type": "endblock",
+		"selected": false,
+		"editable": null
+	},
+	{
+		"image": "assets/images/blocks/16_snow.png",
+		"type": "trigger",
+		"selected": false,
+		"editable": {
+			"w": 1,
+			"h": 1,
+		  	"type": 0,
+		  	"file_num": 0
+		}
+	}
+
+]

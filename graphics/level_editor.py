@@ -19,7 +19,7 @@ class LevelEditor:
 	entity_selected = None
 	block_size = None
 
-	level_file = None
+	level_file = "l1.json"
 	to_save_to = "l1.json"
 
 	level_dimensions = None
@@ -35,6 +35,8 @@ class LevelEditor:
 
 	def __init__(self):
 
+		pygame.init()
+
 		window_size = 800, 600
 		LEGlobals.window = pygame.display.set_mode(window_size)
 
@@ -44,6 +46,8 @@ class LevelEditor:
 		item_file = open("level_editor_assets/lvl_edtr_items.json", "r")
 		self.base_items = json.loads(item_file.read())
 		item_file.close()
+		for item in self.base_items:
+			item['image'] = self.load_img(item['image'])
 
 		# Stuff in the menu
 		c = []
@@ -88,7 +92,7 @@ class LevelEditor:
 
 		if self.level_file is not None:
 
-			file = open(self.level_file, "r")
+			file = open("assets/levels/%s" % self.level_file, "r")
 			level = json.loads(file.read())
 
 			for thing in level['entities']:
@@ -103,13 +107,18 @@ class LevelEditor:
 
 							for i in item['editable']:
 								try:
-									attributes['editable'][i] = thing[i]
+									attributes['editable'][i] = thing['editable'][i]
 								except:
 									print("Type %s has no %s" % (thing['type'], i))
 
+						y = thing['y']
+
+						if thing['type'] == 'checkpoint':
+							y -= 1
+
 						self.entities[thing['x']][thing['y']] = BaseItem(
 							x=thing['x'] * LEGlobals.block_size,
-							y=thing['y'] * LEGlobals.block_size,
+							y=y * LEGlobals.block_size,
 							image=pygame.transform.scale(item['image'], (LEGlobals.block_size, LEGlobals.block_size)),
 							attributes=attributes,
 							offset=self.menu_width
@@ -133,23 +142,19 @@ class LevelEditor:
 
 			self.mouse[0] = pygame.mouse.get_pos()
 
-			try:
-				if not self.check_for_compass_movement():
+			if not self.check_for_compass_movement():
 
-					if self.mouse[0][0] < self.menu_width:
-						self.check_for_menu_selection()
+				if self.mouse[0][0] < self.menu_width:
+					self.check_for_menu_selection()
 
-					elif self.mouse[0][0] > self.menu_width and self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
+				elif self.mouse[0][0] > self.menu_width and self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
 
-						if not self.check_for_entity_selection() and self.item_selected['type'] is not None:
+					if not self.check_for_entity_selection() and self.item_selected['type'] is not None:
 
-							self.check_for_item_placement()
+						self.check_for_item_placement()
 
-					elif self.mouse[0][0] > LEGlobals.window.get_size()[0] - self.attr_menu_width:
-						self.check_for_attribute_changes()
-			except:
-				self.save_to_file(self.to_save_to)
-				print("Some error thingy happened")
+				elif self.mouse[0][0] > LEGlobals.window.get_size()[0] - self.attr_menu_width:
+					self.check_for_attribute_changes()
 
 			self.check_for_save()
 
@@ -202,7 +207,7 @@ class LevelEditor:
 
 	def check_for_item_placement(self):
 
-		if not self.item_selected is None and self.mouse[1] == True:
+		if self.item_selected is not None and self.mouse[1] is True:
 
 			# Gets the indexes
 			x = int(self.mouse[0][0] / LEGlobals.block_size) - LEGlobals.x_offset
@@ -214,8 +219,8 @@ class LevelEditor:
 			else:
 
 				self.entities[x][y] = BaseItem(
-					x= int((self.mouse[0][0] - self.menu_width) / LEGlobals.block_size) * LEGlobals.block_size - (LEGlobals.x_offset * LEGlobals.block_size), 
-					y= y * LEGlobals.block_size,
+					x=int((self.mouse[0][0] - self.menu_width) / LEGlobals.block_size) * LEGlobals.block_size - (LEGlobals.x_offset * LEGlobals.block_size),
+					y=y * LEGlobals.block_size,
 					image=pygame.transform.scale(self.item_selected['image'], (LEGlobals.block_size, LEGlobals.block_size)), 
 					attributes=self.item_selected.copy(),
 					offset=self.menu_width
@@ -303,17 +308,22 @@ class LevelEditor:
 		for e_x in range(len(self.entities)):
 			for e_y in range(len(self.entities[e_x])):
 
-				if self.entity_selected is not None:
-					if e_x == self.entity_selected[0]:
-						if e_y == self.entity_selected[1]:
-							red = (255, 0, 0)
-
-							s = LEGlobals.block_size
-							pygame.draw.rect(LEGlobals.window, red, [e_x * s, e_y * s, s, s])
-
 				e = self.entities[e_x][e_y]
+
 				if e is not None:
 					e.render()
+
+					if self.entity_selected is not None:
+						if e_x == self.entity_selected[0]:
+							if e_y == self.entity_selected[1]:
+								red = (255, 0, 0)
+
+								s = LEGlobals.block_size
+								pygame.draw.rect(LEGlobals.window, red, [
+									e.x + LEGlobals.x_offset * s + self.menu_width,
+									e.y + LEGlobals.y_offset * s,
+									s,
+									s], 1)
 
 		# Draws level boundaries
 
@@ -350,7 +360,7 @@ class LevelEditor:
 
 				LEGlobals.window.blit(image, (x, y))
 
-				if not self.item_selected == None and self.item_selected['type'] == item['type']:
+				if self.item_selected is not None and self.item_selected['type'] == item['type']:
 					red = (255, 0, 0)
 					pygame.draw.rect(LEGlobals.window, red, [x, y, s, s], 4)
 
@@ -366,7 +376,9 @@ class LevelEditor:
 			self.attr_menu_width,
 			LEGlobals.window.get_size()[1]
 		])
-		if not self.entity_selected == None:
+		if self.entity_selected is not None:
+
+				# Draws attribute menu attributes
 
 				grey = (200, 200, 200)
 
@@ -380,7 +392,7 @@ class LevelEditor:
 
 					pygame.draw.rect(LEGlobals.window, grey, [b['x'], b['y'], b['s'], b['s']])
 
-					if not b['text'] == None:
+					if b['text'] is not None:
 
 						r = f.render(b['text'], False, text_grey)
 
@@ -400,20 +412,28 @@ class LevelEditor:
 
 		if not self.item_selected['type'] == 'delete':
 
-			if self.mouse[1] == True:
+			if self.mouse[1] is True:
 
-				x = int(self.mouse[0][0] / LEGlobals.block_size) - LEGlobals.x_offset
-				y = int(self.mouse[0][1] / LEGlobals.block_size) - LEGlobals.y_offset
+				nothing_selected = True
 
-				if not self.entities[x][y] == None:
+				for e_x in range(len(self.entities)):
+					for e_y in range(len(self.entities[e_x])):
+						if self.entities[e_x][e_y] is not None:
+							if self.entities[e_x][e_y].check_selection(self.mouse[0]):
+								self.entity_selected = [e_x, e_y]
+								nothing_selected = False
+								break
+				if nothing_selected:
+					return False
 
-					self.entity_selected = [x, y]
+				# Creates buttons
 
-					#Creates buttons
+				if self.entity_selected is not None:
+					x, y = self.entity_selected[0], self.entity_selected[1]
 
 					e = self.entities[x][y]
 
-					if not e.attributes['editable'] == None:
+					if e.attributes['editable'] is not None:
 
 						self.buttons = []
 
@@ -449,7 +469,7 @@ class LevelEditor:
 
 		return False
 
-	def load_img (self, img):
+	def load_img(self, img):
 
 		img = pygame.image.load(img).convert_alpha()
 

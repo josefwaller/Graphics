@@ -22,6 +22,7 @@ from assets.files.utilities.heads_up_display import HeadsUpDisplay
 
 import json
 
+
 class LevelReader:
 
 	def __init__(self):
@@ -101,8 +102,12 @@ class LevelReader:
 				h = thing['h']
 
 				if thing['on_enter']['type'] == 'message_box':
-					text = thing['on_enter']['text']
-					title = thing['on_enter']['title']
+					file_name = "assets/dialog/%s" % thing['on_enter']['file']
+					file = open(file_name)
+					file_content = json.loads(file.read())
+
+					title = file_content['title']
+					text = file_content['text']
 					param = [title, text]
 					func = Globals.hud.message_box
 

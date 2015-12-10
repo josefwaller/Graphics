@@ -15,7 +15,7 @@ class Prop (BaseEntity):
 		self.sprites = []
 		self.sprite_indexes = range(len(images))
 		for img in images:
-			self.sprites.append(self.img_load(img))
+			self.sprites.append(self.img_load("props/%s" % img))
 
 		self.is_animated = True
 

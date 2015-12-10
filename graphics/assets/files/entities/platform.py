@@ -62,7 +62,7 @@ class Platform (BaseEntity):
 			inner_block = pygame.transform.scale(self.inner_block, (self.s, self.s))
 
 		for h in range(int(self.h / Globals.block_size)):
-			y = self.y + (Globals.block_size * h)
+			y = self.y + (Globals.block_size * h) + Globals.camera_offset['y']
 
 			for w in range(int(self.w / Globals.block_size)):
 				x = self.x + (Globals.block_size * w) + Globals.camera_offset['x']
