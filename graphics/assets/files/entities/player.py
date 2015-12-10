@@ -355,14 +355,14 @@ class Player (JumpingEntity):
 				# Sets the animation based on how much time has passed
 				self.sprite_indexes = [3]
 				t = time.time() - self.tool_time
-				self.arrow_speed = 2
+				self.arrow_speed = t * 40
+				if self.arrow_speed > 40:
+					self.arrow_speed = 40
 
 				if t > 0.5:
-					self.arrow_speed = 20
 					self.sprite_indexes = [4]
 
 					if t > 1:
-						self.arrow_speed = 40
 						self.sprite_indexes = [5]
 
 			elif self.tool == "Sword" or self.tool == "Staff":
