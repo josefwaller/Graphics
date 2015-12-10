@@ -1,11 +1,12 @@
 from assets.files.entities.base_entity import BaseEntity
 from assets.files.utilities.globals import Globals
 
+
 class BaseProjectile (BaseEntity):
 
 	is_enemy = True
 
-	def check_for_player (self):
+	def check_for_player(self):
 
 		if self.is_enemy:
 
@@ -21,6 +22,9 @@ class BaseProjectile (BaseEntity):
 					Globals.projectiles.remove(self)
 					break
 
+		if self.is_grounded:
+			if self in Globals.projectiles:
+				Globals.projectiles.remove(self)
 
 		for platform in Globals.platforms:
 			if self.check_for_collision(platform):
