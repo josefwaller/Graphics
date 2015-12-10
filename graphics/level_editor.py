@@ -13,7 +13,9 @@ class LevelEditor:
 	window = None
 
 	items = None
-	item_selected = None
+	item_selected = {
+		"type": None
+	}
 
 	entities = None
 	entity_selected = None
@@ -48,6 +50,8 @@ class LevelEditor:
 		item_file.close()
 		for item in self.base_items:
 			item['image'] = self.load_img(item['image'])
+			if item['type'] == 'platform':
+				print(item)
 
 		# Stuff in the menu
 		c = []
@@ -65,7 +69,7 @@ class LevelEditor:
 
 		self.items = c.copy()
 
-		self.level_dimensions = [80, 40]
+		self.level_dimensions = [200, 40]
 
 		self.set_compass_proportions(90)
 
@@ -76,7 +80,7 @@ class LevelEditor:
 			100
 		]
 
-		LEGlobals.block_size = int(LEGlobals.window.get_size()[1] / 15)
+		LEGlobals.block_size = int(LEGlobals.window.get_size()[1] / 30)
 
 		self.item_selected = {
 			"type": None
@@ -100,6 +104,8 @@ class LevelEditor:
 				for item in self.base_items:
 
 					attributes = item.copy()
+					if item['editable'] is not None:
+						attributes['editable'] = item['editable'].copy()
 
 					if item['type'] == thing['type']:
 
@@ -141,6 +147,11 @@ class LevelEditor:
 					self.mouse[1] = True
 
 			self.mouse[0] = pygame.mouse.get_pos()
+
+			if self.item_selected is None:
+				self.item_selected = {
+					"type": None
+				}
 
 			if not self.check_for_compass_movement():
 
@@ -196,9 +207,14 @@ class LevelEditor:
 
 		try:
 
-			if self.mouse[1] == True:
+			if self.mouse[1] is True:
 
-				self.item_selected = self.items[item_row][item_index]
+				if self.items[item_row][item_index] is None:
+					self.item_selected = {
+						"type": None
+					}
+				else:
+					self.item_selected = self.items[item_row][item_index]
 
 		except IndexError:
 
@@ -408,9 +424,9 @@ class LevelEditor:
 
 		pygame.display.flip()
 
-	def check_for_entity_selection (self):
+	def check_for_entity_selection(self):
 
-		if not self.item_selected['type'] == 'delete':
+		if self.item_selected is not None and not self.item_selected['type'] == 'delete':
 
 			if self.mouse[1] is True:
 
@@ -465,6 +481,7 @@ class LevelEditor:
 							})
 
 							y += 2 * button_s + 20
+
 					return True
 
 		return False
