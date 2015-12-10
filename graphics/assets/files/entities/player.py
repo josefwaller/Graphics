@@ -276,7 +276,7 @@ class Player (JumpingEntity):
 		elif self.x > Globals.level_width:
 			self.x = Globals.level_width - self.w
 
-	# Resawns the player at the most recent checkpoint
+	# Respawns the player at the most recent checkpoint
 	def respawn(self):
 
 		# Checks the player has a checkpoint
@@ -284,7 +284,7 @@ class Player (JumpingEntity):
 
 			# Sets the player's position
 			self.x = self.checkpoint.x + int(self.checkpoint.w / 2)
-			self.y = self.checkpoint.y - 2 * Globals.block_size
+			self.y = (self.checkpoint.y + self.checkpoint.h) - (self.h * (3/2))
 
 			# Sets misc attributes
 			self.is_grounded = False
