@@ -19,14 +19,19 @@ class BaseProjectile (BaseEntity):
 			for enemy in Globals.enemies:
 				if self.check_for_collision(enemy):
 					enemy.on_hit()
-					Globals.projectiles.remove(self)
+					self.remove_self()
 					break
 
 		if self.is_grounded:
 			if self in Globals.projectiles:
-				Globals.projectiles.remove(self)
+				self.remove_self()
+				return
 
 		for platform in Globals.platforms:
 			if self.check_for_collision(platform):
-				Globals.projectiles.remove(self)
+				self.remove_self()
 				break
+
+	def remove_self(self):
+		if self in Globals.projectiles:
+			Globals.projectiles.remove(self)

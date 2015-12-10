@@ -216,6 +216,7 @@ class BaseEntity:
 			print("x:%s, y:%s, w:%s, h:%s" % (hb.x, hb.y, hb.w, hb.h))
 
 	def check_platform_collision(self):
+
 		try:
 			self.last_position['x']
 			self.last_position['y']

@@ -48,7 +48,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = None
+	tool = "Bow and Arrow"
 
 	def __init__(self, x, y):
 
@@ -210,18 +210,22 @@ class Player (JumpingEntity):
 
 			# Swings sword
 			for enemy in Globals.enemies:
-				for hb in enemy.hitboxes:
 
-					# Checks if it hit anything
-					if self.facing_left:
-						if hb.x < self.x:
-							if hb.x > self.x - self.sword_range:
-								enemy.on_hit()
+				# Checks for vertical collision
+				if enemy.y + enemy.h > self.y:
+					if enemy.y < self.y + self.h:
+						for hb in enemy.hitboxes:
 
-					else:
-						if hb.x > self.x + self.w:
-							if hb.x < self.x + self.w + self.sword_range:
-								enemy.on_hit()
+							# Checks if it hit anything
+							if self.facing_left:
+								if hb.x < self.x:
+									if hb.x > self.x - self.sword_range:
+										enemy.on_hit()
+
+							else:
+								if hb.x > self.x + self.w:
+									if hb.x < self.x + self.w + self.sword_range:
+										enemy.on_hit()
 
 		elif self.tool == "Staff":
 

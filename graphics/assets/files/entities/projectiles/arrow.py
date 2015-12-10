@@ -45,22 +45,8 @@ class Arrow (BaseProjectile):
 
 		self.x += self.speed * self.delta_time * self.direction
 
-		self.check_for_player()
-		# if self.is_grounded:
-		#
-		# 	Globals.projectiles.remove(self)
-		# 	return
-		#
-		# if self.is_enemy:
-		# 	if self.check_for_collision(Globals.player):
-		# 		Globals.player.on_hit()
-		# else:
-		# 	for enemy in Globals.enemies:
-		# 		if self.check_for_collision(enemy):
-		# 			Globals.enemies.remove(enemy)
-		# 			Globals.projectiles.remove(self)
-		# 			return
-
 	def update(self):
 
 		self.move()
+
+		self.check_for_player()
