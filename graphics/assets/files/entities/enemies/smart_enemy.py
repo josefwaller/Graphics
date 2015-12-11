@@ -3,6 +3,7 @@ from assets.files.utilities.globals import Globals
 
 import time
 
+
 class SmartEnemy (BaseEnemy):
 
 	is_attacking = False
@@ -13,9 +14,9 @@ class SmartEnemy (BaseEnemy):
 	attack_time = 0
 	attack_indexes = None
 	is_ending_attack = True
+	visible_range = 0
 
-
-	def should_attack (self):
+	def should_attack(self):
 
 		if self.check_visibility():
 
@@ -30,7 +31,6 @@ class SmartEnemy (BaseEnemy):
 				if self.is_ending_attack:
 
 					if time.time() - self.attack_time >= self.attack_duration:
-
 
 						self.is_attacking = False
 						self.sprite_indexes = self.idle_indexes
@@ -53,7 +53,7 @@ class SmartEnemy (BaseEnemy):
 					
 		return False
 
-	def check_visibility (self):
+	def check_visibility(self):
 
 		visible_x = False
 		visible_y = False

@@ -2,8 +2,10 @@ from assets.files.entities.enemies.smart_enemy import SmartEnemy
 from assets.files.utilities.globals import Globals
 
 import time
+import random
 
-class Jumper (SmartEnemy):
+
+class Jumper(SmartEnemy):
 
 	last_jump_time = 0
 	was_landed = False
@@ -39,13 +41,13 @@ class Jumper (SmartEnemy):
 		self.attack_indexes = [0]
 		self.land_indexes = [1]
 
-		self.visible_range = 20 * Globals.block_size
+		self.visible_range = 5 * Globals.block_size
 		self.attack_duration = 1
 		self.attack_delay = 1
 		self.speed = 50 * Globals.block_size
 		self.jump_strength = 13 * Globals.block_size
 
-		self.landing_pause = 5
+		self.landing_pause = 2
 		self.landing_time = 0
 
 		self.hitboxes = []
@@ -58,7 +60,7 @@ class Jumper (SmartEnemy):
 		self.last_jump = time.time()
 		self.momY = 0
 
-	def attack (self):
+	def attack(self):
 		if self.is_grounded:
 
 			self.sprite_indexes = self.land_indexes
@@ -71,7 +73,7 @@ class Jumper (SmartEnemy):
 				else:
 					self.x_translate = -1
 
-				self.speed = abs(Globals.player.x - self.x) * 0.5
+				self.speed = abs(Globals.player.x - self.x) * ((random.random() * 0.5) + 0.5)
 
 				self.start_jump()
 
