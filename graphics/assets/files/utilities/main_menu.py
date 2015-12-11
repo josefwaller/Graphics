@@ -41,6 +41,11 @@ class MainMenu:
 	color_one = None
 	color_two = None
 
+	# Font file url
+	font_file_url = "assets/fonts/Minecraftia-Regular.ttf"
+
+	border_width = 0
+
 	# Fading variables
 	fade_in = True
 	fade_out = False
@@ -48,10 +53,75 @@ class MainMenu:
 	fade_duration = 0.5
 	fade_start_time = 0
 
+	# Settings variables
+	is_showing_settings = False
+
+	# The settings, to be saved to file
+
+	# Different FPS
+	fps = [
+		20,
+		40,
+		60,
+		80
+	]
+
+	# The music volume
+	volume = 0
+	volume_index = 0
+
+	# The different available resolutions
+	# Note they all have the same ratio of 1:3/4
+	resolutions = [
+		[
+			600,
+			450
+		],
+		[
+			800,
+			600
+		],
+		[
+			1000,
+			750
+		],
+		[
+			1200,
+			900
+		]
+	]
+	# The indexes
+	resolution_index = 0
+	fps_index = 0
+
 	# The buttons
 	buttons = []
 	# Index of selected button
 	selected_button = 0
+
+	# Settings screen coordinates/scale
+
+	# The displacement because of the logo
+	offset_y = 0
+	# The height each option has
+	height_each = 0
+
+	# the text positioning
+	text_x = 0
+	text_font = 0
+
+	option_font = None
+
+	# X and width of the buttons
+	button_x = 0
+	button_w = 0
+	button_h = 0
+
+	# The buttons for Save and Cancel
+	bottom_button_h = 0
+	bottom_button_w = 0
+
+	selected_setting = 0
 
 	def __init__(self):
 
@@ -83,6 +153,10 @@ class MainMenu:
 			{
 				"text": "NEW",
 				"on_click": self.new_game
+			},
+			{
+				"text": "SETTINGS",
+				"on_click": self.show_settings
 			},
 			{
 				"text": "QUIT",
@@ -157,6 +231,30 @@ class MainMenu:
 		# Sets the selected button to continues
 		self.selected_button = 0
 
+		self.border_width = int(Globals.block_size / Globals.pixels_per_block)
+
+		# Sets the settings screen dimensions
+		self.offset_y = self.logo_y + (self.logo.get_size()[1]) * 2
+
+		self.height_each = (w[1] - self.offset_y) / 4
+
+		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/3)
+
+		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/5)
+
+		self.button_w = (w[0] * 2/3) * 1/2
+		self.button_x = (w[0] * 1/3) + ((w[0] * 2/3) - self.button_w) / 2
+		self.button_h = self.height_each * 4/5
+
+		self.bottom_button_h = 0
+		self.bottom_button_w = 0
+
+		self.selected_setting = 0
+
+		self.volume = range(11)
+
+		self.volume_index = int(Globals.volume * 10)
+
 	def update(self):
 
 		# Checks if it should set up again
@@ -190,11 +288,47 @@ class MainMenu:
 			if not self.fade_in and not self.fade_out:
 				self.buttons[self.selected_button]['on_click']()
 
-		elif pygame.K_UP in keys and self.selected_button >= 1:
-			self.selected_button -= 1
+		elif pygame.K_UP in keys:
+			if not self.is_showing_settings and self.selected_button >= 1:
+				self.selected_button -= 1
+			elif self.is_showing_settings and self.selected_setting > 0:
+				self.selected_setting -= 1
 
-		elif pygame.K_DOWN in keys and self.selected_button <= len(self.buttons) - 2:
-			self.selected_button += 1
+		elif pygame.K_DOWN in keys:
+			if not self.is_showing_settings and self.selected_button <= len(self.buttons) - 2:
+				self.selected_button += 1
+			elif self.is_showing_settings and self.selected_setting < 2:
+				self.selected_setting += 1
+		elif pygame.K_LEFT in keys or pygame.K_RIGHT in keys:
+			if self.is_showing_settings:
+				if pygame.K_LEFT in keys:
+					increment = -1
+				else:
+					increment = 1
+
+				setting = None
+				setting_index = 0
+
+				if self.selected_setting == 0:
+					setting = self.resolutions
+					setting_index = self.resolution_index
+				elif self.selected_setting == 1:
+					setting = self.fps
+					setting_index = self.fps_index
+				else:
+					setting = self.volume
+					setting_index = self.volume_index
+
+				if setting_index + increment >= 0 and setting_index + increment <= len(setting) - 1:
+
+					if self.selected_setting == 0:
+						self.resolution_index += increment
+
+					elif self.selected_setting == 1:
+						self.fps_index += increment
+
+					else:
+						self.volume_index += increment
 
 	def render(self):
 
@@ -202,36 +336,129 @@ class MainMenu:
 		Globals.window.blit(self.sky, (self.sky_x + self.sky.get_size()[0], 0))
 		Globals.window.blit(self.logo, (self.logo_x, self.logo_y))
 
-		for i in range(len(self.buttons)):
-			y = self.b_min_y + i * (1.5 * self.b_h)
+		if self.is_showing_settings:
 
-			if self.selected_button == i:
-				box_color = self.color_two
-				border_color = self.color_one
+			texts = [
+				"RESOLUTION",
+				"FPS",
+				"VOLUME"
+			]
 
-			else:
-				box_color = self.color_one
-				border_color = self.color_two
+			for i in range(len(texts)):
 
-			pygame.draw.rect(Globals.window, border_color, [
-				self.b_x - self.b_border_w,
-				y - self.b_border_w,
-				self.b_w + 2 * self.b_border_w,
-				self.b_h + 2 * self.b_border_w
-			])
+				x = (Globals.window.get_size()[0] * 1/3 - self.text_font.size(texts[i])[0]) / 2
+				y = self.offset_y + (self.height_each - self.text_font.get_height()) / 2 + self.height_each * i
 
-			pygame.draw.rect(Globals.window, box_color, [
-				self.b_x,
-				y,
-				self.b_w,
-				self.b_h
-			])
+				r = self.text_font.render(texts[i], False, (0, 0, 0))
+				Globals.window.blit(r, (x, y))
 
-			font_x = self.b_x + (self.b_w - self.b_font.size(self.buttons[i]["text"])[0]) / 2
-			font_y = y + (self.b_h - self.b_font.get_height()) / 2
+				# Draws options
 
-			r = self.b_font.render(self.buttons[i]["text"], False, border_color)
-			Globals.window.blit(r, (font_x, font_y))
+				x = self.button_x
+				y = self.offset_y + self.height_each * i
+				w = self.button_w
+				h = self.button_h
+
+				if self.selected_setting == i:
+					color_one = self.color_two
+					color_two = self.color_one
+				else:
+					color_one = self.color_one
+					color_two = self.color_two
+
+				pygame.draw.rect(Globals.window, color_one, [
+					x,
+					y,
+					w,
+					h
+				])
+
+				pygame.draw.rect(Globals.window, color_two, [
+					x,
+					y,
+					w,
+					h
+				], self.border_width)
+
+				# Draws text
+
+				text = ""
+
+				if texts[i].lower() == "resolution":
+					text = "%sx%s" % (self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
+				elif texts[i].lower() == "fps":
+					text = str(self.fps[self.fps_index])
+				elif texts[i].lower() == "volume":
+					text = "%s" % int(self.volume[self.volume_index] * 100)
+					text += "%"
+
+				text_x = x + (w - self.option_font.size(text)[0]) / 2
+				text_y = y + (h - self.option_font.get_height()) / 2
+
+				r = self.option_font.render(text, False, color_two)
+				Globals.window.blit(r, (text_x, text_y))
+
+				# Draws triangles
+
+				triangle_top = y + (h * 1/6)
+				triangle_bot = y + (h * 5/6)
+				triangle_mid = y + (h * 1/2)
+				triangle_offset = 3 * self.border_width
+				triangle_w = triangle_bot - triangle_top
+
+				pygame.draw.polygon(Globals.window, color_one, [
+					(x + w + triangle_offset, triangle_top),
+					(x + w + triangle_offset, triangle_bot),
+					(x + w + triangle_offset + triangle_w, triangle_mid)
+				])
+
+				pygame.draw.polygon(Globals.window, color_two, [
+					(x + w + triangle_offset, triangle_top),
+					(x + w + triangle_offset, triangle_bot),
+					(x + w + triangle_offset + triangle_w, triangle_mid)
+				], self.border_width)
+
+				pygame.draw.polygon(Globals.window, color_one, [
+					(x - triangle_offset, triangle_top),
+					(x - triangle_offset, triangle_bot),
+					(x - triangle_offset - triangle_w, triangle_mid)
+				])
+				pygame.draw.polygon(Globals.window, color_two, [
+					(x - triangle_offset, triangle_top),
+					(x - triangle_offset, triangle_bot),
+					(x - triangle_offset - triangle_w, triangle_mid)
+				], self.border_width)
+		else:
+			for i in range(len(self.buttons)):
+				y = self.b_min_y + i * (1.5 * self.b_h)
+
+				if self.selected_button == i:
+					box_color = self.color_two
+					border_color = self.color_one
+
+				else:
+					box_color = self.color_one
+					border_color = self.color_two
+
+				pygame.draw.rect(Globals.window, border_color, [
+					self.b_x - self.b_border_w,
+					y - self.b_border_w,
+					self.b_w + 2 * self.b_border_w,
+					self.b_h + 2 * self.b_border_w
+				])
+
+				pygame.draw.rect(Globals.window, box_color, [
+					self.b_x,
+					y,
+					self.b_w,
+					self.b_h
+				])
+
+				font_x = self.b_x + (self.b_w - self.b_font.size(self.buttons[i]["text"])[0]) / 2
+				font_y = y + (self.b_h - self.b_font.get_height()) / 2
+
+				r = self.b_font.render(self.buttons[i]["text"], False, border_color)
+				Globals.window.blit(r, (font_x, font_y))
 
 		if self.fade_in or self.fade_out:
 			rect = pygame.Surface(Globals.window.get_size())
@@ -294,3 +521,36 @@ class MainMenu:
 	def quit():
 		pygame.quit()
 		sys.exit()
+
+	def show_settings(self):
+
+		self.is_showing_settings = True
+
+		file = open("assets/settings/settings.json", "r")
+		settings = json.loads(file.read())
+		file.close()
+
+		# Loads the current FPS and resolution
+
+		for i in range(len(self.fps)):
+			if settings['fps'] == self.fps[i]:
+				self.fps_index = i
+				break
+
+		for i in range(len(self.resolutions)):
+			if settings['screen_width'] == self.resolutions[i][0]:
+				if settings['screen_height'] == self.resolutions[i][1]:
+					self.resolution_index = i
+					break
+
+	@staticmethod
+	def get_font_by_height(url, height):
+
+		h = int(height)
+		font = pygame.font.Font(url, h)
+
+		while font.get_height() > height:
+			h -= 1
+			font = pygame.font.Font(url, h)
+
+		return font

@@ -26,3 +26,4 @@ class Globals:
 	level_width = 0
 	level_height = 0
 	endblock = None
+	volume = 1
