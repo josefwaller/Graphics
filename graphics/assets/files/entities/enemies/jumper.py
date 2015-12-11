@@ -82,9 +82,6 @@ class Jumper (SmartEnemy):
 
 			self.sprite_indexes = self.attack_indexes
 
-
-	def update (self):
-
-		direction = 0
+	def update(self):
 
 		self.should_attack()

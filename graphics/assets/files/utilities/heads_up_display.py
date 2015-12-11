@@ -461,6 +461,12 @@ class HeadsUpDisplay:
 					self.pm_selected_button = 0
 					Globals.is_paused = True
 
+		if pygame.K_d in keys and Globals.debug:
+			self.mb_is_showing = False
+			self.dl_is_showing = False
+			self.pm_is_showing = False
+			Globals.is_paused = False
+
 	def resume(self):
 		Globals.is_paused = False
 		self.pm_is_showing = False

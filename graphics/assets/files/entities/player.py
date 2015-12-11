@@ -220,12 +220,12 @@ class Player (JumpingEntity):
 							if self.facing_left:
 								if hb.x < self.x:
 									if hb.x > self.x - self.sword_range:
-										enemy.on_hit()
+										enemy.on_hit(self)
 
 							else:
 								if hb.x > self.x + self.w:
 									if hb.x < self.x + self.w + self.sword_range:
-										enemy.on_hit()
+										enemy.on_hit(self)
 
 		elif self.tool == "Staff":
 

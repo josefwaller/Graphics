@@ -60,6 +60,10 @@ class BaseEntity:
 	# The entity's hitboxes
 	hitboxes = None
 
+	# Whether or not to play a death animation
+	# Only used for enemies
+	is_dying = False
+
 	# The offset with which to draw the image
 	image_offset_x = 0
 	image_offset_y = 0
@@ -190,23 +194,23 @@ class BaseEntity:
 
 	def base_update(self):
 		self.set_delta_time()
-		#
-		# if not self.last_graphics == Globals.graphics_level:
-		#
-		# 	self.update_graphics()
 
 		if not Globals.is_paused:
 
-			if not self.is_static:
-				self.gravity_update()
+			if not self.is_dying:
 
-			self.update()
+				if not self.is_static:
+					self.gravity_update()
 
-			for hb in self.hitboxes:
-				hb.update()
+				self.update()
 
-			if not self.is_static:
-				self.check_platform_collision()
+				for hb in self.hitboxes:
+					hb.update()
+
+				if not self.is_static:
+					self.check_platform_collision()
+			else:
+				self.death_animation()
 
 		if self.is_showing:
 			self.render()
@@ -312,7 +316,7 @@ class BaseEntity:
 
 		self.last_graphics = Globals.graphics_level 
 
-	def gravity_update (self):
+	def gravity_update(self):
 
 		starting_y = self.y
 
@@ -361,3 +365,7 @@ class BaseEntity:
 		full_url = "assets/images/%s" % url
 		image = pygame.image.load(full_url).convert_alpha()
 		return image
+
+	# Filler
+	def death_animation(self):
+		pass
