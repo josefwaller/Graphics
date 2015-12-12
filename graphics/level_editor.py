@@ -35,12 +35,16 @@ class LevelEditor:
 
 	compass_buttons = []
 
-	def __init__(self):
+	def __init__(self, level_to_load=None, level_to_save=None, dimension_x=40, dimension_y=40):
 
 		pygame.init()
 
 		window_size = 800, 600
 		LEGlobals.window = pygame.display.set_mode(window_size)
+
+		self.to_save_to = level_to_save
+
+		self.level_dimensions = [int(dimension_x), int(dimension_y)]
 
 		self.mouse = [[0, 0], 0]
 
@@ -50,8 +54,6 @@ class LevelEditor:
 		item_file.close()
 		for item in self.base_items:
 			item['image'] = self.load_img(item['image'])
-			if item['type'] == 'platform':
-				print(item)
 
 		# Stuff in the menu
 		c = []
@@ -69,8 +71,6 @@ class LevelEditor:
 
 		self.items = c.copy()
 
-		self.level_dimensions = [200, 40]
-
 		self.set_compass_proportions(90)
 
 		self.save_button = [
@@ -87,17 +87,18 @@ class LevelEditor:
 		}
 		self.entities = []
 
-		while len(self.entities) < self.level_dimensions[0]:
-			self.entities.append([])
+		self.scale_to_dimension()
 
-		for i in range(len(self.entities)):
-			while len(self.entities[i]) < self.level_dimensions[1]:
-				self.entities[i].append(None)
+		if level_to_load is not None:
 
-		if self.level_file is not None:
-
-			file = open("assets/levels/%s" % self.level_file, "r")
+			file = open("assets/levels/%s" % level_to_load, "r")
 			level = json.loads(file.read())
+
+			self.level_dimensions = [
+				level['level_settings']['width'],
+				level['level_settings']['height']
+			]
+			self.scale_to_dimension()
 
 			for thing in level['entities']:
 
@@ -133,6 +134,15 @@ class LevelEditor:
 
 		# Runs editor loop
 		self.run_editor()
+
+	def scale_to_dimension(self):
+
+		while len(self.entities) < self.level_dimensions[0]:
+			self.entities.append([])
+
+		for i in range(len(self.entities)):
+			while len(self.entities[i]) < self.level_dimensions[1]:
+				self.entities[i].append(None)
 
 	def run_editor(self):
 		

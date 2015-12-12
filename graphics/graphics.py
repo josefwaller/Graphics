@@ -28,7 +28,7 @@ class Main:
 
 		# Sets the window dimensions
 		window_size = self.settings['screen_width'], self.settings['screen_height']
-		Globals.window = pygame.display.set_mode(window_size)
+		Globals.window = pygame.display.set_mode(window_size, pygame.FULLSCREEN)
 		pygame.display.set_caption("Graphics")
 		pygame.display.set_icon(pygame.image.load("assets/images/menu/icon.png").convert_alpha())
 
@@ -127,7 +127,11 @@ if __name__ == "__main__":
 
 	elif sys.argv[1] == "leveleditor":
 
-		main = LevelEditor()
+		args = sys.argv[2:].copy()
+		# while len(args) < 4:
+		# 	args.append(None)
+
+		main = LevelEditor(*args)
 
 	elif sys.argv[1] == "testlevel":
 		main = Main()
