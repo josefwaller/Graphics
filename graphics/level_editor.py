@@ -21,8 +21,8 @@ class LevelEditor:
 	entity_selected = None
 	block_size = None
 
-	level_file = "l1.json"
-	to_save_to = "l1.json"
+	level_file = None
+	to_save_to = "test.json"
 
 	level_dimensions = None
 

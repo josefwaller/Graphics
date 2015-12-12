@@ -51,7 +51,7 @@ class Jumper(SmartEnemy):
 		self.landing_time = 0
 
 		self.hitboxes = []
-		self.add_hitbox(x=8, y=1, w=5, h=12)
+		self.add_hitbox(x=10, y=2, w=7, h=14)
 
 		self.h = 16
 		self.w = 24
@@ -87,3 +87,6 @@ class Jumper(SmartEnemy):
 	def update(self):
 
 		self.should_attack()
+
+		if self.check_for_collision(Globals.player):
+			Globals.player.on_hit()

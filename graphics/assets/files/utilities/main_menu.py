@@ -8,7 +8,6 @@ import sys
 
 
 class MainMenu:
-
 	# The logo image
 	logo = None
 
@@ -241,15 +240,15 @@ class MainMenu:
 
 		self.height_each = (w[1] - self.offset_y) / 4
 
-		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/4)
-		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/2)
-		self.bottom_font = self.get_font_by_height(self.font_file_url, self.height_each * (1/5))
+		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1 / 4)
+		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1 / 2)
+		self.bottom_font = self.get_font_by_height(self.font_file_url, self.height_each * (1 / 5))
 
-		self.button_w = (w[0] * 2/3) * 1/2
-		self.button_x = (w[0] * 1/3) + ((w[0] * 2/3) - self.button_w) / 2
-		self.button_h = self.height_each * 4/5
+		self.button_w = (w[0] * 2 / 3) * 1 / 2
+		self.button_x = (w[0] * 1 / 3) + ((w[0] * 2 / 3) - self.button_w) / 2
+		self.button_h = self.height_each * 4 / 5
 
-		self.bottom_button_h = self.height_each * (3/4)
+		self.bottom_button_h = self.height_each * (3 / 4)
 		self.bottom_button_w = (w[0] / 2) / 3
 
 		self.selected_setting = 0
@@ -372,7 +371,7 @@ class MainMenu:
 
 				text = texts[i]['text'].upper()
 
-				x = (Globals.window.get_size()[0] * 1/3 - self.text_font.size(text)[0]) / 2
+				x = (Globals.window.get_size()[0] * 1 / 3 - self.text_font.size(text)[0]) / 2
 				y = self.offset_y + (self.height_each - self.text_font.get_height()) / 2 + self.height_each * i
 
 				r = self.text_font.render(text, False, (0, 0, 0))
@@ -411,7 +410,8 @@ class MainMenu:
 				text = ""
 
 				if texts[i]['type'].lower() == "resolution":
-					text = "%sx%s" % (self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
+					text = "%sx%s" % (
+						self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
 					index = self.resolution_index
 					max_index = len(self.resolutions) - 1
 
@@ -444,9 +444,9 @@ class MainMenu:
 
 				# Draws triangles
 
-				triangle_top = y + (h * 1/6)
-				triangle_bot = y + (h * 5/6)
-				triangle_mid = y + (h * 1/2)
+				triangle_top = y + (h * 1 / 6)
+				triangle_bot = y + (h * 5 / 6)
+				triangle_mid = y + (h * 1 / 2)
 				triangle_offset = 3 * self.border_width
 				triangle_w = triangle_bot - triangle_top
 
@@ -487,7 +487,8 @@ class MainMenu:
 
 			for i in range(2):
 				y = self.offset_y + 3 * self.height_each + self.bottom_font.get_height()
-				x = (Globals.window.get_size()[0]*(3/4) - self.bottom_button_w) / 2 + Globals.window.get_size()[0] * (i/4)
+				x = (Globals.window.get_size()[0] * (3 / 4) - self.bottom_button_w) / 2 + Globals.window.get_size()[
+																							  0] * (i / 4)
 
 				color_one = self.color_one
 				color_two = self.color_two
@@ -587,7 +588,7 @@ class MainMenu:
 		file.close()
 
 	def resume(self):
-		
+
 		# loads level
 		level_file = open("assets/levels/l%s.json" % (Globals.graphics_level + 1), "r")
 		r = LevelReader()
@@ -610,7 +611,7 @@ class MainMenu:
 		self.graphics_level = Globals.graphics_level
 		settings_file.seek(0)
 		settings_file.write(json.dumps(new_settings))
-		
+
 		# loads level
 		level_file = open("assets/levels/l1.json", "r")
 		r = LevelReader()

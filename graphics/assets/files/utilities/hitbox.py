@@ -25,12 +25,12 @@ class Hitbox:
 
 	def update(self):
 
-		self.x = self.parent.x + self.offset_x
+		if self.parent.facing_left:
+			self.x = self.parent.x + self.offset_x
+		else:
+			self.x = self.parent.x + self.parent.w - self.offset_x - self.w
 
 		self.y = self.parent.y + self.offset_y
-
-		if Globals.debug:
-			self.debug_draw()
 
 	def debug_draw(self):
 

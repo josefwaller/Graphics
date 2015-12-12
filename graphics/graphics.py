@@ -9,6 +9,7 @@ from assets.files.utilities.main_menu import MainMenu
 from assets.files.utilities.sound_manager import SoundManager
 
 from level_editor import LevelEditor
+from assets.files.utilities.level_reader import LevelReader
 
 
 class Main:
@@ -35,8 +36,6 @@ class Main:
 		Globals.pixels_per_block = 10
 		Globals.gravity_strength = 15 * Globals.block_size
 		Globals.graphics_level = self.settings['graphics_level']
-
-		self.play_game()
 
 	def play_game(self):
 
@@ -87,11 +86,11 @@ class Main:
 				for t in Globals.tools:
 					t.base_update()
 
-				for enemy in Globals.enemies:
-					enemy.base_update()
-
 				for platform in Globals.platforms:
 					platform.update()
+
+				for enemy in Globals.enemies:
+					enemy.base_update()
 
 				for projectile in Globals.projectiles:
 					projectile.base_update()
@@ -109,14 +108,29 @@ class Main:
 			while time.time() - starting_frame_time < 1 / self.settings['fps']:
 				pass
 
+	def test_level (self, lvl_string):
+
+		Globals.in_menu = False
+		file = open("assets/levels/%s" % lvl_string)
+		Globals.graphics_level = 1
+		l = LevelReader()
+		l.read_level(file.read())
+		file.close()
+		self.play_game()
+
 if __name__ == "__main__":
 
 	if sys.argv[1] == "playgame":
 
 		main = Main()
+		main.play_game()
 
 	elif sys.argv[1] == "leveleditor":
 
 		main = LevelEditor()
 
+	elif sys.argv[1] == "testlevel":
+		main = Main()
+		main.test_level(sys.argv[2])
+		print("ASDF")
 

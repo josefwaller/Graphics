@@ -57,14 +57,14 @@ class Archer (SmartEnemy):
 		self.attack_duration = 1
 
 		self.visible_range = 10 * Globals.block_size
-		self.add_hitbox(x=3, y=0, w=5, h=6)
-		self.add_hitbox(x=4, y=7, w=4, h=4)
+		self.add_hitbox(x=3, y=3, w=8, h=5)
+		self.add_hitbox(x=4, y=8, w=5, h=4)
 
 		self.w = 13
 		self.h = 13
 		self.entity_init(x, y)
 
-	def attack (self):
+	def attack(self):
 
 		if self.facing_left:
 			direction = 1

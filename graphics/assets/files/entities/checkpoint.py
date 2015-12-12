@@ -58,7 +58,7 @@ class Checkpoint (BaseEntity):
 
 		self.hitboxes = []
 
-		self.add_hitbox(x=0, y=0, w=self.pole.w, h=32)
+		self.add_hitbox(x=-11, y=0, w=2, h=32)
 
 	def update(self):
 
@@ -81,4 +81,6 @@ class Checkpoint (BaseEntity):
 		self.flag.render()
 		self.pole.render()
 
-
+		if Globals.debug:
+			for hb in self.hitboxes:
+				hb.debug_draw()

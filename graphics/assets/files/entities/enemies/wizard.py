@@ -48,8 +48,8 @@ class Wizard (SmartEnemy):
 
 		self.attack_delay = 2
 
-		self.add_hitbox(x=2, y=0, w=6, h=7)
-		self.add_hitbox(x=4, y=7, w=5, h=5)
+		self.add_hitbox(x=3, y=0, w=6, h=7)
+		self.add_hitbox(x=4, y=7, w=6, h=8)
 
 		self.w = 12
 		self.h = 15

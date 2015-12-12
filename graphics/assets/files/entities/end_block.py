@@ -42,13 +42,13 @@ class EndBlock (BaseEntity):
 
 		if self.check_for_collision(Globals.player) and not self.used:
 
-			Globals.is_paused = True
-
-			Globals.hud.message_box(
-				title="Congratulations!",
-				message=
-				"Congratulations! You have now unlocked 16-Bit graphics! Enjoy the beautiful look of high end graphics! "
-				"\n \n Press ENTER to continue...",
-				fade_out=True)
+			# Globals.is_paused = True
+			#
+			# Globals.hud.message_box(
+			# 	title="Congratulations!",
+			# 	message=
+			# 	"Congratulations! You have now unlocked 16-Bit graphics! Enjoy the beautiful look of high end graphics! "
+			# 	"\n \n Press ENTER to continue...",
+			# 	fade_out=True)
 
 			self.used = True

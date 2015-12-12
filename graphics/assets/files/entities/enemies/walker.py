@@ -54,7 +54,8 @@ class Walker (BaseEnemy):
 			1
 		]
 
-		self.add_hitbox(x=4, y=3, w=5, h=10)
+		self.add_hitbox(x=4, y=3, w=9, h=6)
+		self.add_hitbox(x=6, y=9, w=5, h=7)
 
 		self.w = 16
 		self.h = 16

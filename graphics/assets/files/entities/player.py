@@ -135,8 +135,8 @@ class Player (JumpingEntity):
 		self.sprite_interval = 100
 
 		# Adds hitboxes
-		self.add_hitbox(x=10, y=0, w=10, h=12)
-		self.add_hitbox(x=12, y=12, w=6, h=3)
+		self.add_hitbox(x=14, y=0, w=11, h=12)
+		self.add_hitbox(x=16, y=12, w=6, h=7)
 
 		# Sets width and height in units of 1/16ths of block size
 		self.h = 19

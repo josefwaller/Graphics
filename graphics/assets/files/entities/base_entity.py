@@ -216,7 +216,7 @@ class BaseEntity:
 		if self.is_showing:
 			self.render()
 
-	def print_hitboxes (self):
+	def print_hitboxes(self):
 		for hb in self.hitboxes:
 			print("x:%s, y:%s, w:%s, h:%s" % (hb.x, hb.y, hb.w, hb.h))
 
@@ -286,7 +286,6 @@ class BaseEntity:
 
 		x = self.x + Globals.camera_offset['x']
 		y = self.y + Globals.camera_offset['y']
-		print(Globals.camera_offset['y'])
 
 		if not self.is_static:
 
@@ -305,6 +304,12 @@ class BaseEntity:
 			red = (255, 0, 0)
 
 			pygame.draw.rect(Globals.window, red, [self.x + Globals.camera_offset['x'], self.y + Globals.camera_offset['y'], self.w, self.h], 2)
+
+			try:
+				for hb in self.hitboxes:
+					hb.debug_draw()
+			except TypeError:
+				pass
 
 	def update_graphics(self):
 				
