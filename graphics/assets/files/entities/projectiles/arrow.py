@@ -45,8 +45,20 @@ class Arrow (BaseProjectile):
 
 		self.x += self.speed * self.delta_time * self.direction
 
+	# Checks if it hit the side of a platform
+	# Needed because base entity will just move it over, instead of removing the entity
+	def check_for_horizontal_collision(self):
+
+		for p in Globals.platforms:
+			if p.y < self.y + self.h:
+				if p.y + p.h > self.y:
+					if p.x < self.x + self.w:
+						if p.x + p.w > self.x:
+							self.remove_self()
+
 	def update(self):
 
 		self.move()
+		self.check_for_horizontal_collision()
 
 		self.check_for_player()

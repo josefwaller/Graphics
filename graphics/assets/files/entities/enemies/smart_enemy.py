@@ -61,7 +61,7 @@ class SmartEnemy (BaseEnemy):
 		visible_y = False
 		range_x = 0
 		range_y = 0
-		
+
 		if self.visible_range_x is None and self.visible_range_y is None:
 			range_x = self.visible_range
 			range_y = self.visible_range
