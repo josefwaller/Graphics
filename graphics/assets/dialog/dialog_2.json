@@ -1,11 +1,33 @@
 {
   "dialogs": [
-	  "How did you get here?",
-	  "Yeah! That's right! Who can't move now!",
-	  "Anyways you're going the wrong way fool."
+	"How did you get here?",
+	"Yeah! That's right! Who can't move now!",
+	"Anyways, I need to tell you something.",
+	"What?",
+	"This next part,",
+	"It's REALLY hard, man.",
+	"Like, even I couldn't do it, and I'm way better than you.",
+	"Thanks",
+	"Well, you should turn back now.",
+	"There's no way you'll be able to get the sword at the top.",
+	"Why would I need to?",
+	"Because a guy is blocking the exit.",
+	"You need to get the sword first.",
+	"But you never will. So give up now!"
   ],
   "images": [
 	  "t_player_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_player_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_player_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_guy_dialog.png",
+	  "t_player_dialog.png",
+	  "t_guy_dialog.png",
 	  "t_guy_dialog.png",
 	  "t_guy_dialog.png"
   ]

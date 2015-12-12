@@ -166,6 +166,7 @@ class HeadsUpDisplay:
 		self.dl_is_showing = True
 		Globals.is_paused = True
 		self.dl_index = 0
+		self.dl_images = []
 
 		# Gets all the images
 		for image in images:

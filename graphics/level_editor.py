@@ -35,7 +35,7 @@ class LevelEditor:
 
 	compass_buttons = []
 
-	def __init__(self, level_to_load=None, level_to_save=None, dimension_x=40, dimension_y=40):
+	def __init__(self, level_to_save=None, level_to_load=None, dimension_x=40, dimension_y=40):
 
 		pygame.init()
 
@@ -94,11 +94,14 @@ class LevelEditor:
 			file = open("assets/levels/%s" % level_to_load, "r")
 			level = json.loads(file.read())
 
-			self.level_dimensions = [
-				level['level_settings']['width'],
-				level['level_settings']['height']
-			]
-			self.scale_to_dimension()
+			if level['level_settings']['height'] > self.level_dimensions[1]:
+				if level['level_settings']['width'] > self.level_dimensions[0]:
+
+					self.level_dimensions = [
+						level['level_settings']['width'],
+						level['level_settings']['height']
+					]
+					self.scale_to_dimension()
 
 			for thing in level['entities']:
 
