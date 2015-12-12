@@ -15,6 +15,8 @@ class SmartEnemy (BaseEnemy):
 	attack_indexes = None
 	is_ending_attack = True
 	visible_range = 0
+	visible_range_x = None
+	visible_range_y = None
 
 	def should_attack(self):
 
@@ -57,13 +59,22 @@ class SmartEnemy (BaseEnemy):
 
 		visible_x = False
 		visible_y = False
+		range_x = 0
+		range_y = 0
+		
+		if self.visible_range_x is None and self.visible_range_y is None:
+			range_x = self.visible_range
+			range_y = self.visible_range
+		else:
+			range_x = self.visible_range_x
+			range_y = self.visible_range_y
 
-		if Globals.player.x + Globals.player.w > self.x - self.visible_range:
-			if Globals.player.x < self.x + self.w + self.visible_range:
+		if Globals.player.x + Globals.player.w > self.x - range_x:
+			if Globals.player.x < self.x + self.w + range_x:
 				visible_x = True
 
-		if Globals.player.y + Globals.player.h > self.y - self.visible_range:
-			if Globals.player.y < self.y + self.h + self.visible_range:
+		if Globals.player.y + Globals.player.h > self.y - range_y:
+			if Globals.player.y < self.y + self.h + range_y:
 				visible_y = True
 		if visible_x and visible_y:
 			return True

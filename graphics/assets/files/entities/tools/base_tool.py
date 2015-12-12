@@ -1,6 +1,7 @@
 from assets.files.utilities.globals import Globals
 from assets.files.entities.base_entity import BaseEntity
 
+
 class BaseTool (BaseEntity):
 
 	def tool_init (self):
@@ -23,7 +24,7 @@ class BaseTool (BaseEntity):
 
 		player = Globals.player
 
-		if self.check_for_collision(player):
+		if self.check_for_collision(player) and player.is_blinking is False:
 
 			player.tool = self.tool_name
 
