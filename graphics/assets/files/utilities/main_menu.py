@@ -74,10 +74,6 @@ class MainMenu:
 	# Note they all have the same ratio of 1:3/4
 	resolutions = [
 		[
-			600,
-			450
-		],
-		[
 			800,
 			600
 		],
@@ -88,7 +84,11 @@ class MainMenu:
 		[
 			1200,
 			900
-		]
+		],
+		[
+			1400,
+			1050
+		],
 	]
 	# The indexes
 	resolution_index = 0
@@ -122,6 +122,9 @@ class MainMenu:
 	bottom_button_w = 0
 
 	selected_setting = 0
+
+	bottom_font = None
+	bottom_selected = 0
 
 	def __init__(self):
 
@@ -238,16 +241,16 @@ class MainMenu:
 
 		self.height_each = (w[1] - self.offset_y) / 4
 
-		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/3)
-
-		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/5)
+		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/4)
+		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1/2)
+		self.bottom_font = self.get_font_by_height(self.font_file_url, self.height_each * (1/5))
 
 		self.button_w = (w[0] * 2/3) * 1/2
 		self.button_x = (w[0] * 1/3) + ((w[0] * 2/3) - self.button_w) / 2
 		self.button_h = self.height_each * 4/5
 
-		self.bottom_button_h = 0
-		self.bottom_button_w = 0
+		self.bottom_button_h = self.height_each * (3/4)
+		self.bottom_button_w = (w[0] / 2) / 3
 
 		self.selected_setting = 0
 
@@ -285,8 +288,16 @@ class MainMenu:
 	def on_input(self, keys):
 
 		if pygame.K_RETURN in keys:
-			if not self.fade_in and not self.fade_out:
+			if not self.fade_in and not self.fade_out and not self.is_showing_settings:
 				self.buttons[self.selected_button]['on_click']()
+			elif self.is_showing_settings:
+				if self.selected_setting == 3:
+					# Save and Cancel buttons
+					if self.bottom_selected == 0:
+						self.save_settings()
+						self.is_showing_settings = False
+					else:
+						self.is_showing_settings = False
 
 		elif pygame.K_UP in keys:
 			if not self.is_showing_settings and self.selected_button >= 1:
@@ -297,7 +308,7 @@ class MainMenu:
 		elif pygame.K_DOWN in keys:
 			if not self.is_showing_settings and self.selected_button <= len(self.buttons) - 2:
 				self.selected_button += 1
-			elif self.is_showing_settings and self.selected_setting < 2:
+			elif self.is_showing_settings and self.selected_setting < 3:
 				self.selected_setting += 1
 		elif pygame.K_LEFT in keys or pygame.K_RIGHT in keys:
 			if self.is_showing_settings:
@@ -315,9 +326,13 @@ class MainMenu:
 				elif self.selected_setting == 1:
 					setting = self.fps
 					setting_index = self.fps_index
-				else:
+				elif self.selected_setting == 2:
 					setting = self.volume
 					setting_index = self.volume_index
+				else:
+					if increment + self.bottom_selected >= 0 and increment + self.bottom_selected < 2:
+						self.bottom_selected += increment
+					return
 
 				if setting_index + increment >= 0 and setting_index + increment <= len(setting) - 1:
 
@@ -339,17 +354,28 @@ class MainMenu:
 		if self.is_showing_settings:
 
 			texts = [
-				"RESOLUTION",
-				"FPS",
-				"VOLUME"
+				{
+					"text": "Resolution*",
+					"type": "resolution"
+				},
+				{
+					"text": "Frames per second*",
+					"type": "fps"
+				},
+				{
+					"text": "Volume",
+					"type": "volume"
+				}
 			]
 
 			for i in range(len(texts)):
 
-				x = (Globals.window.get_size()[0] * 1/3 - self.text_font.size(texts[i])[0]) / 2
+				text = texts[i]['text'].upper()
+
+				x = (Globals.window.get_size()[0] * 1/3 - self.text_font.size(text)[0]) / 2
 				y = self.offset_y + (self.height_each - self.text_font.get_height()) / 2 + self.height_each * i
 
-				r = self.text_font.render(texts[i], False, (0, 0, 0))
+				r = self.text_font.render(text, False, (0, 0, 0))
 				Globals.window.blit(r, (x, y))
 
 				# Draws options
@@ -384,19 +410,37 @@ class MainMenu:
 
 				text = ""
 
-				if texts[i].lower() == "resolution":
+				if texts[i]['type'].lower() == "resolution":
 					text = "%sx%s" % (self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
-				elif texts[i].lower() == "fps":
+					index = self.resolution_index
+					max_index = len(self.resolutions) - 1
+
+				elif texts[i]['type'].lower() == "fps":
 					text = str(self.fps[self.fps_index])
-				elif texts[i].lower() == "volume":
-					text = "%s" % int(self.volume[self.volume_index] * 100)
+					index = self.fps_index
+					max_index = len(self.fps) - 1
+
+				elif texts[i]['type'].lower() == "volume":
+					text = "%s" % int(self.volume[self.volume_index] * 10)
 					text += "%"
+					index = self.volume_index
+					max_index = len(self.volume) - 1
 
 				text_x = x + (w - self.option_font.size(text)[0]) / 2
 				text_y = y + (h - self.option_font.get_height()) / 2
 
 				r = self.option_font.render(text, False, color_two)
 				Globals.window.blit(r, (text_x, text_y))
+
+				if index == 0:
+					left_arrow = False
+				else:
+					left_arrow = True
+
+				if index == max_index:
+					right_arrow = False
+				else:
+					right_arrow = True
 
 				# Draws triangles
 
@@ -406,28 +450,75 @@ class MainMenu:
 				triangle_offset = 3 * self.border_width
 				triangle_w = triangle_bot - triangle_top
 
-				pygame.draw.polygon(Globals.window, color_one, [
-					(x + w + triangle_offset, triangle_top),
-					(x + w + triangle_offset, triangle_bot),
-					(x + w + triangle_offset + triangle_w, triangle_mid)
-				])
+				if right_arrow:
+					pygame.draw.polygon(Globals.window, color_one, [
+						(x + w + triangle_offset, triangle_top),
+						(x + w + triangle_offset, triangle_bot),
+						(x + w + triangle_offset + triangle_w, triangle_mid)
+					])
 
-				pygame.draw.polygon(Globals.window, color_two, [
-					(x + w + triangle_offset, triangle_top),
-					(x + w + triangle_offset, triangle_bot),
-					(x + w + triangle_offset + triangle_w, triangle_mid)
+					pygame.draw.polygon(Globals.window, color_two, [
+						(x + w + triangle_offset, triangle_top),
+						(x + w + triangle_offset, triangle_bot),
+						(x + w + triangle_offset + triangle_w, triangle_mid)
+					], self.border_width)
+
+				if left_arrow:
+					pygame.draw.polygon(Globals.window, color_one, [
+						(x - triangle_offset, triangle_top),
+						(x - triangle_offset, triangle_bot),
+						(x - triangle_offset - triangle_w, triangle_mid)
+					])
+					pygame.draw.polygon(Globals.window, color_two, [
+						(x - triangle_offset, triangle_top),
+						(x - triangle_offset, triangle_bot),
+						(x - triangle_offset - triangle_w, triangle_mid)
+					], self.border_width)
+
+			# draws bottom text
+			text = "*the game will need to restart to take effect"
+			offset_y = self.offset_y + 3 * self.height_each
+			x = (Globals.window.get_size()[0] - self.bottom_font.size(text)[0]) / 2
+			y = (self.height_each / 8 - self.bottom_font.get_height()) / 2
+			r = self.bottom_font.render(text, False, self.color_two)
+			Globals.window.blit(r, (x, offset_y + y))
+
+			# Draws bottom save/cancel button
+
+			for i in range(2):
+				y = self.offset_y + 3 * self.height_each + self.bottom_font.get_height()
+				x = (Globals.window.get_size()[0]*(3/4) - self.bottom_button_w) / 2 + Globals.window.get_size()[0] * (i/4)
+
+				color_one = self.color_one
+				color_two = self.color_two
+
+				if self.selected_setting == 3:
+					if self.bottom_selected == i:
+						color_one = self.color_two
+						color_two = self.color_one
+				pygame.draw.rect(Globals.window, color_one, [
+					x,
+					y,
+					self.bottom_button_w,
+					self.bottom_button_h
+				])
+				pygame.draw.rect(Globals.window, color_two, [
+					x,
+					y,
+					self.bottom_button_w,
+					self.bottom_button_h
 				], self.border_width)
 
-				pygame.draw.polygon(Globals.window, color_one, [
-					(x - triangle_offset, triangle_top),
-					(x - triangle_offset, triangle_bot),
-					(x - triangle_offset - triangle_w, triangle_mid)
-				])
-				pygame.draw.polygon(Globals.window, color_two, [
-					(x - triangle_offset, triangle_top),
-					(x - triangle_offset, triangle_bot),
-					(x - triangle_offset - triangle_w, triangle_mid)
-				], self.border_width)
+				# Draws text on buttons
+				if i == 0:
+					text = "Save".upper()
+				else:
+					text = "Cancel".upper()
+				text_x = x + (self.bottom_button_w - self.bottom_font.size(text)[0]) / 2
+				text_y = y + (self.bottom_button_h - self.bottom_font.get_height()) / 2
+				r = self.bottom_font.render(text, False, color_two)
+				Globals.window.blit(r, (text_x, text_y))
+
 		else:
 			for i in range(len(self.buttons)):
 				y = self.b_min_y + i * (1.5 * self.b_h)
@@ -480,6 +571,20 @@ class MainMenu:
 					self.fade_out = False
 					Globals.in_menu = False
 					Globals.music_fade_in = True
+
+	def save_settings(self):
+		file = open("assets/settings/settings.json", "r+")
+		old_settings = json.loads(file.read())
+		file.close()
+
+		to_save = old_settings.copy()
+		to_save["fps"] = self.fps[self.fps_index]
+		to_save['screen_width'] = self.resolutions[self.resolution_index][0]
+		to_save['screen_height'] = self.resolutions[self.resolution_index][1]
+
+		file = open("assets/settings/settings.json", "w")
+		file.write(json.dumps(to_save))
+		file.close()
 
 	def resume(self):
 		
@@ -542,6 +647,8 @@ class MainMenu:
 				if settings['screen_height'] == self.resolutions[i][1]:
 					self.resolution_index = i
 					break
+
+		self.selected_setting = 0
 
 	@staticmethod
 	def get_font_by_height(url, height):

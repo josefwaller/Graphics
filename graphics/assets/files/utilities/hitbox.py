@@ -2,7 +2,8 @@ from assets.files.utilities.globals import Globals
 
 import pygame
 
-class Hitbox ():
+
+class Hitbox:
 
 	x = None
 	y = None
@@ -22,16 +23,11 @@ class Hitbox ():
 
 		self.update()
 
-	def update (self):
+	def update(self):
 
-		if self.parent.facing_left:
-			self.x = self.parent.x + self.offset_x
-
-		else:
-			self.x = self.parent.x + self.offset_x
+		self.x = self.parent.x + self.offset_x
 
 		self.y = self.parent.y + self.offset_y
-
 
 		if Globals.debug:
 			self.debug_draw()
@@ -40,4 +36,8 @@ class Hitbox ():
 
 		pink = (255, 0, 255)
 
-		pygame.draw.rect(Globals.window, pink, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h], 2) 
+		pygame.draw.rect(Globals.window, pink, [
+			self.x + Globals.camera_offset['x'],
+			self.y + Globals.camera_offset['y'],
+			self.w,
+			self.h], 2)

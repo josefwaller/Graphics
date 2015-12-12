@@ -73,8 +73,8 @@ class BaseEntity:
 	def entity_init(self, x, y):
 
 		# Scales the width/height relative
-		self.h *= self.scale_relative(1)
-		self.w *= self.scale_relative(1)
+		self.h = self.scale_relative(self.h)
+		self.w = self.scale_relative(self.w)
 
 		# Sets the X/Y coords
 		self.x = x * Globals.block_size
@@ -175,7 +175,8 @@ class BaseEntity:
 
 		self.last_time = time.time()
 
-	def scale_relative(self, num):
+	@staticmethod
+	def scale_relative(num):
 
 		return int(num * (Globals.block_size / 16))
 
@@ -285,6 +286,7 @@ class BaseEntity:
 
 		x = self.x + Globals.camera_offset['x']
 		y = self.y + Globals.camera_offset['y']
+		print(Globals.camera_offset['y'])
 
 		if not self.is_static:
 

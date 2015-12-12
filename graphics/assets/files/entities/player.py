@@ -14,7 +14,7 @@ class Player (JumpingEntity):
 	# Horizontal Direction
 	x_translate = 0
 	# Speed
-	speed = 300
+	speed = 7
 
 	jump_strength = 13
 
@@ -55,6 +55,7 @@ class Player (JumpingEntity):
 		self.is_dead = False
 
 		self.jump_strength *= Globals.block_size
+		self.speed *= Globals.block_size
 
 		self.graphic_sprites = [
 
