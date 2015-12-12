@@ -168,7 +168,7 @@ class LevelEditor:
 				if self.mouse[0][0] < self.menu_width:
 					self.check_for_menu_selection()
 
-				elif self.mouse[0][0] > self.menu_width and self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
+				elif self.menu_width < self.mouse[0][0] < LEGlobals.window.get_size()[0] - self.attr_menu_width:
 
 					if not self.check_for_entity_selection() and self.item_selected['type'] is not None:
 
@@ -436,7 +436,7 @@ class LevelEditor:
 
 	def check_for_entity_selection(self):
 
-		if self.item_selected is not None and not self.item_selected['type'] == 'delete':
+		if self.item_selected is not None:
 
 			if self.mouse[1] is True:
 
@@ -446,6 +446,10 @@ class LevelEditor:
 					for e_y in range(len(self.entities[e_x])):
 						if self.entities[e_x][e_y] is not None:
 							if self.entities[e_x][e_y].check_selection(self.mouse[0]):
+								if self.item_selected['type'] == "delete":
+									self.entities[e_x][e_y] = None
+									return
+
 								self.entity_selected = [e_x, e_y]
 								nothing_selected = False
 								break
