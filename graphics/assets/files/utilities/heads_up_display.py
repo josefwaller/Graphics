@@ -12,17 +12,17 @@ class HeadsUpDisplay:
 	# In arrays, one value for each graphics level
 	border_colors = [
 		(192, 192, 192),
-		(0, 0, 0),
+		(255, 255, 255),
 		(192, 192, 192)
 	]
 	box_colors = [
 		(64, 64, 64),
-		(255, 255, 255),
+		(0, 0, 0),
 		(64, 64, 64)
 	]
 	text_colors = [
 		(192, 192, 192),
-		(0, 0, 0),
+		(255, 255, 255),
 		(192, 192, 192)
 	]
 
