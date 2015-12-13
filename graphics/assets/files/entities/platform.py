@@ -36,8 +36,8 @@ class Platform (BaseEntity):
 				self.img_load("blocks/snow.png"),
 			],
 			[
-				self.img_load("blocks/16_snow_top.png"),
-				self.img_load("blocks/16_snow.png"),
+				self.img_load("blocks/16_castle.png"),
+				self.img_load("blocks/16_castle.png"),
 			]
 		]
 		self.top_block = self.graphic_images[Globals.graphics_level][0]

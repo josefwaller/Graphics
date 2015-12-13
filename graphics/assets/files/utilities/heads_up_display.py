@@ -112,7 +112,7 @@ class HeadsUpDisplay:
 		self.mb_w = math.floor((w[0] * (2/3)) / Globals.block_size) * Globals.block_size
 		self.mb_h = math.floor((self.mb_w / Globals.block_size) * (3/4)) * Globals.block_size
 
-		self.border_w = (Globals.block_size / Globals.pixels_per_block) * 2
+		self.border_w = (Globals.block_size / Globals.pixels_per_block)
 
 		self.mb_x = (w[0] - self.mb_w) / 2
 		self.mb_y = (w[1] - self.mb_h) / 2
@@ -136,13 +136,13 @@ class HeadsUpDisplay:
 
 		font_url = "assets/fonts/Minecraftia-Regular.ttf"
 
-		self.mb_title_font = pygame.font.Font(font_url, 30)
-		self.mb_message_font = pygame.font.Font(font_url, 22)
+		self.mb_title_font = pygame.font.Font(font_url, int(self.mb_h / 10))
+		self.mb_message_font = pygame.font.Font(font_url, int(self.mb_h / 15))
 
-		self.dl_font = pygame.font.Font(font_url, 20)
+		self.dl_font = pygame.font.Font(font_url, int(self.dl_h / 8))
 
-		self.pm_title_font = pygame.font.Font(font_url, 30)
-		self.pm_button_font = pygame.font.Font(font_url, 22)
+		self.pm_title_font = pygame.font.Font(font_url, int(self.pm_h / 10))
+		self.pm_button_font = pygame.font.Font(font_url, int(self.pm_h / 14))
 
 		# Sets up the buttons
 		self.pm_buttons = [

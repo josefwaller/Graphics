@@ -17,6 +17,7 @@ class Globals:
 	music_fade_out = None
 	music_fade_in = True
 	debug = True
+	is_fullscreen = False
 	gravity_strength = 5
 	graphics_level = 0
 	is_paused = False

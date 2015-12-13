@@ -28,7 +28,13 @@ class Main:
 
 		# Sets the window dimensions
 		window_size = self.settings['screen_width'], self.settings['screen_height']
-		Globals.window = pygame.display.set_mode(window_size, pygame.FULLSCREEN)
+		if window_size[0] == 0 and window_size[0] == 0:
+			info = pygame.display.Info()
+			window_size = (info.current_w, info.current_h)
+			Globals.window = pygame.display.set_mode(window_size, pygame.FULLSCREEN)
+		else:
+			Globals.window = pygame.display.set_mode(window_size)
+
 		pygame.display.set_caption("Graphics")
 		pygame.display.set_icon(pygame.image.load("assets/images/menu/icon.png").convert_alpha())
 

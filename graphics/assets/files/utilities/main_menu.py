@@ -88,6 +88,10 @@ class MainMenu:
 			1400,
 			1050
 		],
+		[
+			0,
+			0
+		]
 	]
 	# The indexes
 	resolution_index = 0
@@ -410,8 +414,11 @@ class MainMenu:
 				text = ""
 
 				if texts[i]['type'].lower() == "resolution":
-					text = "%sx%s" % (
-						self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
+					if self.resolutions[self.resolution_index][0] == 0:
+						text = "Fullscreen"
+					else:
+						text = "%sx%s" % (
+							self.resolutions[self.resolution_index][0], self.resolutions[self.resolution_index][1])
 					index = self.resolution_index
 					max_index = len(self.resolutions) - 1
 
