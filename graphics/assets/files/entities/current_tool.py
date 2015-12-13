@@ -120,7 +120,7 @@ class CurrentTool (BaseEntity):
 			]
 		]
 
-		self.sprites = self.graphic_sprites[0]
+		self.sprites = self.graphic_sprites[Globals.graphics_level]
 
 		# Copies the player's position
 		self.x = Globals.player.x

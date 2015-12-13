@@ -18,7 +18,7 @@ class BaseProjectile (BaseEntity):
 
 			for enemy in Globals.enemies:
 				if self.check_for_collision(enemy):
-					enemy.on_hit(self)
+					enemy.on_hit()
 					self.remove_self()
 					break
 

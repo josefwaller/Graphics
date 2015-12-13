@@ -40,11 +40,11 @@ class BaseEnemy (JumpingEntity):
 
 				Globals.player.on_hit()
 
-	def on_hit(self, target):
+	def on_hit(self):
 
 		if not self.is_dying:
 
-			if target.x > self.x:
+			if random.random() > 0.5:
 				direction = 1
 			else:
 				direction = -1

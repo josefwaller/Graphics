@@ -28,7 +28,7 @@ class Player (JumpingEntity):
 	tool_time = 0
 
 	# The sword's range
-	sword_range = 20
+	sword_range = 1
 
 	# The time the player was last hurt
 	last_hit = 0
@@ -56,6 +56,7 @@ class Player (JumpingEntity):
 
 		self.jump_strength *= Globals.block_size
 		self.speed *= Globals.block_size
+		self.sword_range += Globals.block_size
 
 		self.graphic_sprites = [
 
@@ -221,12 +222,12 @@ class Player (JumpingEntity):
 							if self.facing_left:
 								if hb.x < self.x:
 									if hb.x > self.x - self.sword_range:
-										enemy.on_hit(self)
+										enemy.on_hit()
 
 							else:
 								if hb.x > self.x + self.w:
 									if hb.x < self.x + self.w + self.sword_range:
-										enemy.on_hit(self)
+										enemy.on_hit()
 
 		elif self.tool == "Staff":
 
