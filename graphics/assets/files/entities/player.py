@@ -30,8 +30,6 @@ class Player (JumpingEntity):
 	# The sword's range
 	sword_range = 1
 
-	# The time the player was last hurt
-	last_hit = 0
 	# The time it takes to recover
 	recover_delay = 3
 
@@ -291,15 +289,22 @@ class Player (JumpingEntity):
 			self.x = self.checkpoint.x + int(self.checkpoint.w / 2)
 			self.y = (self.checkpoint.y + self.checkpoint.h) - (self.h * (3/2))
 
+			# Resets the player's attributes
+			self.is_blinking = True
+			self.blink_start_time = time.time()
+			self.tool = None
+
 			# Sets misc attributes
 			self.is_grounded = False
 			self.momY = 0
+		else:
+			raise Exception("Player has no checkpoint")
 
 	# Decides whether the player should respawn or lose his tool
 	def on_hit(self):
 
 		# Checks if the player is still recovering
-		if not time.time() - self.last_hit <= self.recover_delay:
+		if not time.time() - self.blink_start_time <= self.recover_delay:
 
 			# Decides whether to respawn or lose tool
 			if self.tool is None:
@@ -307,8 +312,7 @@ class Player (JumpingEntity):
 			else:
 				self.tool = None
 				self.sprite_indexes = [1]
-				self.last_hit = time.time()
-				self.last_blink - time.time()
+				self.last_blink = time.time()
 				self.is_blinking = True
 				self.blink_start_time = time.time()
 				self.using_tool = False
@@ -343,7 +347,7 @@ class Player (JumpingEntity):
 				self.is_showing = not self.is_showing
 
 			# Checks whether the player should stop blinking
-			if time.time() - self.last_hit >= self.recover_delay:
+			if time.time() - self.blink_start_time >= self.recover_delay:
 				self.is_blinking = False
 				self.is_showing = True
 

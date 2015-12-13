@@ -80,6 +80,7 @@ class Arrow (BaseProjectile):
 					if self.last_y < Globals.player.y + Globals.player.h:
 						collide_y = True
 
+		# Checks to see if the arrow went through the player this frame
 		if collide_y:
 			if self.direction == 1:
 				if Globals.player.x < self.x + self.w:
