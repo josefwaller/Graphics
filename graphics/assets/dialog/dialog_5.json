@@ -1,0 +1,18 @@
+{
+  "dialogs": [
+	"I can't let you go on any farther.",
+	"What are you going to do about it, can't-move-guy?",
+	"I'm the developer. I made the levels.",
+	"This next part is really hard. Good luck being able to get through that.",
+	"Just give up now and spare me hours of work.",
+	"Never. I will find the Endblock if it's the last thing I do."
+  ],
+  "images": [
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_guy_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png"
+  ]
+}

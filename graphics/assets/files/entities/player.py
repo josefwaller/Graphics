@@ -39,7 +39,6 @@ class Player (JumpingEntity):
 	is_blinking = False
 	last_blink = 0
 	blink_delay = 0.1
-	is_showing = True
 	blink_start_time = 0
 
 	is_dead = None
@@ -48,7 +47,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = None
+	tool = "Bow and Arrow"
 
 	def __init__(self, x, y):
 

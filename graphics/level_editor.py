@@ -95,13 +95,12 @@ class LevelEditor:
 			level = json.loads(file.read())
 
 			if level['level_settings']['height'] > self.level_dimensions[1]:
-				if level['level_settings']['width'] > self.level_dimensions[0]:
+				self.level_dimensions[1] = level['level_settings']['height']
 
-					self.level_dimensions = [
-						level['level_settings']['width'],
-						level['level_settings']['height']
-					]
-					self.scale_to_dimension()
+			if level['level_settings']['width'] > self.level_dimensions[0]:
+				self.level_dimensions[0] = level['level_settings']['width']
+
+			self.scale_to_dimension()
 
 			for thing in level['entities']:
 

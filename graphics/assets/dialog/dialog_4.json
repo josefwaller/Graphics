@@ -1,0 +1,26 @@
+{
+  "dialogs": [
+	"Hey.",
+	"You! You have to stop this.",
+	"I lost three night's sleep because of you!",
+	"Yeah, but look at your hoodie! Isn't this worth it?",
+	"No! You have to stop.",
+	"No",
+	"Why not?",
+	"There isn't anything else to do! It's soooooo boring",
+	"But you'll kill everybody!",
+	"Meh. Collateral damage."
+  ],
+  "images": [
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png"
+  ]
+}

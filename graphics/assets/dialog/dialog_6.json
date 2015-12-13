@@ -1,0 +1,26 @@
+{
+  "dialogs": [
+	"Okay, that's enough.",
+	"You can't stop me. I am all powerful.",
+	"You know, this wasn't supposed to happen. Why didn't you go save the princess?",
+	"Because I looked terrible. You looked terrible.",
+	"Now look at us. Soon we will be...",
+	"3D?! Awesome!",
+	"No, you won't be.",
+	"Why not?",
+	"Because I'm ending this right now.",
+	"main.play_credits()"
+  ],
+  "images": [
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_player_dialog.png",
+	"16_player_dialog.png",
+	"16_player_dialog.png",
+	"16_guy_dialog.png",
+	"16_player_dialog.png",
+	"16_player_dialog.png"
+  ]
+}
