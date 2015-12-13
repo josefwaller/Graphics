@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/player.py" afterPath="$PROJECT_DIR$/assets/files/entities/player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/base_entity.py" afterPath="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/settings/settings.json" afterPath="$PROJECT_DIR$/assets/settings/settings.json" />
     </list>
     <ignored path="graphics.iws" />
@@ -25,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="player.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/files/entities/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3108108">
+            <state vertical-scroll-proportion="0.0">
               <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
               <folding>
                 <element signature="e#873#3512#0" expanded="false" />
@@ -44,20 +43,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_entity.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base_entity.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/files/entities/base_entity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.9155405">
+              <caret line="383" column="16" selection-start-line="383" selection-start-column="16" selection-end-line="383" selection-end-column="16" />
               <folding>
                 <element signature="e#1278#1733#0" expanded="false" />
                 <element signature="e#1814#2431#0" expanded="false" />
                 <element signature="e#2543#3572#0" expanded="false" />
                 <element signature="e#3612#3841#0" expanded="false" />
-                <element signature="e#4894#5763#0" expanded="false" />
-                <element signature="e#7067#7275#0" expanded="false" />
-                <element signature="e#7308#8160#0" expanded="false" />
-                <element signature="e#8191#8295#0" expanded="false" />
+                <element signature="e#3873#4012#0" expanded="false" />
+                <element signature="e#4146#4369#0" expanded="false" />
+                <element signature="e#5059#5928#0" expanded="false" />
+                <element signature="e#5952#7195#0" expanded="false" />
+                <element signature="e#7232#7440#0" expanded="false" />
+                <element signature="e#7473#8325#0" expanded="false" />
+                <element signature="e#8356#8460#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -189,7 +191,6 @@
         <option value="$PROJECT_DIR$/assets/files/utilities/hitbox.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/checkpoint.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/enemies/wizard.py" />
-        <option value="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
         <option value="$PROJECT_DIR$/assets/files/entities/enemies/archer.py" />
         <option value="$PROJECT_DIR$/assets/levels/l1 - Copy.json" />
         <option value="$PROJECT_DIR$/assets/files/entities/end_block.py" />
@@ -218,6 +219,7 @@
         <option value="$PROJECT_DIR$/assets/files/entities/projectiles/arrow.py" />
         <option value="$PROJECT_DIR$/assets/settings/settings.json" />
         <option value="$PROJECT_DIR$/assets/files/entities/player.py" />
+        <option value="$PROJECT_DIR$/assets/files/entities/base_entity.py" />
       </list>
     </option>
   </component>
@@ -580,7 +582,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="47" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -971,26 +973,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/entities/base_entity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding>
-            <element signature="e#1278#1733#0" expanded="false" />
-            <element signature="e#1814#2431#0" expanded="false" />
-            <element signature="e#2543#3572#0" expanded="false" />
-            <element signature="e#3612#3841#0" expanded="false" />
-            <element signature="e#4894#5763#0" expanded="false" />
-            <element signature="e#7067#7275#0" expanded="false" />
-            <element signature="e#7308#8160#0" expanded="false" />
-            <element signature="e#8191#8295#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/entities/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3108108">
+        <state vertical-scroll-proportion="0.0">
           <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
           <folding>
             <element signature="e#873#3512#0" expanded="false" />
@@ -1001,6 +986,26 @@
             <element signature="e#7707#8417#0" expanded="false" />
             <element signature="e#9035#10017#0" expanded="false" />
             <element signature="e#10113#10183#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/base_entity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9155405">
+          <caret line="383" column="16" selection-start-line="383" selection-start-column="16" selection-end-line="383" selection-end-column="16" />
+          <folding>
+            <element signature="e#1278#1733#0" expanded="false" />
+            <element signature="e#1814#2431#0" expanded="false" />
+            <element signature="e#2543#3572#0" expanded="false" />
+            <element signature="e#3612#3841#0" expanded="false" />
+            <element signature="e#3873#4012#0" expanded="false" />
+            <element signature="e#4146#4369#0" expanded="false" />
+            <element signature="e#5059#5928#0" expanded="false" />
+            <element signature="e#5952#7195#0" expanded="false" />
+            <element signature="e#7232#7440#0" expanded="false" />
+            <element signature="e#7473#8325#0" expanded="false" />
+            <element signature="e#8356#8460#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -213,8 +213,14 @@ class BaseEntity:
 			else:
 				self.death_animation()
 
+			self.check_if_fallen_out_of_level()
+
 		if self.is_showing:
 			self.render()
+
+	def check_if_fallen_out_of_level(self):
+		if self.y > Globals.level_height * Globals.block_size:
+			self.death_animation()
 
 	def print_hitboxes(self):
 		for hb in self.hitboxes:
@@ -375,4 +381,4 @@ class BaseEntity:
 
 	# Filler
 	def death_animation(self):
-		pass
+		del self
