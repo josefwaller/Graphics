@@ -31,7 +31,7 @@ class Player (JumpingEntity):
 	sword_range = 1
 
 	# The time it takes to recover
-	recover_delay = 3
+	recover_delay = 1.5
 
 	# Variables for blinking after being hit
 	is_blinking = False
