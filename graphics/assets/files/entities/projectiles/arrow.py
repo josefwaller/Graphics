@@ -40,6 +40,7 @@ class Arrow (BaseProjectile):
 		self.y = y
 
 		self.last_x = x
+		self.last_y = y
 
 	def move(self):
 
@@ -61,4 +62,31 @@ class Arrow (BaseProjectile):
 		self.move()
 		self.check_for_horizontal_collision()
 
-		self.check_for_player()
+		if self.check_for_player():
+			Globals.player.on_hit()
+			self.remove_self()
+
+	def check_for_player(self):
+		# Checks if it is in the player first
+		if self.check_for_collision(Globals.player):
+			return True
+
+		# Checks if both this frame and last frame where in line with the player
+		collide_y = False
+
+		if self.y + self.h > Globals.player.y:
+			if self.y < Globals.player.y + Globals.player.h:
+				if self.last_y + self.h > Globals.player.y:
+					if self.last_y < Globals.player.y + Globals.player.h:
+						collide_y = True
+
+		if collide_y:
+			if self.direction == 1:
+				if Globals.player.x < self.x + self.w:
+					if Globals.player.x + Globals.player.w > self.last_x:
+						return True
+			else:
+				if Globals.player.x < self.x:
+					if Globals.player.x + Globals.player.w > self.last_x:
+						return True
+
