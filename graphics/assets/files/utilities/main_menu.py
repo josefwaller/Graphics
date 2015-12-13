@@ -330,11 +330,11 @@ class MainMenu:
 					setting = self.volume
 					setting_index = self.volume_index
 				else:
-					if increment + self.bottom_selected >= 0 and increment + self.bottom_selected < 2:
+					if 0 <= increment + self.bottom_selected < 2:
 						self.bottom_selected += increment
 					return
 
-				if setting_index + increment >= 0 and setting_index + increment <= len(setting) - 1:
+				if 0 <= setting_index + increment <= len(setting) - 1:
 
 					if self.selected_setting == 0:
 						self.resolution_index += increment
@@ -344,6 +344,7 @@ class MainMenu:
 
 					else:
 						self.volume_index += increment
+						Globals.volume = (self.volume[self.volume_index]) / 10
 
 	def render(self):
 
@@ -590,6 +591,8 @@ class MainMenu:
 		file = open("assets/settings/settings.json", "w")
 		file.write(json.dumps(to_save))
 		file.close()
+
+		Globals.volume = (self.volume[self.volume_index]) / 10
 
 	def resume(self):
 

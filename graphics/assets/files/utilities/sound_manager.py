@@ -52,6 +52,8 @@ class SoundManager:
 
 			if self.graphics_level is not Globals.graphics_level:
 				self.update_graphics()
+			if not Globals.volume == pygame.mixer.music.get_volume():
+				pygame.mixer.music.set_volume(Globals.volume)
 
 			if not Globals.in_menu == self.in_menu:
 				self.playing_menu_music = not self.playing_menu_music
