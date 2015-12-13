@@ -278,6 +278,11 @@ class Player (JumpingEntity):
 			self.x = 0
 		elif self.x > Globals.level_width:
 			self.x = Globals.level_width - self.w
+		if self.y < 0:
+			self.y = 0
+			self.momY = 0
+		elif self.y > Globals.level_height:
+			self.respawn()
 
 	# Respawns the player at the most recent checkpoint
 	def respawn(self):
