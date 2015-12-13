@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/dialog/dialog_2.json" afterPath="$PROJECT_DIR$/assets/dialog/dialog_2.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" afterPath="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/levels/l1.json" afterPath="$PROJECT_DIR$/assets/levels/l1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/settings/settings.json" afterPath="$PROJECT_DIR$/assets/settings/settings.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level_editor.py" afterPath="$PROJECT_DIR$/level_editor.py" />
     </list>
     <ignored path="graphics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="level_editor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/level_editor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.92047375">
-              <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.89170897">
+              <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
               <folding>
                 <element signature="e#2957#3169#0" expanded="false" />
                 <element signature="e#5911#6157#0" expanded="false" />
@@ -988,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/level_editor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.92047375">
-          <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.89170897">
+          <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
           <folding>
             <element signature="e#2957#3169#0" expanded="false" />
             <element signature="e#5911#6157#0" expanded="false" />
