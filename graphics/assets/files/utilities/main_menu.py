@@ -191,9 +191,6 @@ class MainMenu:
 		# Gets window dimensions for easy reference
 		w = Globals.window.get_size()
 
-		# Sets graphics level
-		self.graphics_level = Globals.graphics_level
-
 		# Sets up sky
 		self.sky_last_time = time.time()
 
@@ -205,7 +202,7 @@ class MainMenu:
 		pixel_size = Globals.block_size / Globals.pixels_per_block
 		approx_logo_w = w[0] / 3
 		logo_w_in_pixels = self.logo.get_size()[0] * pixel_size
-		logo_w = int(approx_logo_w / logo_w_in_pixels * logo_w_in_pixels)
+		logo_w = int(int(approx_logo_w / logo_w_in_pixels) * logo_w_in_pixels)
 		logo_h = int(self.logo.get_size()[1] * (self.logo.get_size()[0] / self.logo.get_size()[1]))
 
 		self.logo = pygame.transform.scale(self.logo, (logo_w, logo_h))
