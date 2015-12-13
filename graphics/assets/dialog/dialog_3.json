@@ -1,0 +1,25 @@
+{
+  "dialogs": [
+	"Hi",
+	"Whoa! How did you get you get here?",
+	"I beat the last level.",
+	"You really got some better clothes since our last encounter.",
+	"I- yeah. These 8-bit graphics really look good.",
+	"But anyways, I have a confession to make.",
+	"What?",
+	"I am the developer of this game.",
+	"What?!?",
+	"Yeah. More importantly, you-",
+	"How are you even here?",
+	"Well, I used python's self.emulate()",
+	"But that's beside the point. You can't go on further",
+	"What? Why?",
+	"I'm a programmer, not an artist.",
+	"I didn't want to make great graphics. If you go on much farther, I won't be able to keep up.",
+	"I didn't listen to what you said because it was boring.",
+	"But I'm going to go get even better graphics!"
+  ],
+  "images": [
+	
+  ]
+}
