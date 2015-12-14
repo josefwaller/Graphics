@@ -136,7 +136,6 @@ class Missile (BaseProjectile):
 				if least_distance is None or distance < least_distance:
 					least_distance = distance
 					enemy = e
-					print("Distance: %s, enemy: %s" % (distance, enemy))
 
 		return enemy
 

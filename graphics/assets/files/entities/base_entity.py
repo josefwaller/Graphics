@@ -220,7 +220,10 @@ class BaseEntity:
 
 	def check_if_fallen_out_of_level(self):
 		if self.y > Globals.level_height:
-			del self
+			self.remove_self()
+
+	def remove_self(self):
+		raise Exception("Entity %s has no remove self function and needs to remove itself!")
 
 	def print_hitboxes(self):
 		for hb in self.hitboxes:

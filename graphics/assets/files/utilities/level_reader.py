@@ -37,6 +37,8 @@ class LevelReader:
 		Globals.enemies = []
 		Globals.platforms = []
 		Globals.checkpoints = []
+		Globals.tools = []
+		Globals.props = []
 
 		settings = level['level_settings']
 		Globals.level_width = settings['width'] * Globals.block_size

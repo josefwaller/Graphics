@@ -1,8 +1,7 @@
 from assets.files.entities.base_entity import BaseEntity
 from assets.files.utilities.globals import Globals
 
-import time
-import pygame
+import json
 
 
 class EndBlock (BaseEntity):
@@ -44,11 +43,13 @@ class EndBlock (BaseEntity):
 
 			Globals.is_paused = True
 
+			file = open("assets/dialog/eb_%s.json" % (Globals.graphics_level + 1), "r")
+			file_contents = json.loads(file.read())
+			file.close()
+
 			Globals.hud.message_box(
-				title="Congratulations!",
-				message=
-				"Congratulations! You have now unlocked 16-Bit graphics! Enjoy the beautiful look of high end graphics! "
-				"\n \n Press ENTER to continue...",
+				title=file_contents['title'],
+				message=file_contents['message'],
 				fade_out=True)
 
 			self.used = True

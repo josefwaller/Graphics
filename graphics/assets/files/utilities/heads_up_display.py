@@ -95,6 +95,12 @@ class HeadsUpDisplay:
 	pm_title_font = None
 	pm_button_font = None
 
+	# Variables used in the credits
+	credit_speed = 0
+	credit_text = 0
+	credit_gap = 0
+	credit_start_time = 0
+
 	def __init__(self):
 
 		# Initializes the pygame font module
@@ -137,7 +143,7 @@ class HeadsUpDisplay:
 		font_url = "assets/fonts/Minecraftia-Regular.ttf"
 
 		self.mb_title_font = Globals.get_font_by_height(font_url, int(self.mb_h / 6))
-		self.mb_message_font = Globals.get_font_by_height(font_url, int(self.mb_h / 8))
+		self.mb_message_font = Globals.get_font_by_height(font_url, int(self.mb_h / 15))
 
 		self.dl_font = Globals.get_font_by_height(font_url, int(self.dl_h / 5))
 
@@ -205,11 +211,34 @@ class HeadsUpDisplay:
 					self.dl_dialogs[d][line_index] = line_str
 					word_index += 1
 
+	# Sets up the credits
+	def show_credits(self):
+		file = open("assets/dialog/credits.json", "r")
+		self.credit_text = json.loads(file)
+		file.close()
+
+		self.credit_start_time = time.time()
+		self.credit_gap = 3 * Globals.block_size
+		self.credit_speed = 4 * Globals.block_size
+		self.credit_font = Globals.get_font_by_height()
+
 	# Draws Everything
 	def render(self):
 
 		# Gets window dimensions for easy reference
 		win = Globals.window.get_size()
+
+		if Globals.playing_credits:
+
+			black = (0, 0, 0):
+			pygame.draw.rect(Globals.window, black, [0, 0, w[0], w[1]])
+
+			time_since = time.time() - self.credit_start_time()
+
+			for line in self.credit_text:
+
+
+
 
 		# Draws Message Box
 		if self.mb_is_showing:
