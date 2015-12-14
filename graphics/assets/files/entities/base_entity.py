@@ -220,7 +220,7 @@ class BaseEntity:
 
 	def check_if_fallen_out_of_level(self):
 		if self.y > Globals.level_height:
-			self.death_animation()
+			del self
 
 	def print_hitboxes(self):
 		for hb in self.hitboxes:

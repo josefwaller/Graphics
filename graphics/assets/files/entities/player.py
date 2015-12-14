@@ -45,7 +45,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = "Bow and Arrow"
+	tool = "Staff"
 
 	def __init__(self, x, y):
 
@@ -257,7 +257,7 @@ class Player (JumpingEntity):
 
 				else:
 					self.sprite_indexes = running_sprites
-					
+
 			# Checks for falling animation
 			else:
 

@@ -51,7 +51,6 @@ class Missile (BaseProjectile):
 			self.target = Globals.player
 		else:
 			self.target = self.find_target()
-			print(self.target)
 
 	def move(self):
 
@@ -122,15 +121,22 @@ class Missile (BaseProjectile):
 		
 		for e in Globals.enemies:
 
-			x = math.fabs(e.x - self.x)
-			y = math.fabs(e.y - self.y)
-
-			distance = math.sqrt(math.pow(x, 2) + math.pow(y, 2))
-
-			if least_distance is None or distance < least_distance:
-				least_distance = distance
+			# Makes the first enemy the default target
+			if enemy is None:
 				enemy = e
-				print("Distance: %s, enemy: %s" % (distance, enemy))
+
+			# Checks that the enemy is not dying
+			if not e.is_dying:
+
+				x = math.fabs(e.x - self.x)
+				y = math.fabs(e.y - self.y)
+
+				distance = math.sqrt(math.pow(x, 2) + math.pow(y, 2))
+
+				if least_distance is None or distance < least_distance:
+					least_distance = distance
+					enemy = e
+					print("Distance: %s, enemy: %s" % (distance, enemy))
 
 		return enemy
 
