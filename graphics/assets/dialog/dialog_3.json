@@ -1,12 +1,12 @@
 {
   "dialogs": [
-	"Hi",
-	"Whoa! How did you get you get here?",
-	"I beat the last level.",
-	"You really got some better clothes since our last encounter.",
-	"I- yeah. These 8-bit graphics really look good.",
-	"But anyways, I have a confession to make.",
+	"Hello.",
+	"Who are you?",
+	"And where did you get that hoodie?",
 	"What?",
+	"It's the medival ages! How did you get a goddamn hoodie?",
+	"Well, I have special powers.",
+	"What? Why?",
 	"I am the developer of this game.",
 	"What?!?",
 	"Yeah. More importantly, you-",
@@ -17,26 +17,28 @@
 	"I'm a programmer, not an artist.",
 	"I didn't want to make great graphics. If you go on much farther, I won't be able to keep up.",
 	"I didn't listen to what you said because it was boring.",
-	"But I'm going to go get even better graphics!"
+	"But I'm going to go get even better graphics!",
+	"... what?"
   ],
   "images": [
-	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
-	  "8_player_dialog.png",
-	  "8_guy_dialog.png",
-	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
+	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_guy_dialog.png",
 	  "8_player_dialog.png",
-	  "8_player_dialog.png"
+	  "8_guy_dialog.png",
+	  "8_guy_dialog.png",
+	  "8_player_dialog.png",
+	  "8_player_dialog.png",
+	  "8_guy_dialog.png"
   ]
 }

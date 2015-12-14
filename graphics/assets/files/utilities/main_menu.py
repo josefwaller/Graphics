@@ -191,6 +191,12 @@ class MainMenu:
 		# Gets window dimensions for easy reference
 		w = Globals.window.get_size()
 
+		# sets graphics level to the current graphics level
+		# since set_up is called when the graphics need to be updated,
+		# removing this line of code would cause it to infinitely set_up
+		# and something I would never do
+		self.graphics_level = Globals.graphics_level
+
 		# Sets up sky
 		self.sky_last_time = time.time()
 

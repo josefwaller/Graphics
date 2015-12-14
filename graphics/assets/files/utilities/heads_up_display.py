@@ -192,7 +192,7 @@ class HeadsUpDisplay:
 			while word_index < len(words):
 
 				# Adds the word to the string, but not in the same variable
-				line_str = self.dl_dialogs[d][line_index] + " " + words[word_index]
+				line_str = self.dl_dialogs[d][line_index] + "  " + words[word_index]
 
 				# Finds the max width the line can have
 				max_width = self.dl_w - (self.dl_x + self.dl_offset_left + self.dl_image_s + 2 * self.dl_padding)
@@ -495,6 +495,7 @@ class HeadsUpDisplay:
 			Globals.is_paused = False
 			Globals.graphics_level += 1
 			Globals.music_fade_in = True
+			Globals.menu_fade_in = True
 			Globals.in_menu = True
 
 	def fade_in(self):
