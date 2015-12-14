@@ -62,32 +62,46 @@ class Arrow (BaseProjectile):
 		self.move()
 		self.check_for_horizontal_collision()
 
-		if self.check_for_player():
+		if self.is_grounded:
+			self.remove_self()
+
+		if self.check_for_target():
 			Globals.player.on_hit()
 			self.remove_self()
 
-	def check_for_player(self):
+	def check_for_target(self):
+
+		if self.is_enemy:
+			if self.check_for_missed_collision(Globals.player):
+				Globals.player.on_hit()
+		else:
+			for enemy in Globals.enemies:
+				if self.check_for_missed_collision(enemy):
+					enemy.on_hit()
+					break
+
+	def check_for_missed_collision(self, target):
 		# Checks if it is in the player first
-		if self.check_for_collision(Globals.player):
+		if self.check_for_collision(target):
 			return True
 
 		# Checks if both this frame and last frame where in line with the player
 		collide_y = False
 
-		if self.y + self.h > Globals.player.y:
-			if self.y < Globals.player.y + Globals.player.h:
-				if self.last_y + self.h > Globals.player.y:
-					if self.last_y < Globals.player.y + Globals.player.h:
+		if self.y + self.h > target.y:
+			if self.y < target.y + target.h:
+				if self.last_y + self.h > target.y:
+					if self.last_y < target.y + target.h:
 						collide_y = True
 
 		# Checks to see if the arrow went through the player this frame
 		if collide_y:
 			if self.direction == 1:
-				if Globals.player.x < self.x + self.w:
-					if Globals.player.x + Globals.player.w > self.last_x:
+				if target.x < self.x + self.w:
+					if target.x + target.w > self.last_x:
 						return True
 			else:
-				if Globals.player.x < self.x:
-					if Globals.player.x + Globals.player.w > self.last_x:
+				if target.x < self.x:
+					if target.x + target.w > self.last_x:
 						return True
 
