@@ -27,6 +27,7 @@ class Globals:
 	hud = None
 	props = []
 	in_menu = True
+	playing_credits = False
 	menu_fade_in = True
 	level_width = 0
 	level_height = 0
