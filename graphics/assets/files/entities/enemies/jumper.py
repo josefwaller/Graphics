@@ -74,8 +74,6 @@ class Jumper(SmartEnemy):
 				self.speed = abs(Globals.player.x - self.x) * ((random.random() * 0.5) + 0.5)
 				self.start_jump()
 				self.landing_time = time.time()
-		else:
-			self.x += (self.speed * self.x_translate) * self.delta_time
 
 	def animate(self):
 		if self.is_grounded:
@@ -87,6 +85,10 @@ class Jumper(SmartEnemy):
 
 		self.should_attack()
 		self.animate()
-
+		self.move()
 		if self.check_for_collision(Globals.player):
 			Globals.player.on_hit()
+
+	def move(self):
+		if not self.is_grounded:
+			self.x += (self.speed * self.x_translate) * self.delta_time
