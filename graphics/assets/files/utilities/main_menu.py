@@ -247,9 +247,9 @@ class MainMenu:
 
 		self.height_each = (w[1] - self.offset_y) / 4
 
-		self.text_font = self.get_font_by_height(self.font_file_url, self.height_each * 1 / 4)
-		self.option_font = self.get_font_by_height(self.font_file_url, self.height_each * 1 / 2)
-		self.bottom_font = self.get_font_by_height(self.font_file_url, self.height_each * (1 / 5))
+		self.text_font = Globals.get_font_by_height(self.font_file_url, self.height_each * 1 / 4)
+		self.option_font = Globals.get_font_by_height(self.font_file_url, self.height_each * 1 / 2)
+		self.bottom_font = Globals.get_font_by_height(self.font_file_url, self.height_each * (1 / 5))
 
 		self.button_w = (w[0] * 2 / 3) * 1 / 2
 		self.button_x = (w[0] * 1 / 3) + ((w[0] * 2 / 3) - self.button_w) / 2
@@ -663,15 +663,3 @@ class MainMenu:
 					break
 
 		self.selected_setting = 0
-
-	@staticmethod
-	def get_font_by_height(url, height):
-
-		h = int(height)
-		font = pygame.font.Font(url, h)
-
-		while font.get_height() > height:
-			h -= 1
-			font = pygame.font.Font(url, h)
-
-		return font

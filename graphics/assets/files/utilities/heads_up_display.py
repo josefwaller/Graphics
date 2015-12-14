@@ -132,17 +132,17 @@ class HeadsUpDisplay:
 		self.pm_y = (w[1] - self.pm_h) / 2
 
 		self.pm_padding = 20
-		self.pm_button_h = 40
+		self.pm_button_h = self.pm_h / 8
 
 		font_url = "assets/fonts/Minecraftia-Regular.ttf"
 
-		self.mb_title_font = pygame.font.Font(font_url, int(self.mb_h / 10))
-		self.mb_message_font = pygame.font.Font(font_url, int(self.mb_h / 15))
+		self.mb_title_font = Globals.get_font_by_height(font_url, int(self.mb_h / 6))
+		self.mb_message_font = Globals.get_font_by_height(font_url, int(self.mb_h / 8))
 
-		self.dl_font = pygame.font.Font(font_url, int(self.dl_h / 8))
+		self.dl_font = Globals.get_font_by_height(font_url, int(self.dl_h / 5))
 
-		self.pm_title_font = pygame.font.Font(font_url, int(self.pm_h / 10))
-		self.pm_button_font = pygame.font.Font(font_url, int(self.pm_h / 14))
+		self.pm_title_font = Globals.get_font_by_height(font_url, int(self.pm_h / 10))
+		self.pm_button_font = Globals.get_font_by_height(font_url, int(self.pm_button_h * (3/4)))
 
 		# Sets up the buttons
 		self.pm_buttons = [
@@ -455,9 +455,13 @@ class HeadsUpDisplay:
 				elif pygame.K_DOWN in keys:
 					if self.pm_selected_button < len(self.pm_buttons) - 1:
 						self.pm_selected_button += 1
-				
-			else:
-				if pygame.K_ESCAPE in keys:
+
+			if pygame.K_ESCAPE in keys:
+
+				if self.pm_is_showing:
+					self.pm_is_showing = False
+					Globals.is_paused = False
+				else:
 					self.pm_is_showing = True
 					self.pm_selected_button = 0
 					Globals.is_paused = True

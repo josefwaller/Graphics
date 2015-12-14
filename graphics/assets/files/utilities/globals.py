@@ -1,3 +1,6 @@
+import pygame
+
+
 class Globals:
 	block_size = None
 	pixels_per_block = 0
@@ -29,3 +32,15 @@ class Globals:
 	level_height = 0
 	endblock = None
 	volume = 1
+
+	@staticmethod
+	def get_font_by_height(url, height):
+
+		h = int(height)
+		font = pygame.font.Font(url, h)
+
+		while font.get_height() > height:
+			h -= 1
+			font = pygame.font.Font(url, h)
+
+		return font
