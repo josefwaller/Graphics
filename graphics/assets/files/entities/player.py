@@ -181,8 +181,13 @@ class Player (JumpingEntity):
 
 			self.use_tool()
 
-		if pygame.K_k in keys and Globals.debug:
-			self.respawn()
+		if Globals.debug:
+
+			if pygame.K_k in keys:
+				self.respawn()
+			elif pygame.K_c in keys:
+				Globals.hud.show_credits()
+				Globals.playing_credits = True
 
 	# Does misc stuff depending on the tool
 	def use_tool(self):

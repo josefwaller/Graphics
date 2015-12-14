@@ -3,6 +3,7 @@ from assets.files.utilities.globals import Globals
 import pygame
 import math
 import time
+import json
 
 
 # Displays all overlaying boxes/dialogs/menu over the screen
@@ -96,10 +97,15 @@ class HeadsUpDisplay:
 	pm_button_font = None
 
 	# Variables used in the credits
-	credit_speed = 0
+	credit_time = 0
 	credit_text = 0
 	credit_gap = 0
 	credit_start_time = 0
+	credit_font = None
+	credit_images = []
+	credit_image_height = 0
+	sprite_interval = 0.5
+	credits_done = False
 
 	def __init__(self):
 
@@ -165,6 +171,10 @@ class HeadsUpDisplay:
 		self.is_fading_in = True
 		self.fade_start_time = None
 
+		self.credit_gap = 3 * Globals.block_size
+		self.credit_time = 30
+		self.credit_font = Globals.get_font_by_height(font_url, 40)
+
 	# Displays a dialog box with the given dialog
 	def dialog_box(self, dialogs, images):
 
@@ -214,13 +224,44 @@ class HeadsUpDisplay:
 	# Sets up the credits
 	def show_credits(self):
 		file = open("assets/dialog/credits.json", "r")
-		self.credit_text = json.loads(file)
+		credits = json.loads(file.read())
 		file.close()
 
+		self.credit_text = credits['text'].copy()
+		self.credit_images = credits['images'].copy()
+		self.credit_image_height = 3 * Globals.block_size
+
+		for i in range(len(self.credit_images)):
+
+			x = 0
+			image = pygame.image.load("assets/images/%s" % self.credit_images[i][x]).convert_alpha()
+			s = image.get_size()
+			h = self.credit_image_height
+			w = int(s[0] / s[1] * h)
+
+			for x in range(len(self.credit_images[i])):
+				self.credit_images[i][x] = pygame.image.load("assets/images/%s" % self.credit_images[i][x]).convert_alpha()
+				self.credit_images[i][x] = pygame.transform.scale(self.credit_images[i][x], (w, h))
+
 		self.credit_start_time = time.time()
-		self.credit_gap = 3 * Globals.block_size
-		self.credit_speed = 4 * Globals.block_size
-		self.credit_font = Globals.get_font_by_height()
+		self.is_fading_out = True
+		self.rect_alpha = 0
+		self.fade_start_time = time.time()
+
+		height = 0
+
+		height += (self.credit_font.get_height() + self.credit_gap) * len(self.credit_text)
+
+		height += (self.credit_image_height + self.credit_gap) * len(self.credit_images)
+
+		self.credit_surface = pygame.Surface((Globals.window.get_size()[0], int(height)))
+
+		for i in range(len(self.credit_text)):
+			text = self.credit_text[i]
+			r = self.credit_font.render(text, False, (255, 255, 255))
+			x = (Globals.window.get_size()[0] - self.credit_font.size(text)[0]) / 2
+			y = (self.credit_font.get_height() + self.credit_gap + self.credit_image_height + self.credit_gap) * i + self.credit_gap + self.credit_font.get_height()
+			self.credit_surface.blit(r, (int(x), int(y)))
 
 	# Draws Everything
 	def render(self):
@@ -229,16 +270,52 @@ class HeadsUpDisplay:
 		win = Globals.window.get_size()
 
 		if Globals.playing_credits:
+			# checks if it is fading into the credits or into the menu
+			if self.is_fading_out:
+				if self.credits_done:
+					# Fades into menu
+					self.fade_out()
+				else:
+					# Fades into credits
+					self.fade_out(False)
+					return
 
-			black = (0, 0, 0):
-			pygame.draw.rect(Globals.window, black, [0, 0, w[0], w[1]])
+			# Checks if it should draw te credits
+			if not self.is_fading_out or self.credits_done:
+				# Draws background
+				black = (0, 0, 0)
+				pygame.draw.rect(Globals.window, black, [0, 0, win[0], win[1]])
 
-			time_since = time.time() - self.credit_start_time()
+				# Gets the time since
+				time_since = time.time() - self.credit_start_time
 
-			for line in self.credit_text:
+				# Gets an editable version of the surface with the text already on it
+				sur = self.credit_surface.copy()
 
+				# Blits the images onto the surface
+				for i in range(len(self.credit_images)):
+					# Gets the index
+					rounded_time = round(time_since, 1)
+					time_since_change = rounded_time % (len(self.credit_images[i]) * self.sprite_interval)
+					index = int(time_since_change / self.sprite_interval)
 
+					# Gets the x and y coordinates
+					x = (win[0] - self.credit_images[i][index].get_size()[0]) / 2
+					y = i * (self.credit_image_height + 2 * self.credit_gap + self.credit_font.get_height())
 
+					# Blits onto surface
+					sur.blit(self.credit_images[i][index], (x, y))
+
+				# blits sur onto the window with an offset depending on time
+				# Makes the credits roll up the screen
+				y = win[1] - (time_since / self.credit_time) * sur.get_size()[1]
+				Globals.window.blit(sur, (0, y))
+
+				# Checks if the credits are done
+				if sur.get_size()[1] + y < win[1] and not self.credits_done:
+					self.credits_done = True
+					self.is_fading_out = True
+					self.fade_start_time = time.time()
 
 		# Draws Message Box
 		if self.mb_is_showing:
@@ -509,7 +586,7 @@ class HeadsUpDisplay:
 		Globals.in_menu = True
 
 	# Creates the fade to block look
-	def fade_out(self):
+	def fade_out(self, update_graphics=True):
 
 		# Sets up initially
 		if self.rect_alpha is None:
@@ -525,11 +602,13 @@ class HeadsUpDisplay:
 
 		if self.rect_alpha > 255:
 			self.is_fading_out = False
-			Globals.is_paused = False
-			Globals.graphics_level += 1
-			Globals.music_fade_in = True
-			Globals.menu_fade_in = True
-			Globals.in_menu = True
+			if update_graphics:
+				Globals.is_paused = False
+				if Globals.graphics_level < 2:
+					Globals.graphics_level += 1
+				Globals.menu_fade_in = True
+				Globals.in_menu = True
+				Globals.music_fade_in = True
 
 	def fade_in(self):
 

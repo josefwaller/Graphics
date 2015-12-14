@@ -1,8 +1,45 @@
-[
-  "Literally everything was made by Josef Waller",
-  "Art by Josef Waller",
-  "Programming by Josef Waller",
-  "Music by Josef Waller",
-  "Tested by Josef Waller and Co.",
-  "THANK YOU FOR PLAYING"
-]
+{
+  "text": [
+      "Knight/Player",
+      "Walker",
+      "Wizard",
+      "Archer",
+      "Jumper",
+      "Designed and Developed by Josef Waller",
+      "THANK YOU FOR PLAYING"
+  ],
+  "images": [
+    [
+      "player/temp/t_run_2.png",
+      "player/8bit/8_run_2.png",
+      "player/16bit/16_run_2.png"
+    ],
+    [
+      "enemies/walker/t_run_2.png",
+      "enemies/walker/run_2.png",
+      "enemies/walker/16_run_2.png"
+    ],
+    [
+      "enemies/wizard/t_front_1.png",
+      "enemies/wizard/front_2.png",
+      "enemies/wizard/16_front_2.png"
+    ],
+    [
+      "enemies/archer/t_archer_1.png",
+      "enemies/archer/archer_1.png",
+      "enemies/archer/16_archer_1.png"
+    ],
+    [
+      "enemies/jumper/t_jumper_land.png",
+      "enemies/jumper/jumper_land.png",
+      "enemies/jumper/16_jumper_land.png"
+    ],
+    [
+      "props/8_guy_1.png",
+      "props/8_guy_2.png"
+    ],
+    [
+      "menu/icon.png"
+    ]
+  ]
+}

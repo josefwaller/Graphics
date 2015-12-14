@@ -1,5 +1,6 @@
 import pygame
 
+
 class KeyHandler ():
 
 	keys_down = []
@@ -8,7 +9,7 @@ class KeyHandler ():
 
 		self.keys_down = []
 
-	def new_event (self, event):
+	def new_event(self, event):
 
 		this_frame_keys = []
 
