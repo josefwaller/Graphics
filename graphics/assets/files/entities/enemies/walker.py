@@ -79,3 +79,5 @@ class Walker (BaseEnemy):
 	def update(self):
 
 		self.move()
+
+		self.check_for_player_collision()

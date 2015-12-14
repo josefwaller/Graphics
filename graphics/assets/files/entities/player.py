@@ -257,12 +257,7 @@ class Player (JumpingEntity):
 
 				else:
 					self.sprite_indexes = running_sprites
-
-				# Checks for collisions
-				for enemy in Globals.enemies:
-					if self.check_for_collision(enemy):
-						self.on_hit()
-
+					
 			# Checks for falling animation
 			else:
 

@@ -21,24 +21,25 @@ class BaseEnemy (JumpingEntity):
 
 	def check_for_player_collision(self):
 
-		collide_x = False
-		collide_y = False
+		if not self.is_dying:
 
-		for hb in Globals.player.hitboxes:
+			collide_x = False
+			collide_y = False
 
-			if self.x < hb.x + hb.w:
-				if self.x + self.w > hb.x:
+			for hb in Globals.player.hitboxes:
 
-					collide_x = True
+				if self.x < hb.x + hb.w:
+					if self.x + self.w > hb.x:
 
-			if self.y < hb.y + hb.w:
-				if self.y + self.h > hb.y:
+						collide_x = True
 
-					collide_y = True
+				if self.y < hb.y + hb.w:
+					if self.y + self.h > hb.y:
 
-			if collide_x and collide_y:
+						collide_y = True
 
-				Globals.player.on_hit()
+				if collide_x and collide_y:
+					Globals.player.on_hit()
 
 	def on_hit(self):
 

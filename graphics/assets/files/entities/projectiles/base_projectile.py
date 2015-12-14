@@ -6,7 +6,7 @@ class BaseProjectile (BaseEntity):
 
 	is_enemy = True
 
-	def check_for_player(self):
+	def check_for_target(self):
 
 		if self.is_enemy:
 
