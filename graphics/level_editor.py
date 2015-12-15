@@ -124,6 +124,8 @@ class LevelEditor:
 
 						if thing['type'] == 'checkpoint':
 							y -= 1
+						elif thing['type'] == 'prop':
+							attributes['images'] = thing['image']
 
 						self.entities[thing['x']][thing['y']] = BaseItem(
 							x=thing['x'] * LEGlobals.block_size,

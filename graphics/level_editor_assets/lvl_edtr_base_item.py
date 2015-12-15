@@ -72,7 +72,11 @@ class BaseItem:
 
 		elif self.attributes['type'] == 'checkpoint':
 			to_save['y'] += 1
+
 		to_save.pop('image')
+
+		if self.attributes['type'] == 'prop':
+			to_save['image'] = self.attributes['images']
 
 		return to_save
 

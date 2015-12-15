@@ -16,6 +16,7 @@
 		"image": "assets/images/props/t_guy_1.png",
 		"type": "prop",
 		"selected": false,
+	  	"images" : null,
 		"editable": {
 			"num": 0
 		}
