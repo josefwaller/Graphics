@@ -39,6 +39,8 @@ class Player (JumpingEntity):
 	blink_delay = 0.1
 	blink_start_time = 0
 
+	jump_sound = None
+
 	is_dead = None
 
 	# The most recent checkpoint
@@ -123,6 +125,9 @@ class Player (JumpingEntity):
 			1
 		]
 
+		# Loads jump sound
+		self.jump_sound = pygame.mixer.Sound("assets/sounds/jump.wav")
+
 		# Sets the last time to 0
 		# Makes the player start at rest
 		self.jump_last_time = time.time()
@@ -164,7 +169,9 @@ class Player (JumpingEntity):
 
 		# Checks for jumping
 		if pygame.K_UP in keys and self.is_grounded and not self.using_tool:
+			self.jump_sound.play(loops=0)
 			self.start_jump()
+			print("Play sound")
 
 		# Checks for tool use
 		if pygame.K_SPACE in keys:

@@ -5,7 +5,7 @@ from assets.files.utilities.globals import Globals
 
 
 # Manages the background music and sound
-class SoundManager:
+class MusicManager:
 
 	# The current music playing
 	menu_music = None

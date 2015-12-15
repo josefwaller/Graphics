@@ -6,7 +6,7 @@ import time
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
 from assets.files.utilities.main_menu import MainMenu
-from assets.files.utilities.sound_manager import SoundManager
+from assets.files.utilities.music_manager import MusicManager
 
 from level_editor import LevelEditor
 from assets.files.utilities.level_reader import LevelReader
@@ -47,7 +47,7 @@ class Main:
 
 		k = KeyHandler()
 		m = MainMenu()
-		s = SoundManager()
+		s = MusicManager()
 
 		keys = [[], []]
 
