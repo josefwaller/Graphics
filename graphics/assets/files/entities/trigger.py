@@ -55,4 +55,8 @@ class Trigger (BaseEntity):
 
 			pink = (255, 0, 255)
 
-			pygame.draw.rect(Globals.window, pink, [self.x + Globals.camera_offset['x'], self.y, self.w, self.h])
+			pygame.draw.rect(Globals.window, pink, [
+				self.x + Globals.camera_offset['x'],
+				self.y + Globals.camera_offset['y'],
+				self.w,
+				self.h])

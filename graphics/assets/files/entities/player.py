@@ -47,7 +47,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = None
+	tool = "Staff"
 
 	def __init__(self, x, y):
 
@@ -125,8 +125,11 @@ class Player (JumpingEntity):
 			1
 		]
 
-		# Loads jump sound
-		self.jump_sound = pygame.mixer.Sound("assets/sounds/jump.wav")
+		# Loads sounds
+		self.jump_sound = self.load_sound("assets/sounds/jump.wav")
+		self.arrow_sound = self.load_sound("assets/sounds/arrow.wav")
+		self.sword_sound = self.load_sound("assets/sounds/sword.wav")
+		self.missile_sound = self.load_sound("assets/sounds/missile.wav")
 
 		# Sets the last time to 0
 		# Makes the player start at rest
@@ -171,7 +174,6 @@ class Player (JumpingEntity):
 		if pygame.K_UP in keys and self.is_grounded and not self.using_tool:
 			self.jump_sound.play(loops=0)
 			self.start_jump()
-			print("Play sound")
 
 		# Checks for tool use
 		if pygame.K_SPACE in keys:
@@ -180,6 +182,8 @@ class Player (JumpingEntity):
 				# Sets up tool variables
 				if not self.using_tool:
 					self.tool_time = time.time()
+					if self.tool == "Sword":
+						self.sword_sound.play()
 
 				self.using_tool = True
 
@@ -214,6 +218,8 @@ class Player (JumpingEntity):
 				is_enemy=False,
 				speed=self.arrow_speed
 			))
+
+			self.arrow_sound.play()
 
 			self.using_tool = False
 
@@ -251,6 +257,7 @@ class Player (JumpingEntity):
 
 			# Adds missile
 			Globals.projectiles.append(Missile(x=x, y=self.y + self.h * 3/5, is_enemy=False, direction=direction))
+			self.missile_sound.play()
 
 	def move(self):
 

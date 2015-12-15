@@ -30,6 +30,15 @@ class LevelReader:
 
 	def read_level(self, level_str):
 
+		if Globals.graphics_level == 0:
+			Globals.pixels_per_block = 10
+		elif Globals.graphics_level == 1:
+			Globals.pixels_per_block = 16
+		elif Globals.graphics_level == 2:
+			Globals.pixels_per_block = 32
+		else:
+			raise Exception("Graphics level has improper value %s" % (Globals.graphics_level))
+
 		level = json.loads(level_str)
 
 		Globals.hud = HeadsUpDisplay()

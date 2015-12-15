@@ -385,3 +385,7 @@ class BaseEntity:
 	# Filler
 	def death_animation(self):
 		del self
+
+	@staticmethod
+	def load_sound(sound_url):
+		return pygame.mixer.Sound(sound_url)

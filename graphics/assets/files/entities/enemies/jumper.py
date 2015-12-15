@@ -61,6 +61,8 @@ class Jumper(SmartEnemy):
 		self.last_jump = time.time()
 		self.momY = 0
 
+		self.jump_sound = self.load_sound("assets/sounds/jump.wav")
+
 	def attack(self):
 		if self.is_grounded:
 			if time.time() - self.landing_time >= self.landing_pause:
@@ -73,6 +75,7 @@ class Jumper(SmartEnemy):
 
 				self.speed = abs(Globals.player.x - self.x) * ((random.random() * 0.5) + 0.5)
 				self.start_jump()
+				self.jump_sound.play()
 				self.landing_time = time.time()
 
 	def animate(self):

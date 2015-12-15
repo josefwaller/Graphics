@@ -64,6 +64,8 @@ class Archer (SmartEnemy):
 		self.h = 13
 		self.entity_init(x, y)
 
+		self.arrow_sound = self.load_sound("assets/sounds/arrow.wav")
+
 	def attack(self):
 
 		if self.facing_left:
@@ -72,6 +74,7 @@ class Archer (SmartEnemy):
 			direction = -1
 
 		Globals.projectiles.append(Arrow(x=self.x, y=self.y + int(self.h / 2), direction=direction, is_enemy=True))
+		self.arrow_sound.play()
 		self.end_attack()
 
 	def update (self):

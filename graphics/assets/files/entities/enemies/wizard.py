@@ -55,7 +55,9 @@ class Wizard (SmartEnemy):
 		self.h = 15
 		self.entity_init(x, y)
 
-	def attack (self):
+		self.missile_sound = self.load_sound("assets/sounds/missile.wav")
+
+	def attack(self):
 
 		if self.facing_left:
 			direction = 1
@@ -63,10 +65,11 @@ class Wizard (SmartEnemy):
 			direction = -1
 
 		Globals.projectiles.append(Missile(x=self.x, y=self.y + int(4*self.h/5) , direction=direction, is_enemy=True))
+		self.missile_sound.play()
 		self.end_attack()
 
 
-	def update (self):
+	def update(self):
 
 		self.should_attack()
 		self.check_for_player_collision()
