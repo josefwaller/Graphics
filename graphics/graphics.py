@@ -2,6 +2,7 @@ import sys
 import pygame
 import json
 import time
+import os
 
 from assets.files.utilities.key_handler import KeyHandler
 from assets.files.utilities.globals import Globals
@@ -22,9 +23,24 @@ class Main:
 		# creates the window, loads images, etc
 
 		# initializes setting
-		settings_file = open("assets/settings/settings.json", "r")
-		self.settings = json.loads(settings_file.read())
-		settings_file.close()
+		settings_directory = "assets/settings/settings.json"
+		if os.path.isfile(settings_directory):
+			settings_file = open("assets/settings/settings.json", "r")
+			self.settings = json.loads(settings_file.read())
+			settings_file.close()
+		else:
+			settings_file = open(settings_directory, "w")
+			settings_file.seek(0)
+			default_settings = {
+				"screen_width": 800,
+				"screen_height": 600,
+				"volume": 1,
+				"fps": 60,
+				"graphics_level": 0
+			}
+			settings_file.write(json.dumps(default_settings))
+			settings_file.close()
+			self.settings = default_settings
 
 		# Sets the window dimensions
 		window_size = self.settings['screen_width'], self.settings['screen_height']
