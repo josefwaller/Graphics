@@ -68,7 +68,6 @@ class Wizard (SmartEnemy):
 		self.missile_sound.play()
 		self.end_attack()
 
-
 	def update(self):
 
 		self.should_attack()

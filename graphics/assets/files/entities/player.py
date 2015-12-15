@@ -47,7 +47,7 @@ class Player (JumpingEntity):
 	checkpoint = None
 
 	# A string representing the current tool
-	tool = "Staff"
+	tool = None
 
 	def __init__(self, x, y):
 

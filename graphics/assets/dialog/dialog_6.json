@@ -8,8 +8,8 @@
 	"3D?! Awesome!",
 	"No, you won't be.",
 	"Why not?",
-	"Because I'm ending this right now.",
-	"main.play_credits()"
+	"Because when you hit the endblock, the credits will play.",
+	"And there's nothing else to do so you will eventually."
   ],
   "images": [
 	"16_guy_dialog.png",
