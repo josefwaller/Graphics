@@ -5,1054 +5,1059 @@
 		"height": 36
 	},
 	"entities": [{
-		"selected": false,
-		"type": "player",
+		"editable": null,
 		"y": 17,
+		"type": "player",
 		"x": 7,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
+		"editable": {
+			"w": 65,
+			"type": 0,
+			"h": 1,
+			"file_num": 0
+		},
+		"y": 34,
 		"on_enter": {
 			"file": null,
 			"type": "player_die"
 		},
-		"h": 1,
 		"type": "trigger",
-		"y": 34,
-		"w": 65,
 		"x": 1,
-		"editable": {
-			"file_num": 0,
-			"w": 65,
-			"h": 1,
-			"type": 0
-		}
-	}, {
+		"w": 65,
 		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 20,
-		"w": 5,
-		"x": 5,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 5,
 			"h": 1
-		}
-	},  {
-		"selected": null,
-		"type": "checkpoint",
+		},
 		"y": 20,
+		"type": "platform",
+		"x": 5,
+		"w": 5,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 20,
+		"type": "checkpoint",
 		"x": 7,
-		"editable": null
+		"selected": null
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 6,
+			"h": 1
+		},
 		"y": 17,
-		"w": 6,
-		"x": 14,
-		"editable": {
-			"w": 6,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"type": "archer",
-		"y": 16,
-		"x": 17,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
 		"type": "platform",
-		"y": 15,
+		"x": 14,
 		"w": 6,
-		"x": 24,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 16,
+		"type": "archer",
+		"x": 17,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 6,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 15,
+		"type": "platform",
+		"x": 24,
+		"w": 6,
 		"selected": false,
+		"h": 1
+	}, {
+		"editable": {
+			"w": 1,
+			"type": 1,
+			"h": 8,
+			"file_num": 4
+		},
+		"y": 7,
 		"on_enter": {
 			"file": "dialog_4.json",
 			"type": "dialog_box"
 		},
-		"h": 8,
 		"type": "trigger",
-		"y": 7,
+		"x": 26,
 		"w": 1,
-		"x": 26,
-		"editable": {
-			"file_num": 4,
-			"w": 1,
-			"h": 8,
-			"type": 1
-		}
-	}, {
 		"selected": false,
-		"type": "prop",
+		"h": 8
+	}, {
+		"editable": {
+			"num": 0
+		},
 		"y": 14,
-		"x": 26,
-	  	"image": [
+		"type": "prop",
+		"image": [
 		  "16_guy_1.png",
 		  "16_guy_2.png"
 		],
-		"editable": {
-			"num": 0
-		}
+		"x": 26,
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 13,
-		"w": 7,
-		"x": 34,
 		"editable": {
 			"w": 7,
 			"h": 1
-		}
-	}, {
-		"selected": null,
-		"type": "checkpoint",
+		},
 		"y": 13,
+		"type": "platform",
+		"x": 34,
+		"w": 7,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 13,
+		"type": "checkpoint",
 		"x": 39,
-		"editable": null
+		"selected": null
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 14,
-		"w": 1,
+		"type": "platform",
 		"x": 46,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 14,
-		"w": 1,
+		"type": "platform",
 		"x": 51,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
+		"w": 1,
 		"selected": false,
-		"type": "wizard",
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 8,
-		"x": 56,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 9,
-		"w": 1,
-		"x": 56,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 14,
-		"w": 1,
-		"x": 56,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
 		"type": "wizard",
+		"x": 56,
+		"selected": false
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
+		"y": 9,
+		"type": "platform",
+		"x": 56,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
+		"y": 14,
+		"type": "platform",
+		"x": 56,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 19,
+		"type": "wizard",
 		"x": 56,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 20,
-		"w": 1,
+		"type": "platform",
 		"x": 56,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 14,
-		"w": 1,
+		"type": "platform",
 		"x": 61,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 26,
-		"type": "platform",
-		"y": 14,
 		"w": 1,
-		"x": 66,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 26
-		}
-	}, {
-		"selected": null,
-		"type": "checkpoint",
+		},
 		"y": 14,
-		"x": 67,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 7,
 		"type": "platform",
-		"y": 33,
-		"w": 14,
+		"x": 66,
+		"w": 1,
+		"selected": false,
+		"h": 26
+	}, {
+		"editable": null,
+		"y": 14,
+		"type": "checkpoint",
 		"x": 67,
+		"selected": null
+	}, {
 		"editable": {
 			"w": 14,
 			"h": 7
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 33,
 		"type": "platform",
-		"y": 27,
-		"w": 11,
-		"x": 68,
+		"x": 67,
+		"w": 14,
+		"selected": false,
+		"h": 7
+	}, {
 		"editable": {
 			"w": 11,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 27,
 		"type": "platform",
-		"y": 17,
-		"w": 1,
-		"x": 69,
+		"x": 68,
+		"w": 11,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 17,
 		"type": "platform",
-		"y": 21,
-		"w": 8,
 		"x": 69,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 8,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"type": "jumper",
-		"y": 25,
-		"x": 70,
-		"editable": null
-	}, {
-		"selected": false,
-		"type": "jumper",
-		"y": 31,
-		"x": 70,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 21,
 		"type": "platform",
-		"y": 13,
-		"w": 1,
-		"x": 71,
+		"x": 69,
+		"w": 8,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 25,
+		"type": "jumper",
+		"x": 70,
+		"selected": false
+	}, {
+		"editable": null,
+		"y": 31,
+		"type": "jumper",
+		"x": 70,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"type": "jumper",
-		"y": 25,
-		"x": 73,
-		"editable": null
-	}, {
-		"selected": false,
-		"type": "jumper",
-		"y": 31,
-		"x": 74,
-		"editable": null
-	}, {
-		"selected": false,
-		"type": "jumper",
-		"y": 25,
-		"x": 76,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 9,
-		"type": "platform",
+		},
 		"y": 13,
+		"type": "platform",
+		"x": 71,
 		"w": 1,
-		"x": 77,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 25,
+		"type": "jumper",
+		"x": 73,
+		"selected": false
+	}, {
+		"editable": {
+			"w": 2,
+			"h": 8
+		},
+		"y": 14,
+		"type": "platform",
+		"x": 67,
+		"w": 2,
+		"selected": false,
+		"h": 8
+	}, {
+		"editable": null,
+		"y": 31,
+		"type": "jumper",
+		"x": 74,
+		"selected": false
+	}, {
+		"editable": null,
+		"y": 25,
+		"type": "jumper",
+		"x": 76,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 9
-		}
-	}, {
+		},
+		"y": 13,
+		"type": "platform",
+		"x": 77,
+		"w": 1,
 		"selected": false,
-		"type": "archer",
+		"h": 9
+	}, {
+		"editable": null,
 		"y": 5,
+		"type": "archer",
 		"x": 79,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 6,
-		"w": 1,
+		"type": "platform",
 		"x": 79,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
+		"w": 1,
 		"selected": false,
-		"type": "archer",
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 8,
+		"type": "archer",
 		"x": 79,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 9,
-		"w": 1,
-		"x": 79,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"type": "archer",
-		"y": 11,
-		"x": 79,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 18,
+		},
+		"y": 9,
 		"type": "platform",
-		"y": 12,
-		"w": 1,
 		"x": 79,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 11,
+		"type": "archer",
+		"x": 79,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 18
-		}
-	}, {
-		"selected": null,
-		"type": "checkpoint",
-		"y": 33,
+		},
+		"y": 12,
+		"type": "platform",
 		"x": 79,
-		"editable": null
-	}, {
+		"w": 1,
 		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"h": 18
+	}, {
+		"editable": null,
+		"y": 33,
+		"type": "checkpoint",
+		"x": 79,
+		"selected": null
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 13,
-		"w": 1,
+		"type": "platform",
 		"x": 80,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 18,
-		"w": 1,
+		"type": "platform",
 		"x": 80,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 23,
-		"w": 1,
-		"x": 80,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
 		"type": "platform",
-		"y": 28,
-		"w": 1,
 		"x": 80,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 28,
+		"type": "platform",
+		"x": 80,
+		"w": 1,
 		"selected": false,
+		"h": 1
+	}, {
+		"editable": {
+			"w": 43,
+			"type": 0,
+			"h": 1,
+			"file_num": 0
+		},
+		"y": 35,
 		"on_enter": {
 			"file": null,
 			"type": "player_die"
 		},
-		"h": 1,
 		"type": "trigger",
-		"y": 35,
-		"w": 43,
 		"x": 81,
-		"editable": {
-			"file_num": 0,
-			"w": 43,
-			"h": 1,
-			"type": 0
-		}
-	}, {
+		"w": 43,
 		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"h": 1
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 11,
-		"w": 1,
+		"type": "platform",
 		"x": 83,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 9,
-		"w": 1,
+		"type": "platform",
 		"x": 86,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 11,
-		"w": 1,
+		"type": "platform",
 		"x": 92,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 9,
 		"w": 1,
-		"x": 96,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 9,
 		"type": "platform",
-		"y": 7,
-		"w": 4,
-		"x": 99,
+		"x": 96,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 4,
 			"h": 1
-		}
-	}, {
-		"selected": null,
-		"type": "checkpoint",
+		},
 		"y": 7,
-		"x": 100,
-		"editable": null
-	}, {
-		"selected": false,
-		"type": "wizard",
-		"y": 3,
-		"x": 103,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
 		"type": "platform",
-		"y": 4,
-		"w": 1,
+		"x": 99,
+		"w": 4,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 7,
+		"type": "checkpoint",
+		"x": 100,
+		"selected": null
+	}, {
+		"editable": null,
+		"y": 3,
+		"type": "wizard",
 		"x": 103,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 4,
 		"type": "platform",
-		"y": 10,
-		"w": 10,
-		"x": 106,
+		"x": 103,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 10,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 7,
+		},
+		"y": 10,
 		"type": "platform",
-		"y": 1,
-		"w": 1,
-		"x": 107,
+		"x": 106,
+		"w": 10,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 7
-		}
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		},
 		"y": 1,
-		"w": 6,
-		"x": 108,
+		"type": "platform",
+		"x": 107,
+		"w": 1,
+		"selected": false,
+		"h": 7
+	}, {
 		"editable": {
 			"w": 6,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 1,
 		"type": "platform",
-		"y": 7,
-		"w": 3,
 		"x": 108,
+		"w": 6,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 3,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 7,
 		"type": "platform",
-		"y": 4,
+		"x": 108,
 		"w": 3,
-		"x": 109,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 3,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 6,
-		"type": "platform",
+		},
 		"y": 4,
-		"w": 1,
-		"x": 112,
+		"type": "platform",
+		"x": 109,
+		"w": 3,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 6
-		}
-	}, {
-		"selected": false,
-		"h": 7,
+		},
+		"y": 4,
 		"type": "platform",
-		"y": 1,
+		"x": 112,
 		"w": 1,
-		"x": 114,
+		"selected": false,
+		"h": 6
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 7
-		}
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 1,
 		"type": "platform",
-		"y": 8,
-		"w": 4,
-		"x": 120,
+		"x": 114,
+		"w": 1,
+		"selected": false,
+		"h": 7
+	}, {
 		"editable": {
 			"w": 4,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 8,
+		"type": "platform",
+		"x": 120,
+		"w": 4,
 		"selected": false,
+		"h": 1
+	}, {
+		"editable": {
+			"w": 1,
+			"type": 1,
+			"h": 6,
+			"file_num": 5
+		},
+		"y": 2,
 		"on_enter": {
 			"file": "dialog_5.json",
 			"type": "dialog_box"
 		},
-		"h": 6,
 		"type": "trigger",
-		"y": 2,
-		"w": 1,
 		"x": 121,
-		"editable": {
-			"file_num": 5,
-			"w": 1,
-			"h": 6,
-			"type": 1
-		}
-	}, {
+		"w": 1,
 		"selected": false,
+		"h": 6
+	}, {
+		"editable": {
+			"num": 0
+		},
+		"y": 7,
 		"type": "prop",
-	  	"image": [
+		"image": [
 		  "16_guy_1.png",
 		  "16_guy_2.png"
 		],
-		"y": 7,
 		"x": 121,
-		"editable": {
-			"num": 0
-		}
+		"selected": false
 	}, {
-		"selected": null,
+		"editable": null,
+		"y": 8,
 		"type": "checkpoint",
-		"y": 8,
 		"x": 123,
-		"editable": null
+		"selected": null
 	}, {
-		"selected": false,
-		"h": 32,
-		"type": "platform",
-		"y": 8,
-		"w": 1,
-		"x": 124,
 		"editable": {
 			"w": 1,
 			"h": 32
-		}
-	}, {
-		"selected": false,
-		"type": "bar",
-		"y": 19,
-		"x": 125,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 20,
+		},
+		"y": 8,
 		"type": "platform",
-		"y": 20,
-		"w": 43,
+		"x": 124,
+		"w": 1,
+		"selected": false,
+		"h": 32
+	}, {
+		"editable": null,
+		"y": 19,
+		"type": "bar",
 		"x": 125,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 43,
 			"h": 20
-		}
-	}, {
-		"selected": false,
-		"h": 18,
+		},
+		"y": 20,
 		"type": "platform",
-		"y": 0,
-		"w": 1,
-		"x": 126,
+		"x": 125,
+		"w": 43,
+		"selected": false,
+		"h": 20
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 18
-		}
-	}, {
+		},
+		"y": 0,
+		"type": "platform",
+		"x": 126,
+		"w": 1,
 		"selected": false,
-		"type": "wizard",
+		"h": 18
+	}, {
+		"editable": null,
 		"y": 7,
-		"x": 127,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 8,
-		"w": 1,
-		"x": 127,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
 		"type": "wizard",
-		"y": 13,
 		"x": 127,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 14,
-		"w": 1,
-		"x": 127,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 2,
+		},
+		"y": 8,
 		"type": "platform",
-		"y": 18,
+		"x": 127,
 		"w": 1,
-		"x": 132,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 13,
+		"type": "wizard",
+		"x": 127,
+		"selected": false
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
+		"y": 14,
+		"type": "platform",
+		"x": 127,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 2
-		}
-	}, {
-		"selected": false,
-		"type": "archer",
-		"y": 12,
-		"x": 136,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 18,
 		"type": "platform",
-		"y": 13,
+		"x": 132,
 		"w": 1,
+		"selected": false,
+		"h": 2
+	}, {
+		"editable": null,
+		"y": 12,
+		"type": "archer",
 		"x": 136,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 13,
+		"type": "platform",
+		"x": 136,
+		"w": 1,
 		"selected": false,
-		"turn1": 134.0,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": -1,
+			"rounds": 6
+		},
+		"y": 19,
 		"turn2": 139.0,
 		"type": "walker",
-		"y": 19,
+		"turn1": 134.0,
 		"x": 136,
-		"editable": {
-			"rounds": 6,
-			"offset": -1
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 19,
-		"w": 2,
-		"x": 139,
 		"editable": {
 			"w": 2,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 19,
+		"type": "platform",
+		"x": 139,
+		"w": 2,
 		"selected": false,
-		"type": "archer",
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 3,
+		"type": "archer",
 		"x": 142,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 4,
-		"w": 1,
+		"type": "platform",
 		"x": 142,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
+		"w": 1,
 		"selected": false,
-		"type": "archer",
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 6,
+		"type": "archer",
 		"x": 142,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 7,
-		"w": 1,
+		"type": "platform",
 		"x": 142,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
+		"w": 1,
 		"selected": false,
-		"type": "archer",
+		"h": 1
+	}, {
+		"editable": null,
 		"y": 9,
-		"x": 142,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 10,
-		"w": 1,
-		"x": 142,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
 		"type": "archer",
-		"y": 12,
 		"x": 142,
-		"editable": null
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 13,
-		"w": 1,
-		"x": 142,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 10,
+		"type": "platform",
+		"x": 142,
+		"w": 1,
 		"selected": false,
-		"turn1": 145.0,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 12,
+		"type": "archer",
+		"x": 142,
+		"selected": false
+	}, {
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
+		"y": 13,
+		"type": "platform",
+		"x": 142,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"y": 15,
 		"turn2": 146.0,
 		"type": "walker",
-		"y": 15,
+		"turn1": 145.0,
 		"x": 145,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 16,
-		"w": 1,
-		"x": 145,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 16,
+		"type": "platform",
+		"x": 145,
+		"w": 1,
 		"selected": false,
-		"turn1": 149.0,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"y": 12,
 		"turn2": 150.0,
 		"type": "walker",
-		"y": 12,
+		"turn1": 149.0,
 		"x": 149,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 13,
-		"w": 1,
-		"x": 149,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"type": "archer",
-		"y": 4,
-		"x": 151,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
 		"type": "platform",
-		"y": 5,
+		"x": 149,
 		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
+		"editable": null,
+		"y": 4,
+		"type": "archer",
 		"x": 151,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 5,
+		"type": "platform",
+		"x": 151,
+		"w": 1,
 		"selected": false,
-		"turn1": 152.0,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"y": 9,
 		"turn2": 153.0,
 		"type": "walker",
-		"y": 9,
+		"turn1": 152.0,
 		"x": 152,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
+		"editable": {
+			"w": 1,
+			"h": 1
+		},
 		"y": 10,
-		"w": 1,
-		"x": 152,
-		"editable": {
-			"w": 1,
-			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 1,
 		"type": "platform",
-		"y": 3,
+		"x": 152,
 		"w": 1,
-		"x": 155,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 3,
+		"type": "platform",
+		"x": 155,
+		"w": 1,
 		"selected": false,
-		"turn1": 155.0,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"y": 6,
 		"turn2": 156.0,
 		"type": "walker",
-		"y": 6,
+		"turn1": 155.0,
 		"x": 155,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 7,
-		"w": 1,
-		"x": 155,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 9,
+		},
+		"y": 7,
 		"type": "platform",
-		"y": 3,
+		"x": 155,
 		"w": 1,
-		"x": 156,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 9
-		}
-	}, {
-		"selected": false,
-		"type": "archer",
-		"y": 14,
-		"x": 156,
-		"editable": null
-	}, {
-		"selected": false,
-		"h": 1,
+		},
+		"y": 3,
 		"type": "platform",
-		"y": 15,
-		"w": 1,
 		"x": 156,
+		"w": 1,
+		"selected": false,
+		"h": 9
+	}, {
+		"editable": null,
+		"y": 14,
+		"type": "archer",
+		"x": 156,
+		"selected": false
+	}, {
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
+		},
+		"y": 15,
+		"type": "platform",
+		"x": 156,
+		"w": 1,
 		"selected": false,
-		"turn1": 162.0,
+		"h": 1
+	}, {
+		"editable": {
+			"offset": 0,
+			"rounds": 1
+		},
+		"y": 5,
 		"turn2": 163.0,
 		"type": "walker",
-		"y": 5,
+		"turn1": 162.0,
 		"x": 162,
-		"editable": {
-			"rounds": 1,
-			"offset": 0
-		}
+		"selected": false
 	}, {
-		"selected": false,
-		"h": 1,
-		"type": "platform",
-		"y": 6,
-		"w": 1,
-		"x": 162,
 		"editable": {
 			"w": 1,
 			"h": 1
-		}
-	}, {
-		"selected": false,
-		"h": 25,
+		},
+		"y": 6,
 		"type": "platform",
-		"y": 4,
-		"w": 10,
-		"x": 168,
+		"x": 162,
+		"w": 1,
+		"selected": false,
+		"h": 1
+	}, {
 		"editable": {
 			"w": 10,
 			"h": 25
-		}
-	}, {
+		},
+		"y": 4,
+		"type": "platform",
+		"x": 168,
+		"w": 10,
 		"selected": false,
+		"h": 25
+	}, {
+		"editable": {
+			"w": 1,
+			"type": 1,
+			"h": 4,
+			"file_num": 6
+		},
+		"y": 0,
 		"on_enter": {
 			"file": "dialog_6.json",
 			"type": "dialog_box"
 		},
-		"h": 4,
 		"type": "trigger",
-		"y": 0,
+		"x": 171,
 		"w": 1,
-		"x": 171,
-		"editable": {
-			"file_num": 6,
-			"w": 1,
-			"h": 4,
-			"type": 1
-		}
-	}, {
 		"selected": false,
-		"type": "prop",
-	  	"image": [
-		  "16_guy_1.png",
-		  "16_guy_2.png"
-		],
+		"h": 4
+	}, {
+		"editable": {
+			"num": 0
+		},
 		"y": 3,
-		"x": 171,
-		"editable": {
-			"num": 0
-		}
-	}, {
-		"selected": false,
 		"type": "prop",
-	  	"image": [
+		"image": [
 		  "16_guy_1.png",
 		  "16_guy_2.png"
 		],
-		"y": 1,
-		"x": 175,
-		"editable": {
-			"num": 0
-		}
+		"x": 171,
+		"selected": false
 	}, {
-		"selected": false,
+		"editable": {
+			"w": 1,
+			"type": 0,
+			"h": 4,
+			"file_num": 0
+		},
+		"y": 0,
 		"on_enter": {
 			"file": null,
 			"type": "player_die"
 		},
-		"h": 4,
 		"type": "trigger",
-		"y": 0,
-		"w": 1,
 		"x": 177,
-		"editable": {
-			"file_num": 0,
-			"w": 1,
-			"h": 4,
-			"type": 0
-		}
+		"w": 1,
+		"selected": false,
+		"h": 4
+	}, {
+		"editable": null,
+		"y": 1,
+		"type": "endblock",
+		"x": 174,
+		"selected": false
 	}]
 }

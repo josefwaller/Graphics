@@ -8,20 +8,13 @@ class EndBlock (BaseEntity):
 
 	def __init__(self, x, y):
 
-		if Globals.graphics_level == 0:
-			self.graphic_images = [
-				self.img_load("blocks/t_up_graphics_8.png"),
-				self.img_load("blocks/8_up_graphics_8.png")
-			]
-		elif Globals.graphics_level == 1:
-			self.graphic_images = [
-				self.img_load("blocks/8_up_graphics_16.png"),
-				self.img_load("blocks/16_up_graphics_16.png")
-			]
-		else:
-			pass
+		self.graphic_images = [
+			self.img_load("blocks/8_up_graphics_8.png"),
+			self.img_load("blocks/16_up_graphics_16.png"),
+			self.img_load("blocks/3d_end_block.png")
+		]
 
-		self.image = self.graphic_images[0]
+		self.image = self.graphic_images[Globals.graphics_level]
 
 		self.is_animated = False
 		self.is_static = True
@@ -40,6 +33,11 @@ class EndBlock (BaseEntity):
 	def update(self):
 
 		if self.check_for_collision(Globals.player) and not self.used:
+
+			if Globals.graphics_level == 2:
+				Globals.hud.show_credits()
+				self.used = True
+				return
 
 			Globals.is_paused = True
 
