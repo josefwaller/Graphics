@@ -66,8 +66,6 @@ class MusicManager:
 
 				if self.graphics_level is not Globals.graphics_level:
 					self.update_graphics()
-				if not Globals.volume == pygame.mixer.music.get_volume():
-					pygame.mixer.music.set_volume(Globals.volume)
 
 				if not Globals.in_menu == self.in_menu:
 					self.playing_menu_music = not self.playing_menu_music
@@ -78,9 +76,16 @@ class MusicManager:
 
 					self.in_menu = Globals.in_menu
 
+			pause_multiplier = 3/4
+			if Globals.is_paused and not pygame.mixer.music.get_volume() == Globals.volume * pause_multiplier:
+				pygame.mixer.music.set_volume(Globals.volume * pause_multiplier)
+			elif not Globals.is_paused and not pygame.mixer.music.get_volume() == Globals.volume:
+				pygame.mixer.music.set_volume(Globals.volume)
+
 			# Fading in and out
 			if self.fading_out:
-				volume = (self.fade_duration - (time.time() - self.fade_time)) / self.fade_duration
+				max_volume = Globals.volume * Globals.volume_multiplier
+				volume = max_volume * (self.fade_duration - (time.time() - self.fade_time)) / self.fade_duration
 				if volume <= 0:
 					self.fading_out = False
 					pygame.mixer.music.set_volume(0)
@@ -88,12 +93,14 @@ class MusicManager:
 					pygame.mixer.music.set_volume(volume)
 
 			elif self.fading_in:
-				volume = (time.time() - self.fade_time) / self.fade_duration
+				max_volume = Globals.volume
+				volume = max_volume * (time.time() - self.fade_time) / self.fade_duration
 				if volume >= 1:
 					self.fading_in = False
 					pygame.mixer.music.set_volume(1)
 				else:
 					pygame.mixer.music.set_volume(volume)
+
 
 			# Checks globals to see if it should fade in or out
 			if Globals.music_fade_in:
@@ -107,6 +114,8 @@ class MusicManager:
 				self.fade_time = time.time()
 				pygame.mixer.music.set_volume(1)
 				Globals.music_fade_out = False
+
+
 
 	@staticmethod
 	def play_music(music):
