@@ -118,7 +118,8 @@ class Main:
 
 		Globals.in_menu = False
 		file = open("assets/levels/%s" % lvl_string)
-		Globals.graphics_level = 2
+		Globals.graphics_level = 0
+
 		l = LevelReader()
 		l.read_level(file.read())
 		file.close()

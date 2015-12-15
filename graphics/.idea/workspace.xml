@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/entities/end_block.py" afterPath="$PROJECT_DIR$/assets/files/entities/end_block.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" afterPath="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/levels/l3.json" afterPath="$PROJECT_DIR$/assets/levels/l3.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/levels/l2.json" afterPath="$PROJECT_DIR$/assets/levels/l2.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/settings/settings.json" afterPath="$PROJECT_DIR$/assets/settings/settings.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graphics.py" afterPath="$PROJECT_DIR$/graphics.py" />
     </list>
@@ -50,16 +50,18 @@
       <file leaf-file-name="heads_up_display.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/files/utilities/heads_up_display.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7457944">
-              <caret line="621" column="44" selection-start-line="621" selection-start-column="44" selection-end-line="621" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.07939189">
+              <caret line="175" column="29" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
                 <element signature="e#3830#5117#0" expanded="false" />
-                <element signature="e#13296#14182#0" expanded="false" />
-                <element signature="e#14216#15539#0" expanded="false" />
-                <element signature="e#15562#15616#0" expanded="false" />
-                <element signature="e#15637#15659#0" expanded="false" />
-                <element signature="e#16388#16812#0" expanded="false" />
+                <element signature="e#5166#6761#0" expanded="false" />
+                <element signature="e#13228#14114#0" expanded="false" />
+                <element signature="e#14148#15471#0" expanded="false" />
+                <element signature="e#15494#15548#0" expanded="false" />
+                <element signature="e#15569#15591#0" expanded="false" />
+                <element signature="e#15673#16295#0" expanded="false" />
+                <element signature="e#16320#16744#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/graphics.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,6 +94,8 @@
               <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
+                <marker date="1450143652095" expanded="true" signature="151:1117" placeholder="..." />
+                <marker date="1450143652095" expanded="true" signature="179:623" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -110,8 +114,8 @@
       <file leaf-file-name="sound_manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/files/utilities/sound_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.122807">
-              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+            <state vertical-scroll-proportion="-6.7017546">
+              <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -775,14 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/utilities/main_menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/images/enemies/wizard/front_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -812,39 +808,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/utilities/sound_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.122807">
-          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/levels/l3.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6746988">
           <caret line="1039" column="21" selection-start-line="1039" selection-start-column="21" selection-end-line="1039" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/entities/end_block.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,18 +824,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/entities/end_block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+            <marker date="1450143652095" expanded="true" signature="151:1117" placeholder="..." />
+            <marker date="1450143652095" expanded="true" signature="179:623" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/utilities/main_menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/utilities/sound_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.7017546">
+          <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/utilities/heads_up_display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7457944">
-          <caret line="621" column="44" selection-start-line="621" selection-start-column="44" selection-end-line="621" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.07939189">
+          <caret line="175" column="29" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
             <element signature="e#3830#5117#0" expanded="false" />
-            <element signature="e#13296#14182#0" expanded="false" />
-            <element signature="e#14216#15539#0" expanded="false" />
-            <element signature="e#15562#15616#0" expanded="false" />
-            <element signature="e#15637#15659#0" expanded="false" />
-            <element signature="e#16388#16812#0" expanded="false" />
+            <element signature="e#5166#6761#0" expanded="false" />
+            <element signature="e#13228#14114#0" expanded="false" />
+            <element signature="e#14148#15471#0" expanded="false" />
+            <element signature="e#15494#15548#0" expanded="false" />
+            <element signature="e#15569#15591#0" expanded="false" />
+            <element signature="e#15673#16295#0" expanded="false" />
+            <element signature="e#16320#16744#0" expanded="false" />
           </folding>
         </state>
       </provider>

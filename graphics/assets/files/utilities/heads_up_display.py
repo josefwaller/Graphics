@@ -173,7 +173,7 @@ class HeadsUpDisplay:
 		self.fade_start_time = None
 
 		self.credit_gap = 3 * Globals.block_size
-		self.credit_time = 30
+		self.credit_time = 45
 		self.credit_font = Globals.get_font_by_height(font_url, 40)
 		self.showing_credits = False
 		self.credit_surface = None
@@ -226,7 +226,6 @@ class HeadsUpDisplay:
 
 	# Sets up the credits
 	def show_credits(self):
-		print("Creds")
 		file = open("assets/dialog/credits.json", "r")
 		credits = json.loads(file.read())
 		file.close()
@@ -280,18 +279,16 @@ class HeadsUpDisplay:
 			# checks if it is fading into the credits or into the menu
 			if self.is_fading_out:
 				if self.credits_done:
-					print("ASDF")
 					# Fades into menu
+					Globals.menu_fade_in = True
 					self.fade_out()
 				else:
 					# Fades into credits
-					print("FDAFDSA")
 					self.fade_out(False)
 					return
 
 			# Checks if it should draw te credits
 			if not self.is_fading_out or self.credits_done:
-				print("ASFD")
 				# Draws background
 				black = (0, 0, 0)
 				pygame.draw.rect(Globals.window, black, [0, 0, win[0], win[1]])
@@ -323,7 +320,6 @@ class HeadsUpDisplay:
 
 				# Checks if the credits are done
 				if sur.get_size()[1] + y < win[1] and not self.credits_done:
-					print("Creds done")
 					self.credits_done = True
 					self.is_fading_out = True
 					self.fade_start_time = time.time()
