@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+"""
+A game where the player progress throughout each level to get better graphics.
+This is the main file. It runs the main loop and updates all the other components
+"""
+
 import sys
 import pygame
 import json
@@ -11,6 +18,14 @@ from assets.files.utilities.music_manager import MusicManager
 
 from level_editor import LevelEditor
 from assets.files.utilities.level_reader import LevelReader
+
+__author__ = "Josef Waller"
+__copyright__ = "None"
+__credits__ = ["Josef Waller"]
+
+__maintainer__ = "Josef Waller"
+__email__ = "josef@josefwaller.com"
+__version__ = "1.0"
 
 
 class Main:
