@@ -143,12 +143,17 @@ class Main:
 
 if __name__ == "__main__":
 
-	if sys.argv[1] == "playgame":
+	try:
+		x = sys.argv[1]
+	except:
+		x = None
+
+	if x == "playgame":
 
 		main = Main()
 		main.play_game()
 
-	elif sys.argv[1] == "leveleditor":
+	elif x == "leveleditor":
 
 		args = sys.argv[2:].copy()
 		# while len(args) < 4:
@@ -156,8 +161,12 @@ if __name__ == "__main__":
 
 		main = LevelEditor(*args)
 
-	elif sys.argv[1] == "testlevel":
+	elif x == "testlevel":
 		main = Main()
 		main.test_level(sys.argv[2])
 		print("ASDF")
+
+	else:
+		main = Main()
+		main.play_game()
 

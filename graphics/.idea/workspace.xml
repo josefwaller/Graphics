@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf190c9-1856-487e-aa20-7ec6bdacc7ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/files/utilities/music_manager.py" afterPath="$PROJECT_DIR$/assets/files/utilities/music_manager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graphics.py" afterPath="$PROJECT_DIR$/graphics.py" />
     </list>
     <ignored path="graphics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graphics.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="graphics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/graphics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.9425676">
+              <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -46,17 +46,17 @@
       <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/settings/settings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="music_manager.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="music_manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/files/utilities/music_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6891892">
+            <state vertical-scroll-proportion="0.0">
               <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -191,10 +191,10 @@
         <option value="$PROJECT_DIR$/assets/files/entities/player.py" />
         <option value="$PROJECT_DIR$/assets/files/utilities/globals.py" />
         <option value="$PROJECT_DIR$/assets/dialog/dialog_6.json" />
-        <option value="$PROJECT_DIR$/graphics.py" />
         <option value="$PROJECT_DIR$/assets/settings/settings.json" />
         <option value="$PROJECT_DIR$/assets/files/utilities/heads_up_display.py" />
         <option value="$PROJECT_DIR$/assets/files/utilities/music_manager.py" />
+        <option value="$PROJECT_DIR$/graphics.py" />
       </list>
     </option>
   </component>
@@ -229,6 +229,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -351,8 +353,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -821,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="101" selection-start-line="24" selection-start-column="101" selection-end-line="24" selection-end-column="101" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,19 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="386" column="16" selection-start-line="386" selection-start-column="16" selection-end-line="386" selection-end-column="16" />
-          <folding>
-            <element signature="e#4146#4369#0" expanded="false" />
-            <element signature="e#4397#4775#0" expanded="false" />
-            <element signature="e#4820#4875#0" expanded="false" />
-            <element signature="e#4903#4987#0" expanded="false" />
-            <element signature="e#5018#5104#0" expanded="false" />
-            <element signature="e#5146#6015#0" expanded="false" />
-            <element signature="e#6039#7282#0" expanded="false" />
-            <element signature="e#7319#7527#0" expanded="false" />
-            <element signature="e#7560#8412#0" expanded="false" />
-            <element signature="e#8443#8547#0" expanded="false" />
-            <element signature="e#8589#8597#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -920,21 +906,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graphics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/files/utilities/music_manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6891892">
+        <state vertical-scroll-proportion="0.0">
           <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9425676">
+          <caret line="170" column="24" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
