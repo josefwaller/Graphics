@@ -48,6 +48,7 @@ class LevelReader:
 		Globals.checkpoints = []
 		Globals.tools = []
 		Globals.props = []
+		Globals.is_paused = False
 
 		settings = level['level_settings']
 		Globals.level_width = settings['width'] * Globals.block_size
