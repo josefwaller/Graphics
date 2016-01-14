@@ -283,8 +283,12 @@ class LevelEditor:
 				if not self.entities[x][y] == None:
 
 					e = self.entities[x][y]
-
-					to_save.append(e.get_save())
+					
+					# Sets player to first
+					if e.attributes['type'] == 'player':
+						to_save.insert(0, e.get_save())
+					else:
+						to_save.append(e.get_save())
 
 					if e.x + e.s > most_x:
 						most_x = e.x + e.s
