@@ -15,6 +15,8 @@ class Player (JumpingEntity):
 	x_translate = 0
 	# Speed
 	speed = 7
+	speedup_duration = 0.5
+	speedup_start_time = 0
 
 	jump_strength = 10
 	# the sound to play when jumping
@@ -163,13 +165,21 @@ class Player (JumpingEntity):
 
 			# Moves left
 			if pygame.K_LEFT in keys:
-				self.x_translate = -1
+				new_x_translate = -1
 				self.facing_left = True
 
 			# Moves Right
 			if pygame.K_RIGHT in keys:
-				self.x_translate = 1
+				new_x_translate = 1
 				self.facing_left = False
+
+
+			# Checks if it was moving the same way before
+			if not self.x_translate == new_x_translate:
+				self.speedup_start_time = time.time()
+
+			self.x_translate = new_x_translate
+
 		# Not moving
 		else:
 			self.x_translate = 0
@@ -282,7 +292,13 @@ class Player (JumpingEntity):
 
 		# Moves
 		if not self.using_tool:
-			self.x += self.x_translate * self.speed * self.delta_time
+			if not self.x_translate == 0:
+
+				if time.time() - self.speedup_start_time >= self.speedup_duration:
+					multiplier = 1
+				else:
+					multiplier = (time.time() - self.speedup_start_time) / self.speedup_duration
+				self.x += multiplier * self.x_translate * self.speed * self.delta_time
 
 			if self.is_grounded:
 				# Checks whether the player is standing or running
