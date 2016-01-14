@@ -16,7 +16,12 @@ class Player (JumpingEntity):
 	# Speed
 	speed = 7
 
-	jump_strength = 13
+	jump_strength = 10
+	# the sound to play when jumping
+	jump_sound = None
+	# used to determine jump strength
+	jump_time = 0
+	max_jump_time = 0.5
 
 	# Vertical Momentum
 	momY = 0
@@ -39,7 +44,6 @@ class Player (JumpingEntity):
 	blink_delay = 0.1
 	blink_start_time = 0
 
-	jump_sound = None
 
 	is_dead = None
 
@@ -171,9 +175,20 @@ class Player (JumpingEntity):
 			self.x_translate = 0
 
 		# Checks for jumping
-		if pygame.K_UP in keys and self.is_grounded and not self.using_tool:
-			self.jump_sound.play(loops=0)
-			self.start_jump()
+		if pygame.K_UP in keys:
+
+			if not self.using_tool:
+				# Starts jump if needed
+				if self.is_grounded:
+					self.jump_time = time.time()
+					self.jump_sound.play(loops=0)
+					self.start_jump()
+
+				else:
+					# Player is still holding down up
+					if time.time() - self.jump_time < self.max_jump_time:
+						# Cancels out three quaters of down momentum
+						self.momY += (Globals.gravity_strength * self.delta_time) * (2 / 4)
 
 		# Checks for tool use
 		if pygame.K_SPACE in keys:
