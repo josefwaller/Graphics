@@ -53,6 +53,10 @@ class SmartEnemy (BaseEnemy):
 
 					return True
 					
+		else:
+			# Sets so that attack times do not build up when the player is not visible
+			# Prevents the player from being spammed by projectiles
+			self.last_attack_time = time.time()
 		return False
 
 	def check_visibility(self):
