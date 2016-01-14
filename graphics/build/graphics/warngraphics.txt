@@ -5,63 +5,64 @@ missing module named __main__ - imported by pkg_resources
 missing module named distutils.util.convert_path - imported by distutils.util, distutils.filelist
 missing module named ntpath.isfile - imported by ntpath, distutils.file_util
 missing module named ntpath.exists - imported by ntpath, pygame.sysfont, distutils.file_util
+missing module named _pickle.PickleError - imported by _pickle, pickle
 missing module named _pickle.loads - imported by _pickle, pickle
-missing module named _pickle.load - imported by _pickle, pickle
-missing module named _pickle.dumps - imported by _pickle, pickle
+missing module named _pickle.PicklingError - imported by _pickle, pickle
 missing module named _pickle.Pickler - imported by _pickle, pickle
 missing module named _pickle.Unpickler - imported by _pickle, pickle
 missing module named _pickle.dump - imported by _pickle, pickle
-missing module named _pickle.PicklingError - imported by _pickle, pickle
-missing module named _pickle.PickleError - imported by _pickle, pickle
+missing module named _pickle.dumps - imported by _pickle, pickle
 missing module named _pickle.UnpicklingError - imported by _pickle, pickle
+missing module named _pickle.load - imported by _pickle, pickle
 missing module named 'org.python'.PyStringMap - imported by 'org.python', pickle
 missing module named 'org.python' - imported by pickle, xml.sax
 missing module named 'org.python'.imp - imported by 'org.python', xml.sax
-missing module named struct.pack - imported by struct, pickle
 missing module named struct.unpack - imported by struct, pickle
+missing module named struct.pack - imported by struct, pickle
 missing module named sys.maxsize - imported by sys, pickle
 missing module named _multiprocessing.sem_unlink - imported by _multiprocessing, multiprocessing.synchronize
 missing module named _multiprocessing.SemLock - imported by _multiprocessing, multiprocessing.synchronize
 missing module named multiprocessing.set_start_method - imported by multiprocessing, multiprocessing.spawn
 missing module named multiprocessing.get_start_method - imported by multiprocessing, multiprocessing.spawn
 missing module named multiprocessing.pool.ThreadPool - imported by multiprocessing.pool, multiprocessing.dummy
-missing module named multiprocessing.get_context - imported by multiprocessing, multiprocessing.pool, multiprocessing.managers, multiprocessing.sharedctypes
 missing module named multiprocessing.TimeoutError - imported by multiprocessing, multiprocessing.pool
+missing module named multiprocessing.get_context - imported by multiprocessing, multiprocessing.pool, multiprocessing.managers, multiprocessing.sharedctypes
 missing module named _operator._compare_digest - imported by _operator, hmac
-missing module named _winapi.INFINITE - imported by _winapi, multiprocessing.connection
-missing module named _winapi.WAIT_OBJECT_0 - imported by _winapi, multiprocessing.connection
-missing module named _winapi.WAIT_TIMEOUT - imported by _winapi, multiprocessing.connection
 missing module named _winapi.WAIT_ABANDONED_0 - imported by _winapi, multiprocessing.connection
+missing module named _winapi.WAIT_OBJECT_0 - imported by _winapi, multiprocessing.connection
+missing module named _winapi.INFINITE - imported by _winapi, multiprocessing.connection
+missing module named _winapi.WAIT_TIMEOUT - imported by _winapi, multiprocessing.connection
 missing module named multiprocessing.connection.Listener - imported by multiprocessing.connection, multiprocessing.resource_sharer
 missing module named multiprocessing.connection.Client - imported by multiprocessing.connection, multiprocessing.resource_sharer
-missing module named multiprocessing.AuthenticationError - imported by multiprocessing, multiprocessing.connection
 missing module named multiprocessing.BufferTooShort - imported by multiprocessing, multiprocessing.connection
+missing module named multiprocessing.AuthenticationError - imported by multiprocessing, multiprocessing.connection
+missing module named multiprocessing.context.get_spawning_popen - imported by multiprocessing.context, multiprocessing.process
 missing module named _ctypes._wstring_at_addr - imported by _ctypes, ctypes
 missing module named _ctypes._memset_addr - imported by _ctypes, ctypes
+missing module named _ctypes._memmove_addr - imported by _ctypes, ctypes
 missing module named _ctypes._cast_addr - imported by _ctypes, ctypes
 missing module named _ctypes._string_at_addr - imported by _ctypes, ctypes
-missing module named _ctypes._memmove_addr - imported by _ctypes, ctypes
-missing module named _ctypes.get_last_error - imported by _ctypes, ctypes
 missing module named _ctypes.set_last_error - imported by _ctypes, ctypes
+missing module named _ctypes.get_last_error - imported by _ctypes, ctypes
 missing module named _ctypes._check_HRESULT - imported by _ctypes, ctypes
+missing module named _ctypes._pointer_type_cache - imported by _ctypes, ctypes
 missing module named _ctypes.pointer - imported by _ctypes, ctypes
 missing module named _ctypes.POINTER - imported by _ctypes, ctypes
-missing module named _ctypes._pointer_type_cache - imported by _ctypes, ctypes
 missing module named _ctypes._SimpleCData - imported by _ctypes, ctypes
-missing module named _ctypes.get_errno - imported by _ctypes, ctypes
 missing module named _ctypes.set_errno - imported by _ctypes, ctypes
+missing module named _ctypes.get_errno - imported by _ctypes, ctypes
 missing module named _ctypes.resize - imported by _ctypes, ctypes
+missing module named _ctypes.sizeof - imported by _ctypes, ctypes
 missing module named _ctypes.alignment - imported by _ctypes, ctypes
 missing module named _ctypes.byref - imported by _ctypes, ctypes
-missing module named _ctypes.sizeof - imported by _ctypes, ctypes
 missing module named _ctypes.addressof - imported by _ctypes, ctypes
 missing module named _ctypes.dlopen - imported by _ctypes, ctypes
 missing module named _ctypes.FUNCFLAG_STDCALL - imported by _ctypes, ctypes
 missing module named _ctypes.LoadLibrary - imported by _ctypes, ctypes
-missing module named _ctypes.FUNCFLAG_USE_ERRNO - imported by _ctypes, ctypes
 missing module named _ctypes.FUNCFLAG_USE_LASTERROR - imported by _ctypes, ctypes
-missing module named _ctypes.FUNCFLAG_CDECL - imported by _ctypes, ctypes
 missing module named _ctypes.FUNCFLAG_PYTHONAPI - imported by _ctypes, ctypes
+missing module named _ctypes.FUNCFLAG_CDECL - imported by _ctypes, ctypes
+missing module named _ctypes.FUNCFLAG_USE_ERRNO - imported by _ctypes, ctypes
 missing module named _ctypes.FormatError - imported by _ctypes, ctypes
 missing module named struct.calcsize - imported by struct, ctypes
 missing module named _ctypes.ArgumentError - imported by _ctypes, ctypes
@@ -70,11 +71,10 @@ missing module named _ctypes.RTLD_LOCAL - imported by _ctypes, ctypes
 missing module named _ctypes.__version__ - imported by _ctypes, ctypes
 missing module named _ctypes.CFuncPtr - imported by _ctypes, ctypes
 missing module named _ctypes._Pointer - imported by _ctypes, ctypes
-missing module named _ctypes.Structure - imported by _ctypes, ctypes
 missing module named _ctypes.Union - imported by _ctypes, ctypes
 missing module named _ctypes.Array - imported by _ctypes, ctypes
+missing module named _ctypes.Structure - imported by _ctypes, ctypes
 missing module named multiprocessing.context.assert_spawning - imported by multiprocessing.context, multiprocessing.sharedctypes
-missing module named multiprocessing.context.get_spawning_popen - imported by multiprocessing.context, multiprocessing.process
 missing module named _sysconfigdata.build_time_vars - imported by _sysconfigdata, sysconfig
 missing module named _sysconfigdata - imported by sysconfig
 missing module named 'packaging.specifiers' - imported by pkg_resources
@@ -84,26 +84,26 @@ missing module named os.mkdir - imported by os, pkg_resources
 missing module named os.unlink - imported by os, pkg_resources
 missing module named os.rename - imported by os, pkg_resources
 missing module named os.utime - imported by os, pkg_resources
-missing module named urlparse.urlunparse - imported by urlparse, pkg_resources
 missing module named urlparse.urlparse - imported by urlparse, pkg_resources
+missing module named urlparse.urlunparse - imported by urlparse, pkg_resources
 missing module named urlparse - imported by pkg_resources
-missing module named _io.DEFAULT_BUFFER_SIZE - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BlockingIOError - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BufferedRWPair - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.IncrementalNewlineDecoder - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.FileIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.UnsupportedOperation - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.open - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BytesIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BufferedWriter - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BufferedRandom - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.StringIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.TextIOWrapper - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _io.BufferedReader - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named resource - imported by posix, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named posix - imported by os, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _datetime.__doc__ - imported by _datetime, datetime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _posixsubprocess - imported by subprocess, multiprocessing.util, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BufferedRandom - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.IncrementalNewlineDecoder - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.DEFAULT_BUFFER_SIZE - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.StringIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.TextIOWrapper - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.FileIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BlockingIOError - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.UnsupportedOperation - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BufferedWriter - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BufferedReader - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BufferedRWPair - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.open - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _io.BytesIO - imported by _io, io, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named unicodedata.ucd_3_2_0 - imported by unicodedata, stringprep, encodings.idna, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _functools.reduce - imported by _functools, functools, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _collections.defaultdict - imported by _collections, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
@@ -116,24 +116,24 @@ missing module named _opcode.stack_effect - imported by _opcode, opcode, C:\User
 missing module named readline - imported by cmd, code, pdb, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp.acquire_lock - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp.is_frozen_package - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _imp.get_frozen_object - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _imp.release_lock - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _imp.is_frozen - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _imp.lock_held - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp.init_builtin - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _imp.init_frozen - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp._fix_co_filename - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp.is_builtin - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _imp.init_frozen - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _imp.is_frozen - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _imp.lock_held - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _imp.release_lock - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _imp.get_frozen_object - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _imp.load_dynamic - imported by _imp, imp, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 excluded module named _frozen_importlib - imported by importlib, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named zipimport.zipimporter - imported by zipimport, pkgutil, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named win32api.RegQueryValueEx - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named win32api.RegOpenKeyEx - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named win32api.RegCloseKey - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named win32api.GetVersionEx - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named win32api.RegCloseKey - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named win32api.RegOpenKeyEx - imported by win32api, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named win32con.VER_NT_WORKSTATION - imported by win32con, platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _scproxy._get_proxy_settings - imported by _scproxy, urllib.request
 missing module named _scproxy._get_proxies - imported by _scproxy, urllib.request
+missing module named _scproxy._get_proxy_settings - imported by _scproxy, urllib.request
 missing module named _scproxy - imported by urllib.request
 missing module named 'java.lang'.Exception - imported by 'java.lang', xml.sax._exceptions
 missing module named xml.parsers.expat.ParserCreate - imported by xml.parsers.expat, plistlib, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
@@ -142,37 +142,37 @@ missing module named java.System - imported by java, platform, C:\Users\Josef\Do
 missing module named 'java.lang' - imported by platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py, xml.sax._exceptions
 missing module named vms_lib - imported by platform, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named termios - imported by tty, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py, getpass
-missing module named _ssl.OPENSSL_VERSION - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.OPENSSL_VERSION_NUMBER - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.OPENSSL_VERSION - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.OPENSSL_VERSION_INFO - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl._SSLContext - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.SSLWantWriteError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.SSLEOFError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.SSLError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.SSLEOFError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.SSLWantWriteError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.SSLSyscallError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.SSLWantReadError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.SSLZeroReturnError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.SSLWantReadError - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.CERT_OPTIONAL - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.CERT_REQUIRED - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.CERT_NONE - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.CERT_OPTIONAL - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.VERIFY_CRL_CHECK_CHAIN - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.VERIFY_DEFAULT - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.VERIFY_X509_STRICT - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.VERIFY_CRL_CHECK_CHAIN - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.VERIFY_CRL_CHECK_LEAF - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.nid2obj - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.txt2obj - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.nid2obj - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.RAND_status - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.RAND_pseudo_bytes - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.RAND_add - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.RAND_bytes - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.RAND_pseudo_bytes - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.RAND_egd - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.HAS_SNI - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.HAS_NPN - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.HAS_ECDH - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl._OPENSSL_API_VERSION - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.PROTOCOL_SSLv2 - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _ssl.PROTOCOL_TLSv1_1 - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.PROTOCOL_TLSv1_2 - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _ssl.PROTOCOL_TLSv1_1 - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.enum_certificates - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _ssl.enum_crls - imported by _ssl, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _hashlib.pbkdf2_hmac - imported by _hashlib, hashlib, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
@@ -185,8 +185,8 @@ missing module named binascii.a2b_qp - imported by binascii, quopri, C:\Users\Jo
 missing module named binascii.b2a_qp - imported by binascii, quopri, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named binascii.a2b_base64 - imported by binascii, email.base64mime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named binascii.b2a_base64 - imported by binascii, email.base64mime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _lzma._encode_filter_properties - imported by _lzma, lzma, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _lzma._decode_filter_properties - imported by _lzma, lzma, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _lzma._encode_filter_properties - imported by _lzma, lzma, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named socket.SOCK_STREAM - imported by socket, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named socket.AF_INET - imported by socket, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named socket.SOL_SOCKET - imported by socket, ssl, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
@@ -207,50 +207,57 @@ missing module named ce._have_functions - imported by ce, os, C:\Users\Josef\Doc
 missing module named ntpath.commonprefix - imported by ntpath, unittest.util, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named time.monotonic - imported by time, subprocess, threading, queue, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named time.time - imported by time, subprocess, threading, queue, multiprocessing.managers, multiprocessing.synchronize, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named threading.current_thread - imported by threading, _threading_local, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named threading.RLock - imported by threading, _threading_local, bz2, multiprocessing.dummy, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named math.log - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named math.exp - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named threading.current_thread - imported by threading, _threading_local, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named math.pi - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named math.exp - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named math.log - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named math.e - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named math.ceil - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named math.sin - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named math.acos - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named math.cos - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named math.sqrt - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named math.cos - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named math.acos - imported by math, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _dummy_threading - imported by dummy_threading, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _dummy_threading.__all__ - imported by _dummy_threading, dummy_threading, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named dummy_threading.RLock - imported by dummy_threading, bz2, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _winapi.STARTF_USESHOWWINDOW - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _winapi.CREATE_NEW_PROCESS_GROUP - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _winapi.CREATE_NEW_CONSOLE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _winapi.STD_INPUT_HANDLE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _winapi.STARTF_USESTDHANDLES - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _winapi.STD_ERROR_HANDLE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _winapi.SW_HIDE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _winapi.STD_OUTPUT_HANDLE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _winapi.STARTF_USESTDHANDLES - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _winapi.CREATE_NEW_PROCESS_GROUP - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _winapi.STARTF_USESHOWWINDOW - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _winapi.CREATE_NEW_CONSOLE - imported by _winapi, subprocess, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named os.urandom - imported by os, random, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named re.compile - imported by re, _strptime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named re.IGNORECASE - imported by re, _strptime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named re.escape - imported by re, _strptime, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _warnings._filters_mutated - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _warnings.warn - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _warnings._defaultaction - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _warnings._onceregistry - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _warnings.warn_explicit - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _warnings._defaultaction - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _warnings.filters - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _warnings.warn - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _warnings._filters_mutated - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _warnings._onceregistry - imported by _warnings, warnings, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _sre.MAXREPEAT - imported by _sre, sre_constants, sre_parse, sre_compile, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _struct._clearcache - imported by _struct, struct, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _struct.__doc__ - imported by _struct, struct, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named errno.ENOENT - imported by errno, gettext, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _collections._count_elements - imported by _collections, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named collections.namedtuple - imported by collections, functools, selectors, difflib, inspect, urllib.parse, ssl, unittest.util, doctest, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.ProxyType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.proxy - imported by _weakref, weakref, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.ref - imported by _weakref, _weakrefset, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.getweakrefs - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.CallableProxyType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.ReferenceType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named _weakref.getweakrefcount - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named weakref.ref - imported by weakref, _threading_local, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named sys.modules - imported by sys, dummy_threading, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named itertools.chain - imported by itertools, heapq, tokenize, collections, lib2to3.refactor, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.islice - imported by itertools, heapq, threading, reprlib, pickle, lib2to3.fixer_util, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.count - imported by itertools, heapq, threading, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.tee - imported by itertools, heapq, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
+missing module named itertools.chain - imported by itertools, heapq, tokenize, collections, lib2to3.refactor, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.repeat - imported by itertools, tokenize, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.starmap - imported by itertools, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named itertools.imap - imported by itertools, pygame.compat
@@ -267,13 +274,6 @@ missing module named _thread.get_ident - imported by _thread, reprlib, C:\Users\
 missing module named _thread.RLock - imported by _thread, functools, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _functools.cmp_to_key - imported by _functools, functools, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _functools.partial - imported by _functools, functools, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.CallableProxyType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.getweakrefs - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.proxy - imported by _weakref, weakref, collections, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.getweakrefcount - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.ReferenceType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.ProxyType - imported by _weakref, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
-missing module named _weakref.ref - imported by _weakref, _weakrefset, weakref, C:\Users\Josef\Documents\GitHub\Graphics\graphics\graphics.py
 missing module named _json.make_encoder - imported by _json, json.encoder
 missing module named _json.encode_basestring_ascii - imported by _json, json.encoder
 missing module named _json.scanstring - imported by _json, json.decoder
@@ -285,28 +285,28 @@ missing module named macresource - imported by MacOS
 missing module named pygame.sdlmain_osx - imported by pygame, pygame.macosx
 missing module named OpenGL - imported by pygame
 missing module named numpy - imported by pygame._numpysurfarray, pygame._numpysndarray, pygame
-missing module named numpy.around - imported by numpy, pygame._numpysurfarray
-missing module named numpy.ndarray - imported by numpy, pygame._numpysurfarray
-missing module named numpy.uint32 - imported by numpy, pygame._numpysurfarray
 missing module named numpy.empty - imported by numpy, pygame._numpysurfarray
+missing module named numpy.uint32 - imported by numpy, pygame._numpysurfarray
+missing module named numpy.around - imported by numpy, pygame._numpysurfarray
 missing module named numpy.array - imported by numpy, pygame._numpysurfarray
+missing module named numpy.ndarray - imported by numpy, pygame._numpysurfarray
 missing module named Numeric - imported by pygame
 missing module named 'pygame._numericsndarray' - imported by pygame.sndarray
 missing module named pygame.pixelcopy.make_surface - imported by pygame.pixelcopy, pygame._numpysurfarray, pygame.surfarray
 missing module named pygame.pixelcopy.array_to_surface - imported by pygame.pixelcopy, pygame._numpysurfarray, pygame.surfarray
 missing module named 'pygame._numericsurfarray' - imported by pygame.surfarray
-missing module named pygame.pixelcopy.map_array - imported by pygame.pixelcopy, pygame._numpysurfarray
 missing module named pygame.pixelcopy.surface_to_array - imported by pygame.pixelcopy, pygame._numpysurfarray
+missing module named pygame.pixelcopy.map_array - imported by pygame.pixelcopy, pygame._numpysurfarray
 missing module named pygame._freetype.__PYGAMEinit__ - imported by pygame._freetype, pygame.ftfont
-missing module named pygame._freetype.was_init - imported by pygame._freetype, pygame.ftfont
 missing module named pygame._freetype.get_default_font - imported by pygame._freetype, pygame.ftfont
+missing module named pygame._freetype.was_init - imported by pygame._freetype, pygame.ftfont
 missing module named pygame._freetype.quit - imported by pygame._freetype, pygame.ftfont
 missing module named pygame._freetype.get_default_resolution - imported by pygame._freetype, pygame.ftfont
 missing module named pygame._freetype.Font - imported by pygame._freetype, pygame.ftfont
 missing module named pygame._freetype.init - imported by pygame._freetype, pygame.ftfont
+missing module named pygame.SRCALPHA - imported by pygame, pygame.ftfont
 missing module named pygame.Color - imported by pygame, pygame.ftfont
 missing module named pygame.Surface - imported by pygame, pygame.ftfont
-missing module named pygame.SRCALPHA - imported by pygame, pygame.ftfont
 missing module named pygame.encode_file_path - imported by pygame, pygame.ftfont
 missing module named pygame.time.get_ticks - imported by pygame.time, pygame.sprite
 missing module named pygame.mask.Mask - imported by pygame.mask, pygame
@@ -318,8 +318,8 @@ missing module named Py25Queue.Empty - imported by Py25Queue, pygame.threads
 missing module named Py25Queue.Queue - imported by Py25Queue, pygame.threads
 missing module named Py25Queue - imported by pygame.threads
 missing module named pygame.Rect - imported by pygame, pygame.sprite
-missing module named pygame.rwobject.encode_string - imported by pygame.rwobject, pygame
 missing module named pygame.rwobject.encode_file_path - imported by pygame.rwobject, pygame
+missing module named pygame.rwobject.encode_string - imported by pygame.rwobject, pygame
 missing module named cStringIO.StringIO - imported by cStringIO, pygame.compat
 missing module named cStringIO - imported by pygame.compat
 missing module named pygame.rect.Rect - imported by pygame.rect, pygame
