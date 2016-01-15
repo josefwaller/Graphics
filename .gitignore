@@ -8,6 +8,9 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# Settings file
+graphics/assets/settings/settings.json
+
 # Windows Installer files
 *.cab
 *.msi

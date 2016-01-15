@@ -44,41 +44,37 @@ class HeadsUpDisplay:
 
 	# mb = Message Box
 	# Different values for the message box
-	mb_is_showing = False
-
-	mb_x = 0
-	mb_y = 0
-	mb_w = 0
-	mb_h = 0
-
-	mb_title_font = None
-	mb_message_font = None
-
-	mb_title = "Testing line in that :"
+	mb = {
+		"is_showing": False,
+		"x": 0,
+		"y": 0,
+		"w": 0,
+		"h": 0,
+		"title_font": None,
+		"message_font": None,
+		"title": None
+	}
 
 	# dl = Dialog
-	dl_is_showing = False
+	dl = {
+		'is_showing': False,
+		'x': 0,
+		'y': 0,
+		'w': 0,
+		'h': 0,
 
-	dl_x = 0
-	dl_y = 0
-	dl_w = 0
-	dl_h = 0
-
-	# the current index
-	# which tet and image to draw
-	dl_index = 0
-
-	# Image offset and size
-	dl_offset_left = 0
-	dl_image_s = 0
-
-	dl_padding = 0
-
-	# The images and text
-	dl_images = []
-	dl_dialogs = []
-
-	dl_font = None
+		# the current index
+		# which text and image to draw
+		'index': 0,
+		# Image offset and size
+		'offset_left': 0,
+		'image_s': 0,
+		'padding': 0,
+		# The images and text
+		'images': [],
+		'dialogs': [],
+		'font': None
+	}
 
 	# pm = Pause Menu
 	pm_is_showing = False
@@ -122,22 +118,22 @@ class HeadsUpDisplay:
 		w = Globals.window.get_size()
 
 		# Sets different dimensions/values for pm, dl and mb
-		self.mb_w = math.floor((w[0] * (2/3)) / Globals.block_size) * Globals.block_size
-		self.mb_h = math.floor((self.mb_w / Globals.block_size) * (3/4)) * Globals.block_size
+		self.mb['w'] = math.floor((w[0] * (2/3)) / Globals.block_size) * Globals.block_size
+		self.mb['h'] = math.floor((self.mb['w'] / Globals.block_size) * (3/4)) * Globals.block_size
 
 		self.border_w = (Globals.block_size / Globals.pixels_per_block)
 
-		self.mb_x = (w[0] - self.mb_w) / 2
-		self.mb_y = (w[1] - self.mb_h) / 2
+		self.mb['x'] = (w[0] - self.mb['w']) / 2
+		self.mb['y'] = (w[1] - self.mb['h']) / 2
 
-		self.dl_x = 0
-		self.dl_y = w[1] * (8/10)
-		self.dl_w = w[0]
-		self.dl_h = w[1] - self.dl_y
+		self.dl['x'] = 0
+		self.dl['y'] = w[1] * (8/10)
+		self.dl['w'] = w[0]
+		self.dl['h'] = w[1] - self.dl['y']
 
-		self.dl_offset_left = int(self.dl_w * (1/10))
-		self.dl_image_s = int(self.dl_h * (1/2))
-		self.dl_padding = 10
+		self.dl['offset_left'] = int(self.dl['w'] * (1/10))
+		self.dl['image_s'] = int(self.dl['h'] * (1/2))
+		self.dl['padding'] = 10
 
 		self.pm_w = w[0] * (1/3)
 		self.pm_h = w[1] * (3/4)
@@ -149,10 +145,10 @@ class HeadsUpDisplay:
 
 		font_url = "assets/fonts/Minecraftia-Regular.ttf"
 
-		self.mb_title_font = Globals.get_font_by_height(font_url, int(self.mb_h / 6))
-		self.mb_message_font = Globals.get_font_by_height(font_url, int(self.mb_h / 15))
+		self.mb['title_font'] = Globals.get_font_by_height(font_url, int(self.mb['h'] / 6))
+		self.mb['message_font'] = Globals.get_font_by_height(font_url, int(self.mb['h'] / 15))
 
-		self.dl_font = Globals.get_font_by_height(font_url, int(self.dl_h / 5))
+		self.dl['font'] = Globals.get_font_by_height(font_url, int(self.dl['h'] / 5))
 
 		self.pm_title_font = Globals.get_font_by_height(font_url, int(self.pm_h / 10))
 		self.pm_button_font = Globals.get_font_by_height(font_url, int(self.pm_button_h * (3/4)))
@@ -182,23 +178,23 @@ class HeadsUpDisplay:
 	def dialog_box(self, dialogs, images):
 
 		# Sets up the dialog box
-		self.dl_is_showing = True
+		self.dl['is_showing'] = True
 		Globals.is_paused = True
-		self.dl_index = 0
-		self.dl_images = []
+		self.dl['index'] = 0
+		self.dl['images'] = []
 
 		# Gets all the images
 		for image in images:
 			i = pygame.image.load("assets/images/props/dialogs/%s" % image).convert_alpha()
-			i = pygame.transform.scale(i, (self.dl_image_s, self.dl_image_s))
-			self.dl_images.append(i)
+			i = pygame.transform.scale(i, (self.dl['image_s'], self.dl['image_s']))
+			self.dl['images'].append(i)
 
 		# Gets all the text
-		self.dl_dialogs = []
-		while len(self.dl_dialogs) < len(dialogs):
+		self.dl['dialogs'] = []
+		while len(self.dl['dialogs']) < len(dialogs):
 
 			# Four strings for four lines
-			self.dl_dialogs.append(['', '', '', ''])
+			self.dl['dialogs'].append(['', '', '', ''])
 
 		for d in range(len(dialogs)):
 			# indexes for which word and which line
@@ -211,17 +207,17 @@ class HeadsUpDisplay:
 			while word_index < len(words):
 
 				# Adds the word to the string, but not in the same variable
-				line_str = self.dl_dialogs[d][line_index] + "  " + words[word_index]
+				line_str = self.dl['dialogs'][d][line_index] + "  " + words[word_index]
 
 				# Finds the max width the line can have
-				max_width = self.dl_w - (self.dl_x + self.dl_offset_left + self.dl_image_s + 2 * self.dl_padding)
+				max_width = self.dl['w'] - (self.dl['x'] + self.dl['offset_left'] + self.dl['image_s'] + 2 * self.dl['padding'])
 
 				# If the word can fit on the line without exceeding the max width, add the word to the line
 				# Otherwise create a new line
-				if self.dl_font.size(line_str)[0] > max_width:
+				if self.dl['font'].size(line_str)[0] > max_width:
 					line_index += 1
 				else:
-					self.dl_dialogs[d][line_index] = line_str
+					self.dl['dialogs'][d][line_index] = line_str
 					word_index += 1
 
 	# Sets up the credits
@@ -325,87 +321,87 @@ class HeadsUpDisplay:
 					self.fade_start_time = time.time()
 
 		# Draws Message Box
-		if self.mb_is_showing:
+		if self.mb['is_showing']:
 
 			# Draws rectangles
 			pygame.draw.rect(Globals.window, self.border_color, [
-				self.mb_x - self.border_w, 
-				self.mb_y - self.border_w, 
-				self.mb_w + 2 * self.border_w,
-				self.mb_h + 2 * self.border_w
+				self.mb['x'] - self.border_w, 
+				self.mb['y'] - self.border_w, 
+				self.mb['w'] + 2 * self.border_w,
+				self.mb['h'] + 2 * self.border_w
 			])
 			pygame.draw.rect(Globals.window, self.box_color, [
-				self.mb_x,
-				self.mb_y,
-				self.mb_w,
-				self.mb_h
+				self.mb['x'],
+				self.mb['y'],
+				self.mb['w'],
+				self.mb['h']
 			])
 
 			# Gets title coordinates
-			x = (win[0] - self.mb_title_font.size(self.mb_title)[0])/2
-			y = self.mb_y + 20
+			x = (win[0] - self.mb['title_font'].size(self.mb['title'])[0])/2
+			y = self.mb['y'] + 20
 			# Prints title
-			ren = self.mb_title_font.render(self.mb_title, False, self.text_color)
+			ren = self.mb['title_font'].render(self.mb['title'], False, self.text_color)
 			Globals.window.blit(ren, (x, y))
 
 			# Prints Message
 			line_indent = 0
 
-			x = self.mb_x + 5
-			y = self.mb_y + self.mb_title_font.size(self.mb_title)[1] + 5
+			x = self.mb['x'] + 5
+			y = self.mb['y'] + self.mb['title_font'].size(self.mb['title'])[1] + 5
 
 			for line in self.text_lines:
 
 				# Draws each line
-				ren = self.mb_message_font.render(line, False, self.text_color)
-				Globals.window.blit(ren, (x, y + self.mb_message_font.size(line)[1] * line_indent))
+				ren = self.mb['message_font'].render(line, False, self.text_color)
+				Globals.window.blit(ren, (x, y + self.mb['message_font'].size(line)[1] * line_indent))
 				line_indent += 1
 
 			# Draws <Press ENTER to continue> in the bottom right corner
 			text = "Press ENTER to continue"
-			x = self.mb_x + self.mb_w - self.mb_message_font.size(text)[0]
-			y = self.mb_y + self.mb_h - self.mb_message_font.size(text)[1]
+			x = self.mb['x'] + self.mb['w'] - self.mb['message_font'].size(text)[0]
+			y = self.mb['y'] + self.mb['h'] - self.mb['message_font'].size(text)[1]
 
-			r = self.dl_font.render(text, False, self.text_color)
+			r = self.dl['font'].render(text, False, self.text_color)
 			Globals.window.blit(r, (x, y))
 
 		# Draws Dialog box
-		elif self.dl_is_showing:
+		elif self.dl['is_showing']:
 
 			# Draws Rectangles
 			pygame.draw.rect(Globals.window, self.border_color, [
-				self.dl_x, 
-				self.dl_y - self.border_w,
-				self.dl_w,
+				self.dl['x'], 
+				self.dl['y'] - self.border_w,
+				self.dl['w'],
 				self.border_w
 			])
 			pygame.draw.rect(Globals.window, self.box_color, [
-				self.dl_x,
-				self.dl_y, 
-				self.dl_w,
-				self.dl_h
+				self.dl['x'],
+				self.dl['y'], 
+				self.dl['w'],
+				self.dl['h']
 			])
 
 			# draws Image
-			img_y = int(self.dl_y + (self.dl_h - self.dl_image_s) / 2)
-			Globals.window.blit(self.dl_images[self.dl_index], (self.dl_offset_left, img_y))
+			img_y = int(self.dl['y'] + (self.dl['h'] - self.dl['image_s']) / 2)
+			Globals.window.blit(self.dl['images'][self.dl['index']], (self.dl['offset_left'], img_y))
 
 			# Draws Dialog
-			line_height = self.dl_font.get_linesize()
-			base_x = self.dl_offset_left + self.dl_x + self.dl_image_s + 10
+			line_height = self.dl['font'].get_linesize()
+			base_x = self.dl['offset_left'] + self.dl['x'] + self.dl['image_s'] + 10
 
-			for i in range(len(self.dl_dialogs[self.dl_index])):
+			for i in range(len(self.dl['dialogs'][self.dl['index']])):
 
-				line = self.dl_dialogs[self.dl_index][i]
-				r = self.dl_font.render(line, False, self.text_color)
-				Globals.window.blit(r, (base_x, self.dl_y + self.dl_padding + line_height * i))
+				line = self.dl['dialogs'][self.dl['index']][i]
+				r = self.dl['font'].render(line, False, self.text_color)
+				Globals.window.blit(r, (base_x, self.dl['y'] + self.dl['padding'] + line_height * i))
 
 			# Draws <Press ENTER to continue>
 			text = "Press ENTER to continue"
-			x = self.dl_x + self.dl_w - self.dl_font.size(text)[0] - self.dl_padding
-			y = self.dl_y + self.dl_h - self.dl_font.size(text)[1] - self.dl_padding
+			x = self.dl['x'] + self.dl['w'] - self.dl['font'].size(text)[0] - self.dl['padding']
+			y = self.dl['y'] + self.dl['h'] - self.dl['font'].size(text)[1] - self.dl['padding']
 
-			r = self.dl_font.render(text, False, self.text_color)
+			r = self.dl['font'].render(text, False, self.text_color)
 			Globals.window.blit(r, (x, y))
 
 		# Draws pause menu
@@ -486,12 +482,12 @@ class HeadsUpDisplay:
 	def message_box(self, title, message, fade_out=False):
 
 			Globals.is_paused = True
-			self.mb_is_showing = True
+			self.mb['is_showing'] = True
 
 			# Which line
 			line_index = 0
 
-			self.mb_title = title
+			self.mb['title'] = title
 			self.text_lines = ["", "", "", ""]
 			word_index = 1
 
@@ -508,7 +504,7 @@ class HeadsUpDisplay:
 				create_new_line = False
 
 				while len(words) - 1 >= word_index \
-					and self.mb_message_font.size(self.text_lines[line_index] + words[word_index])[0] < (self.mb_w - 10):
+					and self.mb['message_font'].size(self.text_lines[line_index] + words[word_index])[0] < (self.mb['w'] - 10):
 
 					create_new_line = True
 
@@ -533,29 +529,29 @@ class HeadsUpDisplay:
 
 		if not Globals.playing_credits:
 		
-			if self.mb_is_showing:
+			if self.mb['is_showing']:
 				if pygame.K_RETURN in keys:
 
 					if self.should_fade_out:
-						self.mb_is_showing = False
+						self.mb['is_showing'] = False
 						self.is_fading_out = True
 						Globals.music_fade_out = True
 						self.fade_start_time = time.time()
 					else:
-						self.mb_is_showing = False
+						self.mb['is_showing'] = False
 						Globals.is_paused = False
 
-			elif self.dl_is_showing:
+			elif self.dl['is_showing']:
 
 				if pygame.K_RETURN in keys:
 
-					self.dl_index += 1
-					if self.dl_index >= len(self.dl_dialogs):
+					self.dl['index'] += 1
+					if self.dl['index'] >= len(self.dl['dialogs']):
 
 						self.text_lines = [""]
-						self.dl_is_showing = False
+						self.dl['is_showing'] = False
 						Globals.is_paused = False
-						self.dl_dialogs = []
+						self.dl['dialogs'] = []
 
 			else:
 				if self.pm_is_showing:
@@ -582,8 +578,8 @@ class HeadsUpDisplay:
 						Globals.is_paused = True
 
 			if pygame.K_d in keys and Globals.debug:
-				self.mb_is_showing = False
-				self.dl_is_showing = False
+				self.mb['is_showing'] = False
+				self.dl['is_showing'] = False
 				self.pm_is_showing = False
 				Globals.is_paused = False
 
