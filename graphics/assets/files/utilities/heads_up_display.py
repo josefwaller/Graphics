@@ -530,60 +530,62 @@ class HeadsUpDisplay:
 				line_index += 1
 
 	def on_input(self, keys):
+
+		if not Globals.playing_credits:
 		
-		if self.mb_is_showing:
-			if pygame.K_RETURN in keys:
+			if self.mb_is_showing:
+				if pygame.K_RETURN in keys:
 
-				if self.should_fade_out:
-					self.mb_is_showing = False
-					self.is_fading_out = True
-					Globals.music_fade_out = True
-					self.fade_start_time = time.time()
-				else:
-					self.mb_is_showing = False
-					Globals.is_paused = False
+					if self.should_fade_out:
+						self.mb_is_showing = False
+						self.is_fading_out = True
+						Globals.music_fade_out = True
+						self.fade_start_time = time.time()
+					else:
+						self.mb_is_showing = False
+						Globals.is_paused = False
 
-		elif self.dl_is_showing:
-
-			if pygame.K_RETURN in keys:
-
-				self.dl_index += 1
-				if self.dl_index >= len(self.dl_dialogs):
-
-					self.text_lines = [""]
-					self.dl_is_showing = False
-					Globals.is_paused = False
-					self.dl_dialogs = []
-
-		else:
-			if self.pm_is_showing:
+			elif self.dl_is_showing:
 
 				if pygame.K_RETURN in keys:
-					self.pm_buttons[self.pm_selected_button]['on_click']()
-					self.pm_is_showing = False
 
-				elif pygame.K_UP in keys:
-					if self.pm_selected_button >= 1:
-						self.pm_selected_button -= 1
-				elif pygame.K_DOWN in keys:
-					if self.pm_selected_button < len(self.pm_buttons) - 1:
-						self.pm_selected_button += 1
+					self.dl_index += 1
+					if self.dl_index >= len(self.dl_dialogs):
 
-			if pygame.K_ESCAPE in keys:
+						self.text_lines = [""]
+						self.dl_is_showing = False
+						Globals.is_paused = False
+						self.dl_dialogs = []
 
+			else:
 				if self.pm_is_showing:
-					self.pm_is_showing = False
-					Globals.is_paused = False
-				else:
-					self.pm_is_showing = True
-					self.pm_selected_button = 0
-					Globals.is_paused = True
 
-		if pygame.K_d in keys and Globals.debug:
-			self.mb_is_showing = False
-			self.dl_is_showing = False
-			self.pm_is_showing = False
-			Globals.is_paused = False
+					if pygame.K_RETURN in keys:
+						self.pm_buttons[self.pm_selected_button]['on_click']()
+						self.pm_is_showing = False
+
+					elif pygame.K_UP in keys:
+						if self.pm_selected_button >= 1:
+							self.pm_selected_button -= 1
+					elif pygame.K_DOWN in keys:
+						if self.pm_selected_button < len(self.pm_buttons) - 1:
+							self.pm_selected_button += 1
+
+				if pygame.K_ESCAPE in keys:
+
+					if self.pm_is_showing:
+						self.pm_is_showing = False
+						Globals.is_paused = False
+					else:
+						self.pm_is_showing = True
+						self.pm_selected_button = 0
+						Globals.is_paused = True
+
+			if pygame.K_d in keys and Globals.debug:
+				self.mb_is_showing = False
+				self.dl_is_showing = False
+				self.pm_is_showing = False
+				Globals.is_paused = False
 
 	def resume(self):
 		Globals.is_paused = False
@@ -607,15 +609,23 @@ class HeadsUpDisplay:
 
 		self.rect_alpha = int((time.time() - self.fade_start_time) * (255 / self.fade_duration))
 
+		# Checks if it is done fading
 		if self.rect_alpha > 255:
 			self.is_fading_out = False
+
 			if update_graphics:
+				# Changes to main menu
 				Globals.is_paused = False
+				# Updates graphics if nessecary
 				if Globals.graphics_level < 2:
 					Globals.graphics_level += 1
+				# Sets music to fade in
 				Globals.menu_fade_in = True
 				Globals.in_menu = True
-				Globals.music_fade_in = True
+
+			else:
+				# Pauses game for credits
+				Globals.is_paused = True
 
 	def fade_in(self):
 
